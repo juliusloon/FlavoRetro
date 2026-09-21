@@ -1,0 +1,1236 @@
+{
+  "schema_version": 1,
+  "source_root": "/home/ljx/retro_synthesis",
+  "files": [
+    {
+      "source_path": "config/product/literature_registry.json",
+      "path": "data/raw/legacy/config/product/literature_registry.json",
+      "sha256": "f62310a3a7f9bcefe27b539f84c6d9f43e290b7e492d3c656abf2e60ef01e294",
+      "size": 13049,
+      "role": "candidate_data",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "historical_claims_only_not_revalidated",
+      "redistribute": false
+    },
+    {
+      "source_path": "data/uspto_filter_model.onnx",
+      "path": "data/raw/legacy/data/uspto_filter_model.onnx",
+      "sha256": "ad29aa32bdfcbe37065045546493806cf04899c55386c438905d83fb14bb6320",
+      "size": 16788859,
+      "role": "external_model",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "historical_claims_only_not_revalidated",
+      "redistribute": false
+    },
+    {
+      "source_path": "data/uspto_model.onnx",
+      "path": "data/raw/legacy/data/uspto_model.onnx",
+      "sha256": "bd0a3cb74cd7068de474c8fb789a00a66bc42c75636d66510ccac585ebe928f8",
+      "size": 91518243,
+      "role": "external_model",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "historical_claims_only_not_revalidated",
+      "redistribute": false
+    },
+    {
+      "source_path": "data/uspto_ringbreaker_model.onnx",
+      "path": "data/raw/legacy/data/uspto_ringbreaker_model.onnx",
+      "sha256": "1bf0690352d9e9212d7dbe8b35649caf74f73ef0b30edefdfdac37fce38085be",
+      "size": 15036094,
+      "role": "external_model",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "historical_claims_only_not_revalidated",
+      "redistribute": false
+    },
+    {
+      "source_path": "data/uspto_ringbreaker_templates.csv.gz",
+      "path": "data/raw/legacy/data/uspto_ringbreaker_templates.csv.gz",
+      "sha256": "5616a056454b10a2f044e69e027422128986856ebd958541a3bf9f837e3a0d14",
+      "size": 373753,
+      "role": "external_model",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "historical_claims_only_not_revalidated",
+      "redistribute": false
+    },
+    {
+      "source_path": "data/uspto_templates.csv.gz",
+      "path": "data/raw/legacy/data/uspto_templates.csv.gz",
+      "sha256": "a4f1945e90cfa195538320833d68aed38f14e2fcc2f8afb5d958bc920edcafbe",
+      "size": 3313598,
+      "role": "external_model",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "historical_claims_only_not_revalidated",
+      "redistribute": false
+    },
+    {
+      "source_path": "docs/literature/260615-黄酮化合物的结构.md",
+      "path": "data/raw/legacy/docs/literature/260615-黄酮化合物的结构.md",
+      "sha256": "4e7c96761b604f88fa97d4dc1a7a6ef94a0e09a005a62d4d087b527dfca2aa28",
+      "size": 77264,
+      "role": "source_note",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "project_input_not_primary_reviewed",
+      "redistribute": false
+    },
+    {
+      "source_path": "docs/literature/260618-黄酮化合物的生物合成.md",
+      "path": "data/raw/legacy/docs/literature/260618-黄酮化合物的生物合成.md",
+      "sha256": "7f98de7ef847ad43935f45ca922844337e2fd43966ea4a2ecdeabb0d1494a3df",
+      "size": 26774,
+      "role": "source_note",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "project_input_not_primary_reviewed",
+      "redistribute": false
+    },
+    {
+      "source_path": "docs/literature/260621-黄酮化合物研究进展（1）：黄酮类化合物.md",
+      "path": "data/raw/legacy/docs/literature/260621-黄酮化合物研究进展（1）：黄酮类化合物.md",
+      "sha256": "ef73e7593f06bf05c15317e023cf9647716dd5db9572e04f5929de90fc9ceaab",
+      "size": 181622,
+      "role": "source_note",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "project_input_not_primary_reviewed",
+      "redistribute": false
+    },
+    {
+      "source_path": "docs/literature/260621-黄酮类化合物立体化学.md",
+      "path": "data/raw/legacy/docs/literature/260621-黄酮类化合物立体化学.md",
+      "sha256": "e210b39f3a31744629330f4bef1861994b8079f5a5d1b01ac106120123173af8",
+      "size": 16795,
+      "role": "source_note",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "project_input_not_primary_reviewed",
+      "redistribute": false
+    },
+    {
+      "source_path": "docs/literature/260624-黄酮化合物研究进展（2）：异黄酮类化合物.md",
+      "path": "data/raw/legacy/docs/literature/260624-黄酮化合物研究进展（2）：异黄酮类化合物.md",
+      "sha256": "f4a085946432401282ade16d37103443854e3b9a8158a0f6d6a4268ff5cbe88e",
+      "size": 110918,
+      "role": "source_note",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "project_input_not_primary_reviewed",
+      "redistribute": false
+    },
+    {
+      "source_path": "docs/literature/260625-黄酮化合物的性质.md",
+      "path": "data/raw/legacy/docs/literature/260625-黄酮化合物的性质.md",
+      "sha256": "21bf53efc3cfafbbf90a89967e839e1a95580014fa612d0e75ebfaa1bbc36a17",
+      "size": 22358,
+      "role": "source_note",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "project_input_not_primary_reviewed",
+      "redistribute": false
+    },
+    {
+      "source_path": "docs/literature/260626-黄酮化合物的合成.md",
+      "path": "data/raw/legacy/docs/literature/260626-黄酮化合物的合成.md",
+      "sha256": "d6728edeaf644f02184c81e06c5a4e23f0b16379f3beff2d620f8e15a2761def",
+      "size": 91005,
+      "role": "source_note",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "project_input_not_primary_reviewed",
+      "redistribute": false
+    },
+    {
+      "source_path": "docs/literature/260626-黄酮化合物的波谱学特征和结构解析.md",
+      "path": "data/raw/legacy/docs/literature/260626-黄酮化合物的波谱学特征和结构解析.md",
+      "sha256": "554a028a24d2bac45d5025a8c0cc9747de6a285fef6fcb6a5fc422dfa41b5048",
+      "size": 189,
+      "role": "source_note",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "project_input_not_primary_reviewed",
+      "redistribute": false
+    },
+    {
+      "source_path": "docs/literature/260627-黄酮化合物的生物活性.md",
+      "path": "data/raw/legacy/docs/literature/260627-黄酮化合物的生物活性.md",
+      "sha256": "33cd0f3610ea2138bedbd290c0bd8ddc275105e8b50ea933944d6c0544238c06",
+      "size": 37876,
+      "role": "source_note",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "project_input_not_primary_reviewed",
+      "redistribute": false
+    },
+    {
+      "source_path": "docs/reports/260920-pre_refactor_project_retrospective.md",
+      "path": "data/raw/legacy/docs/reports/260920-pre_refactor_project_retrospective.md",
+      "sha256": "d425b76024d5bb881d29f13a3bec699ceea8a7b72114b98e2fc3e62f49f60d06",
+      "size": 51932,
+      "role": "historical_reference",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "historical_claims_only_not_revalidated",
+      "redistribute": false
+    },
+    {
+      "source_path": "import_raw/.DS_Store",
+      "path": "data/raw/legacy/import_raw/.DS_Store",
+      "sha256": "3ebfc16ab26312bb3b702bfe42898cb0037a53d88ac63e385461e31f3e136a8f",
+      "size": 6148,
+      "role": "source_evidence",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "historical_claims_only_not_revalidated",
+      "redistribute": false
+    },
+    {
+      "source_path": "import_raw/1_2-rhamnosyltransferase neohesperidoside biosynthesis_20260910_2219.rdf",
+      "path": "data/raw/legacy/import_raw/1_2-rhamnosyltransferase neohesperidoside biosynthesis_20260910_2219.rdf",
+      "sha256": "035f24e8f0b66da415807910f4f808f17f299392b4b463a05ab4f6d949838c23",
+      "size": 25853,
+      "role": "source_evidence",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "historical_claims_only_not_revalidated",
+      "redistribute": false
+    },
+    {
+      "source_path": "import_raw/2_3_4_6-tetra-O-acetyl-alpha-D-glucopyranosyl trichloroacetimidate_Supplier_20260910_2242.xlsx",
+      "path": "data/raw/legacy/import_raw/2_3_4_6-tetra-O-acetyl-alpha-D-glucopyranosyl trichloroacetimidate_Supplier_20260910_2242.xlsx",
+      "sha256": "155eac6931f6bf1f711a3d5f49abf0bb2b099a18bbc77f2b7a9277ccb9bf3366",
+      "size": 27239,
+      "role": "source_evidence",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "historical_claims_only_not_revalidated",
+      "redistribute": false
+    },
+    {
+      "source_path": "import_raw/5-O-glycoside quercetin kaempferol synthesis gold_20260910_2200.rdf",
+      "path": "data/raw/legacy/import_raw/5-O-glycoside quercetin kaempferol synthesis gold_20260910_2200.rdf",
+      "sha256": "366e9981b4f8dd6b7a8c4563646c553b40fe8cfe43d150589a48bdc1f2396cc9",
+      "size": 1524829,
+      "role": "source_evidence",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "historical_claims_only_not_revalidated",
+      "redistribute": false
+    },
+    {
+      "source_path": "import_raw/A3/acacetin synthesis_Reference_20260911_0048.xlsx",
+      "path": "data/raw/legacy/import_raw/A3/acacetin synthesis_Reference_20260911_0048.xlsx",
+      "sha256": "4a319c88b78015e2bd9ff0616993dc66daebb472478ae6df1ac2d1c27759352f",
+      "size": 34373,
+      "role": "source_evidence",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "historical_claims_only_not_revalidated",
+      "redistribute": false
+    },
+    {
+      "source_path": "import_raw/A3/apigenin synthesis_Reference_20260911_0044.xlsx",
+      "path": "data/raw/legacy/import_raw/A3/apigenin synthesis_Reference_20260911_0044.xlsx",
+      "sha256": "fa12ec90055a961f80e916c5605d985351d168e893f2c3b1e95d283d65656507",
+      "size": 31579,
+      "role": "source_evidence",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "historical_claims_only_not_revalidated",
+      "redistribute": false
+    },
+    {
+      "source_path": "import_raw/A3/apigetrin synthesis_Reference_20260911_0103.xlsx",
+      "path": "data/raw/legacy/import_raw/A3/apigetrin synthesis_Reference_20260911_0103.xlsx",
+      "sha256": "b4999950f6962b48a517e9d8dd0b49c7fb5f74e2aac4388a5f625108457b0bc7",
+      "size": 35884,
+      "role": "source_evidence",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "historical_claims_only_not_revalidated",
+      "redistribute": false
+    },
+    {
+      "source_path": "import_raw/A3/astragalin synthesis_Reference_20260911_0104.xlsx",
+      "path": "data/raw/legacy/import_raw/A3/astragalin synthesis_Reference_20260911_0104.xlsx",
+      "sha256": "203f55a938bd12f65405af670af5b3b56028a2fc120314cc2bbcea28fab2c544",
+      "size": 34745,
+      "role": "source_evidence",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "historical_claims_only_not_revalidated",
+      "redistribute": false
+    },
+    {
+      "source_path": "import_raw/A3/baicalein synthesis_Reference_20260911_0046.xlsx",
+      "path": "data/raw/legacy/import_raw/A3/baicalein synthesis_Reference_20260911_0046.xlsx",
+      "sha256": "a05a107e2630cc513b40e578f40e945f36d0e4e8a8fa601be35d78f2042c95d4",
+      "size": 34253,
+      "role": "source_evidence",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "historical_claims_only_not_revalidated",
+      "redistribute": false
+    },
+    {
+      "source_path": "import_raw/A3/biochanin A synthesis_Reference_20260911_0101.xlsx",
+      "path": "data/raw/legacy/import_raw/A3/biochanin A synthesis_Reference_20260911_0101.xlsx",
+      "sha256": "e3cc1d877fae13061ac70b871553f6e95ae1daa01b9b2972a0cefedb278674b4",
+      "size": 34693,
+      "role": "source_evidence",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "historical_claims_only_not_revalidated",
+      "redistribute": false
+    },
+    {
+      "source_path": "import_raw/A3/chrysin synthesis_Reference_20260911_0045.xlsx",
+      "path": "data/raw/legacy/import_raw/A3/chrysin synthesis_Reference_20260911_0045.xlsx",
+      "sha256": "751c4f45857e25267ba6d48da59658e64972da04a2afff3fa3137430d86dfb1c",
+      "size": 31230,
+      "role": "source_evidence",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "historical_claims_only_not_revalidated",
+      "redistribute": false
+    },
+    {
+      "source_path": "import_raw/A3/daidzein synthesis_Reference_20260911_0059.xlsx",
+      "path": "data/raw/legacy/import_raw/A3/daidzein synthesis_Reference_20260911_0059.xlsx",
+      "sha256": "8d57f8a281e32b2bf26cc73228470791d60f2033143feec370cf26d1898863d9",
+      "size": 33853,
+      "role": "source_evidence",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "historical_claims_only_not_revalidated",
+      "redistribute": false
+    },
+    {
+      "source_path": "import_raw/A3/diosmetin synthesis_Reference_20260911_0048.xlsx",
+      "path": "data/raw/legacy/import_raw/A3/diosmetin synthesis_Reference_20260911_0048.xlsx",
+      "sha256": "eaedff47b1caefb8c34a3d29a11f205ca0afd3a6d7e1c9151327436f448d3a7d",
+      "size": 33278,
+      "role": "source_evidence",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "historical_claims_only_not_revalidated",
+      "redistribute": false
+    },
+    {
+      "source_path": "import_raw/A3/eriodictyol synthesis_Reference_20260911_0057.xlsx",
+      "path": "data/raw/legacy/import_raw/A3/eriodictyol synthesis_Reference_20260911_0057.xlsx",
+      "sha256": "2e371581af1474cbbacb68f6e8d4f28395fe8b896515d90356a56d3bcb2e24f6",
+      "size": 34599,
+      "role": "source_evidence",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "historical_claims_only_not_revalidated",
+      "redistribute": false
+    },
+    {
+      "source_path": "import_raw/A3/fisetin synthesis_Reference_20260911_0051.xlsx",
+      "path": "data/raw/legacy/import_raw/A3/fisetin synthesis_Reference_20260911_0051.xlsx",
+      "sha256": "95761587cc722fbd17604dca923e0fafa9a6dc32529b37237549bf436c46f127",
+      "size": 33045,
+      "role": "source_evidence",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "historical_claims_only_not_revalidated",
+      "redistribute": false
+    },
+    {
+      "source_path": "import_raw/A3/formononetin synthesis_Reference_20260911_0100.xlsx",
+      "path": "data/raw/legacy/import_raw/A3/formononetin synthesis_Reference_20260911_0100.xlsx",
+      "sha256": "ad9ba3aedb10766c720e5bec45c742c4d8ce17e9ed0b22119520021ab8353258",
+      "size": 34417,
+      "role": "source_evidence",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "historical_claims_only_not_revalidated",
+      "redistribute": false
+    },
+    {
+      "source_path": "import_raw/A3/galangin synthesis_Reference_20260911_0052.xlsx",
+      "path": "data/raw/legacy/import_raw/A3/galangin synthesis_Reference_20260911_0052.xlsx",
+      "sha256": "695e680ec9d8d4d5f24195f456228c43076b6c6a1e1dcdc34fc1ab373e1de749",
+      "size": 35480,
+      "role": "source_evidence",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "historical_claims_only_not_revalidated",
+      "redistribute": false
+    },
+    {
+      "source_path": "import_raw/A3/genistein synthesis_Reference_20260911_0058.xlsx",
+      "path": "data/raw/legacy/import_raw/A3/genistein synthesis_Reference_20260911_0058.xlsx",
+      "sha256": "4a35fb77113ffcc23faf07b86cccb82229511fef3d9c359f91c35c42277ec5af",
+      "size": 34543,
+      "role": "source_evidence",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "historical_claims_only_not_revalidated",
+      "redistribute": false
+    },
+    {
+      "source_path": "import_raw/A3/genistin synthesis_Reference_20260911_0105.xlsx",
+      "path": "data/raw/legacy/import_raw/A3/genistin synthesis_Reference_20260911_0105.xlsx",
+      "sha256": "562cd92b64ef91a013ab92e008f6d25d2dab99d0df80f5c3079ca4589b6e2752",
+      "size": 34124,
+      "role": "source_evidence",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "historical_claims_only_not_revalidated",
+      "redistribute": false
+    },
+    {
+      "source_path": "import_raw/A3/glycitein synthesis_Reference_20260911_0102.xlsx",
+      "path": "data/raw/legacy/import_raw/A3/glycitein synthesis_Reference_20260911_0102.xlsx",
+      "sha256": "a536650d0dbc44c390af07ef207a04f86337db4e92c978ad8baf24b38c0a3108",
+      "size": 34216,
+      "role": "source_evidence",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "historical_claims_only_not_revalidated",
+      "redistribute": false
+    },
+    {
+      "source_path": "import_raw/A3/homoeriodictyol synthesis_Reference_20260911_0058.xlsx",
+      "path": "data/raw/legacy/import_raw/A3/homoeriodictyol synthesis_Reference_20260911_0058.xlsx",
+      "sha256": "87381a5a2ad839f369ddf4de88d4ba3c8c725c48ac0522487cad8839440a888b",
+      "size": 32745,
+      "role": "source_evidence",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "historical_claims_only_not_revalidated",
+      "redistribute": false
+    },
+    {
+      "source_path": "import_raw/A3/isoquercitrin synthesis_Reference_20260911_0105.xlsx",
+      "path": "data/raw/legacy/import_raw/A3/isoquercitrin synthesis_Reference_20260911_0105.xlsx",
+      "sha256": "b5c58a9e257f3bfe82d2847789663c3287ffb6c051dc5d000b2926f2ef6e3e79",
+      "size": 34311,
+      "role": "source_evidence",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "historical_claims_only_not_revalidated",
+      "redistribute": false
+    },
+    {
+      "source_path": "import_raw/A3/isorhamnetin synthesis_Reference_20260911_0053.xlsx",
+      "path": "data/raw/legacy/import_raw/A3/isorhamnetin synthesis_Reference_20260911_0053.xlsx",
+      "sha256": "3ff4b9694d4fdec7d5102694378b6f3526ee4fc27afcc8fafdc3014bb339112b",
+      "size": 34839,
+      "role": "source_evidence",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "historical_claims_only_not_revalidated",
+      "redistribute": false
+    },
+    {
+      "source_path": "import_raw/A3/liquiritigenin synthesis_Reference _20260911_0056.xlsx",
+      "path": "data/raw/legacy/import_raw/A3/liquiritigenin synthesis_Reference _20260911_0056.xlsx",
+      "sha256": "a8969693170a07d283d657c7c9851622261a915164b41e8777bc8d59432b7bfa",
+      "size": 34427,
+      "role": "source_evidence",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "historical_claims_only_not_revalidated",
+      "redistribute": false
+    },
+    {
+      "source_path": "import_raw/A3/luteolin 7-O-glucoside_Reference_20260911_0103.xlsx",
+      "path": "data/raw/legacy/import_raw/A3/luteolin 7-O-glucoside_Reference_20260911_0103.xlsx",
+      "sha256": "6250616398894adf61305e77ca610cf80bc78bcf7976fc2ace51be23f1d33b44",
+      "size": 34434,
+      "role": "source_evidence",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "historical_claims_only_not_revalidated",
+      "redistribute": false
+    },
+    {
+      "source_path": "import_raw/A3/morin synthesis_Reference_20260911_0051.xlsx",
+      "path": "data/raw/legacy/import_raw/A3/morin synthesis_Reference_20260911_0051.xlsx",
+      "sha256": "3edc4f45ccb098e25b200dddea0bca14d9fa75ff4bbb33fa401e8ff3af9f9549",
+      "size": 34788,
+      "role": "source_evidence",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "historical_claims_only_not_revalidated",
+      "redistribute": false
+    },
+    {
+      "source_path": "import_raw/A3/myricetin synthesis_Reference_20260911_0050.xlsx",
+      "path": "data/raw/legacy/import_raw/A3/myricetin synthesis_Reference_20260911_0050.xlsx",
+      "sha256": "01a19b8509650063caece354976b86192268bdad799ae71e00241afb60c0e8f1",
+      "size": 34198,
+      "role": "source_evidence",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "historical_claims_only_not_revalidated",
+      "redistribute": false
+    },
+    {
+      "source_path": "import_raw/A3/pinocembrin synthesis_Reference_20260911_0055.xlsx",
+      "path": "data/raw/legacy/import_raw/A3/pinocembrin synthesis_Reference_20260911_0055.xlsx",
+      "sha256": "a45c666b045a52a7b59b159d74632e598d694be2e065d134d3dceb7dd00702e3",
+      "size": 35265,
+      "role": "source_evidence",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "historical_claims_only_not_revalidated",
+      "redistribute": false
+    },
+    {
+      "source_path": "import_raw/A3/rhamnetin synthesis_Reference_20260911_0054.xlsx",
+      "path": "data/raw/legacy/import_raw/A3/rhamnetin synthesis_Reference_20260911_0054.xlsx",
+      "sha256": "ad86eb9705a5cb0a1c5d9097193e3bb923bc59f4aed5f127b23e91f5039dca76",
+      "size": 34696,
+      "role": "source_evidence",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "historical_claims_only_not_revalidated",
+      "redistribute": false
+    },
+    {
+      "source_path": "import_raw/A3/robinetin synthesis_Reference_20260911_0054.xlsx",
+      "path": "data/raw/legacy/import_raw/A3/robinetin synthesis_Reference_20260911_0054.xlsx",
+      "sha256": "c31188d6b8e0f87749ff3212357fd8e93db55bbb4e1f12b2a41c737e11ad463d",
+      "size": 20511,
+      "role": "source_evidence",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "historical_claims_only_not_revalidated",
+      "redistribute": false
+    },
+    {
+      "source_path": "import_raw/A3/sakuranetin synthesis_Reference_20260911_0057.xlsx",
+      "path": "data/raw/legacy/import_raw/A3/sakuranetin synthesis_Reference_20260911_0057.xlsx",
+      "sha256": "1988632ead9d481a794e75f7ffba1c36bdb84600c0eb91dd0efde5f1131987f3",
+      "size": 33634,
+      "role": "source_evidence",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "historical_claims_only_not_revalidated",
+      "redistribute": false
+    },
+    {
+      "source_path": "import_raw/A3/scutellarein synthesis_Reference_20260911_0049.xlsx",
+      "path": "data/raw/legacy/import_raw/A3/scutellarein synthesis_Reference_20260911_0049.xlsx",
+      "sha256": "fd24a76fc8a9a3117948f8acaf074cbfdd2b5a046d8c85c258fa0ec8b95e0483",
+      "size": 32610,
+      "role": "source_evidence",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "historical_claims_only_not_revalidated",
+      "redistribute": false
+    },
+    {
+      "source_path": "import_raw/A3/tangeretin synthesis_Reference_20260911_0050.xlsx",
+      "path": "data/raw/legacy/import_raw/A3/tangeretin synthesis_Reference_20260911_0050.xlsx",
+      "sha256": "7a5059c38d4bd70b351e15b69eea01f56983947273c249c4293b3e41b4878c29",
+      "size": 33629,
+      "role": "source_evidence",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "historical_claims_only_not_revalidated",
+      "redistribute": false
+    },
+    {
+      "source_path": "import_raw/A3/wogonin synthesis_Reference_20260911_0047.xlsx",
+      "path": "data/raw/legacy/import_raw/A3/wogonin synthesis_Reference_20260911_0047.xlsx",
+      "sha256": "4f2d3bb77d6d1dc7708629ba3578a465b9f44eb02e05656922bab82fcfffea84",
+      "size": 33307,
+      "role": "source_evidence",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "historical_claims_only_not_revalidated",
+      "redistribute": false
+    },
+    {
+      "source_path": "import_raw/C-glycosyltransferase flavone vitexin isovitexin biosynthesis_20260910_2231.rdf",
+      "path": "data/raw/legacy/import_raw/C-glycosyltransferase flavone vitexin isovitexin biosynthesis_20260910_2231.rdf",
+      "sha256": "266e2ac457ec96a0de6ae914af871317822fdc669c31d214a9c82faeffb08ecc",
+      "size": 2844285,
+      "role": "source_evidence",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "historical_claims_only_not_revalidated",
+      "redistribute": false
+    },
+    {
+      "source_path": "import_raw/Flavonoid rutinoside biosynthesis related 1, 6-rhamnosyltransferase and application thereof.mhtml",
+      "path": "data/raw/legacy/import_raw/Flavonoid rutinoside biosynthesis related 1, 6-rhamnosyltransferase and application thereof.mhtml",
+      "sha256": "b84b0eae5f8650a94fce94c57f26656acae4a093e887a0dc76ea8367968edd5d",
+      "size": 5577252,
+      "role": "source_evidence",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "historical_claims_only_not_revalidated",
+      "redistribute": false
+    },
+    {
+      "source_path": "import_raw/GDP-mannose_Supplier_20260910_2241.xlsx",
+      "path": "data/raw/legacy/import_raw/GDP-mannose_Supplier_20260910_2241.xlsx",
+      "sha256": "6f2fd8bad26191d988f2d92a44823b2c7dc000ce65ff2c0a7d517b4e41469898",
+      "size": 19142,
+      "role": "source_evidence",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "historical_claims_only_not_revalidated",
+      "redistribute": false
+    },
+    {
+      "source_path": "import_raw/UDP-L-rhamnose_Supplier_20260910_2236.xlsx",
+      "path": "data/raw/legacy/import_raw/UDP-L-rhamnose_Supplier_20260910_2236.xlsx",
+      "sha256": "ee6bcc8affe2f94fba91f264235f2f1ab0f740aa8f841dc809809da5075b006f",
+      "size": 24656,
+      "role": "source_evidence",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "historical_claims_only_not_revalidated",
+      "redistribute": false
+    },
+    {
+      "source_path": "import_raw/UDP-apiose_Supplier_20260910_2240.xlsx",
+      "path": "data/raw/legacy/import_raw/UDP-apiose_Supplier_20260910_2240.xlsx",
+      "sha256": "b369054f53f5f5f9621b31cc692eed4af3b3068798e5891deab00a67516a2b15",
+      "size": 13797,
+      "role": "source_evidence",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "historical_claims_only_not_revalidated",
+      "redistribute": false
+    },
+    {
+      "source_path": "import_raw/UDP-galactose_Supplier_20260910_2235.xlsx",
+      "path": "data/raw/legacy/import_raw/UDP-galactose_Supplier_20260910_2235.xlsx",
+      "sha256": "442c10f29b02d057155d4675071b6223474acc4beb36e35e79d921e78a2c7657",
+      "size": 19797,
+      "role": "source_evidence",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "historical_claims_only_not_revalidated",
+      "redistribute": false
+    },
+    {
+      "source_path": "import_raw/UDP-galacturonic acid_Supplier_20260910_2240.xlsx",
+      "path": "data/raw/legacy/import_raw/UDP-galacturonic acid_Supplier_20260910_2240.xlsx",
+      "sha256": "23577015a603268076642e5f86bb054c0ef73d661b0299b8614678c654eefebc",
+      "size": 14441,
+      "role": "source_evidence",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "historical_claims_only_not_revalidated",
+      "redistribute": false
+    },
+    {
+      "source_path": "import_raw/UDP-glucose_Supplier_20260910_2234.xlsx",
+      "path": "data/raw/legacy/import_raw/UDP-glucose_Supplier_20260910_2234.xlsx",
+      "sha256": "3cca86d2e2f7edf1ecb4bbfe9db41bc7c1981ead2dde2de5f4855e4fa6dbfef6",
+      "size": 24659,
+      "role": "source_evidence",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "historical_claims_only_not_revalidated",
+      "redistribute": false
+    },
+    {
+      "source_path": "import_raw/UDP-glucuronic acid_Supplier_20260910_2236.xlsx",
+      "path": "data/raw/legacy/import_raw/UDP-glucuronic acid_Supplier_20260910_2236.xlsx",
+      "sha256": "6a23fd1c919cf85514fcab066bb0884b16c3d4b0cc978d1754b08711d6a4112b",
+      "size": 23684,
+      "role": "source_evidence",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "historical_claims_only_not_revalidated",
+      "redistribute": false
+    },
+    {
+      "source_path": "import_raw/UDP-glycosyltransferase flavonoid regioselectivity 7-O 3-O_20260910_2233.rdf",
+      "path": "data/raw/legacy/import_raw/UDP-glycosyltransferase flavonoid regioselectivity 7-O 3-O_20260910_2233.rdf",
+      "sha256": "d943b2c2b2a732805bd2f3f05b83467a274e1377b109b43f55e2ef10d22f2bbb",
+      "size": 742470,
+      "role": "source_evidence",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "historical_claims_only_not_revalidated",
+      "redistribute": false
+    },
+    {
+      "source_path": "import_raw/_glycosyl ortho-alkynylbenzoate flavonol 5-O-glycosylation_20260910_2152.rdf",
+      "path": "data/raw/legacy/import_raw/_glycosyl ortho-alkynylbenzoate flavonol 5-O-glycosylation_20260910_2152.rdf",
+      "sha256": "a2650c56fa7ca917e460dd7cc84562a7e2c42b59d7650bedf3b5a6997eeab209",
+      "size": 609108,
+      "role": "source_evidence",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "historical_claims_only_not_revalidated",
+      "redistribute": false
+    },
+    {
+      "source_path": "import_raw/alpha acetobromoglucose_Supplier_20260910_2242.xlsx",
+      "path": "data/raw/legacy/import_raw/alpha acetobromoglucose_Supplier_20260910_2242.xlsx",
+      "sha256": "b16dd6fc3ca06591a116bb454079f4b3ddcbca309ad9721ffe5b336b18a95e6c",
+      "size": 34528,
+      "role": "source_evidence",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "historical_claims_only_not_revalidated",
+      "redistribute": false
+    },
+    {
+      "source_path": "import_raw/alpha-L-rhamnosidase hesperidin hesperetin 7-O-glucoside_20260910_2229.rdf",
+      "path": "data/raw/legacy/import_raw/alpha-L-rhamnosidase hesperidin hesperetin 7-O-glucoside_20260910_2229.rdf",
+      "sha256": "023f0f92b52e1fa1b9c0e6b19a99e6b814617fcc3ff6195f2f9bf976733afa48",
+      "size": 2954126,
+      "role": "source_evidence",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "historical_claims_only_not_revalidated",
+      "redistribute": false
+    },
+    {
+      "source_path": "import_raw/apiosyltransferase celery UGT94AX1 catalyzes the biosynthesis of the flavone glycoside apiin _ Plant Physiology _ Oxford Academic.mhtml",
+      "path": "data/raw/legacy/import_raw/apiosyltransferase celery UGT94AX1 catalyzes the biosynthesis of the flavone glycoside apiin _ Plant Physiology _ Oxford Academic.mhtml",
+      "sha256": "c1b6699f054403e558031912b1b8c08d390d645f474ec074f3e2b84ee5372a68",
+      "size": 3065671,
+      "role": "source_evidence",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "historical_claims_only_not_revalidated",
+      "redistribute": false
+    },
+    {
+      "source_path": "import_raw/dTDP-beta-L-rhamnose_Supplier_20260910_2241.xlsx",
+      "path": "data/raw/legacy/import_raw/dTDP-beta-L-rhamnose_Supplier_20260910_2241.xlsx",
+      "sha256": "48c8566d243e8b269703e5181f96bceb85c00f7fb80a7490555fbaa44693a846",
+      "size": 17839,
+      "role": "source_evidence",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "historical_claims_only_not_revalidated",
+      "redistribute": false
+    },
+    {
+      "source_path": "import_raw/eriodictyol_Supplier_20260910_2244.xlsx",
+      "path": "data/raw/legacy/import_raw/eriodictyol_Supplier_20260910_2244.xlsx",
+      "sha256": "fc5ce7b204fdcc36dd13bb9cad8e50435bdf1764035065f1841609d5486316e6",
+      "size": 30814,
+      "role": "source_evidence",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "historical_claims_only_not_revalidated",
+      "redistribute": false
+    },
+    {
+      "source_path": "import_raw/flavonoid Koenigs-Knorr glycosyl bromide_20260910_2210.rdf",
+      "path": "data/raw/legacy/import_raw/flavonoid Koenigs-Knorr glycosyl bromide_20260910_2210.rdf",
+      "sha256": "5e65a2a14eb149a8e142e0e6f511414386462dcd2afb280fe1ba8d4dc57f91e0",
+      "size": 2458770,
+      "role": "source_evidence",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "historical_claims_only_not_revalidated",
+      "redistribute": false
+    },
+    {
+      "source_path": "import_raw/flavonoid glycosylation trichloroacetimidate_20260910_2202.rdf",
+      "path": "data/raw/legacy/import_raw/flavonoid glycosylation trichloroacetimidate_20260910_2202.rdf",
+      "sha256": "0f0d46a03d2757939f4a02d92e066fbd0417e3e86bc78c2ca42dde2393cbad35",
+      "size": 2504092,
+      "role": "source_evidence",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "historical_claims_only_not_revalidated",
+      "redistribute": false
+    },
+    {
+      "source_path": "import_raw/hesperetin 7-O-glucoside_Supplier_20260910_2245.xlsx",
+      "path": "data/raw/legacy/import_raw/hesperetin 7-O-glucoside_Supplier_20260910_2245.xlsx",
+      "sha256": "c2af5cd0daf068f6aeefd26122508887ee8e5e7cc7ecc665ccba4bf96697a66b",
+      "size": 25595,
+      "role": "source_evidence",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "historical_claims_only_not_revalidated",
+      "redistribute": false
+    },
+    {
+      "source_path": "import_raw/hesperetin_Supplier_20260910_2243.xlsx",
+      "path": "data/raw/legacy/import_raw/hesperetin_Supplier_20260910_2243.xlsx",
+      "sha256": "d1e970279a46c14698a4308ee219590d63ab1e58a20ca94556ba2643279e3fc5",
+      "size": 35045,
+      "role": "source_evidence",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "historical_claims_only_not_revalidated",
+      "redistribute": false
+    },
+    {
+      "source_path": "import_raw/hesperidin_Supplier_20260910_2245.xlsx",
+      "path": "data/raw/legacy/import_raw/hesperidin_Supplier_20260910_2245.xlsx",
+      "sha256": "e42c1b0073d7089d929594004b7c87954b87221405d19ec4c5dc5c615eaa5734",
+      "size": 35775,
+      "role": "source_evidence",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "historical_claims_only_not_revalidated",
+      "redistribute": false
+    },
+    {
+      "source_path": "import_raw/isoquercitrin_Supplier_20260910_2246.xlsx",
+      "path": "data/raw/legacy/import_raw/isoquercitrin_Supplier_20260910_2246.xlsx",
+      "sha256": "2eb207787cde2c24687b2beba23d798589ae8ed851c1e4abbff75299b610e322",
+      "size": 32207,
+      "role": "source_evidence",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "historical_claims_only_not_revalidated",
+      "redistribute": false
+    },
+    {
+      "source_path": "import_raw/naringenin_Supplier_20260910_2244.xlsx",
+      "path": "data/raw/legacy/import_raw/naringenin_Supplier_20260910_2244.xlsx",
+      "sha256": "b39609698ed3473d3da107ea0ab2e34776b6a068b01f04772fa5eaf8ef93fe08",
+      "size": 30013,
+      "role": "source_evidence",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "historical_claims_only_not_revalidated",
+      "redistribute": false
+    },
+    {
+      "source_path": "import_raw/neohesperidose_Supplier_20260910_2243.xlsx",
+      "path": "data/raw/legacy/import_raw/neohesperidose_Supplier_20260910_2243.xlsx",
+      "sha256": "85efda3cd5513a62b28056b704e0e9c8f919a1c806126a89ce27c93175ee622e",
+      "size": 24898,
+      "role": "source_evidence",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "historical_claims_only_not_revalidated",
+      "redistribute": false
+    },
+    {
+      "source_path": "import_raw/phase transfer glycosylation flavonoid glycosyl halide_20260910_2213.rdf",
+      "path": "data/raw/legacy/import_raw/phase transfer glycosylation flavonoid glycosyl halide_20260910_2213.rdf",
+      "sha256": "b639425792892873849e860d901c10a16cf993ee8b32de15491cc6bcb837837c",
+      "size": 428167,
+      "role": "source_evidence",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "historical_claims_only_not_revalidated",
+      "redistribute": false
+    },
+    {
+      "source_path": "import_raw/phloretin_Supplier_20260910_2245.xlsx",
+      "path": "data/raw/legacy/import_raw/phloretin_Supplier_20260910_2245.xlsx",
+      "sha256": "f95c2c56053497c2e9208c57c40d28e3e7ebe5449641a9935ef6fd24f8931407",
+      "size": 35162,
+      "role": "source_evidence",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "historical_claims_only_not_revalidated",
+      "redistribute": false
+    },
+    {
+      "source_path": "import_raw/puerarin_Supplier_20260910_2246.xlsx",
+      "path": "data/raw/legacy/import_raw/puerarin_Supplier_20260910_2246.xlsx",
+      "sha256": "ebddcd44b89d101e8f885ec5b0db8ef7eb59193980b4f3df55cab49ccca29b47",
+      "size": 35479,
+      "role": "source_evidence",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "historical_claims_only_not_revalidated",
+      "redistribute": false
+    },
+    {
+      "source_path": "import_raw/rutin_Supplier_20260910_2245.xlsx",
+      "path": "data/raw/legacy/import_raw/rutin_Supplier_20260910_2245.xlsx",
+      "sha256": "fbf2bbb2720fc3cbad641f9046cdb0d2f9a45c93015d4f491ce2c985532ce3db",
+      "size": 32001,
+      "role": "source_evidence",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "historical_claims_only_not_revalidated",
+      "redistribute": false
+    },
+    {
+      "source_path": "import_raw/rutinose_Supplier_20260910_2242.xlsx",
+      "path": "data/raw/legacy/import_raw/rutinose_Supplier_20260910_2242.xlsx",
+      "sha256": "fb4badf00d89a1ecb4929b59f238d062548e12ff2c93b1a36f1ea20c5987213d",
+      "size": 25978,
+      "role": "source_evidence",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "historical_claims_only_not_revalidated",
+      "redistribute": false
+    },
+    {
+      "source_path": "import_raw/vitexin_Supplier_20260910_2246.xlsx",
+      "path": "data/raw/legacy/import_raw/vitexin_Supplier_20260910_2246.xlsx",
+      "sha256": "0e6d8e9babb39ec3a3f88ba21c109939ee1dff1a5d7f0e3d129b7a479fe7dc14",
+      "size": 31853,
+      "role": "source_evidence",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "historical_claims_only_not_revalidated",
+      "redistribute": false
+    },
+    {
+      "source_path": "maintenance/metadata/dataset_cards/blind_benchmark_v2.md",
+      "path": "data/raw/legacy/maintenance/metadata/dataset_cards/blind_benchmark_v2.md",
+      "sha256": "f6d01a9319165fa8a51432b722dc52c8129ed8ace1aafb2970cde77709b76cd0",
+      "size": 2443,
+      "role": "source_evidence",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "historical_claims_only_not_revalidated",
+      "redistribute": false
+    },
+    {
+      "source_path": "maintenance/metadata/dataset_cards/glycosylation_reference_cases.md",
+      "path": "data/raw/legacy/maintenance/metadata/dataset_cards/glycosylation_reference_cases.md",
+      "sha256": "401e9b4da05300c94d41f99aba01fabdf247da23a744fb34476a6d9f3a91e64c",
+      "size": 3385,
+      "role": "source_evidence",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "historical_claims_only_not_revalidated",
+      "redistribute": false
+    },
+    {
+      "source_path": "maintenance/metadata/dataset_cards/literature_reaction_candidates.md",
+      "path": "data/raw/legacy/maintenance/metadata/dataset_cards/literature_reaction_candidates.md",
+      "sha256": "0f86bd5b039bd972b17fbfb62cb6f2dd8b046846863f261e527f109730a2a3a8",
+      "size": 648,
+      "role": "source_evidence",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "historical_claims_only_not_revalidated",
+      "redistribute": false
+    },
+    {
+      "source_path": "maintenance/metadata/dataset_cards/literature_teaching_layer.md",
+      "path": "data/raw/legacy/maintenance/metadata/dataset_cards/literature_teaching_layer.md",
+      "sha256": "4a9c80b869534e21ec4ada9eaa112d254949ef8b1fcffd766dbfa27a1838e9c4",
+      "size": 1015,
+      "role": "source_evidence",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "historical_claims_only_not_revalidated",
+      "redistribute": false
+    },
+    {
+      "source_path": "maintenance/metadata/dataset_cards/production_registries.md",
+      "path": "data/raw/legacy/maintenance/metadata/dataset_cards/production_registries.md",
+      "sha256": "eac417e4e9263db80769b013bbb3f97e81d57a47a8521c1db4f8eb30519e3a12",
+      "size": 1997,
+      "role": "source_evidence",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "historical_claims_only_not_revalidated",
+      "redistribute": false
+    },
+    {
+      "source_path": "maintenance/metadata/dataset_cards/publication_bibliography.md",
+      "path": "data/raw/legacy/maintenance/metadata/dataset_cards/publication_bibliography.md",
+      "sha256": "f762d16210e5bc595d06daf035bbda9d2629ee48cb04e44f7d8be2aa63ae5293",
+      "size": 1650,
+      "role": "source_evidence",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "historical_claims_only_not_revalidated",
+      "redistribute": false
+    },
+    {
+      "source_path": "maintenance/metadata/dataset_cards/publication_molecule_library.md",
+      "path": "data/raw/legacy/maintenance/metadata/dataset_cards/publication_molecule_library.md",
+      "sha256": "60a518e237f1d577dae794dacfee867ad39da88d3db4e689d9d01239be36afac",
+      "size": 3711,
+      "role": "source_evidence",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "historical_claims_only_not_revalidated",
+      "redistribute": false
+    },
+    {
+      "source_path": "maintenance/metadata/dataset_cards/scifinder_evidence_pack.md",
+      "path": "data/raw/legacy/maintenance/metadata/dataset_cards/scifinder_evidence_pack.md",
+      "sha256": "b1d41d639fc6de2b91cfd1469aab993839755c73815637b13d08f1c86899b242",
+      "size": 1969,
+      "role": "source_evidence",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "historical_claims_only_not_revalidated",
+      "redistribute": false
+    },
+    {
+      "source_path": "maintenance/metadata/dataset_cards/stock_identity_review.md",
+      "path": "data/raw/legacy/maintenance/metadata/dataset_cards/stock_identity_review.md",
+      "sha256": "09b671ad3c1be23c234413afd906154d05da32b0ab71ea9c41acfee84e56b443",
+      "size": 1789,
+      "role": "source_evidence",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "historical_claims_only_not_revalidated",
+      "redistribute": false
+    },
+    {
+      "source_path": "maintenance/metadata/source_manifests/README.md",
+      "path": "data/raw/legacy/maintenance/metadata/source_manifests/README.md",
+      "sha256": "aa8ab7b594210d6bb4c88ca2405f9ed6fb042f14b9a86c807268dc485ba44ac6",
+      "size": 1222,
+      "role": "source_evidence",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "historical_claims_only_not_revalidated",
+      "redistribute": false
+    },
+    {
+      "source_path": "maintenance/metadata/source_manifests/europepmc_p010_source.json",
+      "path": "data/raw/legacy/maintenance/metadata/source_manifests/europepmc_p010_source.json",
+      "sha256": "259d5d827dbc6d8dc9ba95cb9b78ac69d1d1d668c680a2813bec1ee08359c730",
+      "size": 1081,
+      "role": "source_evidence",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "historical_claims_only_not_revalidated",
+      "redistribute": false
+    },
+    {
+      "source_path": "maintenance/metadata/source_manifests/mineru/p010-42e2a0295dd8.json",
+      "path": "data/raw/legacy/maintenance/metadata/source_manifests/mineru/p010-42e2a0295dd8.json",
+      "sha256": "eb99461e4b87e8ca901b64c8d37551fec18337db17cab494632d031bdb1a13e6",
+      "size": 63201,
+      "role": "source_evidence",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "historical_claims_only_not_revalidated",
+      "redistribute": false
+    },
+    {
+      "source_path": "maintenance/metadata/source_manifests/pubchem_blind_holdout_candidates_v2.json",
+      "path": "data/raw/legacy/maintenance/metadata/source_manifests/pubchem_blind_holdout_candidates_v2.json",
+      "sha256": "48cd5d472f4699ccab2afb0b0dc76bc6e304558e1a096757f9b3f489b03538e4",
+      "size": 46645,
+      "role": "source_evidence",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "historical_claims_only_not_revalidated",
+      "redistribute": false
+    },
+    {
+      "source_path": "maintenance/metadata/source_manifests/pubchem_blind_holdout_candidates_v2_2026-09-10.json",
+      "path": "data/raw/legacy/maintenance/metadata/source_manifests/pubchem_blind_holdout_candidates_v2_2026-09-10.json",
+      "sha256": "84c2fee437ba64bbb0b0aff17c60b3dbfafbcf474e943c47368702ddc91e665e",
+      "size": 48367,
+      "role": "source_evidence",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "historical_claims_only_not_revalidated",
+      "redistribute": false
+    },
+    {
+      "source_path": "maintenance/metadata/source_manifests/pubchem_blind_holdout_candidates_v2_2026-09-10_v2.json",
+      "path": "data/raw/legacy/maintenance/metadata/source_manifests/pubchem_blind_holdout_candidates_v2_2026-09-10_v2.json",
+      "sha256": "c3e8f173efffd9d544c97b5e34bf5c73ac7f4fbe1fb091ffb81ee1f3eba82111",
+      "size": 49438,
+      "role": "source_evidence",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "historical_claims_only_not_revalidated",
+      "redistribute": false
+    },
+    {
+      "source_path": "maintenance/metadata/source_manifests/pubchem_stock_layers_2026-09-08.json",
+      "path": "data/raw/legacy/maintenance/metadata/source_manifests/pubchem_stock_layers_2026-09-08.json",
+      "sha256": "bcb6a982b6549cfaca7fe1811878e7f4352a4439607a1356c1ed284fd791b781",
+      "size": 51474,
+      "role": "source_evidence",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "historical_claims_only_not_revalidated",
+      "redistribute": false
+    },
+    {
+      "source_path": "maintenance/metadata/source_manifests/pubchem_stock_name_identity_review_20260912.json",
+      "path": "data/raw/legacy/maintenance/metadata/source_manifests/pubchem_stock_name_identity_review_20260912.json",
+      "sha256": "4e9034da89a27beab1798173c5ba6e06931fd5c8f3307c099821d0fea3f00c20",
+      "size": 5824,
+      "role": "source_evidence",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "historical_claims_only_not_revalidated",
+      "redistribute": false
+    },
+    {
+      "source_path": "outputs/publication/2026-09-10/library_v3/molecule_library.csv",
+      "path": "data/raw/legacy/outputs/publication/2026-09-10/library_v3/molecule_library.csv",
+      "sha256": "c4c5e2bfa513b4c860c7da208351df0a3a87614d10aa69d9691df975693e41f8",
+      "size": 77748,
+      "role": "candidate_data",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "historical_claims_only_not_revalidated",
+      "redistribute": false
+    },
+    {
+      "source_path": "outputs/publication/2026-09-10/library_v3/summary.json",
+      "path": "data/raw/legacy/outputs/publication/2026-09-10/library_v3/summary.json",
+      "sha256": "79da6f84271275087e491a7e8f1a65c6689895086b2836820efc2cb141e45bb3",
+      "size": 4865,
+      "role": "candidate_data",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "historical_claims_only_not_revalidated",
+      "redistribute": false
+    },
+    {
+      "source_path": "outputs/publication/2026-09-10/scifinder_import/README.md",
+      "path": "data/raw/legacy/outputs/publication/2026-09-10/scifinder_import/README.md",
+      "sha256": "c61d0a413ab5c571be2fe925475d6f76f97a2be7785eb57c6f5f66228c9a8878",
+      "size": 4376,
+      "role": "source_evidence",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "historical_claims_only_not_revalidated",
+      "redistribute": false
+    },
+    {
+      "source_path": "outputs/publication/2026-09-10/scifinder_import/a3_synthesis_check.json",
+      "path": "data/raw/legacy/outputs/publication/2026-09-10/scifinder_import/a3_synthesis_check.json",
+      "sha256": "8a6ef927aeedfd32cfcfe24764922ba77e2ff16dde628c73a51ee4e119d6a38e",
+      "size": 59193,
+      "role": "source_evidence",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "historical_claims_only_not_revalidated",
+      "redistribute": false
+    },
+    {
+      "source_path": "outputs/publication/2026-09-10/scifinder_import/import_manifest.json",
+      "path": "data/raw/legacy/outputs/publication/2026-09-10/scifinder_import/import_manifest.json",
+      "sha256": "5c1ddb080c50f8c756cc97a7bd86ea5c4a54a5078c1d44e3e4e982de232f739e",
+      "size": 8218,
+      "role": "source_evidence",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "historical_claims_only_not_revalidated",
+      "redistribute": false
+    },
+    {
+      "source_path": "outputs/publication/2026-09-10/scifinder_import/mhtml_literature_evidence.json",
+      "path": "data/raw/legacy/outputs/publication/2026-09-10/scifinder_import/mhtml_literature_evidence.json",
+      "sha256": "a6e7a0302bb4efdacd9867e2f0f68ccbe8080236febb8162b7c196167c1bdab2",
+      "size": 16087,
+      "role": "source_evidence",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "historical_claims_only_not_revalidated",
+      "redistribute": false
+    },
+    {
+      "source_path": "outputs/publication/2026-09-10/scifinder_import/rdf_summary.json",
+      "path": "data/raw/legacy/outputs/publication/2026-09-10/scifinder_import/rdf_summary.json",
+      "sha256": "9fed10992c8e0bcb4cd75130cf79231dabf2d1f046ce6de31e31dab3beacbc5d",
+      "size": 17721,
+      "role": "source_evidence",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "historical_claims_only_not_revalidated",
+      "redistribute": false
+    },
+    {
+      "source_path": "outputs/publication/2026-09-10/scifinder_import/reactions/GF01_GF04_A113.json",
+      "path": "data/raw/legacy/outputs/publication/2026-09-10/scifinder_import/reactions/GF01_GF04_A113.json",
+      "sha256": "204849b98275ebd69ad4f4e28fa1ceb87bdac30b939d00d378d679d9841d7770",
+      "size": 130656,
+      "role": "source_evidence",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "historical_claims_only_not_revalidated",
+      "redistribute": false
+    },
+    {
+      "source_path": "outputs/publication/2026-09-10/scifinder_import/reactions/GF05_A11.json",
+      "path": "data/raw/legacy/outputs/publication/2026-09-10/scifinder_import/reactions/GF05_A11.json",
+      "sha256": "0e6cfce10b71964831abe594a60ffb6c3673587d3588facba50c216c5f39562a",
+      "size": 88737,
+      "role": "source_evidence",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "historical_claims_only_not_revalidated",
+      "redistribute": false
+    },
+    {
+      "source_path": "outputs/publication/2026-09-10/scifinder_import/reactions/GF05_A12.json",
+      "path": "data/raw/legacy/outputs/publication/2026-09-10/scifinder_import/reactions/GF05_A12.json",
+      "sha256": "3b7e66a219f3a67348f9560dc81e1724f6eaf4a87ac14fe73cbafe3bdad820dc",
+      "size": 330885,
+      "role": "source_evidence",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "historical_claims_only_not_revalidated",
+      "redistribute": false
+    },
+    {
+      "source_path": "outputs/publication/2026-09-10/scifinder_import/reactions/GF06_A13.json",
+      "path": "data/raw/legacy/outputs/publication/2026-09-10/scifinder_import/reactions/GF06_A13.json",
+      "sha256": "bf25b63f77119e25e28bba253fe69ecffc85c265059a805e4bdf1aef9f197399",
+      "size": 626949,
+      "role": "source_evidence",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "historical_claims_only_not_revalidated",
+      "redistribute": false
+    },
+    {
+      "source_path": "outputs/publication/2026-09-10/scifinder_import/reactions/GF07_A15.json",
+      "path": "data/raw/legacy/outputs/publication/2026-09-10/scifinder_import/reactions/GF07_A15.json",
+      "sha256": "38cef61bb1d2ef2041ef4adc2102d45ad58dd1f4ec63e33ae8d229a5877fb5d1",
+      "size": 624262,
+      "role": "source_evidence",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "historical_claims_only_not_revalidated",
+      "redistribute": false
+    },
+    {
+      "source_path": "outputs/publication/2026-09-10/scifinder_import/reactions/GF07_A16.json",
+      "path": "data/raw/legacy/outputs/publication/2026-09-10/scifinder_import/reactions/GF07_A16.json",
+      "sha256": "514ffe5bdf1e741355af550536447d507de6aa14a7a91f94a5e02f1232a6accb",
+      "size": 85408,
+      "role": "source_evidence",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "historical_claims_only_not_revalidated",
+      "redistribute": false
+    },
+    {
+      "source_path": "outputs/publication/2026-09-10/scifinder_import/reactions/GF09_A18.json",
+      "path": "data/raw/legacy/outputs/publication/2026-09-10/scifinder_import/reactions/GF09_A18.json",
+      "sha256": "a85afc96892e1fabee9bf414d1033f43a4f251f8e631f57562d91a96837797d8",
+      "size": 3913,
+      "role": "source_evidence",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "historical_claims_only_not_revalidated",
+      "redistribute": false
+    },
+    {
+      "source_path": "outputs/publication/2026-09-10/scifinder_import/reactions/GF10_GF11_A112.json",
+      "path": "data/raw/legacy/outputs/publication/2026-09-10/scifinder_import/reactions/GF10_GF11_A112.json",
+      "sha256": "93b76a317214688398d3ad502b2fb57d4ddaf5c5714a7d98154fadafa89cd398",
+      "size": 429375,
+      "role": "source_evidence",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "historical_claims_only_not_revalidated",
+      "redistribute": false
+    },
+    {
+      "source_path": "outputs/publication/2026-09-10/scifinder_import/reactions/GF13_A110.json",
+      "path": "data/raw/legacy/outputs/publication/2026-09-10/scifinder_import/reactions/GF13_A110.json",
+      "sha256": "02da247dc22acb4e4035cc7d6af259cf0c129367a15b6923097d32b54b73274e",
+      "size": 687661,
+      "role": "source_evidence",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "historical_claims_only_not_revalidated",
+      "redistribute": false
+    },
+    {
+      "source_path": "outputs/publication/2026-09-10/scifinder_import/supplier_evidence.json",
+      "path": "data/raw/legacy/outputs/publication/2026-09-10/scifinder_import/supplier_evidence.json",
+      "sha256": "932e5b8db124e582a932fd62bfd70cfc25d4d717954895869e2e3f7d6a5b441d",
+      "size": 47724,
+      "role": "source_evidence",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "historical_claims_only_not_revalidated",
+      "redistribute": false
+    },
+    {
+      "source_path": "outputs/retrospective/2026-09-20/early_template_search_summary.md",
+      "path": "data/raw/legacy/outputs/retrospective/2026-09-20/early_template_search_summary.md",
+      "sha256": "d264ea9aa8615734d09fba8433839595804e93feea2e1029793b91e23fef9ee2",
+      "size": 7918,
+      "role": "historical_reference",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "historical_claims_only_not_revalidated",
+      "redistribute": false
+    },
+    {
+      "source_path": "outputs/retrospective/2026-09-20/inventory.json",
+      "path": "data/raw/legacy/outputs/retrospective/2026-09-20/inventory.json",
+      "sha256": "1ad55c2ce3bfcfb3ac2905e887639533f96f04f401fc5d66224a27a9e63000b0",
+      "size": 130903,
+      "role": "historical_reference",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "historical_claims_only_not_revalidated",
+      "redistribute": false
+    },
+    {
+      "source_path": "outputs/retrospective/2026-09-20/proposal_first_git_version.md",
+      "path": "data/raw/legacy/outputs/retrospective/2026-09-20/proposal_first_git_version.md",
+      "sha256": "4777c8c08256868e27bb02e191dc6aba0b0b149106245756abfe357a1ffe229c",
+      "size": 12342,
+      "role": "historical_reference",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "historical_claims_only_not_revalidated",
+      "redistribute": false
+    },
+    {
+      "source_path": "outputs/retrospective/2026-09-20/test_contract_catalog.md",
+      "path": "data/raw/legacy/outputs/retrospective/2026-09-20/test_contract_catalog.md",
+      "sha256": "ba5d402772bf6b8ae8ab441baa02df0e44b748978424c68de2e68a86ca8e34b9",
+      "size": 7345,
+      "role": "historical_reference",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "historical_claims_only_not_revalidated",
+      "redistribute": false
+    },
+    {
+      "source_path": "outputs/validation/stock-identity-review-20260912/stock_identity_review.json",
+      "path": "data/raw/legacy/outputs/validation/stock-identity-review-20260912/stock_identity_review.json",
+      "sha256": "32b7df66ac5c1cad64136a96beeac309b9c28d614719d56fef2d04e4556a330d",
+      "size": 87420,
+      "role": "candidate_data",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "historical_claims_only_not_revalidated",
+      "redistribute": false
+    },
+    {
+      "source_path": "templates/literature_curated/flavonoid_literature_reactions.json",
+      "path": "data/raw/legacy/templates/literature_curated/flavonoid_literature_reactions.json",
+      "sha256": "11ab58eb39f0e0364714ab4b250deb86658faa409e63858d517d0ee76ba85a14",
+      "size": 2653528,
+      "role": "candidate_data",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "historical_claims_only_not_revalidated",
+      "redistribute": false
+    },
+    {
+      "source_path": "templates/production/production_template_registry.json",
+      "path": "data/raw/legacy/templates/production/production_template_registry.json",
+      "sha256": "63079ebbf1229eac7f78b7c41ea4c63eff83c549deccf39c0ae0a57076e44b7c",
+      "size": 3917,
+      "role": "candidate_data",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "historical_claims_only_not_revalidated",
+      "redistribute": false
+    },
+    {
+      "source_path": "templates/stock_layers/production_stock_registry.json",
+      "path": "data/raw/legacy/templates/stock_layers/production_stock_registry.json",
+      "sha256": "b7c3757dcb022c8c4c7f68ba1b9667337cd5117b314e6c906a34fdef6f90a37a",
+      "size": 54147,
+      "role": "candidate_data",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "historical_claims_only_not_revalidated",
+      "redistribute": false
+    },
+    {
+      "source_path": "templates/stock_layers/stock_layers_metadata.csv",
+      "path": "data/raw/legacy/templates/stock_layers/stock_layers_metadata.csv",
+      "sha256": "878936143cc575ffe98758f0a531e4b35666560e7a3857366fb3ebd10b6121b6",
+      "size": 14563,
+      "role": "candidate_data",
+      "license_status": "source_inherited_not_cleared_for_redistribution",
+      "review_status": "historical_claims_only_not_revalidated",
+      "redistribute": false
+    }
+  ]
+}

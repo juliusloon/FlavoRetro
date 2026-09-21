@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "status": "research_candidate",
+  "primary_source_review": "unresolved",
+  "current_vendor_evidence": "unresolved",
+  "independent_chemical_labels": "not_available",
+  "formal_benchmark": "not_executed",
+  "public_deployment": "not_requested",
+  "user_evaluation": "not_performed",
+  "decision_authority": "agent_delegated",
+  "decision": "retain_candidate_do_not_certify_production"
+}
