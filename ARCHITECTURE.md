@@ -6,13 +6,17 @@
 | docs/README.md | 文档导航（人/agent 共用） | active |
 | docs/HUMAN_TAKEOVER.md | 人接管指南 | active |
 | docs/PAPER_ROADMAP.md | 论文路线与发布检查清单 | active |
-| docs/tasks / docs/reports | 事前合同/事后证据 | active |
-| docs/adr | 长期设计理由 | active |
-| operations | 命令输出、写入前后哈希 | active |
+| docs/USER_GUIDE.md / docs/TEST_CONTRACTS.md | 使用说明 / 测试合同与历史继承映射 | active |
+| docs/tasks | 事前合同：README（编号/状态/批准规则/术语）+ TEMPLATE + TASK-001…009 | active |
+| docs/reports | 事后证据：README（补立约定/事实纪律）+ TEMPLATE + REPORT-001…009（含 007-P1） | active |
+| docs/adr | 长期设计理由：README + 0000 模板 + ADR-001…003 | active |
+| operations | 命令输出、写入前后哈希（events.jsonl 入 Git；command-*.log 与 *.json 为本机证据） | active |
 | operations/archive | 一次性脚本与旧版构建器（非活动） | archived |
-| metadata | 来源和资源清单 | active |
+| metadata | 来源和资源清单、发布状态 | active |
 | data/raw | 不可变本地副本 | active |
+| data/derived | 派生资源版本（活动指针 v1；replay-v1、v2 保留） | active |
 | flavoretro | 资源、搜索、共享 API 逻辑 | active |
 | web | 浏览器工作台 | active |
 | outputs | 新运行与新验收 | active |
+
 新增产物先检查本表，禁止重复事实源。

@@ -5,12 +5,12 @@
 | 文件 | 原位置 | 使命 | 关联 |
 |---|---|---|---|
 | `admit-task-002.py` | `scripts/admit.py` | 从历史项目只读复制 114 个文件并生成 `metadata/sources.json` | TASK-002 / REPORT-002 |
-| `history_guard-task-001.py` | `scripts/history_guard.py` | 历史目录完整性基线快照与对比（`before`/`after` 两次运行） | TASK-001 / TASK-006 |
-| `resources-v1.py` | `flavoretro/resources.py` v1 | 资源构建器首版；被 v2（来源定位修复）替代后归档 | TASK-007 补充 |
+| `history_guard-task-001.py` | `scripts/history_guard.py` | 历史目录完整性基线快照与对比（`before`/`after` 两次运行） | TASK-001 / TASK-006 / TASK-007 |
+| `resources-v1.py` | `flavoretro/resources.py` v1 | 资源构建器首版；被 v2（来源定位修复）替代后归档 | TASK-007-P1 |
 
 用法示例（仅本机）：
 
 ```bash
-.venv/bin/python -B operations/archive/history_guard.py before   # 建立基线（已执行过，勿重复）
-.venv/bin/python -B operations/archive/history_guard.py          # 对比基线，退出码非 0 表示漂移
+.venv/bin/python -B operations/archive/history_guard-task-001.py before   # 建立基线（已执行过，勿重复）
+.venv/bin/python -B operations/archive/history_guard-task-001.py          # 对比基线，退出码非 0 表示漂移
 ```

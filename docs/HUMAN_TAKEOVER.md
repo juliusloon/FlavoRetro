@@ -9,6 +9,7 @@
 3. [STATE.md](../STATE.md) — 当前事实与下一步。
 4. [ARCHITECTURE.md](../ARCHITECTURE.md) — 每个文件/目录的职责，禁止重复事实源。
 5. 本文件 + [PAPER_ROADMAP.md](PAPER_ROADMAP.md)。
+6. 需要追溯某次任务的完整边界、执行事实与验证证据时，读 [tasks/](tasks/README.md) 与 [reports/](reports/README.md) 中同编号的 TASK/REPORT（CondRxnBench 详细格式；TASK-001—008 由 TASK-009 从速记体扩写，事实未变）。
 
 ## 系统能做什么、不能做什么
 
@@ -34,14 +35,14 @@
 
 沿用项目治理流（AGENTS.md）：
 
-1. 写 `docs/tasks/TASK-NNN-*.md`：范围、理由、验收、停止条件；取得用户明确批准（或记录用户事先授权）。
-2. 所有写入/命令经 `scripts/operate.py` 记录（`python -B scripts/operate.py TASK-NNN <cmd>`，或在 Python 中 import 其 `write`/`event`）。
-3. 完成后写 `docs/reports/REPORT-NNN-*.md`（事实、哈希、失败也记录）。
-4. 更新 STATE.md；长期决定写 ADR；代码变化提交 Git。
+1. 以 [tasks/TEMPLATE.md](tasks/TEMPLATE.md) 写 `docs/tasks/TASK-NNN-*.md`：范围、理由、验收、停止条件；编号、状态与批准记录规则见 [tasks/README.md](tasks/README.md)。取得用户明确批准（或记录用户事先授权；agent 代行批准须记 `agent_delegated` 并注明依据，禁止写 `human_reviewed`）。
+2. 所有写入/命令经 `scripts/operate.py` 记录：命令用 `python -B scripts/operate.py TASK-NNN <cmd>`；文件写入用 `python -B scripts/operate.py TASK-NNN --write <相对路径> --from <内容文件>`（自动记录前后 SHA-256）；或在 Python 中 import 其 `write`/`event`。
+3. 完成后以 [reports/TEMPLATE.md](reports/TEMPLATE.md) 写同编号 `docs/reports/REPORT-NNN-*.md`（事实、哈希、失败也记录；Partial/Blocked/Failed 也必须写）。
+4. 更新 STATE.md（只存当前事实）；长期决定按 [adr/0000-template.md](adr/0000-template.md) 写 ADR；代码变化提交 Git。
 
 ## 如何验证完整性
 
-- **历史目录只读**：`/home/ljx/retro_synthesis` 的基线在 `operations/history-before.json`，核对脚本已归档为 `operations/archive/history_guard.py`（用法见其文件头，需 `before`/`after` 两次快照对比）。
+- **历史目录只读**：`/home/ljx/retro_synthesis` 的基线在 `operations/history-before.json`，核对脚本已归档为 `operations/archive/history_guard-task-001.py`（用法见其文件头，需 `before`/`after` 两次快照对比）。
 - **派生数据防漂移**：`flavoretro.policies.records()` 每次读取都校验 `data/derived/v1/manifest.json` 的 SHA-256，漂移即拒绝。
 - **单次运行防篡改**：每次搜索的 `outputs/runs/<id>/manifest.json` 记录结果文件哈希，`/api/runs/<id>` 读取时复核。
 - **Git**：`git log` 查看分层提交；仓库永不包含 `data/`、`outputs/` 载荷。
@@ -58,3 +59,4 @@
 - `.venv` 依赖 retro Conda 环境的 system-site-packages，**不是**独立环境；换机器必须按 environment/README 重建。
 - `python` 必须是 3.10（pyproject 限定 `>=3.10,<3.11`）。
 - 不要在历史目录 `/home/ljx/retro_synthesis` 运行任何会写缓存的代码。
+- 工作区可能存在未提交的空白格式化改动（TASK-009 之前遗留，见 STATE.md 工作区提示）；`git status` 出现大量 modified 不代表功能变化。
