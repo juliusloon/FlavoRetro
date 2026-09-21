@@ -1,6 +1,6 @@
 # FlavoRetro
 
-黄酮与黄酮糖苷的证据感知逆合成研究工作台。独立重建于 2026-09-21；运行能力与研究证据分开验收。
+黄酮与黄酮糖苷的证据感知逆合成研究工作台。运行能力与研究证据分开验收。
 
 - [项目目标](PROJECT.md) · [当前状态](STATE.md) · [架构](ARCHITECTURE.md)
 - [文档导航](docs/README.md) · [人接管指南](docs/HUMAN_TAKEOVER.md) · [论文路线](docs/PAPER_ROADMAP.md)
@@ -30,4 +30,4 @@ cd /home/ljx/FlavoRetro
 
 ## 仓库与发布状态
 
-Git 初始提交已按"治理文档 / 代码与测试 / 操作与元数据"分层。许可证已确定（同 CondRxnBench）：代码 [Apache-2.0](LICENSE)，项目原创文档 [CC BY 4.0](LICENSES/CC-BY-4.0.md)，数据保留来源许可且不入 Git，边界见 [LICENSES/README.md](LICENSES/README.md)。仓库尚未连接 GitHub 远程；**发布前**请完成 [论文路线中的检查清单](docs/PAPER_ROADMAP.md)（git 身份、资产边界核对）。
+Git 初始提交已按"治理文档 / 代码与测试 / 操作与元数据"分层。许可证已确定：代码 [Apache-2.0](LICENSE)，项目原创文档 [CC BY 4.0](LICENSES/CC-BY-4.0.md)，数据保留来源许可且不入 Git，边界见 [LICENSES/README.md](LICENSES/README.md)。仓库尚未连接 GitHub 远程；**发布前**请完成 [论文路线中的检查清单](docs/PAPER_ROADMAP.md)（git 身份、资产边界核对）。

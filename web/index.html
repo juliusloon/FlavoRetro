@@ -1,8 +1,120 @@
 <!doctype html>
-<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>FlavoRetro · 黄酮逆合成研究台</title><link rel="stylesheet" href="/style.css"><script src="/app.js" defer></script></head>
-<body><header><a class="brand" href="/">◈ FlavoRetro <span>黄酮逆合成研究台</span></a><nav aria-label="工作区"><button data-tab="search" class="active">路线探索</button><button data-tab="resources">资源与证据</button><button data-tab="governance">项目状态</button></nav><span class="badge">研究候选版 · v0.1</span></header>
-<main><section id="search" class="page"><div class="intro"><p class="eyebrow">LIVE RETROSYNTHESIS</p><h1>从一个分子，追溯每一步依据。</h1><p>每次搜索都运行新的 MCTS。路线闭合、来源证据和实验可行性分别呈现。</p></div>
-<div class="workspace"><aside class="card"><h2>目标分子</h2><form id="search-form"><label for="preset">选择示例</label><select id="preset"><option value="">自定义 SMILES</option></select><label for="smiles">SMILES</label><textarea id="smiles" required spellcheck="false" rows="4">COc1ccc(O)cc1</textarea><button type="button" id="preview" class="secondary">预览结构</button><img id="molecule" alt="目标分子结构"><div class="fields"><div><label for="mode">搜索预算</label><select id="mode"><option value="quick">快速探索</option><option value="balanced" selected>平衡 · 两阶段</option><option value="strict">深入探索</option></select></div><div><label for="seed">随机种子</label><input id="seed" type="number" value="0" min="0" max="4294967295"></div></div><label class="check"><input id="candidate" type="checkbox">允许候选库存终止（未审，仅供探索）</label><details><summary>实验参数</summary><label for="seconds">每阶段秒数（留空使用配置）</label><input id="seconds" type="number" min="0.1" max="360" step="0.1"><label for="iterations">每阶段迭代上限（留空使用配置）</label><input id="iterations" type="number" min="1" max="1800"></details><button id="submit" type="submit">开始实时搜索 ↗</button></form><p class="note">默认没有已审核库存，因此可能返回未闭合路线。未知条件与风险不代表安全或可行。</p></aside>
-<div class="results"><div id="message" role="status" aria-live="polite">准备就绪。选择分子后开始探索。</div><div id="run-meta"></div><div id="routes" class="routes"><div class="empty"><span>⌘</span><h2>让证据跟随路线</h2><p>搜索完成后，这里将展示实际生成的路线、未解决原料与分项成本。</p></div></div><button id="download" class="secondary" hidden>导出本次 JSON</button></div></div></section>
-<section id="resources" class="page" hidden><div class="intro"><p class="eyebrow">SOURCE → RECORD → REVIEW</p><h1>资源保留，证据分层。</h1><p>原始字段、来源定位和计算检查分别保存。没有条目因导入成功而自动晋级。</p></div><div class="card"><div class="fields"><select id="kind" aria-label="资源类型"><option value="">全部资源</option><option value="molecule">分子</option><option value="note_reaction">笔记反应</option><option value="scifinder_reaction">SciFinder 反应</option><option value="stock">候选库存</option><option value="template">候选模板</option><option value="paper">文献</option><option value="supplier">供应列表</option><option value="molecule_failures">未解析名称</option></select><input id="query" placeholder="名称、来源、结构或原始字段" aria-label="搜索资源"><button id="find">查找</button></div><p id="count"></p><div class="table-wrap"><table><thead><tr><th>记录</th><th>类型</th><th>来源与处置</th><th>详情</th></tr></thead><tbody id="rows"></tbody></table></div><div class="pager"><button id="previous" class="secondary">上一页</button><button id="next" class="secondary">下一页</button></div><details id="record-detail"><summary>原始字段与本次检查</summary><pre id="record-json"></pre></details></div></section>
-<section id="governance" class="page" hidden><div class="intro"><p class="eyebrow">AUDITABLE BY DESIGN</p><h1>知道已完成什么，也知道缺什么。</h1></div><div id="stats" class="stats"></div><div class="card"><h2>当前交接状态</h2><pre id="state"></pre></div><p class="note">历史项目只读保留。操作轨迹见新项目的 TASK、REPORT、ADR 与 operations/events.jsonl。</p></section></main><footer>FlavoRetro / 实时搜索 · 原始数据不可变 · 零收率不等于缺失</footer></body></html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>FlavoRetro · 黄酮逆合成研究台</title>
+    <link rel="stylesheet" href="/style.css">
+    <script src="/app.js" defer></script>
+</head>
+
+<body>
+    <header><a class="brand" href="/">◈ FlavoRetro <span>黄酮逆合成研究台</span></a>
+        <nav aria-label="工作区"><button data-tab="search" class="active">路线探索</button><button
+                data-tab="resources">资源与证据</button><button data-tab="governance">项目状态</button></nav><span
+            class="badge">研究候选版 · v0.1</span>
+    </header>
+    <main>
+        <section id="search" class="page">
+            <div class="intro">
+                <p class="eyebrow">LIVE RETROSYNTHESIS</p>
+                <h1>从一个分子，追溯每一步依据。</h1>
+                <p>每次搜索都运行新的 MCTS。路线闭合、来源证据和实验可行性分别呈现。</p>
+            </div>
+            <div class="workspace">
+                <aside class="card">
+                    <h2>目标分子</h2>
+                    <form id="search-form"><label for="preset">选择示例</label><select id="preset">
+                            <option value="">自定义 SMILES</option>
+                        </select><label for="smiles">SMILES</label><textarea id="smiles" required spellcheck="false"
+                            rows="4">COc1ccc(O)cc1</textarea><button type="button" id="preview"
+                            class="secondary">预览结构</button><img id="molecule" alt="目标分子结构">
+                        <div class="fields">
+                            <div><label for="mode">搜索预算</label><select id="mode">
+                                    <option value="quick">快速探索</option>
+                                    <option value="balanced" selected>平衡 · 两阶段</option>
+                                    <option value="strict">深入探索</option>
+                                </select></div>
+                            <div><label for="seed">随机种子</label><input id="seed" type="number" value="0" min="0"
+                                    max="4294967295"></div>
+                        </div><label class="check"><input id="candidate" type="checkbox">允许候选库存终止（未审，仅供探索）</label>
+                        <details>
+                            <summary>实验参数</summary><label for="seconds">每阶段秒数（留空使用配置）</label><input id="seconds"
+                                type="number" min="0.1" max="360" step="0.1"><label
+                                for="iterations">每阶段迭代上限（留空使用配置）</label><input id="iterations" type="number" min="1"
+                                max="1800">
+                        </details><button id="submit" type="submit">开始实时搜索 ↗</button>
+                    </form>
+                    <p class="note">默认没有已审核库存，因此可能返回未闭合路线。未知条件与风险不代表安全或可行。</p>
+                </aside>
+                <div class="results">
+                    <div id="message" role="status" aria-live="polite">准备就绪。选择分子后开始探索。</div>
+                    <div id="run-meta"></div>
+                    <div id="routes" class="routes">
+                        <div class="empty"><span>⌘</span>
+                            <h2>让证据跟随路线</h2>
+                            <p>搜索完成后，这里将展示实际生成的路线、未解决原料与分项成本。</p>
+                        </div>
+                    </div><button id="download" class="secondary" hidden>导出本次 JSON</button>
+                </div>
+            </div>
+        </section>
+        <section id="resources" class="page" hidden>
+            <div class="intro">
+                <p class="eyebrow">SOURCE → RECORD → REVIEW</p>
+                <h1>资源保留，证据分层。</h1>
+                <p>原始字段、来源定位和计算检查分别保存。没有条目因导入成功而自动晋级。</p>
+            </div>
+            <div class="card">
+                <div class="fields"><select id="kind" aria-label="资源类型">
+                        <option value="">全部资源</option>
+                        <option value="molecule">分子</option>
+                        <option value="note_reaction">笔记反应</option>
+                        <option value="scifinder_reaction">SciFinder 反应</option>
+                        <option value="stock">候选库存</option>
+                        <option value="template">候选模板</option>
+                        <option value="paper">文献</option>
+                        <option value="supplier">供应列表</option>
+                        <option value="molecule_failures">未解析名称</option>
+                    </select><input id="query" placeholder="名称、来源、结构或原始字段" aria-label="搜索资源"><button
+                        id="find">查找</button></div>
+                <p id="count"></p>
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>记录</th>
+                                <th>类型</th>
+                                <th>来源与处置</th>
+                                <th>详情</th>
+                            </tr>
+                        </thead>
+                        <tbody id="rows"></tbody>
+                    </table>
+                </div>
+                <div class="pager"><button id="previous" class="secondary">上一页</button><button id="next"
+                        class="secondary">下一页</button></div>
+                <details id="record-detail">
+                    <summary>原始字段与本次检查</summary>
+                    <pre id="record-json"></pre>
+                </details>
+            </div>
+        </section>
+        <section id="governance" class="page" hidden>
+            <div class="intro">
+                <p class="eyebrow">AUDITABLE BY DESIGN</p>
+                <h1>知道已完成什么，也知道缺什么。</h1>
+            </div>
+            <div id="stats" class="stats"></div>
+            <div class="card">
+                <h2>当前交接状态</h2>
+                <pre id="state"></pre>
+            </div>
+            <p class="note">历史项目只读保留。操作轨迹见新项目的 TASK、REPORT、ADR 与 operations/events.jsonl。</p>
+        </section>
+    </main>
+    <footer>FlavoRetro / 实时搜索 · 原始数据不可变 · 零收率不等于缺失</footer>
+</body>
+
+</html>
