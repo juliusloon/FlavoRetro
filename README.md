@@ -30,4 +30,4 @@ cd /home/ljx/FlavoRetro
 
 ## 仓库与发布状态
 
-Git 初始提交已按"治理文档 / 代码与测试 / 操作与元数据"分层。仓库尚未连接 GitHub 远程；**发布前**请完成 [论文路线中的检查清单](docs/PAPER_ROADMAP.md)（许可证选择、git 身份、资产边界）。新代码暂不作公开许可承诺；未选许可证前默认保留所有权利。
+Git 初始提交已按"治理文档 / 代码与测试 / 操作与元数据"分层。许可证已确定（同 CondRxnBench）：代码 [Apache-2.0](LICENSE)，项目原创文档 [CC BY 4.0](LICENSES/CC-BY-4.0.md)，数据保留来源许可且不入 Git，边界见 [LICENSES/README.md](LICENSES/README.md)。仓库尚未连接 GitHub 远程；**发布前**请完成 [论文路线中的检查清单](docs/PAPER_ROADMAP.md)（git 身份、资产边界核对）。

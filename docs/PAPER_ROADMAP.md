@@ -31,7 +31,7 @@
 
 ## GitHub 发布检查清单（所有者执行）
 
-- [ ] 选择代码许可证（当前：不作公开许可承诺，默认保留所有权利）
+- [x] 选择代码许可证（已确定：代码 Apache-2.0、项目原创文档 CC BY 4.0，同 CondRxnBench，2026-09-21）
 - [ ] 确认仓库无受限数据：`data/`、`outputs/` 在 .gitignore；`metadata/` 只含哈希与清单
 - [ ] 替换 repo-local git 身份为所有者 GitHub 身份
 - [ ] README 补充仓库地址与引用方式（建议届时加 CITATION.cff）
