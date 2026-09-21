@@ -305,3 +305,5 @@
 {"time": "2026-09-21T02:48:07.163367+00:00", "task": "TASK-008", "action": "command_start", "argv": [".venv/bin/python", "-B", "scripts/browser_check.py"], "cwd": "/home/ljx/FlavoRetro"}
 {"time": "2026-09-21T02:48:13.793368+00:00", "task": "TASK-008", "action": "write", "path": "operations/command-0032.log", "before": null, "after": "90d72c141628c834ab193878aa28bceb7a92bce4c2bbbe7cfec4efcc8709f727"}
 {"time": "2026-09-21T02:48:13.793580+00:00", "task": "TASK-008", "action": "command_end", "argv": [".venv/bin/python", "-B", "scripts/browser_check.py"], "returncode": 0, "log": "operations/command-0032.log"}
+{"time": "2026-09-21T02:48:50.142400+00:00", "task": "TASK-008", "action": "write", "path": "docs/reports/REPORT-008-human-github-handover.md", "before": "885db923bd21f476de0a098aa3fb4f5fd5b3f1e292cfc99e6ced3c58081e99ff", "after": "885db923bd21f476de0a098aa3fb4f5fd5b3f1e292cfc99e6ced3c58081e99ff"}
+{"time": "2026-09-21T02:48:50.142455+00:00", "task": "TASK-008", "action": "verification", "unit_tests": "25/25 ok", "smoke": "ok", "browser_check": "pass after one flaky 30s timeout on resources page"}
