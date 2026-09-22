@@ -49,6 +49,10 @@ try:
         )
         page.locator("#rows button").first.click()
         assert "source_sha256" in page.locator("#record-json").inner_text()
+        page.locator("[data-tab=literature]").click()
+        page.wait_for_selector("#literature-list .paper-card")
+        literature_cards = page.locator("#literature-list .paper-card").count()
+        assert literature_cards > 0
         page.locator("[data-tab=governance]").click()
         page.wait_for_selector(".stat")
         assert page.locator(".stat").count() == 4
@@ -77,6 +81,7 @@ try:
                     "live_search": True,
                     "two_phases": True,
                     "resource_detail": True,
+                    "literature_cards": literature_cards,
                     "invalid_http_status": invalid.status,
                     "scope": "local browser engineering acceptance, not human usability",
                 }

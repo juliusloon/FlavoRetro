@@ -1,0 +1,447 @@
+{
+  "schema_version": "2.0",
+  "scope_note": "Teaching text explains reaction families and evidence limits; it is not an experimental SOP.",
+  "scope_note_zh": "教学文字用于解释反应家族和证据边界，不构成可直接执行的实验操作规程。",
+  "sources": {
+    "RDKIT_REACTION_SMARTS": {
+      "title": "RDKit Book: Chemical Reaction Handling",
+      "url": "https://rdkit.org/docs/RDKit_Book.html#chemical-reaction-handling",
+      "authority": "RDKit official documentation"
+    },
+    "IUPAC_OXIDATION": {
+      "title": "IUPAC Gold Book: oxidation",
+      "url": "https://goldbook.iupac.org/terms/view/O04362",
+      "doi": "10.1351/goldbook.O04362"
+    },
+    "IUPAC_REDUCTION": {
+      "title": "IUPAC Gold Book: reduction",
+      "url": "https://goldbook.iupac.org/terms/view/R05222",
+      "doi": "10.1351/goldbook.R05222"
+    },
+    "IUPAC_CYCLIZATION": {
+      "title": "IUPAC Gold Book: cyclization",
+      "url": "https://goldbook.iupac.org/terms/view/C01494",
+      "doi": "10.1351/goldbook.C01494"
+    },
+    "IUPAC_CONDENSATION": {
+      "title": "IUPAC Gold Book: condensation reaction",
+      "url": "https://goldbook.iupac.org/terms/view/C01238",
+      "doi": "10.1351/goldbook.C01238"
+    },
+    "IUPAC_METHYLATION": {
+      "title": "IUPAC Gold Book: methylation",
+      "url": "https://goldbook.iupac.org/terms/view/10954",
+      "doi": "10.1351/goldbook.10954"
+    },
+    "IUPAC_PROTECTING_GROUP": {
+      "title": "IUPAC Gold Book: protecting group",
+      "url": "https://goldbook.iupac.org/terms/view/09560",
+      "doi": "10.1351/goldbook.09560"
+    },
+    "IUPAC_GLYCOSIDES": {
+      "title": "IUPAC Nomenclature of Carbohydrates: glycosides and glycosyl compounds",
+      "url": "https://iupac.qmul.ac.uk/2carb/33.html"
+    },
+    "P001": {
+      "title": "Total synthesis of apigenin 7,4'-di-O-beta-D-glucopyranoside",
+      "url": "https://doi.org/10.1016/j.tet.2004.01.001",
+      "doi": "10.1016/j.tet.2004.01.001"
+    },
+    "P005": {
+      "title": "Total synthesis of agalloside by 5-O-glycosylation of flavan",
+      "url": "https://doi.org/10.1039/C7OB01004D",
+      "doi": "10.1039/C7OB01004D"
+    },
+    "P009": {
+      "title": "Directed evolution of a plant glycosyltransferase",
+      "url": "https://doi.org/10.1021/acscatal.1c04191",
+      "doi": "10.1021/acscatal.1c04191"
+    },
+    "P010": {
+      "title": "Regio-selectivity control of a flavonoid O-glycosyltransferase",
+      "url": "https://doi.org/10.1039/D2SC06504E",
+      "doi": "10.1039/D2SC06504E"
+    },
+    "P013": {
+      "title": "Glycosylation of hesperetin by plant cell cultures",
+      "url": "https://doi.org/10.1016/j.phytochem.2007.11.008",
+      "doi": "10.1016/j.phytochem.2007.11.008"
+    },
+    "P014": {
+      "title": "Molecular and enzymatic basis of citrus rhamnosyltransferases",
+      "url": "https://doi.org/10.1111/tpj.12030",
+      "doi": "10.1111/tpj.12030"
+    },
+    "P015": {
+      "title": "Synthesis of naringin and neohesperidin",
+      "url": "https://doi.org/10.1080/00021369.1967.10858822",
+      "doi": "10.1080/00021369.1967.10858822"
+    }
+  },
+  "default": {
+    "label_en": "Unclassified template proposal",
+    "label_zh": "未分类模板候选",
+    "principle": "A reverse reaction SMARTS matched the product and generated precursor graphs, but the available metadata does not support a more specific reaction-family assignment.",
+    "principle_zh": "逆反应 SMARTS 与产物匹配并生成了前体分子图，但现有元数据不足以给出更具体的反应家族判定。",
+    "typical_conditions": ["No conditions may be inferred from connectivity alone."],
+    "typical_conditions_zh": ["不能仅根据连接关系推断反应条件。"],
+    "risk_notes": ["Treat the step as a computational hypothesis until a chemist reviews the atom mapping, reagents, selectivity, and substrate scope."],
+    "risk_notes_zh": ["在化学人员审查原子映射、试剂、选择性和底物范围前，仅将该步骤视为计算假设。"],
+    "evidence_boundary": "Template application demonstrates a graph transformation, not experimental feasibility or yield.",
+    "evidence_boundary_zh": "模板应用只证明分子图变换可被编码，不证明实验可行性或收率。",
+    "source_ids": ["RDKIT_REACTION_SMARTS"]
+  },
+  "classifications": {
+    "0.0 Unrecognized": {
+      "label_en": "Model-unclassified transformation",
+      "label_zh": "模型未分类变换",
+      "principle": "The upstream template set explicitly marks this transformation as unrecognized; the platform therefore does not invent a named reaction.",
+      "principle_zh": "上游模板库明确将该变换标记为未识别；平台不会据此臆造命名反应。",
+      "typical_conditions": ["Require retrieval of the source reaction record before condition assignment."],
+      "typical_conditions_zh": ["必须回查源反应记录后才能指定条件。"],
+      "risk_notes": ["Reaction type, chemoselectivity, and conditions all require expert review."],
+      "risk_notes_zh": ["反应类型、化学选择性和条件均需专家复核。"],
+      "evidence_boundary": "A valid template match is not a reaction classification.",
+      "evidence_boundary_zh": "有效的模板匹配并不等于完成了反应分类。",
+      "source_ids": ["RDKIT_REACTION_SMARTS"]
+    },
+    "o_glycoside_cleavage": {
+      "label_en": "Aryl O-glycosidic disconnection",
+      "label_zh": "芳基 O-糖苷键断开",
+      "principle": "Disconnect the bond between a phenolic oxygen and the anomeric carbon into an aglycone and a sugar-side precursor; the forward direction is O-glycoside formation.",
+      "principle_zh": "将酚氧与异头碳之间的键拆分为苷元和糖侧前体；正向对应 O-糖苷形成。",
+      "typical_conditions": ["Activated glycosyl donor under a validated promoter system", "or a compatible glycosyltransferase/whole-cell system"],
+      "typical_conditions_zh": ["经验证的促进体系配合活化糖基供体", "或相容的糖基转移酶/全细胞体系"],
+      "risk_notes": ["Regioselectivity, anomeric selectivity, protecting groups, and donor activation are not fixed by the generic disconnection."],
+      "risk_notes_zh": ["通用断键并未确定区域选择性、异头选择性、保护基策略或供体活化方式。"],
+      "evidence_boundary": "A free sugar leaf is a connectivity surrogate unless an activated donor and forward conditions are independently supported.",
+      "evidence_boundary_zh": "若没有独立证据支持活化供体和正向条件，游离糖叶节点只属于连接性替代物。",
+      "source_ids": ["IUPAC_GLYCOSIDES", "P001", "P005", "P009", "P010"]
+    },
+    "glycosylation": {
+      "label_en": "Glycosylation",
+      "label_zh": "糖基化",
+      "principle": "Form a glycosidic linkage between a glycosyl residue and an acceptor; O-, C-, N-, and S-linked products must be distinguished.",
+      "principle_zh": "在糖基残基与受体之间形成糖苷连接；必须区分 O、C、N 和 S 连接类型。",
+      "typical_conditions": ["Chemical donor activation or enzyme-catalysed transfer, selected for the encoded linkage"],
+      "typical_conditions_zh": ["依据目标连接类型选择化学供体活化或酶催化转移"],
+      "risk_notes": ["Anomeric configuration and acceptor-site selectivity are major unresolved variables."],
+      "risk_notes_zh": ["异头构型和受体位点选择性是主要未决变量。"],
+      "evidence_boundary": "Family-level guidance does not establish a particular donor, catalyst, or substrate scope.",
+      "evidence_boundary_zh": "家族级说明不能证明某个具体供体、催化剂或底物适用范围。",
+      "source_ids": ["IUPAC_GLYCOSIDES", "P001", "P009", "P010"]
+    },
+    "o_glycosylation": {
+      "label_en": "O-glycosylation",
+      "label_zh": "O-糖基化",
+      "principle": "Form an O-glycosidic bond at a hydroxyl acceptor, commonly a phenolic oxygen in this project.",
+      "principle_zh": "在羟基受体上形成 O-糖苷键；本项目常见受体为酚氧。",
+      "typical_conditions": ["Activated donor/promoter or glycosyltransferase with site control"],
+      "typical_conditions_zh": ["活化供体/促进剂体系，或具有位点控制能力的糖基转移酶"],
+      "risk_notes": ["Competing hydroxyl groups usually require enzymatic selectivity or a protection strategy."],
+      "risk_notes_zh": ["存在多个竞争羟基时通常需要酶选择性或保护基策略。"],
+      "evidence_boundary": "The label identifies connectivity, not a validated forward protocol.",
+      "evidence_boundary_zh": "该标签只标识连接类型，不代表已验证正向工艺。",
+      "source_ids": ["IUPAC_GLYCOSIDES", "P001", "P005", "P010"]
+    },
+    "c_glycosylation": {
+      "label_en": "C-glycosylation",
+      "label_zh": "C-糖基化",
+      "principle": "Form a carbon-carbon linkage between the sugar anomeric carbon and the flavonoid scaffold rather than an O-glycosidic bond.",
+      "principle_zh": "在糖的异头碳与黄酮骨架之间形成碳—碳键，而不是 O-糖苷键。",
+      "typical_conditions": ["A substrate-specific C-glycosylation method with explicit regioselectivity evidence"],
+      "typical_conditions_zh": ["具有明确区域选择性证据、适用于具体底物的 C-糖基化方法"],
+      "risk_notes": ["O-glycosylation conditions cannot be transferred automatically to a C-linked target."],
+      "risk_notes_zh": ["O-糖基化条件不能自动迁移到 C-连接目标。"],
+      "evidence_boundary": "IUPAC terminology defines the linkage; experimental feasibility remains record-specific.",
+      "evidence_boundary_zh": "IUPAC 术语界定连接类型；实验可行性仍取决于具体反应记录。",
+      "source_ids": ["IUPAC_GLYCOSIDES"]
+    },
+    "activated_glycosyl_donor": {
+      "label_en": "Activated glycosyl-donor disconnection",
+      "label_zh": "活化糖基供体断开",
+      "principle": "Represent the sugar-side precursor as an activated donor rather than as an unactivated free sugar.",
+      "principle_zh": "将糖侧前体表示为活化供体，而不是未活化的游离糖。",
+      "typical_conditions": ["Donor leaving group and promoter must be taken from a cited substrate-compatible method"],
+      "typical_conditions_zh": ["供体离去基和促进剂必须来自有引用且与底物相容的方法"],
+      "risk_notes": ["Donor identity, protecting groups, and anomeric outcome are coupled design choices."],
+      "risk_notes_zh": ["供体身份、保护基和异头结果是相互耦合的设计选择。"],
+      "evidence_boundary": "An abstract donor never counts as strict closure without independent identity and availability evidence.",
+      "evidence_boundary_zh": "抽象供体在没有独立身份和可得性证据时绝不能计为严格闭合。",
+      "source_ids": ["IUPAC_GLYCOSIDES", "P001", "P005"]
+    },
+    "whole_cell_glycosylation": {
+      "label_en": "Whole-cell glycosylation",
+      "label_zh": "全细胞糖基化",
+      "principle": "A living-cell system performs the net transfer while cellular metabolism supplies activated sugar donors.",
+      "principle_zh": "活细胞体系完成净糖基转移，活化糖供体由细胞代谢提供。",
+      "typical_conditions": ["The exact engineered cell line, expression construct, feeding substrate, and isolation workflow reported by the cited study"],
+      "typical_conditions_zh": ["必须使用文献所述的具体工程细胞系、表达构建、投料底物和分离流程"],
+      "risk_notes": ["Cell culture, biosafety, product isolation, and scale-up are outside a simple reaction-template description."],
+      "risk_notes_zh": ["细胞培养、生物安全、产物分离和放大不可能由简单反应模板完整描述。"],
+      "evidence_boundary": "An exact reported net transformation is not a generic chemical glycosylation method.",
+      "evidence_boundary_zh": "文献报道的特定净转化不等同于通用化学糖基化方法。",
+      "source_ids": ["P013", "P014"]
+    },
+    "methylation": {
+      "label_en": "Methylation",
+      "label_zh": "甲基化",
+      "principle": "Attach a methyl group to a molecular site; in flavonoid synthesis this commonly forms an O-methyl ether.",
+      "principle_zh": "在分子位点引入甲基；黄酮合成中常见结果是形成 O-甲醚。",
+      "typical_conditions": ["A substrate-compatible methyl source and base or catalytic system"],
+      "typical_conditions_zh": ["与底物相容的甲基源及碱或催化体系"],
+      "risk_notes": ["Many traditional methylating reagents are toxic or strongly alkylating; the hard safety screen may exclude them."],
+      "risk_notes_zh": ["许多传统甲基化试剂具有毒性或强烷基化性，可能被安全硬剪枝排除。"],
+      "evidence_boundary": "The family label does not establish regioselectivity among multiple hydroxyl groups.",
+      "evidence_boundary_zh": "家族标签不能证明多个羟基之间的区域选择性。",
+      "source_ids": ["IUPAC_METHYLATION"]
+    },
+    "o_methylation": {
+      "label_en": "Phenolic O-methylation",
+      "label_zh": "酚羟基 O-甲基化",
+      "principle": "Convert a phenolic oxygen into a methyl ether; retrosynthetically, disconnect the O-CH3 bond.",
+      "principle_zh": "将酚氧转化为甲醚；逆合成中断开 O—CH3 键。",
+      "typical_conditions": ["A chemoselective methylation method supported for the hydroxyl pattern"],
+      "typical_conditions_zh": ["对相应羟基排列有支持证据的化学选择性甲基化方法"],
+      "risk_notes": ["A methyl-iodide surrogate is a graph device and is blocked by the current severe-toxicity policy."],
+      "risk_notes_zh": ["碘甲烷替代物只是分子图工具，并被当前严重毒性策略阻断。"],
+      "evidence_boundary": "Connectivity does not establish a safe reagent choice or site selectivity.",
+      "evidence_boundary_zh": "连接关系不能证明安全的试剂选择或位点选择性。",
+      "source_ids": ["IUPAC_METHYLATION"]
+    },
+    "o_demethylation": {
+      "label_en": "Aryl methyl-ether cleavage",
+      "label_zh": "芳基甲醚脱甲基",
+      "principle": "Reveal a phenol by cleaving an aryl O-methyl bond.",
+      "principle_zh": "通过断裂芳基 O—甲基键恢复酚羟基。",
+      "typical_conditions": ["A substrate-compatible ether-cleavage method selected after functional-group review"],
+      "typical_conditions_zh": ["在官能团审查后选择与底物相容的醚键断裂方法"],
+      "risk_notes": ["Common cleavage systems may be corrosive or incompatible with glycosides and protecting groups."],
+      "risk_notes_zh": ["常用断裂体系可能具有腐蚀性，或与糖苷和保护基不相容。"],
+      "evidence_boundary": "The reverse template identifies the bond change only.",
+      "evidence_boundary_zh": "逆模板只标识键变化。",
+      "source_ids": ["RDKIT_REACTION_SMARTS"]
+    },
+    "protection": {
+      "label_en": "Functional-group protection",
+      "label_zh": "官能团保护",
+      "principle": "Temporarily mask a reactive group so that it does not react under a later operation.",
+      "principle_zh": "暂时掩蔽活性官能团，使其在后续反应条件下不参与反应。",
+      "typical_conditions": ["Protecting group chosen for installation, stability, and orthogonal removal across the full route"],
+      "typical_conditions_zh": ["按整条路线的安装、稳定性和正交脱除要求选择保护基"],
+      "risk_notes": ["Each protection adds steps and can change solubility, selectivity, and purification."],
+      "risk_notes_zh": ["每次保护都会增加步骤，并可能改变溶解性、选择性和纯化难度。"],
+      "evidence_boundary": "A generic protection template does not prove orthogonality in the proposed route.",
+      "evidence_boundary_zh": "通用保护模板不能证明其在拟议路线中的正交性。",
+      "source_ids": ["IUPAC_PROTECTING_GROUP"]
+    },
+    "phenol_protection": {
+      "label_en": "Phenol protection",
+      "label_zh": "酚羟基保护",
+      "principle": "Mask one or more phenolic hydroxyl groups to control later chemo- or regioselectivity.",
+      "principle_zh": "掩蔽一个或多个酚羟基，以控制后续化学选择性或区域选择性。",
+      "typical_conditions": ["A protection pattern validated against all other hydroxyl groups and later steps"],
+      "typical_conditions_zh": ["保护模式必须针对其他全部羟基和后续步骤进行验证"],
+      "risk_notes": ["Over-protection and difficult selective deprotection are common route risks."],
+      "risk_notes_zh": ["过度保护和难以选择性脱保护是常见路线风险。"],
+      "evidence_boundary": "The template does not choose a unique protecting group or position.",
+      "evidence_boundary_zh": "模板并未选择唯一保护基或位点。",
+      "source_ids": ["IUPAC_PROTECTING_GROUP"]
+    },
+    "deprotection": {
+      "label_en": "Deprotection",
+      "label_zh": "脱保护",
+      "principle": "Remove a temporary protecting group to restore the intended functional group.",
+      "principle_zh": "去除临时保护基，恢复目标官能团。",
+      "typical_conditions": ["Conditions selected for orthogonality and substrate stability"],
+      "typical_conditions_zh": ["根据正交性和底物稳定性选择条件"],
+      "risk_notes": ["Late-stage deprotection can damage glycosidic bonds or alter stereochemistry."],
+      "risk_notes_zh": ["后期脱保护可能破坏糖苷键或影响立体化学。"],
+      "evidence_boundary": "Compatibility must be checked for the complete protected intermediate.",
+      "evidence_boundary_zh": "必须针对完整受保护中间体检查相容性。",
+      "source_ids": ["IUPAC_PROTECTING_GROUP"]
+    },
+    "phenol_deprotection": {
+      "label_en": "Phenol deprotection",
+      "label_zh": "酚羟基脱保护",
+      "principle": "Restore a phenolic hydroxyl group from a protected precursor.",
+      "principle_zh": "从受保护前体恢复酚羟基。",
+      "typical_conditions": ["Group-specific cleavage after checking glycoside and scaffold stability"],
+      "typical_conditions_zh": ["在检查糖苷键和骨架稳定性后采用保护基专一的断裂条件"],
+      "risk_notes": ["Global and site-selective deprotection are not interchangeable."],
+      "risk_notes_zh": ["全局脱保护与位点选择性脱保护不能互换。"],
+      "evidence_boundary": "The reaction family alone does not establish selectivity.",
+      "evidence_boundary_zh": "仅凭反应家族不能证明选择性。",
+      "source_ids": ["IUPAC_PROTECTING_GROUP"]
+    },
+    "oxidation": {
+      "label_en": "Oxidation",
+      "label_zh": "氧化",
+      "principle": "Increase oxidation state, commonly corresponding in organic structures to oxygen gain and/or hydrogen loss.",
+      "principle_zh": "提高氧化态；在有机结构中常表现为增氧和/或脱氢。",
+      "typical_conditions": ["Oxidant and medium selected for the required chemoselectivity"],
+      "typical_conditions_zh": ["根据所需化学选择性选择氧化剂和介质"],
+      "risk_notes": ["Over-oxidation and oxidation of phenols or sugars require explicit control."],
+      "risk_notes_zh": ["必须明确控制过度氧化以及酚或糖部分的氧化。"],
+      "evidence_boundary": "Oxidation is a broad class; reagent, site, and oxidation level remain record-specific.",
+      "evidence_boundary_zh": "氧化是宽泛类别；试剂、位点和氧化程度仍取决于具体记录。",
+      "source_ids": ["IUPAC_OXIDATION"]
+    },
+    "reduction": {
+      "label_en": "Reduction",
+      "label_zh": "还原",
+      "principle": "Lower oxidation state; this is the reverse of the corresponding oxidation process.",
+      "principle_zh": "降低氧化态，是相应氧化过程的逆过程。",
+      "typical_conditions": ["Reducing system selected for functional-group and stereochemical compatibility"],
+      "typical_conditions_zh": ["根据官能团和立体化学相容性选择还原体系"],
+      "risk_notes": ["Hydrogenation or hydride reagents can affect multiple unsaturated or carbonyl sites."],
+      "risk_notes_zh": ["氢化或氢化物试剂可能影响多个不饱和位点或羰基。"],
+      "evidence_boundary": "The class does not define a reagent, selectivity, or stereochemical outcome.",
+      "evidence_boundary_zh": "该类别不定义具体试剂、选择性或立体化学结果。",
+      "source_ids": ["IUPAC_REDUCTION"]
+    },
+    "cyclization": {
+      "label_en": "Cyclization",
+      "label_zh": "环化",
+      "principle": "Form a ring from a chain or open precursor by creating a new bond.",
+      "principle_zh": "通过形成新键，使链状或开链前体生成环。",
+      "typical_conditions": ["Mechanism-specific acid, base, catalyst, thermal, or photochemical conditions"],
+      "typical_conditions_zh": ["依据机理选择酸、碱、催化、热或光化学条件"],
+      "risk_notes": ["Ring size, competing closures, and stereochemistry must be assessed for the actual substrate."],
+      "risk_notes_zh": ["必须针对实际底物评估环尺寸、竞争环化和立体化学。"],
+      "evidence_boundary": "The generic label only states that a ring-forming bond change occurred.",
+      "evidence_boundary_zh": "通用标签只说明发生了成环键变化。",
+      "source_ids": ["IUPAC_CYCLIZATION"]
+    },
+    "flavonoid_cyclization": {
+      "label_en": "Flavonoid-ring cyclization",
+      "label_zh": "黄酮骨架环化",
+      "principle": "Close an oxygen-containing ring or related ring system needed for a flavonoid scaffold.",
+      "principle_zh": "闭合构建黄酮骨架所需的含氧环或相关环系。",
+      "typical_conditions": ["Substrate- and scaffold-specific cyclization conditions from a cited route"],
+      "typical_conditions_zh": ["采用有引用且适用于具体底物和骨架的环化条件"],
+      "risk_notes": ["Substitution pattern controls which ring and regioisomer form."],
+      "risk_notes_zh": ["取代模式决定形成的环及区域异构体。"],
+      "evidence_boundary": "A scaffold-level label is insufficient to assign a named mechanism.",
+      "evidence_boundary_zh": "骨架级标签不足以指定命名机理。",
+      "source_ids": ["IUPAC_CYCLIZATION"]
+    },
+    "flavanone_synthesis": {
+      "label_en": "Flavanone construction",
+      "label_zh": "二氢黄酮构建",
+      "principle": "Construct the flavanone C-ring, often from a chalcone-like precursor through intramolecular conjugate addition.",
+      "principle_zh": "构建二氢黄酮 C 环，常由查耳酮样前体经分子内共轭加成形成。",
+      "typical_conditions": ["A cited cyclization method compatible with the substitution and protection pattern"],
+      "typical_conditions_zh": ["采用与取代和保护模式相容的有引用环化方法"],
+      "risk_notes": ["Stereocentre formation and chalcone/flavanone equilibrium require review."],
+      "risk_notes_zh": ["需审查手性中心形成以及查耳酮/二氢黄酮平衡。"],
+      "evidence_boundary": "The family label does not determine stereoselectivity or yield.",
+      "evidence_boundary_zh": "家族标签不能确定立体选择性或收率。",
+      "source_ids": ["IUPAC_CYCLIZATION"]
+    },
+    "flavanone_chalcone_opening": {
+      "label_en": "Flavanone-to-chalcone ring opening",
+      "label_zh": "二氢黄酮—查耳酮开环",
+      "principle": "Retrosynthetically open the flavanone heterocycle to a chalcone-like precursor.",
+      "principle_zh": "逆合成中将二氢黄酮杂环打开为查耳酮样前体。",
+      "typical_conditions": ["Forward cyclization conditions must be validated on the substituted chalcone"],
+      "typical_conditions_zh": ["正向环化条件必须在相应取代查耳酮上验证"],
+      "risk_notes": ["Current project SMARTS variants require atom-map-retention validation before promotion."],
+      "risk_notes_zh": ["本项目当前 SMARTS 变体需通过原子映射保留验证后才能晋级。"],
+      "evidence_boundary": "An inactive or audit-failing family template is not a product-search action.",
+      "evidence_boundary_zh": "未激活或审计失败的家族模板不属于产品搜索动作。",
+      "source_ids": ["IUPAC_CYCLIZATION", "RDKIT_REACTION_SMARTS"]
+    },
+    "chalcone_synthesis": {
+      "label_en": "Chalcone construction",
+      "label_zh": "查耳酮构建",
+      "principle": "Construct an alpha,beta-unsaturated carbonyl linking two aromatic fragments, commonly through a condensation logic.",
+      "principle_zh": "构建连接两个芳香片段的 α,β-不饱和羰基，通常采用缩合逻辑。",
+      "typical_conditions": ["Aldehyde/ketone pairing and acid or base conditions supported for the hydroxyl/protection pattern"],
+      "typical_conditions_zh": ["针对羟基/保护模式有支持证据的醛酮组合及酸或碱条件"],
+      "risk_notes": ["Self-condensation, E/Z geometry, and phenolic side reactions require control."],
+      "risk_notes_zh": ["需控制自缩合、E/Z 构型和酚羟基副反应。"],
+      "evidence_boundary": "Condensation family assignment does not validate a particular substrate pair.",
+      "evidence_boundary_zh": "缩合家族判定不能验证某一具体底物对。",
+      "source_ids": ["IUPAC_CONDENSATION"]
+    },
+    "chalcone_aldol": {
+      "label_en": "Chalcone-forming aldol condensation",
+      "label_zh": "查耳酮羟醛缩合",
+      "principle": "Join carbonyl partners through aldol addition followed by dehydration to an enone.",
+      "principle_zh": "羰基组分先发生羟醛加成，再脱水形成烯酮。",
+      "typical_conditions": ["Substrate-compatible acid/base catalysis with protection and geometry control"],
+      "typical_conditions_zh": ["与底物相容、兼顾保护基和构型控制的酸/碱催化"],
+      "risk_notes": ["Competing carbonyl and phenolic sites can reduce selectivity."],
+      "risk_notes_zh": ["竞争性羰基和酚位点会降低选择性。"],
+      "evidence_boundary": "The generic reverse disconnection is not a validated forward recipe.",
+      "evidence_boundary_zh": "通用逆断键不是已验证的正向配方。",
+      "source_ids": ["IUPAC_CONDENSATION"]
+    },
+    "chalcone_retro_aldol": {
+      "label_en": "Chalcone retrosynthetic carbonyl disconnection",
+      "label_zh": "查耳酮逆羟醛断开",
+      "principle": "Disconnect the enone framework into carbonyl-derived fragments corresponding to a forward aldol condensation.",
+      "principle_zh": "将烯酮骨架断开为对应正向羟醛缩合的羰基来源片段。",
+      "typical_conditions": ["Forward conditions must be selected from a substrate-matched record"],
+      "typical_conditions_zh": ["正向条件必须从与底物匹配的记录中选择"],
+      "risk_notes": ["Project SMARTS must pass applicability and atom-map audits before use."],
+      "risk_notes_zh": ["项目 SMARTS 必须通过适用性和原子映射审计后方可使用。"],
+      "evidence_boundary": "A desired reaction family can remain inactive when its encoded SMARTS is not validated.",
+      "evidence_boundary_zh": "即使是所需反应家族，其 SMARTS 未验证时也应保持未激活。",
+      "source_ids": ["IUPAC_CONDENSATION", "RDKIT_REACTION_SMARTS"]
+    },
+    "flavonoid_synthesis": {
+      "label_en": "General flavonoid-scaffold construction",
+      "label_zh": "通用黄酮骨架构建",
+      "principle": "A broad corpus label for transformations that build or reorganize a flavonoid scaffold.",
+      "principle_zh": "语料库中的宽泛标签，表示构建或重组黄酮骨架的变换。",
+      "typical_conditions": ["Retrieve the exact source record; no single condition set represents this class"],
+      "typical_conditions_zh": ["必须回查具体源记录；本类别不存在统一条件"],
+      "risk_notes": ["Do not infer a named reaction from this broad label alone."],
+      "risk_notes_zh": ["不得仅凭该宽泛标签推断命名反应。"],
+      "evidence_boundary": "Corpus classification only; inspect the actual bond changes.",
+      "evidence_boundary_zh": "仅为语料分类，必须检查实际键变化。",
+      "source_ids": ["RDKIT_REACTION_SMARTS"]
+    },
+    "isoflavone_synthesis": {
+      "label_en": "Isoflavone-scaffold construction",
+      "label_zh": "异黄酮骨架构建",
+      "principle": "A broad label for forming or rearranging the isoflavone carbon skeleton.",
+      "principle_zh": "表示形成或重排异黄酮碳骨架的宽泛标签。",
+      "typical_conditions": ["Use the exact cited transformation corresponding to the encoded bond changes"],
+      "typical_conditions_zh": ["采用与编码键变化相对应的具体有引用变换"],
+      "risk_notes": ["Substitution pattern and migration selectivity are substrate-specific."],
+      "risk_notes_zh": ["取代模式和迁移选择性具有底物特异性。"],
+      "evidence_boundary": "The class name does not identify a unique mechanism.",
+      "evidence_boundary_zh": "类别名称不能确定唯一机理。",
+      "source_ids": ["RDKIT_REACTION_SMARTS"]
+    },
+    "biosynthesis": {
+      "label_en": "Biosynthetic transformation",
+      "label_zh": "生物合成变换",
+      "principle": "An enzyme or cellular pathway transforms a precursor using biological cofactors and pathway context.",
+      "principle_zh": "酶或细胞通路在生物辅因子和通路环境中转化前体。",
+      "typical_conditions": ["The reported enzyme/cell system, cofactors, expression context, and assay conditions"],
+      "typical_conditions_zh": ["文献报道的酶/细胞体系、辅因子、表达背景和测定条件"],
+      "risk_notes": ["A net biosynthetic arrow may hide multiple enzymatic steps and unavailable intracellular intermediates."],
+      "risk_notes_zh": ["净生物合成箭头可能隐藏多个酶促步骤和不可分离的细胞内中间体。"],
+      "evidence_boundary": "Do not reinterpret a pathway-level transformation as a one-step chemical reaction.",
+      "evidence_boundary_zh": "不得将通路级变换重新解释为一步化学反应。",
+      "source_ids": ["P009", "P010", "P013", "P014"]
+    },
+    "literature_reaction": {
+      "label_en": "Literature-extracted transformation",
+      "label_zh": "文献抽取变换",
+      "principle": "The reaction was extracted from project literature, but its family label is not sufficiently specific for a named-reaction claim.",
+      "principle_zh": "该反应来自项目文献抽取，但家族标签不足以支持命名反应结论。",
+      "typical_conditions": ["Read the cited source and extraction context before assigning conditions"],
+      "typical_conditions_zh": ["指定条件前必须阅读引用来源及抽取上下文"],
+      "risk_notes": ["Extraction context, reagent parsing, and atom mapping require review."],
+      "risk_notes_zh": ["抽取上下文、试剂解析和原子映射均需复核。"],
+      "evidence_boundary": "Literature origin alone does not guarantee correct extraction or applicability to a new substrate.",
+      "evidence_boundary_zh": "仅有文献来源不能保证抽取无误，也不能保证适用于新底物。",
+      "source_ids": ["RDKIT_REACTION_SMARTS"]
+    }
+  }
+}

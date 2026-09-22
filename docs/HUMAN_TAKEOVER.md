@@ -8,14 +8,14 @@
 2. [PROJECT.md](../PROJECT.md) — 目标、硬约束、非目标（尤其证据边界）。
 3. [STATE.md](../STATE.md) — 当前事实与下一步。
 4. [ARCHITECTURE.md](../ARCHITECTURE.md) — 每个文件/目录的职责，禁止重复事实源。
-5. 本文件 + [PAPER_ROADMAP.md](PAPER_ROADMAP.md)。
+5. 本文件 + [WORKBENCH_ROADMAP.md](WORKBENCH_ROADMAP.md)（工作台方向）+ [PAPER_ROADMAP.md](PAPER_ROADMAP.md)（论文方向）。
 6. 需要追溯某次任务的完整边界、执行事实与验证证据时，读 [tasks/](tasks/README.md) 与 [reports/](reports/README.md) 中同编号的 TASK/REPORT（CondRxnBench 详细格式；TASK-001—008 由 TASK-009 从速记体扩写，事实未变）。
 
 ## 系统能做什么、不能做什么
 
-**能**：对黄酮/黄酮糖苷目标实时运行 MCTS 逆合成搜索（原生/优化树两引擎）；浏览 3,059 条带来源哈希的候选资源；运行结构诊断（糖苷连接候选）；新跑短预算开发对照。
+**能**：对黄酮/黄酮糖苷目标实时运行 MCTS 逆合成搜索（原生/优化树两引擎）；在浏览器工作台查看路线解读（评分构成、末端原料证据、逐步反应说明）、切换教学解释模式、浏览文献教学层（15 文献卡 + 反应课程）；浏览 3,059 条带来源哈希的候选资源；运行结构诊断（糖苷连接候选）；新跑短预算开发对照。
 
-**不能**（当前证据状态下）：给出"已验证可合成"结论——无独立审核库存、无独立化学标签、无正式盲测；候选库存闭合只是 surrogate；工程测试结果不构成化学有效性。详见 `metadata/release.json` 与 `flavoretro/evaluation.py` 的 preflight。
+**不能**（当前证据状态下）：给出"已验证可合成"结论——无独立审核库存、无独立化学标签、无正式盲测；候选库存闭合只是 surrogate；工程测试结果不构成化学有效性；教学文案与文献课程是教学材料，不是操作规程。详见 `metadata/release.json` 与 `flavoretro/evaluation.py` 的 preflight。
 
 ## 常用命令（在仓库根目录）
 
@@ -45,6 +45,7 @@
 - **历史目录只读**：`/home/ljx/retro_synthesis` 的基线在 `operations/history-before.json`，核对脚本已归档为 `operations/archive/history_guard-task-001.py`（用法见其文件头，需 `before`/`after` 两次快照对比）。
 - **派生数据防漂移**：`flavoretro.policies.records()` 每次读取都校验 `data/derived/v1/manifest.json` 的 SHA-256，漂移即拒绝。
 - **单次运行防篡改**：每次搜索的 `outputs/runs/<id>/manifest.json` 记录结果文件哈希，`/api/runs/<id>` 读取时复核。
+- **配置入仓核对**：`configs/teaching_guidance.json`、`configs/literature_teaching_layer.json` 的 SHA-256 与旧项目源文件一致（登记见 REPORT-010 与 events.jsonl）。
 - **Git**：`git log` 查看分层提交；仓库永不包含 `data/`、`outputs/` 载荷。
 
 ## 决策权边界（何时必须找人）
@@ -59,4 +60,6 @@
 - `.venv` 依赖 retro Conda 环境的 system-site-packages，**不是**独立环境；换机器必须按 environment/README 重建。
 - `python` 必须是 3.10（pyproject 限定 `>=3.10,<3.11`）。
 - 不要在历史目录 `/home/ljx/retro_synthesis` 运行任何会写缓存的代码。
-- 工作区可能存在未提交的空白格式化改动（TASK-009 之前遗留，见 STATE.md 工作区提示）；`git status` 出现大量 modified 不代表功能变化。
+- 经挂载手段（如 /Volumes/cano）查看仓库时 `git status` 可能出现大量 mode 位 modified，这是挂载产物而非仓库事实；以 cano 服务器上的 `git status` 为准。
+- `operations/events.jsonl` 有一条 2026-09-22 的误记行（task 字段为 "--help"），追加式日志不删改（见 REPORT-010）。
+- 教学条目的命名家族键与现行模板数值 classification 未对齐，教学块会回退通用条目；补齐见 WORKBENCH_ROADMAP P3。

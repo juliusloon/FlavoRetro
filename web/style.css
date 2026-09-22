@@ -2,11 +2,20 @@
     box-sizing: border-box
 }
 
+html,
+body {
+    height: 100%
+}
+
 body {
     margin: 0;
     background: #f3f5f1;
     color: #172c28;
-    font: 15px/1.65 system-ui, -apple-system, sans-serif
+    font: 15px/1.65 system-ui, -apple-system, sans-serif;
+    /* 纵向 flex：顶栏与页脚固定，主体区域内部滚动 */
+    display: flex;
+    flex-direction: column;
+    overflow: hidden
 }
 
 header {
@@ -16,7 +25,11 @@ header {
     padding: 20px 4vw;
     background: #142c28;
     color: #eef7ed;
-    flex-wrap: wrap
+    flex-wrap: wrap;
+    flex: none;
+    position: sticky;
+    top: 0;
+    z-index: 20
 }
 
 .brand {
@@ -72,6 +85,13 @@ nav button.active {
 }
 
 main {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto
+}
+
+/* 非探索页：居中文档流 */
+.page {
     max-width: 1400px;
     margin: auto;
     padding: 30px 4vw 65px
@@ -100,15 +120,53 @@ h2 {
     margin-top: 0
 }
 
+.section-title {
+    margin: 30px 0 15px;
+    font-size: 17px;
+    color: #2c4a3a
+}
+
 .intro>p:last-child,
 .note {
     color: #65776e
 }
 
+/* 探索页：撑满主体区域，左右栏顶到视口两边并各自滚动 */
+#search.page {
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column
+}
+
+#search .intro {
+    flex: none;
+    padding: 25px 4vw 0;
+    margin-bottom: 20px
+}
+
 .workspace {
+    flex: 1;
+    min-height: 0;
     display: grid;
-    grid-template-columns: 340px minmax(0, 1fr);
-    gap: 25px
+    grid-template-columns: 360px minmax(0, 1fr)
+}
+
+.workspace>aside {
+    overflow-y: auto;
+    min-height: 0;
+    border-radius: 0;
+    border-top: 0;
+    border-left: 0;
+    border-bottom: 0
+}
+
+.workspace>.results {
+    overflow-y: auto;
+    min-height: 0;
+    padding: 25px 4vw 60px 25px
 }
 
 .card {
@@ -118,10 +176,6 @@ h2 {
     padding: 25px;
     box-shadow: 0 5px 20px #163d2710;
     min-width: 0
-}
-
-aside.card {
-    align-self: start
 }
 
 label {
@@ -243,6 +297,32 @@ details {
     color: #435c4a
 }
 
+/* 运行信息 */
+#run-meta {
+    margin: 15px 0;
+    font-size: 12px;
+    overflow-wrap: anywhere;
+    color: #557157
+}
+
+#run-meta .meta-card {
+    background: white;
+    border: 1px solid #dae3d9;
+    border-radius: 10px;
+    padding: 15px 20px;
+    margin-bottom: 10px
+}
+
+#run-meta .limitations {
+    margin: 8px 0 0;
+    padding-left: 18px
+}
+
+#run-meta .limitations li {
+    margin: 3px 0
+}
+
+/* 路线卡片 */
 .route {
     margin-top: 18px
 }
@@ -263,10 +343,166 @@ details {
     color: #85601c
 }
 
+.tag.partial {
+    background: #eceff1;
+    color: #4d5f66
+}
+
+.tag.hazard {
+    background: #fbe3e3;
+    color: #8f2d2d
+}
+
+.tag.neutral {
+    background: #eef2ea;
+    color: #557157
+}
+
 .route small {
     color: #697a6c
 }
 
+.cost {
+    color: #576c5a;
+    font-size: 13px;
+    margin: 12px 0
+}
+
+.cost .formula {
+    display: block;
+    margin-top: 4px;
+    font-family: ui-monospace, monospace;
+    font-size: 12px
+}
+
+.fact-line {
+    font-size: 12px;
+    color: #85601c;
+    background: #fbf6ea;
+    border: 1px solid #eee0bd;
+    border-radius: 6px;
+    padding: 8px 12px;
+    margin: 10px 0
+}
+
+/* 末端原料证据卡 */
+.leaf-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: 12px;
+    margin: 10px 0
+}
+
+.leaf-card {
+    border: 1px solid #dbe5d5;
+    border-radius: 10px;
+    padding: 12px;
+    background: #fcfdf9;
+    font-size: 12px
+}
+
+.leaf-card img {
+    max-width: 100%;
+    height: 130px;
+    width: 100%;
+    object-fit: contain;
+    background: white;
+    border-radius: 6px
+}
+
+.leaf-card code {
+    display: block;
+    font-size: 11px;
+    overflow-wrap: anywhere;
+    margin: 6px 0
+}
+
+.leaf-card .kv {
+    margin: 2px 0;
+    color: #4d5f56
+}
+
+/* 逐步反应卡 */
+.step-card {
+    border: 1px solid #dbe5d5;
+    border-left: 3px solid #90aa70;
+    border-radius: 8px;
+    padding: 14px 16px;
+    margin: 12px 0;
+    background: white
+}
+
+.step-card h3 {
+    margin: 0 0 8px;
+    font-size: 14px
+}
+
+.step-card .kv {
+    font-size: 12px;
+    color: #4d5f56;
+    margin: 3px 0
+}
+
+.step-card code,
+.mapped {
+    display: block;
+    font: 11px/1.7 ui-monospace, monospace;
+    background: #f4f7ef;
+    border-radius: 6px;
+    padding: 8px 10px;
+    overflow-wrap: anywhere;
+    margin-top: 8px
+}
+
+/* 教学块 */
+.teaching-note {
+    font-size: 12px;
+    color: #6a5a2e;
+    background: #fbf6ea;
+    border-left: 3px solid #dba849;
+    padding: 8px 12px;
+    border-radius: 4px;
+    margin: 12px 0
+}
+
+.teaching-block {
+    border: 1px dashed #d6c48d;
+    border-radius: 8px;
+    background: #fffdf5;
+    padding: 12px 14px;
+    margin-top: 10px;
+    font-size: 12.5px
+}
+
+.teaching-block h4 {
+    margin: 0 0 6px;
+    font-size: 13px;
+    color: #6a5a2e
+}
+
+.teaching-block dt {
+    font-weight: 600;
+    color: #5c6b4a;
+    margin-top: 8px
+}
+
+.teaching-block dd {
+    margin: 2px 0 0;
+    padding-left: 2px
+}
+
+.teaching-block ul {
+    margin: 2px 0;
+    padding-left: 18px
+}
+
+.teaching-block .sources a {
+    color: #315543;
+    margin-right: 10px;
+    font-size: 11.5px
+}
+
+/* 路线结构树 */
 .tree {
     padding-left: 16px;
     border-left: 2px solid #dbe5d5;
@@ -292,19 +528,93 @@ details {
     padding: 5px
 }
 
-#run-meta {
-    margin: 15px 0;
-    font-size: 12px;
-    overflow-wrap: anywhere;
-    color: #557157
+/* 文献教学页 */
+.banner {
+    border: 1px solid #e3d3a8;
+    background: #fdf8ec;
+    border-radius: 10px;
+    padding: 16px 20px;
+    font-size: 13px;
+    color: #6a5a2e
 }
 
-.cost {
-    color: #576c5a;
-    font-size: 13px;
+.banner p {
+    margin: 4px 0
+}
+
+.chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
     margin: 12px 0
 }
 
+.chip {
+    display: inline-block;
+    font-size: 11.5px;
+    padding: 4px 11px;
+    border-radius: 20px;
+    background: #edf2e9;
+    border: 1px solid #d3dece;
+    color: #315543
+}
+
+.chip.warn {
+    background: #fbe3e3;
+    border-color: #ecc5c5;
+    color: #8f2d2d
+}
+
+.paper-card,
+.lesson-card {
+    background: white;
+    border: 1px solid #dae3d9;
+    border-radius: 12px;
+    padding: 22px;
+    margin-bottom: 16px;
+    box-shadow: 0 5px 20px #163d2710
+}
+
+.paper-card h3,
+.lesson-card h3 {
+    margin: 0 0 6px;
+    font-size: 16px
+}
+
+.paper-card .meta,
+.lesson-card .meta {
+    font-size: 12.5px;
+    color: #5c6f60;
+    margin: 3px 0
+}
+
+.paper-card a {
+    color: #246857
+}
+
+.kv-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12.5px;
+    margin-top: 10px
+}
+
+.kv-table th,
+.kv-table td {
+    text-align: left;
+    padding: 6px 10px;
+    border-bottom: 1px solid #eef1e6;
+    overflow-wrap: anywhere
+}
+
+.kv-table th {
+    width: 220px;
+    color: #5c6b4a;
+    font-weight: 600;
+    vertical-align: top
+}
+
+/* 表格 / 分页 / 状态页 */
 .table-wrap {
     overflow: auto
 }
@@ -359,18 +669,52 @@ pre {
     display: block
 }
 
+.profile-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-bottom: 20px
+}
+
+.profile-card {
+    background: white;
+    border: 1px solid #dae3d9;
+    border-radius: 10px;
+    padding: 18px;
+    font-size: 12.5px
+}
+
+.profile-card h3 {
+    margin: 0 0 8px;
+    font-size: 15px
+}
+
+.profile-card li {
+    margin: 4px 0
+}
+
+.profile-card .globals {
+    color: #5c6f60
+}
+
 footer {
-    padding: 20px 4vw;
+    flex: none;
+    padding: 14px 4vw;
     border-top: 1px solid #dce3d5;
     color: #789078;
-    font-size: 12px
+    font-size: 12px;
+    background: #f3f5f1
 }
 
 [hidden] {
     display: none !important
 }
 
-@media(max-width:800px) {
+@media(max-width:900px) {
+    body {
+        overflow: auto
+    }
+
     header {
         gap: 12px;
         padding: 15px 20px
@@ -387,15 +731,45 @@ footer {
     }
 
     main {
+        overflow: visible
+    }
+
+    .page {
         padding: 20px
     }
 
+    /* 探索页窄屏：退化为单列正常文档流 */
+    #search.page {
+        height: auto;
+        display: block;
+        padding: 0
+    }
+
+    #search .intro {
+        padding: 20px 20px 0
+    }
+
     .workspace {
-        grid-template-columns: 1fr
+        display: block
+    }
+
+    .workspace>aside {
+        overflow: visible;
+        border-radius: 0;
+        border-right: 0
+    }
+
+    .workspace>.results {
+        overflow: visible;
+        padding: 20px
     }
 
     .stats {
         grid-template-columns: repeat(2, 1fr)
+    }
+
+    .profile-grid {
+        grid-template-columns: 1fr
     }
 
     .fields {

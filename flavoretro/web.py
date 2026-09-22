@@ -92,6 +92,18 @@ class Handler(BaseHTTPRequestHandler):
                 return self.json(
                     200, {"total": len(rows), "records": rows[offset : offset + limit]}
                 )
+            if url.path == "/api/teaching":
+                return self.json(
+                    200,
+                    json.loads((ROOT / "configs/teaching_guidance.json").read_text()),
+                )
+            if url.path == "/api/literature-teaching":
+                return self.json(
+                    200,
+                    json.loads(
+                        (ROOT / "configs/literature_teaching_layer.json").read_text()
+                    ),
+                )
             if url.path == "/api/molecule":
                 mol = Chem.MolFromSmiles(
                     SearchRequest(smiles=q.get("smiles", [""])[0]).smiles

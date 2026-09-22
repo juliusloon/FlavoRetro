@@ -4,11 +4,12 @@
 
 人类研究员接手：先读 [HUMAN_TAKEOVER.md](HUMAN_TAKEOVER.md)，再按需要读任务合同与报告。全部治理文档遵循 CondRxnBench 详细格式；读者无需访问旧项目 `/home/ljx/retro_synthesis`。
 
-## 人接管与论文
+## 人接管与方向
 
 | 文件 | 用途 |
 |---|---|
 | [HUMAN_TAKEOVER.md](HUMAN_TAKEOVER.md) | 人接管指南：读序、常用命令、验证完整性、决策权边界 |
+| [WORKBENCH_ROADMAP.md](WORKBENCH_ROADMAP.md) | 工作台路线：现状、P1—P5 阶段方向与准入规则 |
 | [PAPER_ROADMAP.md](PAPER_ROADMAP.md) | 最终论文路线：阻断性缺口、阶段计划、发布检查清单 |
 | [USER_GUIDE.md](USER_GUIDE.md) | 工作台使用说明（搜索、资源、API、重放诊断） |
 | [TEST_CONTRACTS.md](TEST_CONTRACTS.md) | 测试合同与历史测试继承映射 |
@@ -36,7 +37,8 @@
 | 最终验收 | [TASK-007](tasks/TASK-007-handoff.md) | [REPORT-007](reports/REPORT-007-handoff.md) | Completed |
 | 来源定位补充 | [TASK-007-P1](tasks/TASK-007-P1-source-relocation.md) | [REPORT-007-P1](reports/REPORT-007-P1-source-relocation.md) | Partial（指针切换被所有者搁置） |
 | 人接管整理 | [TASK-008](tasks/TASK-008-human-github-handover.md) | [REPORT-008](reports/REPORT-008-human-github-handover.md) | Completed |
-| 文档详细化 | [TASK-009](tasks/TASK-009-docs-detailing.md) | [REPORT-009](reports/REPORT-009-docs-detailing.md) | 见文件 |
+| 文档详细化 | [TASK-009](tasks/TASK-009-docs-detailing.md) | [REPORT-009](reports/REPORT-009-docs-detailing.md) | Completed |
+| Web 完整化与独立收口 | [TASK-010](tasks/TASK-010-web-completion.md) | [REPORT-010](reports/REPORT-010-web-completion.md) | Completed |
 
 \* TASK-006 文件名为 topology，内容同时覆盖历史目录完整性冻结核对。REPORT-005、REPORT-007、REPORT-007-P1 为 TASK-009 补立，事实来源为 `operations/events.jsonl` 与 `operations/command-*.log`（本机日志，不入 Git）。
 
@@ -45,6 +47,7 @@
 - [ADR-001](adr/ADR-001-independent-rebuild.md)：独立根、三线职责、批准与证据分轴
 - [ADR-002](adr/ADR-002-search-evidence.md)：先可解释的实时研究产品，再逐证据晋级
 - [ADR-003](adr/ADR-003-repo-orientation.md)：一次性脚本归档、文档分层、GitHub 发布前清单
+- [ADR-004](adr/ADR-004-teaching-layer-and-web-architecture.md)：教学与文献层迁入 configs/、Web 四页信息架构
 
 ## 活动脚本
 

@@ -12,15 +12,15 @@
 <body>
     <header><a class="brand" href="/">◈ FlavoRetro <span>黄酮逆合成研究台</span></a>
         <nav aria-label="工作区"><button data-tab="search" class="active">路线探索</button><button
-                data-tab="resources">资源与证据</button><button data-tab="governance">项目状态</button></nav><span
-            class="badge">研究候选版 · v0.1</span>
+                data-tab="resources">资源与证据</button><button data-tab="literature">文献教学</button><button
+                data-tab="governance">项目状态</button></nav><span class="badge">研究候选版 · v0.1 · 非实验验证</span>
     </header>
     <main>
         <section id="search" class="page">
             <div class="intro">
                 <p class="eyebrow">LIVE RETROSYNTHESIS</p>
                 <h1>从一个分子，追溯每一步依据。</h1>
-                <p>每次搜索都运行新的 MCTS。路线闭合、来源证据和实验可行性分别呈现。</p>
+                <p>每次搜索都运行新的 MCTS。路线闭合、来源证据和实验可行性分别呈现；候选仅供探索，不代表可执行。</p>
             </div>
             <div class="workspace">
                 <aside class="card">
@@ -39,6 +39,7 @@
                             <div><label for="seed">随机种子</label><input id="seed" type="number" value="0" min="0"
                                     max="4294967295"></div>
                         </div><label class="check"><input id="candidate" type="checkbox">允许候选库存终止（未审，仅供探索）</label>
+                        <label class="check"><input id="teaching" type="checkbox" checked>教学解释模式（逐步显示反应家族说明，非操作规程）</label>
                         <details>
                             <summary>实验参数</summary><label for="seconds">每阶段秒数（留空使用配置）</label><input id="seconds"
                                 type="number" min="0.1" max="360" step="0.1"><label
@@ -54,7 +55,7 @@
                     <div id="routes" class="routes">
                         <div class="empty"><span>⌘</span>
                             <h2>让证据跟随路线</h2>
-                            <p>搜索完成后，这里将展示实际生成的路线、未解决原料与分项成本。</p>
+                            <p>搜索完成后，这里将展示实际生成的路线、评分构成、末端原料证据、逐步反应与教学说明。</p>
                         </div>
                     </div><button id="download" class="secondary" hidden>导出本次 JSON</button>
                 </div>
@@ -101,12 +102,27 @@
                 </details>
             </div>
         </section>
+        <section id="literature" class="page" hidden>
+            <div class="intro">
+                <p class="eyebrow">LITERATURE TEACHING LAYER</p>
+                <h1>文献教学层：原文登记，边界先行。</h1>
+                <p>本页内容来自项目文献登记与机器抽取记录，按原样呈现；未经人工复核的记录不构成一手证据。</p>
+            </div>
+            <div id="literature-banner"></div>
+            <div id="literature-summary" class="chips"></div>
+            <h2 class="section-title">文献卡片</h2>
+            <div id="literature-list"></div>
+            <h2 class="section-title">反应课程</h2>
+            <div id="lesson-list"></div>
+        </section>
         <section id="governance" class="page" hidden>
             <div class="intro">
                 <p class="eyebrow">AUDITABLE BY DESIGN</p>
                 <h1>知道已完成什么，也知道缺什么。</h1>
             </div>
             <div id="stats" class="stats"></div>
+            <h2 class="section-title">搜索预算配置（configs/search.json）</h2>
+            <div id="profiles"></div>
             <div class="card">
                 <h2>当前交接状态</h2>
                 <pre id="state"></pre>
@@ -114,7 +130,7 @@
             <p class="note">历史项目只读保留。操作轨迹见新项目的 TASK、REPORT、ADR 与 operations/events.jsonl。</p>
         </section>
     </main>
-    <footer>FlavoRetro / 实时搜索 · 原始数据不可变 · 零收率不等于缺失</footer>
+    <footer>FlavoRetro / 实时搜索 · 原始数据不可变 · 零收率不等于缺失 · 候选不代表可执行</footer>
 </body>
 
 </html>
