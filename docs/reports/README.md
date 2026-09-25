@@ -19,6 +19,9 @@
 | [REPORT-007-handoff.md](REPORT-007-handoff.md) | 记录最终验收与交接物的实际结果；TASK-009 补立。 |
 | [REPORT-007-P1-source-relocation.md](REPORT-007-P1-source-relocation.md) | 记录 v2 来源定位的交付与搁置状态（Partial）；TASK-009 补立。 |
 | [REPORT-008-human-github-handover.md](REPORT-008-human-github-handover.md) | 记录人接管整理与初始提交的实际结果。 |
+| [REPORT-009-docs-detailing.md](REPORT-009-docs-detailing.md) | 记录治理文档详细化的实际结果。 |
+| [REPORT-010-web-completion.md](REPORT-010-web-completion.md) | 记录 Web 工作台完整化、布局修复与项目独立收口的实际结果。 |
+| [REPORT-011-topology-web.md](REPORT-011-topology-web.md) | 记录糖苷连接拓扑审计接入 Web 界面（有效性判断可视化）的实际结果。 |
 
 - 每个 REPORT 必须对应一个编号和短标题相同的 TASK。
 - REPORT 记录实际发生的内容，而不是重复任务目标。

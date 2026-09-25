@@ -29,6 +29,56 @@ class WebTeachingEndpoints(unittest.TestCase):
         except urllib.error.HTTPError as exc:
             return exc.code, dict(exc.headers), json.loads(exc.read())
 
+    def get_raw(self, path):
+        try:
+            with urllib.request.urlopen(self.base + path) as response:
+                return response.status, dict(response.headers), response.read()
+        except urllib.error.HTTPError as exc:
+            return exc.code, dict(exc.headers), exc.read()
+
+    def test_topology_returns_sites_claim_and_boundary(self):
+        status, headers, body = self.get(
+            "/api/topology?smiles=Oc1ccc(OC2OC(CO)C(O)C(O)C2O)cc1"
+        )
+        self.assertEqual(status, 200)
+        self.assertTrue(headers.get("Content-Type", "").startswith("application/json"))
+        self.assertEqual(headers.get("Cache-Control"), "no-store")
+        self.assertEqual(body["status"], "checked")
+        self.assertTrue(body["sites"])
+        self.assertIn("aryl_O_candidate", [s["family"] for s in body["sites"]])
+        for site in body["sites"]:
+            for field in (
+                "bond_index",
+                "anomeric_candidate",
+                "sugar_ring_size",
+                "graph_roundtrip",
+            ):
+                self.assertIn(field, site)
+        self.assertEqual(
+            body["claim"],
+            "topology candidates; no independent labels or reaction feasibility",
+        )
+        self.assertEqual(body["boundary"], "labelled graph synthons, not reagents")
+
+    def test_topology_ordinary_ether_has_no_sites(self):
+        status, _, body = self.get("/api/topology?smiles=COc1ccccc1")
+        self.assertEqual(status, 200)
+        self.assertEqual(body["status"], "checked")
+        self.assertEqual(body["sites"], [])
+
+    def test_topology_invalid_smiles_is_400(self):
+        status, _, body = self.get("/api/topology?smiles=INVALID")
+        self.assertEqual(status, 400)
+        self.assertEqual(body["error"], "invalid_request")
+
+    def test_molecule_topology_highlight_returns_svg(self):
+        status, headers, svg = self.get_raw(
+            "/api/molecule?smiles=Oc1ccc(OC2OC(CO)C(O)C(O)C2O)cc1&topology=1"
+        )
+        self.assertEqual(status, 200)
+        self.assertTrue(headers.get("Content-Type", "").startswith("image/svg+xml"))
+        self.assertIn(b"<svg", svg)
+
     def test_teaching_returns_classifications_with_evidence_boundary(self):
         status, headers, body = self.get("/api/teaching")
         self.assertEqual(status, 200)

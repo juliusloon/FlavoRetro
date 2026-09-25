@@ -8,6 +8,8 @@ const $ = id => document.getElementById(id);
 let lastResult = null, offset = 0;
 let teachingCache = null;    // /api/teaching 惰性缓存（Promise），失败时 resolves 为 null
 let literatureCache = null;  // /api/literature-teaching 惰性缓存（Promise）
+const topologyCache = new Map();  // SMILES → /api/topology 惰性缓存（Promise），失败时 resolves 为 null
+let topologyRequested = '';       // 侧栏拓扑区块的最近一次请求输入，用于丢弃过期渲染
 
 async function api(path, options) {
     const response = await fetch(path, options);
@@ -75,6 +77,24 @@ const CLAIM_POLICY_ZH = {
     machine_extraction_not_primary_evidence: '机器抽取 · 非一手证据',
     production_lesson_gate: '生产课程准入门槛'
 };
+// 拓扑位点家族标签（值原样保留 family 串，仅附中文释义；topology.py 候选，非反应可行性）
+const TOPOLOGY_FAMILY_ZH = {
+    aryl_O_candidate: '芳基 O-糖苷键候选',
+    sugar_sugar_O_candidate: '糖-糖 O 连接候选',
+    aryl_C_candidate: '芳基 C-糖苷键候选',
+    other_O_candidate: '其他 O 连接候选',
+    N_candidate: 'N 连接候选',
+    phosphate_donor_control: '磷酸供体对照'
+};
+// 家族 → 文献卡片关键词（工程关联匹配，非化学验证；命中 title/key_step 等文本）
+const TOPOLOGY_LITERATURE_HINTS = {
+    aryl_C_candidate: /C-glycosyl/i,
+    aryl_O_candidate: /O[- ]glycosyl|glucoside|glycosylation|rhamnosid/i,
+    sugar_sugar_O_candidate: /branched|rhamnosyl|1,6|sugar.?chain/i,
+    other_O_candidate: /glycosyl/i,
+    N_candidate: /glycosyl/i,
+    phosphate_donor_control: /glycosyl/i
+};
 
 // ---------- tab 切换 ----------
 document.querySelectorAll('[data-tab]').forEach(button => button.onclick = () => {
@@ -86,7 +106,11 @@ document.querySelectorAll('[data-tab]').forEach(button => button.onclick = () =>
 });
 
 // ---------- 搜索表单 ----------
-$('preview').onclick = () => { $('molecule').src = '/api/molecule?smiles=' + encodeURIComponent($('smiles').value); };
+$('preview').onclick = () => {
+    const smiles = $('smiles').value;
+    $('molecule').src = '/api/molecule?smiles=' + encodeURIComponent(smiles);
+    renderTopologyPanel(smiles);
+};
 $('preset').onchange = () => { if ($('preset').value) { $('smiles').value = $('preset').value; $('preview').click(); } };
 
 // 教学解释模式开关：默认开，状态存 localStorage
@@ -100,6 +124,102 @@ $('teaching').onchange = () => {
 function fetchTeaching() {
     if (!teachingCache) teachingCache = api('/api/teaching').catch(() => null);
     return teachingCache;
+}
+
+function fetchLiterature() {
+    if (!literatureCache) literatureCache = api('/api/literature-teaching').catch(error => ({ error: error.message }));
+    return literatureCache;
+}
+
+function fetchTopology(smiles) {
+    if (!topologyCache.has(smiles))
+        topologyCache.set(smiles, api('/api/topology?smiles=' + encodeURIComponent(smiles)).catch(() => null));
+    return topologyCache.get(smiles);
+}
+
+// ---------- 糖苷连接拓扑标注（topology.py 候选呈现，不改搜索语义） ----------
+// 每处标注同屏携带边界文案：带标记的图合成子不是试剂，不构成独立标签或反应可行性。
+function topologyBlock(data) {
+    const block = div('topology-block');
+    block.append(text('h4', '糖苷连接拓扑（结构候选标注 · 非反应可行性结论）'));
+    const box = div('chips');
+    for (const site of data.sites || []) {
+        const zh = TOPOLOGY_FAMILY_ZH[site.family] || site.family;
+        box.append(text('span', `${zh}（${site.family}）· 糖环 ${site.sugar_ring_size} 元 · 键 #${site.bond_index}`, 'tag topology'));
+    }
+    block.append(box);
+    block.append(text('p', `边界：拓扑候选是带标记的图合成子，不是试剂（${data.boundary}）；${data.claim}。`, 'topology-boundary'));
+    return block;
+}
+
+// 按家族关键词在文献教学层做工程关联，返回可跳转的文献 chips
+async function literatureChips(families) {
+    const data = await fetchLiterature();
+    if (!data || data.error) return null;
+    const seen = new Set(), hits = [];
+    for (const family of families) {
+        const re = TOPOLOGY_LITERATURE_HINTS[family];
+        if (!re) continue;
+        for (const paper of data.paper_cards || []) {
+            const hay = [paper.title, paper.key_step].filter(Boolean).join(' ');
+            if (re.test(hay) && !seen.has(paper.paper_id)) { seen.add(paper.paper_id); hits.push(paper); }
+        }
+        for (const lesson of data.reaction_lessons || []) {
+            const hay = [lesson.title_zh, lesson.title_en, lesson.principle_zh].filter(Boolean).join(' ');
+            if (re.test(hay) && !seen.has(lesson.reaction_id)) { seen.add(lesson.reaction_id); hits.push(lesson); }
+        }
+    }
+    if (!hits.length) return null;
+    const box = div('chips topology-literature');
+    box.append(text('span', '文献关联（工程关键词匹配，非化学验证）：', 'topology-lit-label'));
+    for (const hit of hits.slice(0, 4)) {
+        const id = hit.paper_id || hit.reaction_id;
+        const link = text('button', id, 'chip link');
+        link.type = 'button';
+        link.onclick = () => {
+            document.querySelector('[data-tab=literature]').click();
+            const anchor = document.getElementById('lit-' + id);
+            if (anchor) anchor.scrollIntoView({ block: 'center' });
+        };
+        box.append(link);
+    }
+    if (hits.length > 4) box.append(text('span', `等 ${hits.length} 条`, 'meta'));
+    return box;
+}
+
+// 侧栏目标分子拓扑区块；检出位点时把结构图切换为候选键高亮版
+async function renderTopologyPanel(smiles) {
+    topologyRequested = smiles;
+    const panel = $('topology');
+    panel.replaceChildren();
+    const data = await fetchTopology(smiles);
+    if (topologyRequested !== smiles) return; // 输入已变更，丢弃过期渲染
+    if (!data) { panel.replaceChildren(text('p', '拓扑审计暂不可用（/api/topology 未就绪）。', 'note')); return; }
+    if (data.status === 'parse_failure') { panel.replaceChildren(text('p', '拓扑审计：SMILES 解析失败（保留为失败记录，不静默丢弃）。', 'note')); return; }
+    if (!data.sites || !data.sites.length) { panel.replaceChildren(text('p', '拓扑审计：未检出糖苷连接候选（status: checked）。', 'note')); return; }
+    const block = topologyBlock(data);
+    panel.replaceChildren(block);
+    const lit = await literatureChips([...new Set(data.sites.map(s => s.family))]);
+    if (topologyRequested !== smiles) return;
+    if (lit) block.append(lit);
+    $('molecule').src = '/api/molecule?smiles=' + encodeURIComponent(smiles) + '&topology=1';
+}
+
+// 末端原料卡拓扑标注：异步追加；卡片已被新渲染丢弃时不再写入
+async function attachLeafTopology(card, smiles) {
+    const data = await fetchTopology(smiles);
+    if (!data || !card.isConnected || data.status !== 'checked') return;
+    if (!data.sites || !data.sites.length) {
+        card.append(text('p', '拓扑审计：未检出糖苷连接候选。', 'topology-leaf-none'));
+        return;
+    }
+    const block = topologyBlock(data);
+    const lit = await literatureChips([...new Set(data.sites.map(s => s.family))]);
+    if (!card.isConnected) return;
+    if (lit) block.append(lit);
+    card.append(block);
+    const img = card.querySelector('img');
+    if (img) img.src = '/api/molecule?smiles=' + encodeURIComponent(smiles) + '&topology=1';
 }
 
 // ---------- 路线解读 ----------
@@ -160,6 +280,7 @@ function leafCard(leaf) {
     let checkText = STRUCTURE_STATUS_ZH[check.status] || check.status || '未检查';
     if (check.unspecified_stereo) checkText += ` · 未指定立体中心 ${check.unspecified_stereo} 个`;
     card.append(kv('结构检查', checkText));
+    attachLeafTopology(card, leaf.smiles);
     return card;
 }
 
@@ -399,6 +520,7 @@ function nestedTable(obj) {
 
 function paperCard(paper) {
     const card = div('paper-card');
+    if (paper.paper_id) card.id = 'lit-' + paper.paper_id;
     const title = paper.source_url ? document.createElement('a') : document.createElement('span');
     title.textContent = paper.title || paper.paper_id;
     if (paper.source_url) { title.href = paper.source_url; title.target = '_blank'; title.rel = 'noopener'; }
@@ -425,6 +547,7 @@ function paperCard(paper) {
 
 function lessonCard(lesson) {
     const card = div('lesson-card');
+    if (lesson.reaction_id) card.id = 'lit-' + lesson.reaction_id;
     card.append(text('h3', `${lesson.title_zh || lesson.title_en || lesson.reaction_id}（${lesson.reaction_id}）`));
     card.append(text('p', [lesson.paper_id, lesson.doi, lesson.record_status].filter(Boolean).join(' · '), 'meta'));
     const rows = [
@@ -442,8 +565,7 @@ function lessonCard(lesson) {
 }
 
 async function loadLiterature() {
-    if (!literatureCache) literatureCache = api('/api/literature-teaching').catch(error => ({ error: error.message }));
-    const data = await literatureCache;
+    const data = await fetchLiterature();
     const banner = $('literature-banner'), list = $('literature-list'), lessons = $('lesson-list'), summary = $('literature-summary');
     if (data.error) {
         banner.replaceChildren(text('p', '文献教学数据暂不可用：' + data.error));

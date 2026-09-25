@@ -29,6 +29,23 @@ try:
         page.on("pageerror", lambda e: errors.append(str(e)))
         page.goto("http://127.0.0.1:8876")
         page.wait_for_selector("#preset option:nth-child(2)", state="attached")
+        # 拓扑标注验收（TASK-011）：糖苷 SMILES 触发家族标注、边界文案与键高亮
+        page.locator("#smiles").fill("Oc1ccc(OC2OC(CO)C(O)C(O)C2O)cc1")
+        page.locator("#preview").click()
+        page.wait_for_selector("#topology .topology-block")
+        topology_text = page.locator("#topology").inner_text()
+        assert "aryl_O_candidate" in topology_text
+        assert "labelled graph synthons, not reagents" in topology_text
+        assert (
+            "topology candidates; no independent labels or reaction feasibility"
+            in topology_text
+        )
+        page.wait_for_function(
+            "document.getElementById('molecule').src.includes('topology=1')"
+        )
+        page.wait_for_selector("#topology .topology-literature button")
+        topology_lit_links = page.locator("#topology .topology-literature button").count()
+        assert topology_lit_links > 0
         page.locator("#smiles").fill("CCOc1ccccc1")
         page.locator("#mode").select_option("balanced")
         page.locator("#search-form details").click()
@@ -82,6 +99,8 @@ try:
                     "two_phases": True,
                     "resource_detail": True,
                     "literature_cards": literature_cards,
+                    "topology_block": True,
+                    "topology_lit_links": topology_lit_links,
                     "invalid_http_status": invalid.status,
                     "scope": "local browser engineering acceptance, not human usability",
                 }

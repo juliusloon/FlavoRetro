@@ -9,8 +9,20 @@ from .resources import ROOT, dumps, sha
 from .policies import records
 from .contracts import SearchRequest
 from .service import search
+from .topology import audit as topology_audit
 
 GATE = threading.BoundedSemaphore(1)
+
+# Topology presentation boundary: candidates stay labelled graph synthons.
+TOPOLOGY_BOUNDARY = "labelled graph synthons, not reagents"
+TOPOLOGY_BOND_COLORS = {
+    "aryl_O_candidate": (0.10, 0.45, 0.90),
+    "sugar_sugar_O_candidate": (0.10, 0.60, 0.30),
+    "aryl_C_candidate": (0.55, 0.20, 0.75),
+    "other_O_candidate": (0.90, 0.55, 0.10),
+    "N_candidate": (0.85, 0.20, 0.20),
+    "phosphate_donor_control": (0.50, 0.50, 0.50),
+}
 
 
 class Handler(BaseHTTPRequestHandler):
@@ -104,12 +116,29 @@ class Handler(BaseHTTPRequestHandler):
                         (ROOT / "configs/literature_teaching_layer.json").read_text()
                     ),
                 )
+            if url.path == "/api/topology":
+                smiles = SearchRequest(smiles=q.get("smiles", [""])[0]).smiles
+                result = topology_audit(smiles)
+                result["canonical_smiles"] = smiles
+                result["boundary"] = TOPOLOGY_BOUNDARY
+                return self.json(200, result)
             if url.path == "/api/molecule":
-                mol = Chem.MolFromSmiles(
-                    SearchRequest(smiles=q.get("smiles", [""])[0]).smiles
-                )
+                smiles = SearchRequest(smiles=q.get("smiles", [""])[0]).smiles
+                mol = Chem.MolFromSmiles(smiles)
                 drawer = rdMolDraw2D.MolDraw2DSVG(340, 210)
-                drawer.DrawMolecule(mol)
+                if q.get("topology", [""])[0] == "1":
+                    sites = topology_audit(smiles)["sites"]
+                    bonds = [s["bond_index"] for s in sites]
+                    colors = {
+                        s["bond_index"]: TOPOLOGY_BOND_COLORS.get(
+                            s["family"], (0.5, 0.5, 0.5)
+                        )
+                        for s in sites
+                    }
+                    # Positional highlight args: atoms, bonds, atom colors, bond colors.
+                    drawer.DrawMolecule(mol, [], bonds, {}, colors)
+                else:
+                    drawer.DrawMolecule(mol)
                 drawer.FinishDrawing()
                 return self.send(200, drawer.GetDrawingText(), "image/svg+xml")
             if url.path.startswith("/api/runs/"):

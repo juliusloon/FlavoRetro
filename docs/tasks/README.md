@@ -20,6 +20,8 @@
 | [TASK-007-P1-source-relocation.md](TASK-007-P1-source-relocation.md) | TASK-007 范围内的笔记来源路径修复补充合同；Partial，指针切换被所有者搁置。 |
 | [TASK-008-human-github-handover.md](TASK-008-human-github-handover.md) | 人接管整理与 GitHub/论文导向合同。 |
 | [TASK-009-docs-detailing.md](TASK-009-docs-detailing.md) | 治理文档详细化合同。 |
+| [TASK-010-web-completion.md](TASK-010-web-completion.md) | Web 工作台完整化、布局修复与项目独立收口合同。 |
+| [TASK-011-topology-web.md](TASK-011-topology-web.md) | 糖苷连接拓扑审计接入 Web 界面（有效性判断可视化）合同；所有者人工批准（代行授权已于 2026-09-25 收回）。 |
 
 ## 编号与命名
 

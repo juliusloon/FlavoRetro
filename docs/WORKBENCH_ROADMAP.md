@@ -6,16 +6,16 @@
 
 建立逆合成工作台：在 AiZynthFinder 基础上优化搜索，加入基于黄酮苷针对性的有效性判断，最后加入文献教学模式。工作台独立于旧 `retro_synthesis` 项目存在。
 
-## 现状（TASK-010 完成后）
+## 现状（TASK-011 完成后）
 
-- **已就绪**：实时 MCTS（优化树，每次新建不读缓存）；四页工作台（路线探索 / 资源与证据 / 文献教学 / 项目状态）；路线解读（评分构成、closure 徽章、末端原料证据、逐步反应卡）；教学解释模式（27 个反应家族条目，default 回退）；文献教学层（15 文献卡 + 1 课程，claim 边界原样呈现）；3,059 条候选资源（0 production）。
-- **未就绪**：黄酮苷有效性判断只在结构诊断（topology.py，CLI/outputs）层存在，未进搜索、未进界面；教学条目与现行模板数值 classification 有映射缺口；无图形编辑器与可缩放路线树；证据晋级（候选→production）全部待人工。
+- **已就绪**：实时 MCTS（优化树，每次新建不读缓存）；四页工作台（路线探索 / 资源与证据 / 文献教学 / 项目状态）；路线解读（评分构成、closure 徽章、末端原料证据、逐步反应卡）；教学解释模式（27 个反应家族条目，default 回退）；文献教学层（15 文献卡 + 1 课程，claim 边界原样呈现）；糖苷连接拓扑审计进界面（/api/topology 实时审计、/api/molecule 候选键高亮、目标分子与末端原料家族候选标注、边界文案同屏、文献工程关联，TASK-011）；3,059 条候选资源（0 production）。
+- **未就绪**：黄酮苷有效性判断未进搜索（仅界面只读呈现，接入搜索属 P2）；教学条目与现行模板数值 classification 有映射缺口；无图形编辑器与可缩放路线树；证据晋级（候选→production）全部待人工。
 
 ## 阶段方向
 
-### P1 · 有效性判断可视化（低风险，建议优先）
+### P1 · 有效性判断可视化（已完成，TASK-011）
 
-把已有的糖苷连接拓扑审计（`flavoretro/topology.py`，`outputs/validation/topology-v1.json`，156 分子）接入界面：分子/路线叶子的糖苷位点家族标注（aryl_O / sugar_sugar_O / C-苷等候选标签），并与文献课程关联。**只呈现，不改搜索语义。** 验收要点：拓扑候选标注"labelled graph synthons, not reagents"的边界文案随标注同屏出现。
+~~把已有的糖苷连接拓扑审计接入界面~~：已于 2026-09-25 由 TASK-011 完成（只读呈现，未改搜索语义），验收要点"labelled graph synthons, not reagents 边界文案随标注同屏出现"已满足；事实见 [reports/REPORT-011-topology-web.md](reports/REPORT-011-topology-web.md)。
 
 ### P2 · 黄酮苷有效性判断接入搜索（高风险，需独立 TASK + 人工批准）
 
@@ -43,4 +43,4 @@ D3 可缩放路线树、JSME 结构编辑器、路线对照视图、PubChem 名�
 
 ## 阶段准入规则
 
-每个 P 阶段动工前：写 TASK 合同（范围/验收/停止条件）→ 批准（人工或记录授权的 agent_delegated）→ operate.py 全程记录 → REPORT + STATE 更新。P2、P5 必须人工批准，不接受 agent_delegated。
+每个 P 阶段动工前：写 TASK 合同（范围/验收/停止条件）→ 批准（人工或记录授权的 agent_delegated）→ operate.py 全程记录 → REPORT + STATE 更新。P2、P5 必须人工批准，不接受 agent_delegated。2026-09-25 起所有者收回 agent 代行批准权：所有 TASK 起草后须经所有者人工确认才可执行（自 TASK-011 起生效）。

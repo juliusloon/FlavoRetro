@@ -39,6 +39,7 @@
 | 人接管整理 | [TASK-008](tasks/TASK-008-human-github-handover.md) | [REPORT-008](reports/REPORT-008-human-github-handover.md) | Completed |
 | 文档详细化 | [TASK-009](tasks/TASK-009-docs-detailing.md) | [REPORT-009](reports/REPORT-009-docs-detailing.md) | Completed |
 | Web 完整化与独立收口 | [TASK-010](tasks/TASK-010-web-completion.md) | [REPORT-010](reports/REPORT-010-web-completion.md) | Completed |
+| 有效性判断可视化 | [TASK-011](tasks/TASK-011-topology-web.md) | [REPORT-011](reports/REPORT-011-topology-web.md) | Completed |
 
 \* TASK-006 文件名为 topology，内容同时覆盖历史目录完整性冻结核对。REPORT-005、REPORT-007、REPORT-007-P1 为 TASK-009 补立，事实来源为 `operations/events.jsonl` 与 `operations/command-*.log`（本机日志，不入 Git）。
 
