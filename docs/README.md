@@ -35,13 +35,16 @@
 | 工作台与比较 | [TASK-005](tasks/TASK-005-workbench-evaluation.md) | [REPORT-005](reports/REPORT-005-workbench-evaluation.md) | Completed |
 | 结构诊断与历史完整性* | [TASK-006](tasks/TASK-006-topology.md) | [REPORT-006](reports/REPORT-006-topology.md) | Completed |
 | 最终验收 | [TASK-007](tasks/TASK-007-handoff.md) | [REPORT-007](reports/REPORT-007-handoff.md) | Completed |
-| 来源定位补充 | [TASK-007-P1](tasks/TASK-007-P1-source-relocation.md) | [REPORT-007-P1](reports/REPORT-007-P1-source-relocation.md) | Partial（指针切换被所有者搁置） |
+| 来源定位补充 | [TASK-007-P1](tasks/TASK-007-P1-source-relocation.md) | [REPORT-007-P1](reports/REPORT-007-P1-source-relocation.md) | 历史 Partial；后由 TASK-012 获批恢复并以新 v3 收口 |
 | 人接管整理 | [TASK-008](tasks/TASK-008-human-github-handover.md) | [REPORT-008](reports/REPORT-008-human-github-handover.md) | Completed |
 | 文档详细化 | [TASK-009](tasks/TASK-009-docs-detailing.md) | [REPORT-009](reports/REPORT-009-docs-detailing.md) | Completed |
 | Web 完整化与独立收口 | [TASK-010](tasks/TASK-010-web-completion.md) | [REPORT-010](reports/REPORT-010-web-completion.md) | Completed |
 | 有效性判断可视化 | [TASK-011](tasks/TASK-011-topology-web.md) | [REPORT-011](reports/REPORT-011-topology-web.md) | Completed |
+| 工程地基统一验收 | [TASK-012](tasks/TASK-012-foundation-readiness.md) | [REPORT-012](reports/REPORT-012-foundation-readiness.md) | G1—G4 通过；G5 同步/CI 验收中，最终以 STATE/REPORT 为准 |
 
 \* TASK-006 文件名为 topology，内容同时覆盖历史目录完整性冻结核对。REPORT-005、REPORT-007、REPORT-007-P1 为 TASK-009 补立，事实来源为 `operations/events.jsonl` 与 `operations/command-*.log`（本机日志，不入 Git）。
+
+[工程能力与界面覆盖](FOUNDATION_CAPABILITIES.md) 给出每项功能的入口、验证及证据边界；[独立环境](../environment/README.md) 给出安装与本地资产恢复。
 
 ## 长期决定
 
@@ -50,6 +53,8 @@
 - [ADR-003](adr/ADR-003-repo-orientation.md)：一次性脚本归档、文档分层、GitHub 发布前清单
 - [ADR-004](adr/ADR-004-teaching-layer-and-web-architecture.md)：教学与文献层迁入 configs/、Web 四页信息架构
 
+- [ADR-005](adr/ADR-005-foundation-workspace-and-index.md)：可写工作区、不可变 JSON/SQLite 索引、受控包资源与独立安装
+
 ## 活动脚本
 
 | 脚本 | 用途 |
@@ -57,5 +62,7 @@
 | [scripts/operate.py](../scripts/operate.py) | 追加式操作日志；所有写入与命令经此记录（`run` 记命令，`--write/--from` 记文件写入前后哈希） |
 | [scripts/smoke.py](../scripts/smoke.py) | 实时搜索冒烟（3 次新 MCTS，写 outputs/validation/live-smoke.json） |
 | [scripts/browser_check.py](../scripts/browser_check.py) | 浏览器工程验收（需 Playwright Chromium） |
+
+[package_check.py](../scripts/package_check.py) 验证仓库外安装和实时搜索；[artifact_check.py](../scripts/artifact_check.py) 核包资源与本地载荷排除。
 
 一次性脚本已归档至 [operations/archive/](../operations/archive/README.md)，不再是活动工具。

@@ -14,3 +14,5 @@
 .venv/bin/python -B operations/archive/history_guard-task-001.py before   # 建立基线（已执行过，勿重复）
 .venv/bin/python -B operations/archive/history_guard-task-001.py          # 对比基线，退出码非 0 表示漂移
 ```
+
+TASK-012 新增 `database-index-task-012-v1.py`：初次 SQLite 构建器原字节快照（SHA-256=feb30942780617c88a030f472581c34547d56586c77e67d7bc29f185e68587ee），匹配活动 v3/index.json。只保存构建 provenance，不作为活动库存查询模块；当前 inventory 读取已优化，schema/build 语义不变。

@@ -6,7 +6,8 @@ from pathlib import Path
 import numpy as np
 from aizynthfinder.aizynthfinder import AiZynthFinder
 from .contracts import SearchRequest
-from .resources import ROOT, sha, dumps, structure
+from .resources import sha, dumps, structure
+from .workspace import root, active_data, config_path, config, PACKAGE
 from .policies import hazard_reason
 
 
@@ -44,9 +45,11 @@ def annotate(node, candidate):
 
 
 def execute(payload):
+    ROOT = root()
+    resource_folder, resource_manifest, resource_pointer = active_data()
     request = SearchRequest.model_validate(payload["request"])
     run_id = payload["run_id"]
-    config = json.loads((ROOT / "configs/search.json").read_text())
+    settings = config("search.json")
     source_manifest = json.loads((ROOT / "metadata/sources.json").read_text())
     assets = {
         x["source_path"]: x
@@ -103,9 +106,9 @@ def execute(payload):
                 "algorithm_config": {
                     "max_branching": budget["branching"],
                     "max_nodes": budget["nodes"],
-                    "policy_weights": config["policy_weights"],
-                    "puct_c_init": config["puct_c_init"],
-                    "puct_c_base": config["puct_c_base"],
+                    "policy_weights": settings["policy_weights"],
+                    "puct_c_init": settings["puct_c_init"],
+                    "puct_c_base": settings["puct_c_base"],
                     "prune_cycles_in_search": True,
                 },
                 "iteration_limit": budget["iterations"],
@@ -115,7 +118,7 @@ def execute(payload):
             },
             "post_processing": {
                 "min_routes": 1,
-                "max_routes": config["candidate_pool"],
+                "max_routes": settings["candidate_pool"],
                 "all_routes": False,
             },
         }
@@ -144,7 +147,7 @@ def execute(payload):
             )
         )
         extracted = [
-            node.to_reaction_tree() for node in frontier[: config["candidate_pool"]]
+            node.to_reaction_tree() for node in frontier[: settings["candidate_pool"]]
         ]
         phases.append(
             dict(
@@ -208,11 +211,13 @@ def execute(payload):
         routes=chosen[: request.top_k],
         assets={k: v["sha256"] for k, v in assets.items()},
         source_manifest_sha256=sha(ROOT / "metadata/sources.json"),
-        resources_sha256=sha(ROOT / "data/derived/v1/records.json"),
-        config_sha256=sha(ROOT / "configs/search.json"),
+        resources_sha256=resource_manifest["records_sha256"],
+        config_sha256=sha(config_path("search.json")),
+        resource_version=resource_pointer["version"],
+        resource_manifest_sha256=resource_pointer["manifest_sha256"],
         code={
-            str(p.relative_to(ROOT)): sha(p)
-            for p in sorted((ROOT / "flavoretro").glob("*.py"))
+            str(p.relative_to(PACKAGE.parent)): sha(p)
+            for p in sorted(PACKAGE.glob("*.py"))
         },
         release_ready=False,
         limitations=[

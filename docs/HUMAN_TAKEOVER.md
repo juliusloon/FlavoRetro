@@ -20,13 +20,13 @@
 ## 常用命令（在仓库根目录）
 
 ```bash
-.venv/bin/python -B -m unittest discover -s tests -v      # 全部测试（含 live，需本地模型）
-.venv/bin/python -B scripts/smoke.py                      # 实时冒烟
-.venv/bin/python -B -m flavoretro.web --port 8766         # 浏览器工作台
-.venv/bin/python -B -m flavoretro.cli --smiles 'COc1ccc(O)cc1' --mode quick
-.venv/bin/python -B -m flavoretro.evaluation --development  # 12 cell 开发对照（新跑）
-.venv/bin/python -B -m flavoretro.evaluation                # 正式评测 preflight
-.venv/bin/python -B -m flavoretro.topology outputs/validation/topology-new.json  # 结构诊断
+.venv-foundation/bin/python -B -m unittest discover -s tests -v      # 全部测试（含 live，需本地模型）
+.venv-foundation/bin/python -B scripts/smoke.py                      # 实时冒烟
+.venv-foundation/bin/python -B -m flavoretro.web --port 8766         # 浏览器工作台
+.venv-foundation/bin/python -B -m flavoretro.cli --smiles 'COc1ccc(O)cc1' --mode quick
+.venv-foundation/bin/python -B -m flavoretro.evaluation --development  # 12 cell 开发对照（新跑）
+.venv-foundation/bin/python -B -m flavoretro.evaluation                # 正式评测 preflight
+.venv-foundation/bin/python -B -m flavoretro.topology outputs/validation/topology-new.json  # 结构诊断
 ```
 
 `data/` 与 `outputs/` 不入 Git；新机器按 [environment/README.md](../environment/README.md) 建环境、再按 `metadata/sources.json` 恢复本地资产。
@@ -43,7 +43,7 @@
 ## 如何验证完整性
 
 - **历史目录只读**：`/home/ljx/retro_synthesis` 的基线在 `operations/history-before.json`，核对脚本已归档为 `operations/archive/history_guard-task-001.py`（用法见其文件头，需 `before`/`after` 两次快照对比）。
-- **派生数据防漂移**：`flavoretro.policies.records()` 每次读取都校验 `data/derived/v1/manifest.json` 的 SHA-256，漂移即拒绝。
+- **派生数据防漂移**：`flavoretro.policies.records()` 每次读取都校验 活动指针与资源 manifest/records/source manifest 及 SQLite index 的 SHA-256，漂移即拒绝。
 - **单次运行防篡改**：每次搜索的 `outputs/runs/<id>/manifest.json` 记录结果文件哈希，`/api/runs/<id>` 读取时复核。
 - **配置入仓核对**：`configs/teaching_guidance.json`、`configs/literature_teaching_layer.json` 的 SHA-256 与旧项目源文件一致（登记见 REPORT-010 与 events.jsonl）。
 - **Git**：`git log` 查看分层提交；仓库永不包含 `data/`、`outputs/` 载荷。
@@ -57,9 +57,9 @@
 
 ## 已知坑
 
-- `.venv` 依赖 retro Conda 环境的 system-site-packages，**不是**独立环境；换机器必须按 environment/README 重建。
+- 原 `.venv` 是历史借用环境；当前 `.venv-foundation` 已独立。换机器按 environment/README 与新 lock 重建。
 - `python` 必须是 3.10（pyproject 限定 `>=3.10,<3.11`）。
 - 不要在历史目录 `/home/ljx/retro_synthesis` 运行任何会写缓存的代码。
 - 经挂载手段（如 /Volumes/cano）查看仓库时 `git status` 可能出现大量 mode 位 modified，这是挂载产物而非仓库事实；以 cano 服务器上的 `git status` 为准。
 - `operations/events.jsonl` 有一条 2026-09-22 的误记行（task 字段为 "--help"），追加式日志不删改（见 REPORT-010）。
-- 教学条目的命名家族键与现行模板数值 classification 未对齐，教学块会回退通用条目；补齐见 WORKBENCH_ROADMAP P3。
+- 当前 47,836 条模型模板全部 classification=0.0 Unrecognized，不能凭补映射获得专属家族；界面明确 Unknown。深化教学须先获得可靠标签，见 WORKBENCH_ROADMAP P3。

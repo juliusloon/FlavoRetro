@@ -4,10 +4,12 @@ import json, os, subprocess, sys, time, uuid
 from datetime import datetime, timezone
 from pathlib import Path
 from .contracts import SearchRequest
-from .resources import ROOT, dumps, sha
+from .resources import dumps, sha
+from .workspace import root as workspace_root, PACKAGE
 
 
 def search(request: SearchRequest, run_root=None):
+    ROOT = workspace_root()
     run_id = (
         datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%S") + "-" + uuid.uuid4().hex
     )
@@ -22,7 +24,8 @@ def search(request: SearchRequest, run_root=None):
     env = {
         **os.environ,
         "PYTHONHASHSEED": str(request.seed),
-        "PYTHONPATH": str(ROOT),
+        "PYTHONPATH": str(PACKAGE.parent),
+        "FLAVORETRO_WORKSPACE": str(ROOT),
         "PYTHONDONTWRITEBYTECODE": "1",
         "OMP_NUM_THREADS": "1",
         "OPENBLAS_NUM_THREADS": "1",

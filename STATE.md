@@ -1,15 +1,19 @@
 # 当前状态
 
-TASK-001—009 已完成工程验收与治理文档详细化；资源 3,059 条，0 production（候选，无独立审核）。
+TASK-001—011 的工程交付与历史报告保留。TASK-012 已由所有者于 2026-09-26 明确批准全部 G1—G5（“同意，开始执行”，human_direct 工程授权）；当前 G1—G4 通过，G5 提交/私有同步与远端 CI 验收中，尚未宣告五项全部完成。
 
-TASK-010 已完成 Web 工作台完整化：四页架构（路线探索 / 资源与证据 / 文献教学 / 项目状态），顶栏固定，探索页双栏贴边独立滚动；路线解读（评分构成、closure 徽章、末端原料证据、逐步反应卡）、教学解释模式（27 个反应家族条目，/api/teaching）、文献教学层（15 文献卡 + 1 课程，/api/literature-teaching，claim 边界原样呈现）已上线；教学配置文件已入仓 configs/（与旧项目源 SHA-256 一致）；28 项单元测试与浏览器验收在 cano 通过。长期决定见 ADR-004。
+活动资源：metadata/active.json → data/derived/v3。v3/replay-v3 的 records/manifest 逐字节一致，3,059 条记录与 v2 完全相同；v1/replay-v1/v2 原样保留。SQLite 为 v3 的只读派生索引，保留 123 条来源和全部记录；定位状态为 249 条 note_located_token_found、259 条 note_located_token_unmatched。文件定位/token 命中不是内容审核，0 production、3 条名称冲突仍保留。
 
-TASK-011 已完成有效性判断可视化（WORKBENCH_ROADMAP P1）：糖苷连接拓扑审计接入界面——新增 /api/topology 实时审计端点与 /api/molecule 可选候选键着色高亮；探索页目标分子侧栏与末端原料卡显示糖苷位点家族候选标注（aryl_O / sugar_sugar_O / aryl_C 等原样标签附中文释义），每处标注同屏携带 "labelled graph synthons, not reagents" 边界文案与 claim 原文；标注带文献教学层的工程关键词关联链接（可跳转定位）。只呈现，搜索语义未变；32 项单元测试与浏览器验收在 cano 通过。本任务起恢复人工批准流（所有者 2026-09-25 收回 agent 代行批准权，TASK-011 为人工批准）。
+运行与安装：.venv-foundation 使用独立托管 CPython 3.10.20，system-site-packages=false；依赖锁 environment/requirements-linux-py310.lock 不含本机 file:// 引用。wheel/sdist 包含默认配置和前端，仓库外安装已验证 CLI/Web/拓扑/缺资产诊断和 v3 实时 MCTS。原 .venv 与历史环境快照保留，日常使用新环境。仅验证 Linux x86_64/Python 3.10。
 
-活动数据指针：data/derived/v1（v2 重放保留未切换，TASK-007-P1 补充被所有者搁置）。一次性脚本已归档 operations/archive/（见 ADR-003）。
+算法：实时 optimized/native MCTS 共享服务，每次新进程、新 run ID；修复同次扩展重复状态与过滤后原多产物 index 错配；PUCT/去重/替代动作/转置/节点预算合同通过。native 不共享 optimized 节点上限，不能声称等价预算或优越性。糖苷拓扑仍只作独立诊断与展示，未进扩展/评分。
 
-工作区提示：STATE.md 早前"27 个空白格式化文件未提交"的备注已过期——那些改动已随 f272c36 提交；服务器端 git 工作区无遗留噪音（挂载视图下的 mode 位变化是挂载手段产物，非仓库事实）。operations/events.jsonl 有一条 2026-09-22 的误记行（task 字段为 "--help"），追加式日志不删改，已在 REPORT-010 标注。
+前端：四页已有能力入口覆盖完整，包括全部搜索参数、评分/证据/版本/清单导出、9 类资源及 QC/收率/来源筛选、历史运行显式读取、27 个教学条目、15 文献卡及课程、12-cell 开发对照启动/进度/历史/结果与只读 preflight。47,836 条模型模板全为 0.0 Unrecognized，界面明确无法确定家族；文献联查仍为工程关键词匹配。未完成外进程 job 记录不冒充当前运行，不自动恢复。
 
-已知缺口：教学条目的命名家族键与现行模板数值 classification 未对齐（前端 default 回退，见 REPORT-010）；黄酮苷有效性判断已进界面（只读呈现），接入搜索属 P2，未动工；文献关联为工程关键词匹配，对 O-糖苷家族选择性弱（REPORT-011）。
+验收：51 项本地全量测试通过；无资产 CI 模拟 45 项通过、6 项明确跳过。Chromium 在 1440×1000 与 390×844 核四页、参数、历史、导出、12-cell（0 失败）、429/400 与 UI 失败 fixture；JS 错误 0、四页移动无横向溢出。证据见 REPORT-012、outputs/validation/task012-g1…g4.json、task012-portable-v2.json、browser-714dac2a、package-66d62d36。CI 跳过、图回放、工程验收均不构成独立化学证据。
 
-下一步由人决定：工作台方向读 docs/WORKBENCH_ROADMAP.md（P2—P5 阶段与准入规则；P1 已于 TASK-011 完成）；论文工作读 docs/PAPER_ROADMAP.md；接手维护读 docs/HUMAN_TAKEOVER.md。正式盲测与任何证据晋级需人工批准，不得由 agent 代行；TASK 起草后须经所有者人工确认才可执行（2026-09-25 起）。
+科学准入：research_candidate，primary source/current vendor unresolved、independent labels unavailable、formal benchmark not_executed，formal_run_ready/release_ready=false。教学标签、独立审核、正式盲测、P2 糖苷感知搜索、P4 交互及公开发布仍需新 TASK 与所有者批准，不自动开始。
+
+工作区与 Git：现有私有 origin 为 juliusloon/FlavoRetro；保留既有 repo-local Git 身份，不代替公开发表检查。operations/.staging-task011/ 为原有未跟踪暂存，未清理、不提交。最终核查会追加 operations/events.jsonl，尾部状态如实记录，不声称工作区绝对干净。旧误记行保留。已准入历史 123 个源文件只读哈希核查一致，不把它写成新的全旧目录完整性审计。
+
+下一步：完成 TASK-012 的 G5 同步与对应提交 CI 核查，报告五项最终结论；之后仅等待所有者决定新任务。

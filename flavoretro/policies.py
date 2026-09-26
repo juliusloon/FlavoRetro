@@ -5,23 +5,21 @@ from rdkit import Chem
 from aizynthfinder.context.stock.queries import StockQueryMixin
 from aizynthfinder.context.policy import FilterStrategy
 from aizynthfinder.utils.exceptions import RejectionException
-from .resources import ROOT, sha
+from .resources import sha
+from .workspace import active_data
 
 
 def records():
-    path = ROOT / "data/derived/v1/records.json"
-    manifest = json.loads((path.parent / "manifest.json").read_text())
-    if sha(path) != manifest["records_sha256"]:
-        raise ValueError("derived record hash drift")
-    return json.loads(path.read_text())
+    from .database import records as indexed_records
+    return indexed_records()
 
 
 class CandidateStock(StockQueryMixin):
     def __init__(self, enabled=False, **kwargs):
         self.keys = {
             r["structure"]["inchikey"]
-            for r in records()
-            if enabled and r["kind"] == "stock" and r["runtime_candidate_allowed"]
+            for r in (records() if enabled else [])
+            if r["kind"] == "stock" and r["runtime_candidate_allowed"]
         }
 
     def __contains__(self, mol):

@@ -1,0 +1,53 @@
+{
+  "version": 1,
+  "status": "provisional_not_optimized",
+  "envelope": {
+    "depth": 10,
+    "branching": 24,
+    "nodes": 25000
+  },
+  "profiles": {
+    "quick": [
+      {
+        "depth": 4,
+        "branching": 8,
+        "nodes": 1500,
+        "iterations": 50,
+        "seconds": 45
+      }
+    ],
+    "balanced": [
+      {
+        "depth": 6,
+        "branching": 12,
+        "nodes": 5000,
+        "iterations": 100,
+        "seconds": 120
+      },
+      {
+        "depth": 8,
+        "branching": 16,
+        "nodes": 12000,
+        "iterations": 800,
+        "seconds": 240
+      }
+    ],
+    "strict": [
+      {
+        "depth": 9,
+        "branching": 20,
+        "nodes": 20000,
+        "iterations": 1800,
+        "seconds": 360
+      }
+    ]
+  },
+  "candidate_pool": 25,
+  "display_k": 5,
+  "policy_weights": {
+    "uspto": 1.0,
+    "ringbreaker": 0.65
+  },
+  "puct_c_init": 1.4,
+  "puct_c_base": 19652.0
+}

@@ -2,7 +2,7 @@ import json
 from typing import Literal
 from pydantic import BaseModel, ConfigDict, Field, field_validator
 from rdkit import Chem
-from .resources import ROOT
+from .workspace import config
 
 
 class SearchRequest(BaseModel):
@@ -35,7 +35,7 @@ class SearchRequest(BaseModel):
         return Chem.MolToSmiles(mol, isomericSmiles=True)
 
     def phases(self):
-        settings = json.loads((ROOT / "configs/search.json").read_text())
+        settings = config("search.json")
         phases = settings["profiles"][self.mode]
         for phase in phases:
             for field in ("seconds", "iterations", "depth", "branching", "nodes"):

@@ -6,3 +6,8 @@ __pycache__/
 *.egg-info/
 operations/*.log
 operations/*.json
+
+.venv-foundation/
+build/
+dist/
+operations/.staging-task012/

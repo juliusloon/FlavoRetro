@@ -1,0 +1,410 @@
+{
+  "schema_version": "1.0",
+  "default_language": "zh-CN",
+  "claim_policy": {
+    "teaching_not_sop": true,
+    "machine_extraction_not_primary_evidence": true,
+    "production_lesson_gate": "human_structure_reviewed"
+  },
+  "source_assets": {
+    "paper_registry": {
+      "path": "config/product/literature_registry.json",
+      "sha256": "f62310a3a7f9bcefe27b539f84c6d9f43e290b7e492d3c656abf2e60ef01e294"
+    },
+    "reaction_registry": {
+      "path": "templates/production/literature_reaction_candidates.json",
+      "sha256": "17388b0aaa5f1ab96169e0604d51c41593b3b5b63781eedce4144522683305b3"
+    }
+  },
+  "summary": {
+    "paper_count": 15,
+    "reaction_lesson_count": 1,
+    "production_ready_lesson_count": 0
+  },
+  "paper_cards": [
+    {
+      "paper_id": "P001",
+      "doi": "10.1016/j.tet.2004.01.001",
+      "title": "Total synthesis of apigenin 7,4'-di-O-beta-D-glucopyranoside, a component of blue flower pigment of Salvia patens, and seven chiral analogues",
+      "year": 2004,
+      "journal": "Tetrahedron",
+      "source_url": "https://doi.org/10.1016/j.tet.2004.01.001",
+      "evidence_scope": "publisher_full_text",
+      "claim_status": "legacy_registry_summary_pending_primary_source_revalidation",
+      "route_targets": [
+        "apigenin 7,4'-di-O-beta-D-glucopyranoside",
+        "apigenin 7-O-glucoside"
+      ],
+      "key_step": "Sequential 7-O and 4'-O glycosylation from naringenin, with DDQ oxidation between the two glycosylations.",
+      "reported_conditions": [
+        "Ag2CO3-promoted Koenigs-Knorr glycosylation",
+        "DDQ",
+        "BF3.Et2O",
+        "DTBMP",
+        "TMG"
+      ],
+      "hazard_flags": [
+        "heavy_metal_salt",
+        "strong_lewis_acid",
+        "oxidant"
+      ]
+    },
+    {
+      "paper_id": "P002",
+      "doi": "10.1016/j.carres.2009.08.014",
+      "title": "The efficient total synthesis of bis-glycosyl apigenin from naringenin: a greener way",
+      "year": 2009,
+      "journal": "Carbohydrate Research",
+      "source_url": "https://pubmed.ncbi.nlm.nih.gov/19729151/",
+      "evidence_scope": "pubmed_abstract",
+      "claim_status": "legacy_registry_summary_pending_primary_source_revalidation",
+      "route_targets": [
+        "7-O-beta-D-glucopyranosyl-4'-O-alpha-L-rhamnopyranosyl apigenin",
+        "7,4'-di-O-beta-D-glucopyranosyl apigenin"
+      ],
+      "key_step": "Two regioselective glycosylations in a four-step route from naringenin without selective protection steps.",
+      "reported_conditions": [],
+      "hazard_flags": [
+        "conditions_not_reported_in_abstract"
+      ]
+    },
+    {
+      "paper_id": "P003",
+      "doi": "10.1016/j.carres.2006.02.019",
+      "title": "Total synthesis of three naturally occurring 6,8-di-C-glycosylflavonoids: phloretin, naringenin, and apigenin bis-C-beta-D-glucosides",
+      "year": 2006,
+      "journal": "Carbohydrate Research",
+      "source_url": "https://doi.org/10.1016/j.carres.2006.02.019",
+      "evidence_scope": "full_text",
+      "claim_status": "legacy_registry_summary_pending_primary_source_revalidation",
+      "route_targets": [
+        "naringenin 6,8-bis-C-beta-D-glucoside",
+        "apigenin 6,8-bis-C-beta-D-glucoside"
+      ],
+      "key_step": "Construction from di-C-glycosylphloroacetophenone by protection, aldol condensation, deprotection, and DDQ oxidation.",
+      "reported_conditions": [
+        "benzyl protection",
+        "aldol condensation",
+        "hydrogenolysis or acid hydrolysis",
+        "DDQ"
+      ],
+      "hazard_flags": [
+        "hydrogenation",
+        "oxidant"
+      ]
+    },
+    {
+      "paper_id": "P004",
+      "doi": "10.1021/jo0494681",
+      "title": "Total synthesis of flavocommelin, a component of the blue supramolecular pigment from Commelina communis, on the basis of direct 6-C-glycosylation of flavan",
+      "year": 2004,
+      "journal": "The Journal of Organic Chemistry",
+      "source_url": "https://doi.org/10.1021/jo0494681",
+      "evidence_scope": "publisher_abstract",
+      "claim_status": "legacy_registry_summary_pending_primary_source_revalidation",
+      "route_targets": [
+        "flavocommelin"
+      ],
+      "key_step": "Direct 6-C-glycosylation of flavan followed by oxidation and 4'-O-glycosylation.",
+      "reported_conditions": [
+        "perbenzylglucosyl fluoride",
+        "BF3.Et2O",
+        "5 A molecular sieves",
+        "CH2Cl2",
+        "CAN",
+        "DDQ"
+      ],
+      "hazard_flags": [
+        "strong_lewis_acid",
+        "chlorinated_solvent",
+        "oxidant"
+      ]
+    },
+    {
+      "paper_id": "P005",
+      "doi": "10.1039/C7OB01004D",
+      "title": "Total synthesis of agalloside, isolated from Aquilaria agallocha, by the 5-O-glycosylation of flavan",
+      "year": 2017,
+      "journal": "Organic & Biomolecular Chemistry",
+      "source_url": "https://doi.org/10.1039/C7OB01004D",
+      "evidence_scope": "publisher_abstract",
+      "claim_status": "legacy_registry_summary_pending_primary_source_revalidation",
+      "route_targets": [
+        "agalloside"
+      ],
+      "key_step": "5-O-glycosylation of a flavan with glycosyl fluoride, followed by DDQ oxidation and deprotection.",
+      "reported_conditions": [
+        "glycosyl fluoride",
+        "BF3.Et2O",
+        "DDQ"
+      ],
+      "hazard_flags": [
+        "strong_lewis_acid",
+        "oxidant"
+      ]
+    },
+    {
+      "paper_id": "P006",
+      "doi": "10.1021/acs.jnatprod.7b00791",
+      "title": "Total synthesis of the flavonoid natural product houttuynoid A",
+      "year": 2018,
+      "journal": "Journal of Natural Products",
+      "source_url": "https://doi.org/10.1021/acs.jnatprod.7b00791",
+      "evidence_scope": "publisher_abstract_and_review_route",
+      "claim_status": "legacy_registry_summary_pending_primary_source_revalidation",
+      "route_targets": [
+        "houttuynoid A"
+      ],
+      "key_step": "Nine-linear-step synthesis using Claisen-Schmidt condensation and iodine-catalyzed oxa-Michael cyclization, followed by flavonoid glycosylation.",
+      "reported_conditions": [
+        "I2-catalyzed oxa-Michael addition",
+        "K2CO3",
+        "DMF"
+      ],
+      "hazard_flags": [
+        "oxidant",
+        "reproductive_hazard_solvent"
+      ]
+    },
+    {
+      "paper_id": "P007",
+      "doi": "10.1016/j.tet.2016.05.076",
+      "title": "A simple synthesis of 3-deoxyanthocyanidins and their O-glucosides",
+      "year": 2016,
+      "journal": "Tetrahedron",
+      "source_url": "https://doi.org/10.1016/j.tet.2016.05.076",
+      "evidence_scope": "publisher_abstract",
+      "claim_status": "legacy_registry_summary_pending_primary_source_revalidation",
+      "route_targets": [
+        "apigeninidin",
+        "luteolinidin O-beta-D-glucosides"
+      ],
+      "key_step": "Chemical O-glucoside synthesis with explicit low-yield 5-O/7-O regioisomer formation as a negative selectivity control.",
+      "reported_conditions": [],
+      "hazard_flags": [
+        "conditions_not_reported_in_abstract"
+      ]
+    },
+    {
+      "paper_id": "P008",
+      "doi": "10.3184/174751918X15232706115112",
+      "title": "Regiospecific synthesis of three quercetin O-beta-glucosides of N-acetylglucosamine",
+      "year": 2018,
+      "journal": "Journal of Chemical Research",
+      "source_url": "https://doi.org/10.3184/174751918X15232706115112",
+      "evidence_scope": "publisher_record",
+      "claim_status": "legacy_registry_summary_pending_primary_source_revalidation",
+      "route_targets": [
+        "quercetin O-beta-N-acetylglucosaminides"
+      ],
+      "key_step": "Regiospecific chemical preparation of three quercetin O-glycoside positional isomers.",
+      "reported_conditions": [],
+      "hazard_flags": [
+        "conditions_require_full_text_review"
+      ]
+    },
+    {
+      "paper_id": "P009",
+      "doi": "10.1021/acscatal.1c04191",
+      "title": "Directed evolution of a plant glycosyltransferase for chemo- and regioselective glycosylation of pharmaceutically significant flavonoids",
+      "year": 2021,
+      "journal": "ACS Catalysis",
+      "source_url": "https://doi.org/10.1021/acscatal.1c04191",
+      "evidence_scope": "publisher_record",
+      "claim_status": "legacy_registry_summary_pending_primary_source_revalidation",
+      "route_targets": [
+        "regioselective flavonoid glycosides"
+      ],
+      "key_step": "Directed evolution of a plant glycosyltransferase to alter chemo- and regioselective flavonoid glycosylation.",
+      "reported_conditions": [
+        "enzyme-catalyzed glycosylation"
+      ],
+      "hazard_flags": [
+        "biocatalytic_low_intrinsic_hazard"
+      ]
+    },
+    {
+      "paper_id": "P010",
+      "doi": "10.1039/D2SC06504E",
+      "title": "Functional characterization, structural basis, and regio-selectivity control of a promiscuous flavonoid 7,4'-di-O-glycosyltransferase from Ziziphus jujuba var. spinosa",
+      "year": 2023,
+      "journal": "Chemical Science",
+      "source_url": "https://doi.org/10.1039/D2SC06504E",
+      "evidence_scope": "open_full_text",
+      "claim_status": "legacy_registry_summary_pending_primary_source_revalidation",
+      "route_targets": [
+        "flavonoid 7,4'-di-O-glycosides",
+        "flavanone 7-O-glycosides"
+      ],
+      "key_step": "ZjOGT3 sequentially catalyzes 4'- and 7-O glycosylation and selectively catalyzes 7-O glycosylation of 7,4'-dihydroxyflavanones.",
+      "reported_conditions": [
+        "ZjOGT3",
+        "UDP-sugar donor"
+      ],
+      "hazard_flags": [
+        "biocatalytic_low_intrinsic_hazard"
+      ]
+    },
+    {
+      "paper_id": "P011",
+      "doi": "10.1016/j.bcab.2015.06.005",
+      "title": "Synthesis of hesperetin 7-O-glucoside from flavonoids extracted from Citrus waste using both free and immobilized alpha-L-rhamnosidases",
+      "year": 2015,
+      "journal": "Biocatalysis and Agricultural Biotechnology",
+      "source_url": "https://doi.org/10.1016/j.bcab.2015.06.005",
+      "evidence_scope": "primary_full_text",
+      "claim_status": "legacy_registry_summary_pending_primary_source_revalidation",
+      "route_targets": [
+        "hesperetin 7-O-glucoside"
+      ],
+      "key_step": "Selective alpha-L-rhamnosidase hydrolysis of hesperidin or neohesperidin to the 7-O-monoglucoside.",
+      "reported_conditions": [
+        "free and immobilized alpha-L-rhamnosidases"
+      ],
+      "hazard_flags": [
+        "biocatalytic_low_intrinsic_hazard"
+      ]
+    },
+    {
+      "paper_id": "P012",
+      "doi": "10.3389/fbioe.2020.00608",
+      "title": "A novel and high-effective biosynthesis pathway of hesperetin-7-O-glucoside based on the construction of immobilized rhamnosidase reaction platform",
+      "year": 2020,
+      "journal": "Frontiers in Bioengineering and Biotechnology",
+      "source_url": "https://doi.org/10.3389/fbioe.2020.00608",
+      "evidence_scope": "open_full_text",
+      "claim_status": "legacy_registry_summary_pending_primary_source_revalidation",
+      "route_targets": [
+        "hesperetin 7-O-glucoside"
+      ],
+      "key_step": "Immobilized rhamnosidase converts a soluble hesperidin-Cu(II) complex to the monoglucoside complex, followed by ligand dissociation.",
+      "reported_conditions": [
+        "Fe3O4@graphene oxide immobilized rhamnosidase",
+        "hesperidin-Cu(II) complex",
+        "ammonium hydroxide"
+      ],
+      "hazard_flags": [
+        "copper_salt",
+        "corrosive_base",
+        "nanomaterial_handling"
+      ]
+    },
+    {
+      "paper_id": "P013",
+      "doi": "10.1016/j.phytochem.2007.11.008",
+      "title": "Glycosylation of hesperetin by plant cell cultures",
+      "year": 2008,
+      "journal": "Phytochemistry",
+      "source_url": "https://pubmed.ncbi.nlm.nih.gov/18160083/",
+      "evidence_scope": "pubmed_abstract",
+      "claim_status": "legacy_registry_summary_pending_primary_source_revalidation",
+      "route_targets": [
+        "hesperetin 7-O-beta-D-glucopyranoside",
+        "hesperidin"
+      ],
+      "key_step": "Cultured Eucalyptus perriniana and Ipomoea batatas cells glycosylate hesperetin, including regioselective formation of the 7-O-beta-D-glucoside.",
+      "reported_conditions": [
+        "plant suspension cell biotransformation"
+      ],
+      "hazard_flags": [
+        "biocatalytic_low_intrinsic_hazard"
+      ]
+    },
+    {
+      "paper_id": "P014",
+      "doi": "10.1111/tpj.12030",
+      "title": "The molecular and enzymatic basis of bitter/non-bitter flavor of citrus fruit: evolution of branch-forming rhamnosyltransferases under domestication",
+      "year": 2013,
+      "journal": "The Plant Journal",
+      "source_url": "https://onlinelibrary.wiley.com/doi/full/10.1111/tpj.12030",
+      "evidence_scope": "publisher_full_text",
+      "claim_status": "legacy_registry_summary_pending_primary_source_revalidation",
+      "route_targets": [
+        "hesperidin",
+        "narirutin",
+        "flavonoid rutinosides"
+      ],
+      "key_step": "Cs1,6RhaT-expressing tobacco BY-2 cells convert fed hesperetin into a branched-chain product identified against a hesperidin standard; the enzyme directs 6-O-rhamnosylation of flavanone 7-O-glucosides.",
+      "reported_conditions": [
+        "Cs1,6RhaT-expressing Nicotiana tabacum BY-2 cells",
+        "hesperetin substrate feeding",
+        "LC-MS retention-time comparison with hesperidin standard"
+      ],
+      "hazard_flags": [
+        "biocatalytic_low_intrinsic_hazard",
+        "whole_cell_engineering"
+      ]
+    },
+    {
+      "paper_id": "P015",
+      "doi": "10.1080/00021369.1967.10858822",
+      "title": "Glycosides and Oligosaccharides in the L-Rhamnose Series. Part IV. Synthesis of Naringin and Neohesperidin",
+      "year": 1967,
+      "journal": "Agricultural and Biological Chemistry",
+      "source_url": "https://www.jstage.jst.go.jp/article/bbb1961/31/4/31_4_402/_pdf",
+      "evidence_scope": "open_full_text_historical_summary_not_template_activated",
+      "claim_status": "legacy_registry_summary_pending_primary_source_revalidation",
+      "route_targets": [
+        "naringin",
+        "neohesperidin",
+        "hesperidin"
+      ],
+      "key_step": "The introduction summarizes the 1943 hesperidin synthesis as condensation of a named acetylated alpha-L-rutinosyl bromide with hesperetin followed by alkaline deacetylation.",
+      "reported_conditions": [
+        "alkaline deacetylation",
+        "historical rutinosyl bromide condensation"
+      ],
+      "hazard_flags": [
+        "conditions_require_original_1943_source",
+        "activated_glycosyl_halide"
+      ]
+    }
+  ],
+  "reaction_lessons": [
+    {
+      "reaction_id": "LRC-P010-0001",
+      "paper_id": "P010",
+      "doi": "10.1039/D2SC06504E",
+      "record_status": "machine_extracted_pending_human_review",
+      "source_locators": [
+        "supporting information section 1.5, PDF page 4 (zero-based page_idx 3)",
+        "supporting information section 1.7, PDF page 5 (zero-based page_idx 4)",
+        "supporting information section 1.8, PDF page 6 (zero-based page_idx 5)",
+        "Figures S2-S38 for substrate-specific chromatograms and reaction diagrams"
+      ],
+      "title_zh": "ZjOGT3 催化的黄酮 O-糖基化",
+      "title_en": "ZjOGT3-catalyzed flavonoid O-glycosylation",
+      "principle_zh": "糖基转移酶以 UDP-糖为供体，将糖基转移到黄酮羟基；位点选择取决于底物结构与酶微环境，不能把一个底物的 4'-O/7-O 结果外推到全部黄酮。",
+      "principle_en": "The UDP-dependent glycosyltransferase transfers a sugar to a flavonoid hydroxyl. Regioselectivity depends on substrate structure and the enzyme environment and cannot be generalized from one substrate to every flavonoid.",
+      "evidence_boundary_zh": "条件文字来自 SI 的 MinerU 抽取；底物/产物结构仍需逐图人工核对，当前记录不得生成 production SMARTS。",
+      "evidence_boundary_en": "Condition text was extracted from the SI by MinerU. Substrate and product structures still require figure-by-figure human review, so this record must not generate a production SMARTS.",
+      "conditions": {
+        "screening_assay": {
+          "total_volume_uL": 100,
+          "buffer": "50 mM NaH2PO4-Na2HPO4, pH 8.0",
+          "enzyme": "25 ug purified ZjOGT3",
+          "aglycone_concentration_mM": 0.1,
+          "sugar_donor_concentration_mM": 0.5,
+          "temperature_C": 45,
+          "time_h": 8,
+          "quench": "200 uL ice-cold methanol",
+          "workup": "centrifuge 15000 rpm for 20 min; UHPLC/MS analysis"
+        },
+        "preparative_assay": {
+          "buffer": "2 mL 50 mM NaH2PO4-Na2HPO4, pH 8.0",
+          "acceptor": "40 uL of 50 mM solution in DMSO",
+          "donor": "90 uL of 50 mM UDP-Glc",
+          "enzyme_amount": "not_reported_in_extracted_section",
+          "temperature_C": 45,
+          "time_h": 12,
+          "quench": "methanol",
+          "purification": "reversed-phase semipreparative HPLC",
+          "characterization": "HR-ESI-MS and NMR"
+        },
+        "confidence": "source_text_present_machine_extraction_pending_human_comparison"
+      },
+      "structure_status": "not_run",
+      "production_ready": false
+    }
+  ]
+}

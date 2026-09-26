@@ -55,27 +55,34 @@ class Node(MctsNode):
         return child
 
     def _create_children_nodes(self, states, child_idx):
-        # Enforce the node ceiling before allocation, including multi-outcome actions.
-        remaining = self._algo_config["max_nodes"] - self.tree.created_nodes
-        active = sum(x is not None for x in self._children)
-        slots = max(0, self._algo_config["max_branching"] - active)
-        accepted = []
-        for state in states:
+        # Keep original reaction outcome indices even when earlier states are pruned.
+        original = self._children_actions[child_idx]
+        nodes = []
+        first = True
+        for outcome_index, state in enumerate(states):
             signature = tuple(sorted(m.inchi_key for m in state.mols))
             depth = int(state.max_transforms)
             if self.tree.depths.get(signature, 10**9) <= depth:
                 self.tree.profiling["transpositions"] += 1
                 continue
-            if len(accepted) < min(remaining, slots):
-                accepted.append(state)
-        if not accepted:
+            remaining = self._algo_config["max_nodes"] - self.tree.created_nodes
+            active = sum(x is not None for x in self._children)
+            if remaining <= 0 or active >= self._algo_config["max_branching"]:
+                break
+            if first:
+                index = child_idx
+                self._children_actions[index] = original.copy(index=outcome_index)
+                first = False
+            else:
+                index = self._expand_children_lists(child_idx, outcome_index)
+            allocated = super()._create_children_nodes([state], index)
+            for node in allocated:
+                key = tuple(sorted(m.inchi_key for m in node.state.mols))
+                self.tree.depths[key] = int(node.state.max_transforms)
+            self.tree.created_nodes += len(allocated)
+            nodes.extend(allocated)
+        if not nodes:
             self._disable_child(child_idx)
-            return []
-        nodes = super()._create_children_nodes(accepted, child_idx)
-        for node in nodes:
-            key = tuple(sorted(m.inchi_key for m in node.state.mols))
-            self.tree.depths[key] = int(node.state.max_transforms)
-        self.tree.created_nodes += len(nodes)
         return nodes
 
 

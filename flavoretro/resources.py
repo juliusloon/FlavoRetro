@@ -6,7 +6,10 @@ from pathlib import Path
 from rdkit import Chem, rdBase
 from rdkit.Chem import rdChemReactions
 
-ROOT = Path(__file__).resolve().parents[1]
+from .workspace import root
+
+# Compatibility constant for checkout scripts/tests; runtime always resolves root().
+ROOT = root()
 
 
 def sha(path):
@@ -110,6 +113,7 @@ def rdf_records(path):
 
 
 def build(output):
+    ROOT = root()
     output = Path(output)
     if output.exists():
         raise ValueError("output exists; immutable version required")
@@ -329,6 +333,11 @@ def build(output):
 
 
 if __name__ == "__main__":
-    import sys
-
-    print(dumps(build(sys.argv[1])))
+    import argparse
+    from .workspace import configure
+    parser = argparse.ArgumentParser(description="Build a new immutable candidate resource version")
+    parser.add_argument("output")
+    parser.add_argument("--workspace")
+    args = parser.parse_args()
+    configure(args.workspace)
+    print(dumps(build(args.output)))

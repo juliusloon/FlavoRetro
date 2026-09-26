@@ -7,7 +7,14 @@ version = "0.1.0"
 description = "Evidence-aware flavonoid retrosynthesis research workbench"
 requires-python = ">=3.10,<3.11"
 dependencies = ["aizynthfinder==4.4.1", "rdkit==2023.9.6", "numpy==1.26.4", "pydantic==2.13.4"]
+[project.optional-dependencies]
+verification = ["playwright==1.63.0", "build==1.5.0"]
 [project.scripts]
 flavoretro = "flavoretro.cli:main"
+flavoretro-web = "flavoretro.web:main"
+flavoretro-db = "flavoretro.database:main"
 [tool.setuptools.packages.find]
 include = ["flavoretro*"]
+
+[tool.setuptools.package-data]
+flavoretro = ["assets/web/*", "assets/configs/*.json"]

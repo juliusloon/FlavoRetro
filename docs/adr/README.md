@@ -20,3 +20,5 @@ ADR 不记录某次 operation 修改了哪些文件，也不替代 TASK、REPORT
 | [ADR-001-independent-rebuild.md](ADR-001-independent-rebuild.md) | 独立根、三线职责、批准与证据分轴。 |
 | [ADR-002-search-evidence.md](ADR-002-search-evidence.md) | 先可解释的实时研究产品，再逐证据晋级。 |
 | [ADR-003-repo-orientation.md](ADR-003-repo-orientation.md) | 一次性脚本归档、文档分层、GitHub 清单驱动。 |
+| [ADR-004-teaching-layer-and-web-architecture.md](ADR-004-teaching-layer-and-web-architecture.md) | 教学/文献与四页界面。 |
+| [ADR-005-foundation-workspace-and-index.md](ADR-005-foundation-workspace-and-index.md) | 独立工作区、不可变版本、派生 SQLite 与包资源。 |

@@ -13,7 +13,12 @@ def main():
     parser.add_argument("--seconds", type=float)
     parser.add_argument("--iterations", type=int)
     parser.add_argument("--top-k", type=int, default=5)
+    parser.add_argument("--workspace")
+    for name in ("depth", "branching", "nodes"):
+        parser.add_argument("--" + name, type=int)
     args = vars(parser.parse_args())
+    from .workspace import configure
+    configure(args.pop("workspace"))
     try:
         result = search(
             SearchRequest(**{k: v for k, v in args.items() if v is not None})

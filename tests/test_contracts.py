@@ -64,6 +64,7 @@ class DataContracts(unittest.TestCase):
     def test_no_candidate_stock_by_default(self):
         self.assertEqual(len(CandidateStock()), 0)
 
+    @unittest.skipUnless((ROOT / "data/derived/v3/records.json").exists(), "local reviewed-version candidate assets required")
     def test_conflicts_virtuals_excluded(self):
         stock = CandidateStock(enabled=True)
         for r in records():
