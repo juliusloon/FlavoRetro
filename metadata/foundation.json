@@ -5,8 +5,13 @@
     "G2": "pass",
     "G3": "pass",
     "G4": "pass",
-    "G5": "in_progress"
+    "G5": "pass"
   },
   "scope": "engineering foundations; no scientific promotion",
-  "task": "TASK-012"
+  "task": "TASK-012",
+  "code_delivery": {
+    "sha": "4b015cf83be15c0d1a13ee14a54eab5725bef40c",
+    "ci_url": "https://github.com/juliusloon/FlavoRetro/actions/runs/36237183720",
+    "ci_conclusion": "success"
+  }
 }

@@ -22,7 +22,7 @@
 | [REPORT-009-docs-detailing.md](REPORT-009-docs-detailing.md) | 记录治理文档详细化的实际结果。 |
 | [REPORT-010-web-completion.md](REPORT-010-web-completion.md) | 记录 Web 工作台完整化、布局修复与项目独立收口的实际结果。 |
 | [REPORT-011-topology-web.md](REPORT-011-topology-web.md) | 记录糖苷连接拓扑审计接入 Web 界面（有效性判断可视化）的实际结果。 |
-| [REPORT-012-foundation-readiness.md](REPORT-012-foundation-readiness.md) | 记录数据库、算法合同、独立包、前端覆盖、GitHub/CI 的分阶段验收；私有同步与科学晋级分别记录。 |
+| [REPORT-012-foundation-readiness.md](REPORT-012-foundation-readiness.md) | 记录数据库、算法合同、独立包、前端覆盖、GitHub/CI 的最终验收；Completed，五项工程门槛通过，科学晋级仍未闭合。 |
 
 - 每个 REPORT 必须对应一个编号和短标题相同的 TASK。
 - REPORT 记录实际发生的内容，而不是重复任务目标。

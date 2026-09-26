@@ -22,7 +22,7 @@
 | [TASK-009-docs-detailing.md](TASK-009-docs-detailing.md) | 治理文档详细化合同。 |
 | [TASK-010-web-completion.md](TASK-010-web-completion.md) | Web 工作台完整化、布局修复与项目独立收口合同。 |
 | [TASK-011-topology-web.md](TASK-011-topology-web.md) | 糖苷连接拓扑审计接入 Web 界面（有效性判断可视化）合同；所有者人工批准（代行授权已于 2026-09-25 收回）。 |
-| [TASK-012-foundation-readiness.md](TASK-012-foundation-readiness.md) | 数据库、算法工程合同、独立 Python 包、GitHub 同步、前端能力覆盖的统一验收合同；含 2026-09-26 现场核查；已获所有者 human_direct 批准，G1—G4 已通过，G5 收口中。 |
+| [TASK-012-foundation-readiness.md](TASK-012-foundation-readiness.md) | 数据库、算法工程合同、独立 Python 包、GitHub 同步、前端能力覆盖的统一验收合同；含 2026-09-26 现场核查；已获所有者 human_direct 批准，G1—G5 全部通过，Completed；私有交付提交与 CI 已核查。 |
 
 ## 编号与命名
 

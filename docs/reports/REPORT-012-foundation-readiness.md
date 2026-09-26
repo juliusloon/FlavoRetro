@@ -3,7 +3,7 @@
 ## 对应任务与当前结论
 
 - 任务：[TASK-012](../tasks/TASK-012-foundation-readiness.md)
-- 状态：In Progress（G1—G4 已通过；G5 远端同步/CI 待收口）
+- 状态：Completed（G1—G5 全部通过；工程地基就绪）
 - 本地基线：main @ 5f3240f；核查时远端 main=f272c36，落后两个功能提交。
 - 批准：所有者 2026-09-26 回复“同意，开始执行”，human_direct 工程授权，包含 v3 切换与现有私有 origin 普通推送；非 agent_delegated、非逐记录 human_reviewed。
 - 执行者：Cano；全部本机写入/命令经 operate.py，CI 命令也使用 operate.py。原始与受限载荷不入 Git。
@@ -14,9 +14,9 @@
 | 算法运行合同 | pass | 真实 MCTS、PUCT/去重/替代/转置/预算、多产物 index 合同；native 限制仍明确 |
 | 独立 Python 交付 | pass | 独立 CPython/venv、191 依赖锁、wheel/sdist、包外静态/配置/真实 MCTS |
 | 前端已有能力覆盖 | pass | 全参数/历史/资源/教学/拓扑/开发对照/preflight，四页浏览器验收 |
-| GitHub/CI | pending | 工作流与本地无资产模拟通过；尚未把待推送当作同步完成 |
+| GitHub/CI | pass | 普通推送交付提交 4b015cf；同 SHA GitHub CI success；无资产测试 45 通过/6 跳过、包构建/边界/安装通过 |
 
-只在五项同时通过后宣告 TASK-012 的工程地基就绪；不据此宣告 production、独立化学验证、正式盲测或公开发布完成。
+五项现已同时通过，TASK-012 的工程地基就绪；不据此宣告 production、独立化学验证、正式盲测或公开发布完成。
 
 ## 实际修改与文件职责
 
@@ -82,6 +82,7 @@
 4. 本地 CI shell 验证辅助选择步骤时一度直接读取没有 name 的 action 步骤，引发 KeyError；改为 get 后验证实际安装 shell 成功，未改运行代码。诊断日志保留。
 5. web/configs 保留编辑源，新增包内受控副本，未物理移动原文件；自动测试阻止副本漂移。这是合同允许的打包方案。
 6. SQLite 初次构建器完整文件 SHA 与后来优化 records 读取后的活动模块不同；已保留能逐字节匹配原 SHA 的完整构建快照，不改 immutable index manifest，不将差异解释为数据漂移。
+7. 工作区后来出现其他工具的 .workbuddy、WEB_UI_DESIGN 与 AppleDouble 文件；文档检查首轮误扫范围外非 UTF-8 文件，改为精确提交清单后通过。所有这些文件与原 staging-task011 保留、不读入验收、不提交；不以目录通配代替本任务文件清单。
 
 ## 限制与未开展事项
 
@@ -94,6 +95,10 @@
 
 ## GitHub 同步与最终收口
 
-当前正在完成普通提交/推送与对应 SHA 的远端 CI 验收；本段只在获得实际结果后更新，不提前称完成。交付前精确检查 staged 清单，data/outputs/环境/旧 staging 不纳入；最终只读核查仍追加 operations/events.jsonl，报告其尾部状态。
+- 工程交付提交：4b015cf83be15c0d1a13ee14a54eab5725bef40c，main 普通推送至现有私有 origin；git ls-remote 与本地 SHA 一致，未 force push。
+- [该交付 SHA 的 GitHub CI](https://github.com/juliusloon/FlavoRetro/actions/runs/36237183720)：completed / success；51 项中 45 通过、6 本地资产项跳过，pip check、wheel/sdist、资产排除和仓库外安装全部通过。真实 MCTS/浏览器已单独在本地受控资产环境验收。
+- 精确 staged 清单为 54 个本任务文件，见 outputs/validation/task012-staging.json；data/outputs/环境/旧 staging/其他工具文件不在提交中。仓库可见性和 Git 作者身份未替换。
+- 本报告、TASK、STATE 与门槛元数据通过后以普通文档收口提交保存；其最终远端 SHA/对应 CI/核查时间记于本机 outputs/validation/task012-sync.json（不纳入 Git，以避免提交自身 SHA 的循环），供界面显式展示核查快照。最终报告不自指尚未生成的提交。
+- 最终只读核查与推送命令仍追加 operations/events.jsonl，保留未提交尾部；不称工作区绝对干净。原 staging-task011 与后来出现的范围外文件不清理。
 
 本任务之后不自动进入 P2/P4/P5 或正式盲测；由所有者审核下一份 TASK。

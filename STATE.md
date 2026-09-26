@@ -1,6 +1,6 @@
 # 当前状态
 
-TASK-001—011 的工程交付与历史报告保留。TASK-012 已由所有者于 2026-09-26 明确批准全部 G1—G5（“同意，开始执行”，human_direct 工程授权）；当前 G1—G4 通过，G5 提交/私有同步与远端 CI 验收中，尚未宣告五项全部完成。
+TASK-001—011 的工程交付与历史报告保留。TASK-012 已由所有者于 2026-09-26 明确批准全部 G1—G5（“同意，开始执行”，human_direct 工程授权）；G1—G5 全部通过，工程地基就绪；交付提交 4b015cf 已同步私有 origin，同 SHA GitHub CI success。最终文档收口提交的远端/CI 核查快照保存为 outputs/validation/task012-sync.json。
 
 活动资源：metadata/active.json → data/derived/v3。v3/replay-v3 的 records/manifest 逐字节一致，3,059 条记录与 v2 完全相同；v1/replay-v1/v2 原样保留。SQLite 为 v3 的只读派生索引，保留 123 条来源和全部记录；定位状态为 249 条 note_located_token_found、259 条 note_located_token_unmatched。文件定位/token 命中不是内容审核，0 production、3 条名称冲突仍保留。
 
@@ -14,6 +14,8 @@ TASK-001—011 的工程交付与历史报告保留。TASK-012 已由所有者�
 
 科学准入：research_candidate，primary source/current vendor unresolved、independent labels unavailable、formal benchmark not_executed，formal_run_ready/release_ready=false。教学标签、独立审核、正式盲测、P2 糖苷感知搜索、P4 交互及公开发布仍需新 TASK 与所有者批准，不自动开始。
 
-工作区与 Git：现有私有 origin 为 juliusloon/FlavoRetro；保留既有 repo-local Git 身份，不代替公开发表检查。operations/.staging-task011/ 为原有未跟踪暂存，未清理、不提交。最终核查会追加 operations/events.jsonl，尾部状态如实记录，不声称工作区绝对干净。旧误记行保留。已准入历史 123 个源文件只读哈希核查一致，不把它写成新的全旧目录完整性审计。
+工作区与 Git：现有私有 origin 为 juliusloon/FlavoRetro；保留既有 repo-local Git 身份，不代替公开发表检查。operations/.staging-task011/ 为原有未跟踪暂存，未清理、不提交；后来出现的 .workbuddy、WEB_UI_DESIGN 与 AppleDouble 文件属于范围外，同样保留、不提交。最终核查会追加 operations/events.jsonl，尾部状态如实记录，不声称工作区绝对干净。旧误记行保留。已准入历史 123 个源文件只读哈希核查一致，不把它写成新的全旧目录完整性审计。
 
-下一步：完成 TASK-012 的 G5 同步与对应提交 CI 核查，报告五项最终结论；之后仅等待所有者决定新任务。
+下一步：TASK-012 已完成；等待所有者审核 REPORT-012 并决定新任务，不自动进入科学准入、P2/P4/P5 或公开发布。
+
+2026-09-26：[TASK-013 Web 界面设计规范落地（移动优先、对比度与可访问性）](docs/tasks/TASK-013-web-ui-design.md) 已起草，状态 Proposed，设计依据 docs/WEB_UI_DESIGN.md（含 WCAG 实测对比度审计、色彩/字体 token、移动优先断点方案）；待所有者人工批准，起草轮未改动 web/ 任何代码。
