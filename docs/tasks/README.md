@@ -23,6 +23,9 @@
 | [TASK-010-web-completion.md](TASK-010-web-completion.md) | Web 工作台完整化、布局修复与项目独立收口合同。 |
 | [TASK-011-topology-web.md](TASK-011-topology-web.md) | 糖苷连接拓扑审计接入 Web 界面（有效性判断可视化）合同；所有者人工批准（代行授权已于 2026-09-25 收回）。 |
 | [TASK-012-foundation-readiness.md](TASK-012-foundation-readiness.md) | 数据库、算法工程合同、独立 Python 包、GitHub 同步、前端能力覆盖的统一验收合同；含 2026-09-26 现场核查；已获所有者 human_direct 批准，G1—G5 全部通过，Completed；私有交付提交与 CI 已核查。 |
+| [TASK-013-web-ui-design.md](TASK-013-web-ui-design.md) | 已完成移动优先、对比度和可访问性呈现层合同。 |
+| [TASK-014-domain-triage.md](TASK-014-domain-triage.md) | human_direct 批准；领域总分类、糖苷重点审核、笔记 guide、本地试点及标注/评测协议；Completed。 |
+| [TASK-015-ord-coverage-review-cards.md](TASK-015-ord-coverage-review-cards.md) | human_direct 工程授权；ORD 当前镜像覆盖与 60 卡审核准备 Completed；实际 gold 未执行。 |
 
 ## 编号与命名
 

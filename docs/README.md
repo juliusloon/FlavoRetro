@@ -10,7 +10,7 @@
 |---|---|
 | [HUMAN_TAKEOVER.md](HUMAN_TAKEOVER.md) | 人接管指南：读序、常用命令、验证完整性、决策权边界 |
 | [WORKBENCH_ROADMAP.md](WORKBENCH_ROADMAP.md) | 工作台路线：现状、P1—P5 阶段方向与准入规则 |
-| [PAPER_ROADMAP.md](PAPER_ROADMAP.md) | 最终论文路线：阻断性缺口、阶段计划、发布检查清单 |
+| [PAPER_ROADMAP.md](PAPER_ROADMAP.md) | 最终论文路线：阻断性缺口、下一阶段主线（TASK-014—018，含 D1—D7 方向价值排序）、阶段计划、发布检查清单 |
 | [USER_GUIDE.md](USER_GUIDE.md) | 工作台使用说明（搜索、资源、API、重放诊断） |
 | [TEST_CONTRACTS.md](TEST_CONTRACTS.md) | 测试合同与历史测试继承映射 |
 
@@ -41,6 +41,10 @@
 | Web 完整化与独立收口 | [TASK-010](tasks/TASK-010-web-completion.md) | [REPORT-010](reports/REPORT-010-web-completion.md) | Completed |
 | 有效性判断可视化 | [TASK-011](tasks/TASK-011-topology-web.md) | [REPORT-011](reports/REPORT-011-topology-web.md) | Completed |
 | 工程地基统一验收 | [TASK-012](tasks/TASK-012-foundation-readiness.md) | [REPORT-012](reports/REPORT-012-foundation-readiness.md) | Completed；五项工程门槛通过，科学门槛仍未闭合 |
+| Web 设计落地 | [TASK-013](tasks/TASK-013-web-ui-design.md) | [REPORT-013](reports/REPORT-013-web-ui-design.md) | Completed；呈现层交付，未提交 |
+| 领域筛选与评测协议 | [TASK-014](tasks/TASK-014-domain-triage.md) | [REPORT-014](reports/REPORT-014-domain-triage.md) | Completed；开发试点与协议，独立化学审核未执行 |
+
+TASK-014 已完成领域筛选与评测规范；TASK-015 已获批并完成 ORD 覆盖与审核准备，实际独立人工 gold 未执行。TASK-016—018 仍为方向计划，未自动授权。见 [protocols/](protocols/README.md) 与 [PAPER_ROADMAP.md](PAPER_ROADMAP.md)。
 
 \* TASK-006 文件名为 topology，内容同时覆盖历史目录完整性冻结核对。REPORT-005、REPORT-007、REPORT-007-P1 为 TASK-009 补立，事实来源为 `operations/events.jsonl` 与 `operations/command-*.log`（本机日志，不入 Git）。
 
@@ -66,3 +70,7 @@
 [package_check.py](../scripts/package_check.py) 验证仓库外安装和实时搜索；[artifact_check.py](../scripts/artifact_check.py) 核包资源与本地载荷排除。
 
 一次性脚本已归档至 [operations/archive/](../operations/archive/README.md)，不再是活动工具。
+
+[领域/标注/评测协议](protocols/README.md) 定义 TASK-014 的总分类与 TASK-015 接管规则；[triage_reactions.py](../scripts/triage_reactions.py) 是只读输入、新目录输出的离线筛选入口。
+
+[ORD 实际覆盖](protocols/ORD_COVERAGE_V1.md) 给出当前镜像全量扫描与来源边界；[定向 SciFinder 材料/审核指南](protocols/SCIFINDER_TARGETED_IMPORT_V1.md) 给出 60 卡入口、4 条首批材料和原件接收格式。

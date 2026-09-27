@@ -97,14 +97,38 @@ const TOPOLOGY_LITERATURE_HINTS = {
     phosphate_donor_control: /glycosyl/i
 };
 
-// ---------- tab 切换 ----------
-document.querySelectorAll('[data-tab]').forEach(button => button.onclick = () => {
+// ---------- tab 切换（WAI-ARIA tablist：aria-selected、roving tabindex、方向键循环） ----------
+const tabs = [...document.querySelectorAll('[data-tab]')];
+function activateTab(button, focus = false) {
     document.querySelectorAll('.page').forEach(p => p.hidden = p.id !== button.dataset.tab);
-    document.querySelectorAll('[data-tab]').forEach(b => b.classList.toggle('active', b === button));
+    for (const b of tabs) {
+        const active = b === button;
+        b.classList.toggle('active', active);
+        b.setAttribute('aria-selected', String(active));
+        b.tabIndex = active ? 0 : -1;
+    }
+    if (focus) button.focus();
     if (button.dataset.tab === 'resources') loadRecords();
     if (button.dataset.tab === 'literature') { loadLiterature(); loadTeachingCatalog(); }
     if (button.dataset.tab === 'governance') { loadStatus(); loadRuns(); loadEvaluations(); }
+}
+tabs.forEach(button => button.onclick = () => activateTab(button));
+document.querySelector('nav[role=tablist]').addEventListener('keydown', event => {
+    const index = tabs.indexOf(document.activeElement);
+    if (index < 0) return;
+    let next = null;
+    if (event.key === 'ArrowRight') next = tabs[(index + 1) % tabs.length];
+    else if (event.key === 'ArrowLeft') next = tabs[(index - 1 + tabs.length) % tabs.length];
+    else if (event.key === 'Home') next = tabs[0];
+    else if (event.key === 'End') next = tabs[tabs.length - 1];
+    if (next) { event.preventDefault(); activateTab(next, true); }
 });
+
+// 顶栏高度实测写入 --header-h，供 ≥992px sticky 侧栏定位（替代旧 body overflow:hidden 方案）
+const headerEl = document.querySelector('header');
+const setHeaderHeight = () => document.documentElement.style.setProperty('--header-h', headerEl.offsetHeight + 'px');
+setHeaderHeight();
+addEventListener('resize', setHeaderHeight);
 
 // ---------- 搜索表单 ----------
 $('preview').onclick = () => {
@@ -445,11 +469,26 @@ function routeCard(route, index, teaching) {
     return card;
 }
 
+// 搜索进行中的骨架屏（aria-hidden 装饰，文本状态仍由 #message 直播）
+function skeletonRoutes() {
+    const fragment = document.createDocumentFragment();
+    for (let i = 0; i < 3; i++) {
+        const card = div('card route skeleton-card');
+        card.setAttribute('aria-hidden', 'true');
+        card.append(div('sk-line w40'), div('sk-line w70'), div('sk-block'));
+        fragment.append(card);
+    }
+    return fragment;
+}
+
 $('search-form').onsubmit = async event => {
     event.preventDefault();
     $('preview').click();
     $('submit').disabled = true;
+    $('message').setAttribute('role', 'status');
     $('message').textContent = '正在执行新的 MCTS 搜索，请保持页面打开…';
+    $('routes').setAttribute('aria-busy', 'true');
+    $('routes').replaceChildren(skeletonRoutes());
     const req = { smiles: $('smiles').value, mode: $('mode').value, seed: Number($('seed').value), candidate_stock: $('candidate').checked };
     req.engine = $('engine').value; req.top_k = Number($('top_k').value);
     for (const name of ['seconds', 'iterations', 'depth', 'branching', 'nodes']) if ($(name).value !== '') req[name] = Number($(name).value);
@@ -460,8 +499,10 @@ $('search-form').onsubmit = async event => {
         await render(result);
         $('message').textContent = '本次实时搜索完成。结果仅支持计算探索。';
     } catch (error) {
+        $('message').setAttribute('role', 'alert');
         $('message').textContent = '搜索失败：' + error.message;
     } finally {
+        $('routes').removeAttribute('aria-busy');
         $('submit').disabled = false;
     }
 };
@@ -696,6 +737,7 @@ async function openSavedRun(id) {
         savedRun = true; currentManifest = saved.manifest;
         await render(saved.result);
         document.querySelector('[data-tab=search]').click();
+        $('message').setAttribute('role', 'status');
         $('message').textContent = '已读取历史运行（explicit_saved_run），完整性已核查；本次没有执行新 MCTS。';
         $('history-message').textContent = '';
     } catch (error) { $('history-message').textContent = '历史读取失败：' + error.message; }

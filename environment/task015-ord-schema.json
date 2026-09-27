@@ -1,0 +1,30 @@
+{
+  "task": "TASK-015",
+  "full_ord_schema_package_installed": false,
+  "schema_method": "official generated protobuf modules only, isolated PYTHONPATH; foundation environment unchanged",
+  "schema_files": {
+    "reaction_pb2.py": {
+      "url": "https://raw.githubusercontent.com/open-reaction-database/ord-schema/main/ord_schema/proto/reaction_pb2.py",
+      "sha256": "1ed2befa91faf00e76e9fd1ef555bf0da51c69a0085e5d7dd4db6418751bdd9c",
+      "github_api_revision_status": "content hash frozen",
+      "frozen_url": "https://raw.githubusercontent.com/open-reaction-database/ord-schema/8ed28a6d7f158dcb84119c843b3ba7d3c4a3d21d/ord_schema/proto/reaction_pb2.py",
+      "revision_verification": "git ls-remote HEAD followed by frozen URL content SHA match; GitHub API was rate-limited"
+    },
+    "dataset_pb2.py": {
+      "url": "https://raw.githubusercontent.com/open-reaction-database/ord-schema/main/ord_schema/proto/dataset_pb2.py",
+      "sha256": "f1292f278b6caa38a48307386870151f7dbe2a7a653f46de4fb509fc13093078",
+      "github_api_revision_status": "content hash frozen",
+      "frozen_url": "https://raw.githubusercontent.com/open-reaction-database/ord-schema/8ed28a6d7f158dcb84119c843b3ba7d3c4a3d21d/ord_schema/proto/dataset_pb2.py",
+      "revision_verification": "git ls-remote HEAD followed by frozen URL content SHA match; GitHub API was rate-limited"
+    }
+  },
+  "packages": {
+    "pyarrow": "25.0.1",
+    "protobuf": "7.36.2",
+    "rdkit": "2023.9.6",
+    "requests": "2.34.2"
+  },
+  "python": "3.10.20 (main, Jun 23 2026, 15:20:26) [Clang 22.1.3 ]",
+  "license": "Apache-2.0 generated schema; CC-BY-SA-4.0 data",
+  "schema_revision": "8ed28a6d7f158dcb84119c843b3ba7d3c4a3d21d"
+}

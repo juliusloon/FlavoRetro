@@ -11,3 +11,6 @@ operations/*.json
 build/
 dist/
 operations/.staging-task012/
+
+# macOS AppleDouble metadata
+._*

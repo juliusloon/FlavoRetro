@@ -10,13 +10,18 @@
 </head>
 
 <body>
+    <a class="skip-link" href="#main">跳到主要内容</a>
     <header><a class="brand" href="/">◈ FlavoRetro <span>黄酮逆合成研究台</span></a>
-        <nav aria-label="工作区"><button data-tab="search" class="active">路线探索</button><button
-                data-tab="resources">资源与证据</button><button data-tab="literature">文献教学</button><button
-                data-tab="governance">项目状态</button></nav><span class="badge">研究候选版 · v0.1 · 非实验验证</span>
+        <nav aria-label="工作区" role="tablist"><button data-tab="search" class="active" role="tab" id="tab-search"
+                aria-selected="true" aria-controls="search" tabindex="0">路线探索</button><button
+                data-tab="resources" role="tab" id="tab-resources" aria-selected="false" aria-controls="resources"
+                tabindex="-1">资源与证据</button><button data-tab="literature" role="tab" id="tab-literature"
+                aria-selected="false" aria-controls="literature" tabindex="-1">文献教学</button><button
+                data-tab="governance" role="tab" id="tab-governance" aria-selected="false" aria-controls="governance"
+                tabindex="-1">项目状态</button></nav><span class="badge">研究候选版 · v0.1 · 非实验验证</span>
     </header>
-    <main>
-        <section id="search" class="page">
+    <main id="main" tabindex="-1">
+        <section id="search" class="page" role="tabpanel" aria-labelledby="tab-search">
             <div class="intro">
                 <p class="eyebrow">LIVE RETROSYNTHESIS</p>
                 <h1>从一个分子，追溯每一步依据。</h1>
@@ -69,7 +74,7 @@
                 </div>
             </div>
         </section>
-        <section id="resources" class="page" hidden>
+        <section id="resources" class="page" hidden role="tabpanel" aria-labelledby="tab-resources">
             <div class="intro">
                 <p class="eyebrow">SOURCE → RECORD → REVIEW</p>
                 <h1>资源保留，证据分层。</h1>
@@ -94,14 +99,14 @@
                     <select id="source-filter" aria-label="来源定位筛选"><option value="">全部来源状态</option><option value="note_located_token_found">文件定位且 token 命中（非内容核验）</option><option value="note_located_token_unmatched">文件定位、token 未命中</option><option value="note_missing">文件未定位</option></select>
                 </div>
                 <p id="count"></p>
-                <div class="table-wrap">
+                <div class="table-wrap" tabindex="0" role="region" aria-label="资源记录表格，可横向滚动">
                     <table>
                         <thead>
                             <tr>
-                                <th>记录</th>
-                                <th>类型</th>
-                                <th>来源与处置</th>
-                                <th>详情</th>
+                                <th scope="col">记录</th>
+                                <th scope="col">类型</th>
+                                <th scope="col">来源与处置</th>
+                                <th scope="col">详情</th>
                             </tr>
                         </thead>
                         <tbody id="rows"></tbody>
@@ -115,7 +120,7 @@
                 </details>
             </div>
         </section>
-        <section id="literature" class="page" hidden>
+        <section id="literature" class="page" hidden role="tabpanel" aria-labelledby="tab-literature">
             <div class="intro">
                 <p class="eyebrow">LITERATURE TEACHING LAYER</p>
                 <h1>文献教学层：原文登记，边界先行。</h1>
@@ -129,15 +134,15 @@
             <h2 class="section-title">反应课程</h2>
             <div id="lesson-list"></div>
         </section>
-        <section id="governance" class="page" hidden>
+        <section id="governance" class="page" hidden role="tabpanel" aria-labelledby="tab-governance">
             <div class="intro">
                 <p class="eyebrow">AUDITABLE BY DESIGN</p>
                 <h1>知道已完成什么，也知道缺什么。</h1>
             </div>
             <div id="stats" class="stats"></div>
             <div class="card"><h2>工程基线与资源版本</h2><div id="foundation-status"></div><details><summary>安装、数据库及重建信息</summary><pre id="installation-status"></pre></details><div id="sync-status"></div></div>
-            <div class="card"><h2>历史运行（显式读取，不运行新 MCTS）</h2><button id="refresh-runs" class="secondary">刷新运行列表</button><div class="fields"><input id="saved-run-id" aria-label="历史 run ID" placeholder="输入完整 run ID"><button id="open-run">打开历史运行</button></div><p id="history-message" role="status"></p><div class="table-wrap"><table><thead><tr><th>运行 / 目标</th><th>状态 / 版本</th><th>操作</th></tr></thead><tbody id="run-list"></tbody></table></div><div class="pager"><button id="runs-previous" class="secondary">上一页</button><button id="runs-next" class="secondary">下一页</button></div></div>
-            <div class="card"><h2>开发对照与正式前置检查</h2><p>固定 3 个目标 × 2 seeds × 2 引擎，共 12 cell。每 cell 新建实时 MCTS；不是盲测，native 节点上限不等价，不能推称化学优越。</p><button id="start-evaluation">运行 12-cell 开发对照</button><p id="evaluation-message" role="status"></p><label for="evaluation-history">已保存开发对照</label><select id="evaluation-history"><option value="">选择已保存对照</option></select><div class="table-wrap"><table><thead><tr><th>目标 / seed</th><th>引擎 / 状态</th><th>路线 / run ID</th></tr></thead><tbody id="evaluation-cells"></tbody></table></div><details><summary>开发对照合同与结果</summary><pre id="evaluation-json"></pre></details><h3>正式 preflight（只读）</h3><pre id="preflight-status"></pre></div>
+            <div class="card"><h2>历史运行（显式读取，不运行新 MCTS）</h2><button id="refresh-runs" class="secondary">刷新运行列表</button><div class="fields"><input id="saved-run-id" aria-label="历史 run ID" placeholder="输入完整 run ID"><button id="open-run">打开历史运行</button></div><p id="history-message" role="status"></p><div class="table-wrap" tabindex="0" role="region" aria-label="历史运行表格，可横向滚动"><table><thead><tr><th scope="col">运行 / 目标</th><th scope="col">状态 / 版本</th><th scope="col">操作</th></tr></thead><tbody id="run-list"></tbody></table></div><div class="pager"><button id="runs-previous" class="secondary">上一页</button><button id="runs-next" class="secondary">下一页</button></div></div>
+            <div class="card"><h2>开发对照与正式前置检查</h2><p>固定 3 个目标 × 2 seeds × 2 引擎，共 12 cell。每 cell 新建实时 MCTS；不是盲测，native 节点上限不等价，不能推称化学优越。</p><button id="start-evaluation">运行 12-cell 开发对照</button><p id="evaluation-message" role="status"></p><label for="evaluation-history">已保存开发对照</label><select id="evaluation-history"><option value="">选择已保存对照</option></select><div class="table-wrap" tabindex="0" role="region" aria-label="开发对照表格，可横向滚动"><table><thead><tr><th scope="col">目标 / seed</th><th scope="col">引擎 / 状态</th><th scope="col">路线 / run ID</th></tr></thead><tbody id="evaluation-cells"></tbody></table></div><details><summary>开发对照合同与结果</summary><pre id="evaluation-json"></pre></details><h3>正式 preflight（只读）</h3><pre id="preflight-status"></pre></div>
             <h2 class="section-title">搜索预算配置（configs/search.json）</h2>
             <div id="profiles"></div>
             <div class="card">

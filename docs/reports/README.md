@@ -23,6 +23,9 @@
 | [REPORT-010-web-completion.md](REPORT-010-web-completion.md) | 记录 Web 工作台完整化、布局修复与项目独立收口的实际结果。 |
 | [REPORT-011-topology-web.md](REPORT-011-topology-web.md) | 记录糖苷连接拓扑审计接入 Web 界面（有效性判断可视化）的实际结果。 |
 | [REPORT-012-foundation-readiness.md](REPORT-012-foundation-readiness.md) | 记录数据库、算法合同、独立包、前端覆盖、GitHub/CI 的最终验收；Completed，五项工程门槛通过，科学晋级仍未闭合。 |
+| [REPORT-013-web-ui-design.md](REPORT-013-web-ui-design.md) | 已完成呈现层设计与浏览器验收，改动未提交。 |
+| [REPORT-014-domain-triage.md](REPORT-014-domain-triage.md) | 记录 508 条 guide、2,301 条离线试点、60 条审核样本、字节重放与 62 项测试；非科学晋级。 |
+| [REPORT-015-ord-coverage-review-cards.md](REPORT-015-ord-coverage-review-cards.md) | 53 源实测、60 卡片、定向材料与工程验证；Completed，化学审核未执行。 |
 
 - 每个 REPORT 必须对应一个编号和短标题相同的 TASK。
 - REPORT 记录实际发生的内容，而不是重复任务目标。
