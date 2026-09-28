@@ -22,4 +22,6 @@ python -B scripts/operate.py TASK-014 .venv-foundation/bin/python -B scripts/tri
 
 审核：复制 review.tsv 到新的版本化审核目录后填写。它是开发校准包，机器建议可见；用于独立 gold/盲标的包必须另按协议生成并隐藏建议。本轮不执行人工化学审核、不创建盲测集。下一任务由所有者决定，不自动开始。
 
-TASK-015 已获批完成覆盖与审核准备。现在优先用本地 outputs/review/task015-v2/index.html 初筛，导出 JSON 交接；实际标签接管另立版本，不能编辑 TASK-014 冻结 review。卡片为开发校准界面，原始载荷不上 Git、科学标签不自动晋级。
+TASK-015 覆盖、60 卡代理审核及九个用户 SciFinder RDF 接收已完成，分别见 REPORT-015、REPORT-015-P1、REPORT-015-P2。结果是开发候选与来源线索；实际独立人审/标签接管须另立版本，不能编辑 TASK-014 冻结 review。原始载荷不上 Git、科学标签不自动晋级。
+
+[SCIFINDER_SEARCH_TASK015_P1.md](SCIFINDER_SEARCH_TASK015_P1.md)：60条代理审核后的精准查询词、实例缺口与材料接收格式；更新此前要求用户初筛60卡的工作分工。

@@ -76,3 +76,7 @@ GitHub API 查 schema revision 被限流（403），保留错误；改用公开 
 用户先用 30 条重点卡片做结构初筛，按 4 条定向材料清单核对或提供合法正文/SI/原始导出。收到人工记录后另立来源与标签接管合同，确认审核者、具体实例、分歧和开发 gold 版本；正式盲测需另留独立来源。TASK-016 糖苷感知 MCTS 与 TASK-017 正式评测没有自动授权，不能跳过 gold 或 preflight。
 
 存储失败验证首轮在测试注入处提前抛错：Playwright 自动执行了 evaluate 返回的函数。修正测试脚本让注入返回空值，不改卡片源；失败目录 outputs/validation/task015-cards-v2 保留，完整复验使用新目录 task015-cards-v2-pass。
+
+## 后续澄清（2026-09-27，TASK-015-P1）
+
+[REPORT-015-P1](REPORT-015-P1-agent-review-ord-analysis.md)进一步解释ORD的78条是拓扑候选，含已有糖苷后修饰、背景/配方和领域误命中，不能计作78条糖基化。60条委托代理审核已完成，旧报告与空白人工卡保留历史；最新结果见outputs/review/task015-p1/final-v2。

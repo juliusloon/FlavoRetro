@@ -26,6 +26,9 @@
 | [REPORT-013-web-ui-design.md](REPORT-013-web-ui-design.md) | 已完成呈现层设计与浏览器验收，改动未提交。 |
 | [REPORT-014-domain-triage.md](REPORT-014-domain-triage.md) | 记录 508 条 guide、2,301 条离线试点、60 条审核样本、字节重放与 62 项测试；非科学晋级。 |
 | [REPORT-015-ord-coverage-review-cards.md](REPORT-015-ord-coverage-review-cards.md) | 53 源实测、60 卡片、定向材料与工程验证；Completed，化学审核未执行。 |
+| [REPORT-015-P1-agent-review-ord-analysis.md](REPORT-015-P1-agent-review-ord-analysis.md) | 60 卡委托代理审核、ORD 深析及 SciFinder 检索词。 |
+| [REPORT-015-P2-scifinder-inbound.md](REPORT-015-P2-scifinder-inbound.md) | 九个用户 RDF 的完整性、结构/来源交叉核对与精确检索缺口。 |
+| [REPORT-015-P3-human-review-handoff.md](REPORT-015-P3-human-review-handoff.md) | 阶段 1 的 60 卡人工复核包、验证与待人审门槛。 |
 
 - 每个 REPORT 必须对应一个编号和短标题相同的 TASK。
 - REPORT 记录实际发生的内容，而不是重复任务目标。

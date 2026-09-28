@@ -11,6 +11,13 @@ operations/*.json
 build/
 dist/
 operations/.staging-task012/
+operations/.staging-task011/
 
 # macOS AppleDouble metadata
 ._*
+
+# User-provided licensed database exports; retain locally, never commit
+temp/
+
+# Local assistant/tool state; retained locally, not project data
+.workbuddy/

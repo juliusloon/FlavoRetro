@@ -74,3 +74,9 @@ TASK-014 已完成领域筛选与评测规范；TASK-015 已获批并完成 ORD 
 [领域/标注/评测协议](protocols/README.md) 定义 TASK-014 的总分类与 TASK-015 接管规则；[triage_reactions.py](../scripts/triage_reactions.py) 是只读输入、新目录输出的离线筛选入口。
 
 [ORD 实际覆盖](protocols/ORD_COVERAGE_V1.md) 给出当前镜像全量扫描与来源边界；[定向 SciFinder 材料/审核指南](protocols/SCIFINDER_TARGETED_IMPORT_V1.md) 给出 60 卡入口、4 条首批材料和原件接收格式。
+
+[TASK-015-P1](tasks/TASK-015-P1-agent-review-ord-analysis.md) / [REPORT-015-P1](reports/REPORT-015-P1-agent-review-ord-analysis.md)：Completed，60条委托代理审核、ORD深入分析、[SciFinder直接检索词](protocols/SCIFINDER_SEARCH_TASK015_P1.md)。结果入口outputs/review/task015-p1/final-v2/index.html；不构成独立人审/gold。
+
+[TASK-015-P2](tasks/TASK-015-P2-scifinder-inbound.md) / [REPORT-015-P2](reports/REPORT-015-P2-scifinder-inbound.md)：已接收并核对九个 SciFinder RDF、635 条导出行；本地明细见 outputs/review/task015-p2/inbound-v1。OsCGT 来源已覆盖，精确 5-O 指定供体及 3-O-ribofuranoside 目标仍缺；不构成独立 gold。
+
+[TASK-015-P3 人审交接](tasks/TASK-015-P3-human-review-handoff.md) / [阶段报告](reports/REPORT-015-P3-human-review-handoff.md)：60 卡可填写离线包已交付，本地入口 outputs/review/task015-p3/handoff-v2/index.html；等待所有者审核回传，再逐轴补证并条件冻结开发 gold。

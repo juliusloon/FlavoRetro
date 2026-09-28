@@ -38,3 +38,7 @@
 科学门槛由 release 元数据和 preflight 显式保留；工程阶段通过不自动改变 primary source/vendor/independent labels/production/formal benchmark 状态。
 
 TASK-015 离线补充：flavoretro/review_cards.py 与 scripts/build_review_cards.py 生成本地审核卡；fetch_ord.py / scan_ord.py / survey_ord_mirror.py / summarize_ord_coverage.py 负责冻结公开镜像、原件校验、逐行候选与严格重合；setup_ord_schema.py 和 environment/task015-ord-schema.json 只隔离官方生成 protobuf 模块。来源身份导航由 review_references.py / refine_review_references.py 生成；check_review_cards.py / audit_ord_coverage.py 核工程结果。data/raw/ord/task015 为原件，outputs/coverage 为机器结果，outputs/review/task015-v2 为最终卡片，data/inbox/scifinder/task015-user 为未来用户原件接收目录，均不入 Git。不接 runtime/v3，不生成 human_reviewed / gold；具体字段与职责见 REPORT-015、ORD_COVERAGE_V1、SCIFINDER_TARGETED_IMPORT_V1。
+
+TASK-015-P1：scripts/analyze_ord_review.py在冻结扫描结果上重算来源/重合/糖拓扑诊断；scripts/assemble_agent_reviews.py合并三个代理审核批次并生成只读页及JSONL/TSV。最新本地结果outputs/review/task015-p1/final-v2，ORD补充outputs/coverage/task015-p1；身份human_delegated_agent_review，不接活动v3或runtime。
+
+TASK-015-P3：scripts/build_task015_p3_handoff.py 从冻结 60 卡、代理审核和 P2 新 RDF 交叉表生成本地人审界面/缺口表/版本及哈希 packet；scripts/check_task015_p3_handoff.py 使用隔离浏览器测试保存、导入导出与哈希拒绝。outputs/review/task015-p3/handoff-v2 仅本地受限衍生审核包，人工提交待独立验证，不回写原卡/v3/运行时。

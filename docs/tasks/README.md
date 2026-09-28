@@ -26,6 +26,9 @@
 | [TASK-013-web-ui-design.md](TASK-013-web-ui-design.md) | 已完成移动优先、对比度和可访问性呈现层合同。 |
 | [TASK-014-domain-triage.md](TASK-014-domain-triage.md) | human_direct 批准；领域总分类、糖苷重点审核、笔记 guide、本地试点及标注/评测协议；Completed。 |
 | [TASK-015-ord-coverage-review-cards.md](TASK-015-ord-coverage-review-cards.md) | human_direct 工程授权；ORD 当前镜像覆盖与 60 卡审核准备 Completed；实际 gold 未执行。 |
+| [TASK-015-P1-agent-review-ord-analysis.md](TASK-015-P1-agent-review-ord-analysis.md) | 60 卡代理审核与 ORD 深析 Completed；不构成独立人审。 |
+| [TASK-015-P2-scifinder-inbound.md](TASK-015-P2-scifinder-inbound.md) | 九个用户 SciFinder RDF 接收、去重、卡片连接和定向化学缺口核对 Completed。 |
+| [TASK-015-P3-human-review-handoff.md](TASK-015-P3-human-review-handoff.md) | 60 卡人审交接包已交付，AwaitingUserReview；后续缺口处理与开发 gold 冻结待真实审核文件。 |
 
 ## 编号与命名
 
