@@ -1,0 +1,193 @@
+{
+  "boundaries": [
+    "Scaffold co-presence is not proven scaffold preservation",
+    "Glycoside topology is not reaction feasibility or a reaction-center label",
+    "Guide signature is a coarse scaffold/topology pattern, not a known reaction instance",
+    "No salt, tautomer, stereo or yield imputation",
+    "All pilot records are development_exposed; no blind test split is created",
+    "Retraction blocklist contains only publicly verifiable retraction notes with cited evidence; it blocks queue placement, never deletes records",
+    "pathway_suspect is a structural compression suspicion flag for review routing, not a mechanistic claim",
+    "Owner utility exclusions without machine-expressible signals (e.g. P3 card 28) stay human-review-layer judgments and are not faked as rules"
+  ],
+  "categories": {
+    "glycosyl_related": "糖基相关转化候选",
+    "other_related": "其他领域相关/方向未明候选",
+    "out_of_scope_or_unknown": "当前规则未命中或无法判断",
+    "protection_deprotection": "保护/脱保护语境候选",
+    "scaffold_construction": "黄酮相关骨架出现候选",
+    "scaffold_interconversion": "骨架类别变化候选",
+    "substituent_modification": "同类骨架两侧共现的修饰候选"
+  },
+  "claim": "Machine domain candidates only; no independent chemical labels, source verification or search admission. v2 adds owner-review-calibrated dispositions: retracted-source blocklist, incomplete-record demotion, pathway-compression suspicion. Dispositions are screening behavior, not chemical truth.",
+  "context_terms": {
+    "glycosyl_related": [
+      "glycosyl",
+      "glycosid",
+      "glucosyl",
+      "rhamnosyl",
+      "糖基化",
+      "糖苷",
+      "糖苷化"
+    ],
+    "protection_deprotection": [
+      "deprotection",
+      "deprotect",
+      "protection",
+      "protecting group",
+      "脱保护",
+      "保护基",
+      "保护"
+    ],
+    "scaffold_construction": [
+      "cyclization",
+      "环化",
+      "chalcone synthesis",
+      "查耳酮合成"
+    ],
+    "substituent_modification": [
+      "methylation",
+      "demethylation",
+      "oxidation",
+      "reduction",
+      "prenylation",
+      "甲基化",
+      "脱甲基",
+      "氧化",
+      "还原",
+      "异戊烯基化"
+    ]
+  },
+  "dispositions": {
+    "blocked_source": {
+      "match": "citation DOI substring OR (journal-or-alias)+year+volume+pages with issue discriminating only when the citation carries a parenthesized numeric group other than the year; dashes normalized, word boundaries on year/volume",
+      "queue": "blocked_source_blacklist"
+    },
+    "incomplete_record": {
+      "applies_to": "features.status != parsed",
+      "queue": "incomplete_record"
+    },
+    "pathway_suspect": {
+      "applies_to": "parsed AND reactant side has zero domain scaffolds AND product side has >= min_distinct_domain_product_molecules distinct molecules each carrying a domain scaffold",
+      "min_distinct_domain_product_molecules": 2,
+      "queue": "pathway_suspect"
+    },
+    "precedence": [
+      "blocked_source",
+      "incomplete_record",
+      "pathway_suspect"
+    ]
+  },
+  "legacy_classification_candidates": {
+    "biosynthesis": "other_related",
+    "c_glycosylation": "glycosyl_related",
+    "chalcone_synthesis": "scaffold_construction",
+    "cyclization": "scaffold_construction",
+    "deprotection": "protection_deprotection",
+    "flavanone_synthesis": "scaffold_construction",
+    "flavonoid_cyclization": "scaffold_construction",
+    "flavonoid_synthesis": "scaffold_construction",
+    "glycosylation": "glycosyl_related",
+    "isoflavone_synthesis": "scaffold_construction",
+    "literature_reaction": "other_related",
+    "methylation": "substituent_modification",
+    "o_glycosylation": "glycosyl_related",
+    "oxidation": "substituent_modification",
+    "protection": "protection_deprotection",
+    "reduction": "substituent_modification"
+  },
+  "limits": {
+    "guide_examples_per_match": 5,
+    "sample_records": 60
+  },
+  "protocol_version": "task015-p4-v2",
+  "sampling_quotas": {
+    "domain_guide": 10,
+    "domain_outside_guide": 10,
+    "glycoside_guide": 15,
+    "glycoside_outside_guide": 15,
+    "invalid_or_partial": 5,
+    "low_or_unknown": 5
+  },
+  "scaffolds": {
+    "aurone": {
+      "label_zh": "橙酮",
+      "query_smiles": "O=C1C(=Cc2ccccc2)Oc2ccccc21",
+      "review_status": "not_performed",
+      "use_chirality": false
+    },
+    "chalcone": {
+      "label_zh": "查耳酮",
+      "query_smiles": "O=C(C=Cc1ccccc1)c1ccccc1",
+      "review_status": "not_performed",
+      "use_chirality": false
+    },
+    "dihydrochalcone": {
+      "label_zh": "二氢查耳酮",
+      "query_smiles": "O=C(CCc1ccccc1)c1ccccc1",
+      "review_status": "not_performed",
+      "use_chirality": false
+    },
+    "flavan": {
+      "label_zh": "黄烷母核",
+      "query_smiles": "c1ccc(C2CCc3ccccc3O2)cc1",
+      "review_status": "not_performed",
+      "use_chirality": false
+    },
+    "flavanone": {
+      "label_zh": "二氢黄酮",
+      "query_smiles": "O=C1CC(c2ccccc2)Oc2ccccc21",
+      "review_status": "not_performed",
+      "use_chirality": false
+    },
+    "flavone": {
+      "label_zh": "黄酮",
+      "query_smiles": "O=c1cc(-c2ccccc2)oc2ccccc12",
+      "review_status": "not_performed",
+      "use_chirality": false
+    },
+    "flavonol": {
+      "label_zh": "黄酮醇母核（3-O 取代也保留候选）",
+      "query_smiles": "O=c1c(O)c(-c2ccccc2)oc2ccccc12",
+      "review_status": "not_performed",
+      "use_chirality": false
+    },
+    "flavylium": {
+      "label_zh": "黄烷鎓母核（花色素相关候选）",
+      "query_smiles": "[o+]1c(-c2ccccc2)ccc2ccccc12",
+      "review_status": "not_performed",
+      "use_chirality": false
+    },
+    "isoflavone": {
+      "label_zh": "异黄酮",
+      "query_smiles": "O=c1c(-c2ccccc2)coc2ccccc12",
+      "review_status": "not_performed",
+      "use_chirality": false
+    }
+  },
+  "schema_version": 2,
+  "scores": {
+    "domain_glycoside": 40,
+    "domain_structure": 100,
+    "guide_exact": 30,
+    "guide_signature": 20,
+    "scaffold_appearance": 20
+  },
+  "source_blacklist": [
+    {
+      "aliases": [
+        "Res. Chem. Intermed."
+      ],
+      "evidence": "Springer 撤稿注记关联原论文；TASK-015-P1 代理核对撤稿事实，TASK-015-P3 卡 53 所有者亲审排除。同引用的另外 2 条记录未经逐条人审，按来源级拦截处理。",
+      "issue": "7",
+      "journal": "Research on Chemical Intermediates",
+      "original_doi": "10.1007/s11164-024-05300-x",
+      "pages": "3079-3108",
+      "retraction_note_date": "2024-11-22",
+      "retraction_note_doi": "10.1007/s11164-024-05454-8",
+      "verified": "agent_primary_check+owner_exclusion_card53",
+      "volume": "50",
+      "year": "2024"
+    }
+  ],
+  "status": "engineering_frozen_provisional_chemistry_v2_owner_calibration"
+}

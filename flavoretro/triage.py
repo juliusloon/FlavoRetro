@@ -30,8 +30,18 @@ def load_rules(path=None):
     if not path.is_file():
         path = PACKAGE / "assets/configs/domain_triage.json"
     rules = json.loads(path.read_text())
-    if rules.get("schema_version") != 1 or rules.get("protocol_version") != "task014-v1":
+    known = {(1, "task014-v1"), (2, "task015-p4-v2")}
+    if (rules.get("schema_version"), rules.get("protocol_version")) not in known:
         raise ValueError("unsupported triage rules version")
+    if rules["schema_version"] >= 2:
+        for key in ("dispositions", "source_blacklist"):
+            if key not in rules:
+                raise ValueError("v2 rules require " + key)
+        if rules["dispositions"]["precedence"] != ["blocked_source", "incomplete_record", "pathway_suspect"]:
+            raise ValueError("unsupported v2 disposition precedence")
+        for entry in rules["source_blacklist"]:
+            if not entry.get("journal") or not entry.get("retraction_note_doi"):
+                raise ValueError("blacklist entry lacks verifiable identity")
     if sum(rules["sampling_quotas"].values()) != rules["limits"]["sample_records"]:
         raise ValueError("sampling quotas must reconcile")
     for item in rules["scaffolds"].values():
@@ -149,6 +159,81 @@ class Screener:
                 "baseline_score": score, "reaction_center_status": "not_inferred",
                 "mapping_status": "upstream_maps_present_unverified" if any(c["map_atoms"] for cs in sides.values() for c in cs) else "not_available",
                 "unspecified_stereo": sum(c["unspecified_stereo"] or 0 for cs in sides.values() for c in cs)}
+
+
+def citation_texts(row):
+    """(doi_text, token_text): DOI matching keeps hyphens; token matching normalizes dashes."""
+    fields = row["raw"].get("fields", {}) if isinstance(row.get("raw"), dict) else {}
+    text = " ".join(str(value) for key, value in fields.items() if "CITATION" in key)
+    doi_text = re.sub(r"\s+", " ", text).casefold()
+    token_text = re.sub(r"[\s\u2010\u2011\u2012\u2013\u2014-]+", " ", doi_text)
+    return doi_text, token_text
+
+
+def source_blacklist_hits(row, rules):
+    """Queue-level block for verifiably retracted sources. Bibliographic only."""
+    if rules.get("schema_version", 1) < 2:
+        return []
+    doi_text, token_text = citation_texts(row)
+    hits = []
+    for entry in rules["source_blacklist"]:
+        doi_hit = any(doi.casefold() in doi_text for doi in (entry.get("original_doi"), entry.get("retraction_note_doi")) if doi)
+        names = [entry["journal"], *entry.get("aliases", [])]
+        pages = entry.get("pages")
+        year = str(entry["year"]) if entry.get("year") else None
+        name_hit = any(
+            re.sub(r"[\s\u2010\u2011\u2012\u2013\u2014-]+", " ", name).casefold() in token_text
+            for name in names if name)
+        pages_hit = bool(pages) and re.sub(r"[\s\u2010\u2011\u2012\u2013\u2014-]+", " ", str(pages)).casefold() in token_text
+        bounded_hit = all(re.search(r"\b" + re.escape(str(token)) + r"\b", token_text)
+                          for token in ([entry.get("volume"), year]) if token)
+        issue = entry.get("issue")
+        if issue:
+            # An issue number only discriminates when the citation carries one; omitting it passes.
+            groups = [group for group in re.findall(r"\((\d+)\)", token_text) if group != year]
+            bounded_hit = bounded_hit and ((not groups) or (str(issue) in groups))
+        token_hit = name_hit and pages_hit and bounded_hit
+        if doi_hit or token_hit:
+            hits.append(entry)
+    return hits
+
+
+def pathway_compression_suspect(row, features, screener, rules):
+    """Multi-product domain output over a non-domain reactant smells like a compressed pathway."""
+    if rules.get("schema_version", 1) < 2 or features["status"] != "parsed":
+        return False
+    if features["reactant_scaffolds"]:
+        return False
+    if not features["product_scaffolds"]:
+        return False
+    minimum = rules["dispositions"]["pathway_suspect"]["min_distinct_domain_product_molecules"]
+    carrying = 0
+    seen = set()
+    for component in row.get("components", []):
+        if component.get("role") != "product" or component.get("structure", {}).get("status") != "parsed":
+            continue
+        for smiles in (component["structure"].get("canonical_smiles") or "").split("."):
+            if not smiles or smiles in seen:
+                continue
+            seen.add(smiles)
+            if screener.molecule(smiles)["scaffolds"]:
+                carrying += 1
+    return carrying >= minimum
+
+
+def v2_disposition(row, features, screener, rules):
+    """Owner-calibrated queue overrides. Never deletes records; precedence is contractual."""
+    if rules.get("schema_version", 1) < 2:
+        return None
+    blocked = source_blacklist_hits(row, rules)
+    if blocked:
+        return {"queue": "blocked_source_blacklist", "flag": "blocked_source",
+                "blacklist_entries": [e["retraction_note_doi"] for e in blocked]}
+    if features["status"] != "parsed":
+        return {"queue": "incomplete_record", "flag": "incomplete_record", "blacklist_entries": []}
+    if pathway_compression_suspect(row, features, screener, rules):
+        return {"queue": "pathway_suspect", "flag": "pathway_suspect", "blacklist_entries": []}
+    return None
 
 
 def source_keys(row):
@@ -318,7 +403,9 @@ def build(folder, writer=None, rules_path=None):
         pattern_ids = sorted(signatures.get(f["guide_signature"], []))
         exact_ids = sorted(exact_guides.get(f["exact_group"], []))
         supported = bool(pattern_ids or exact_ids)
-        queue = "guide_supported" if f["domain_structure_candidate"] and supported else "outside_guide_structure" if f["domain_structure_candidate"] else "low_or_unknown"
+        queue_before = "guide_supported" if f["domain_structure_candidate"] and supported else "outside_guide_structure" if f["domain_structure_candidate"] else "low_or_unknown"
+        disposition = v2_disposition(row, f, screener, rules)
+        queue = disposition["queue"] if disposition else queue_before
         score = f["baseline_score"] + rules["scores"]["guide_signature"] * bool(pattern_ids) + rules["scores"]["guide_exact"] * bool(exact_ids)
         item = {"id": row["id"], "input_record": row, "features": f, "queue": queue,
                 "guide_supported": supported, "guide_score": score,
@@ -329,6 +416,10 @@ def build(folder, writer=None, rules_path=None):
                 "leakage_group": group_for[row["id"]], "split": "development_exposed",
                 "primary_source_status": "not_performed", "human_review_status": "not_performed",
                 "production_eligible": False}
+        if rules.get("schema_version", 1) >= 2:
+            # v1 payloads stay byte-identical; calibration fields exist only under v2 rules.
+            item["v1_queue"] = queue_before
+            item["v2_disposition"] = disposition
         pilot.append(item); duplicates[f["exact_group"]].append(row["id"])
     chosen, coverage = select_samples(pilot, rules)
     review = []
@@ -365,13 +456,16 @@ def build(folder, writer=None, rules_path=None):
                                "No atom mapping or reaction-center inference; topology signatures are candidates only",
                                "Guide signatures are coarse scaffold/topology co-occurrence; not mechanistic matching",
                                "All inputs were exposed during development; cannot be reused as independent blind labels",
-                               "Stratified quota samples are not a probability sample and cannot estimate whole-population accuracy"]}
+                               "Stratified quota samples are not a probability sample and cannot estimate whole-population accuracy"]
+                               + (["Owner-review-calibrated dispositions are screening behavior learned from 60 development-exposed cards; they are not validated chemical filters"]
+                                  if rules.get("schema_version", 1) >= 2 else [])}
     files = {"guide.jsonl": "".join(json.dumps(row, ensure_ascii=False, sort_keys=True) + "\n" for row in guide),
              "pilot.jsonl": "".join(json.dumps(row, ensure_ascii=False, sort_keys=True) + "\n" for row in pilot),
              "duplicates.json": dumps(duplicate_rows), "leakage-groups.json": dumps(groups),
              "review.jsonl": "".join(json.dumps(row, ensure_ascii=False, sort_keys=True) + "\n" for row in review),
              "queues.json": dumps({"baseline_order": baseline_order, "guide_order": guide_order,
-                                  "by_queue": {q: [r["id"] for r in pilot if r["queue"] == q] for q in ("guide_supported", "outside_guide_structure", "low_or_unknown")}}),
+                                  "by_queue": {q: [r["id"] for r in pilot if r["queue"] == q]
+                                               for q in sorted({r["queue"] for r in pilot})}}),
              "summary.json": dumps(summary), "rules.json": dumps(rules)}
     review_buffer = io.StringIO(newline="")
     columns = ["id", "stratum", "leakage_group", "split", "machine_queue", "machine_categories",
