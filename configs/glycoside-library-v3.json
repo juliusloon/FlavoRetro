@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "default_enabled": false,
+  "manifest": "outputs/task016-p2/v2/template_source_manifest.json",
+  "manifest_sha256": "e17bff4c1b891fe8164e8f62bec21e54527a5662adf466548c5898fdb069da88",
+  "status": "development_calibration_partial_new_transfer_unvalidated"
+}

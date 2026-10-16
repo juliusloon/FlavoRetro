@@ -1,0 +1,30 @@
+{
+  "task": "TASK-017-DRAFT",
+  "artifact_type": "contract_drafting_delivery_not_formal_evaluation",
+  "approval": "agent_delegated",
+  "human_reviewed": false,
+  "TASK017_status": "Proposed",
+  "TASK017_execution_approved": false,
+  "TASK016_method_and_bounded_development_status": "Completed",
+  "files": {
+    "docs/tasks/TASK-017-independent-c-ss-transfer-benchmark.md": "036c4448f84cda2329b111345e5249688817bca60fe15e185f5498ffda356f09",
+    "docs/adr/ADR-006-method-delivery-and-independent-evaluation.md": "1ce37d251765dc02eb492f19d6f670dd369287ae2d17432761aa8c5a368cce19",
+    "STATE.md": "1fc7cc2cb2f7f276f498f2ffb29a25571893bf162bf0b9736c766eb8a7606e28",
+    "ARCHITECTURE.md": "6545a549054c44af9f6f21cb239d10bafd2d39c8564e573ad9f51618247d4ad0",
+    "docs/tasks/README.md": "14817e7f6f9aa1aea30ec305a932913d77a11da2eb6724da546aae22681b0e41",
+    "docs/README.md": "a28b5afe1589d4dccc2a0bc492a18c7ed2b19b5468c2e579feee289dd5b1505a",
+    "docs/PAPER_ROADMAP.md": "cb8798f5598ad70c2296d8a7e2ce4aec0a6d598c7f5fcb2ca07915033dd320df",
+    "docs/WORKBENCH_ROADMAP.md": "cbe31a0d8a8cd86110f403514e25f01973ab2569a1176bcba58aa581bf23850b",
+    "docs/adr/README.md": "b72474569d979496fab340e0ed46178f4283fc170b2b91eeb8db66b9a407a4a4",
+    "operations/task017-draft-20261013/baseline.json": "ec4f99617002e5cbdf563354e2eed9b28a0a22391e3b26d5a487515b1436354f",
+    "operations/task017-draft-20261013/scope_decision.json": "e1873c1f486b0712499943bc47e0d05422b4218836f6d48daf72061a403b8833",
+    "operations/task017-draft-20261013/documents.diff": "c77372235af4c6cee76ba23a965a33641e293e1ea987b03d3f1b5a824066177c",
+    "operations/task017-draft-20261013/verification.json": "ea2d3860bf4451a739739a8a6ad94e46695ad51bd549f5f503b6bffa69ca53ec",
+    "operations/task017-draft-20261013/closeout.md": "7db73efd40f03f882e7e1b53577e593549b45a3248b2c82953a2c7062cb93c57"
+  },
+  "excluded_from_self_hash": [
+    "delivery_manifest.json",
+    "operations/events.jsonl",
+    "current operation command log"
+  ]
+}

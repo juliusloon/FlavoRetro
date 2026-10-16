@@ -1,0 +1,66 @@
+--- before/STATE.md
++++ STATE.md
+@@ -76,3 +76,5 @@
+ TASK-016-P8 **Completed（诊断性完成）**，[报告](docs/reports/REPORT-016-P8-evidence-rescue-feasibility.md)保留。H1/H5[治理裁定](docs/reports/REPORT-016-P8-H1-H5-governance-rulings.md)已完成书面裁定和曝光登记；其原C-E03 BLOCKED及E02 incomplete建议已由本次正式终止取代。**H5的G7接入/专利别名缺口仍未解决**，作为未来面板冻结前置保留，不阻止本次退出，不自动派生修复任务。P8旧独立复核与mtime/SHA边界按原治理报告保留。
+ 
+ 本轮新HTTP/下载/科学原文读取/A4–A6重跑/R80恢复/MCTS/代码修复/新scope/新epoch/Git同步均0。最终直接一致性与限定资产SHA/ledger前缀核验见 outputs/task016-p7/closeout-20261013/verification.json；没有新增独立科学验证或human_reviewed。
++
++TASK-016-P9（2026-10-13）：[现有数据可测性盘点与开发评价重设计](docs/tasks/TASK-016-P9-development-evaluation-redesign.md) **Proposed，执行未批准**。所有者“好，落实成一个具体的task”授权合同编制与文档登记；范围裁定agent_delegated，非human_reviewed。拟在另获执行批准后仅盘点已有已准入/已曝光结构化交付，形成C/SS分范围可测性、逐来源留组/继承资产排除计划、两类比较及三层评价预登记；本次未执行盘点、模板构建、科学读取或MCTS。P7仍Partial/stopped、旧epochs关闭、fresh C0/SS0/指标null，P2 development effect未验收。P9规划完成不代替独立迁移确认，不自动改变pipeline或TASK-017/018准入。
+--- before/docs/tasks/README.md
++++ docs/tasks/README.md
+@@ -41,6 +41,7 @@
+ | [TASK-016-P7-closeout-20261013.md](TASK-016-P7-closeout-20261013.md) | Completed（终止行政收口）；P7总体Partial，epoch账82→85；不恢复R80、不修G7、不建新epoch。[报告](../reports/REPORT-016-P7-closeout-20261013.md) |
+ | [TASK-016-P8-evidence-rescue-feasibility.md](TASK-016-P8-evidence-rescue-feasibility.md) | Completed（诊断性完成）；当前交接纠偏及H1/H5裁定见下行，原交接不作为科学放行。 |
+ | [TASK-016-P8-H1-H5-governance-rulings.md](TASK-016-P8-H1-H5-governance-rulings.md) | Completed（书面治理与4条真实曝光补记）；当前epochs已由P7-CLOSEOUT正式终止，G7接入仍未完成。[报告](../reports/REPORT-016-P8-H1-H5-governance-rulings.md) |
++| [TASK-016-P9-development-evaluation-redesign.md](TASK-016-P9-development-evaluation-redesign.md) | **Proposed（2026-10-13）**；现有已准入/已曝光数据可测性盘点、逐来源留组与资产排除计划、分层评价预登记；仅合同已建立，执行未批准，不恢复P7或运行MCTS。 |
+ | [TASK-015-P5-p0p1-evidence-closure.md](TASK-015-P5-p0p1-evidence-closure.md) | Completed（2026-10-05）；所有者采纳代理最终裁决，60 卡/508 笔记/名称/身份/供应全部定案，不再等待人工回填；未翻转 preflight。 |
+ | [TASK-015-06-review-into-search.md](TASK-015-06-review-into-search.md) | Completed（2026-10-05，agent_delegated）；审核成果已默认进入库存准入、逐步/末端/资源展示和运行指纹；17库存键保持、原配置/排序/评分不变，未启动TASK-016。 |
+ 
+--- before/docs/README.md
++++ docs/README.md
+@@ -48,11 +48,12 @@
+ | 黄酮苷反应库批量扩充 | [TASK-016-P1](tasks/TASK-016-P1-open-glycoside-library-expansion.md) | [REPORT-016-P1](reports/REPORT-016-P1-open-glycoside-library-expansion.md) | Completed；54新反应/47新模板、5范围，7/12开发补回；正式评测另行准入 |
+ | C/糖间成键迁移验证 | [TASK-016-P2](tasks/TASK-016-P2-c-sugar-transfer-validation.md) | [REPORT-016-P2](reports/REPORT-016-P2-c-sugar-transfer-validation.md) | Partial；1C+2糖间新范围、旧4SS三seed修复；新两类6目标/2出处面板未满足，新A/B/D未执行 |
+ | C scope修复与分轴终验 | [TASK-016-P6](tasks/TASK-016-P6-c-scope-runtime-transfer-closure.md) | [REPORT-016-P6](reports/REPORT-016-P6-c-scope-runtime-transfer-closure.md) | Partial；正确scope2/2、可执行C6/4、v6与旧51回归完成；C域不匹配/SS1/1，迁移null；177测试、3410保护0漂移 |
+-| TASK-016 Roadmap P2 终验 | [TASK-016-P7](tasks/TASK-016-P7-domain-aligned-transfer-closure.md) | [REPORT-016-P7](reports/REPORT-016-P7-domain-aligned-transfer-closure.md) | In Progress；已批准执行，C/SS E01不足已注销并永久暴露；E02仅design核验，双轴真实迁移待验收 |
++| TASK-016 Roadmap P2 终验 | [TASK-016-P7](tasks/TASK-016-P7-domain-aligned-transfer-closure.md) | [终止审计](reports/REPORT-016-P7-closeout-20261013.md) | **Partial/stopped（2026-10-13）**；C-E02/SS-E02/C-E03已正式incomplete，fresh C0/SS0、科学0 cell、metrics=null；P2未验收 |
++| 现有数据可测性与评价重设计 | [TASK-016-P9](tasks/TASK-016-P9-development-evaluation-redesign.md) | 未执行；报告待执行后生成 | **Proposed**；盘点、留组/继承资产排除与评价预登记，执行未批准；不恢复旧epoch、不构建模板、不运行MCTS |
+ 
+-TASK-015既有裁决及搜索接管已完成。[TASK-016](tasks/TASK-016-open-glycoside-expansion.md)保留4精确O首版；[TASK-016-P1](tasks/TASK-016-P1-open-glycoside-library-expansion.md) Completed，54新反应/47新模板、7/12开发补回。[TASK-016-P2](tasks/TASK-016-P2-c-sugar-transfer-validation.md)本轮Partial，见[报告](reports/REPORT-016-P2-c-sugar-transfer-validation.md)：默认关闭v3共54模板，新增1C/2糖间范围、旧4SS三seed修复；新增准入反应0，新迁移面板不足，未运行新A/B/D。工程124测试、重建/包外安装/保护审计通过不抵偿科学门。当前缺口以[TASK-016-P6报告](reports/REPORT-016-P6-c-scope-runtime-transfer-closure.md)的C范围/独立留出域对齐与SS原始反应闭包为准；TASK-017仍未授权，正式/独立化学/供应门保持。
++TASK-015既有裁决及搜索接管已完成。[TASK-016](tasks/TASK-016-open-glycoside-expansion.md)保留4精确O首版；[TASK-016-P1](tasks/TASK-016-P1-open-glycoside-library-expansion.md) Completed，54新反应/47新模板、7/12开发补回。[TASK-016-P2](tasks/TASK-016-P2-c-sugar-transfer-validation.md)本轮Partial，见[报告](reports/REPORT-016-P2-c-sugar-transfer-validation.md)：默认关闭v3共54模板，新增1C/2糖间范围、旧4SS三seed修复；新增准入反应0，新迁移面板不足，未运行新A/B/D。工程124测试、重建/包外安装/保护审计通过不抵偿科学门。当前科学状态以[P7终止审计](reports/REPORT-016-P7-closeout-20261013.md)为准：P7为Partial/stopped，P2 development effect未验收；TASK-017正式执行与独立化学/供应门保持。
+ 
+-[TASK-016-P7](tasks/TASK-016-P7-domain-aligned-transfer-closure.md) 已获所有者批准并处于 In Progress：不复用反复观察的旧 holdout，而采用 scope 先冻结、随后 fresh holdout、失败 epoch 永久暴露并换新 holdout 的机制；只有 C/SS 双轴都通过真实 A/B/E 与三 seed node-transfer，才允许把工作台 Roadmap P2 的 development effect 标记完成。执行中结果见对应报告；当前尚未完成双轴科学验收。
++[TASK-016-P7](tasks/TASK-016-P7-domain-aligned-transfer-closure.md) 已正式终止，旧恢复批准不再放行后续执行，已读对象永久保留曝光；不重开epochs或恢复R80。[TASK-016-P9](tasks/TASK-016-P9-development-evaluation-redesign.md)为新的Proposed盘点与预登记合同，仅合同编制已授权；回顾性开发、独立迁移确认与正式benchmark分层，P9完成不自动通过原C/SS双轴科学门或进入TASK-017。
+ 
+ \* TASK-006 文件名为 topology，内容同时覆盖历史目录完整性冻结核对。REPORT-005、REPORT-007、REPORT-007-P1 为 TASK-009 补立，事实来源为 `operations/events.jsonl` 与 `operations/command-*.log`（本机日志，不入 Git）。
+ 
+--- before/docs/PAPER_ROADMAP.md
++++ docs/PAPER_ROADMAP.md
+@@ -55,6 +55,7 @@
+ | [TASK-016-P1](tasks/TASK-016-P1-open-glycoside-library-expansion.md) | 批量扩充真实成键反应/模板与作用范围，验证新实例覆盖 | D2 | 复用首版地基，规模/范围/留出增益共同验收；保持审核/17库存 | 2026-10-06 Completed；54新反应/47新模板、5范围、7/12开发补回；正式评测另行准入 |
+ | [TASK-016-P2](tasks/TASK-016-P2-c-sugar-transfer-validation.md) | 补C与糖间新精确目标迁移 | D2 | 两类各6新目标/2出处、双基线至少3且50%补回/三seed；旧4SS仅校准 | 2026-10-06 Partial；工程新1C/2糖间范围、旧4SS修复；新面板不足，新A/B/D未执行，科学门保持 |
+ | [TASK-016-P7](tasks/TASK-016-P7-domain-aligned-transfer-closure.md) | 领域对齐 fresh-holdout 的 C/SS 双轴迁移闭环，作为 TASK-016 / Roadmap P2 development 终验 | D2 | P6 v6 与正确 C scope 工程已存在；旧 holdout 全部视为 development-exposed；scope-first 后采 fresh holdout | **Partial（2026-10-13执行终止）**；C-E02/SS-E02/C-E03正式incomplete，fresh C0/SS0、科学0 cell；[终止审计](reports/REPORT-016-P7-closeout-20261013.md)。P2 development effect未验收，不自动进入TASK-017 |
++| [TASK-016-P9](tasks/TASK-016-P9-development-evaluation-redesign.md) | 现有已准入/已曝光数据可测性、来源留组与分层评价预登记 | D1、D2 | 继承P7终止、永久曝光与已有工程；不补源、不运行科学矩阵 | **Proposed（2026-10-13）**；仅合同已建立，执行未批准；P9规划完成不通过P2/C/SS科学门，不自动进入TASK-017 |
+ | TASK-017 | 冻结 blind benchmark 并正式执行 | D1、D4 | TASK-015 的 gold set + `formal_run_ready` | 所有者人工批准 |
+ | TASK-018 | 消融、误差分析与论文结果整理 | D4、D6 | TASK-017 的冻结运行 | 所有者人工批准 |
+ 
+--- before/docs/WORKBENCH_ROADMAP.md
++++ docs/WORKBENCH_ROADMAP.md
+@@ -17,7 +17,7 @@
+ 
+ ~~把已有的糖苷连接拓扑审计接入界面~~：已于 2026-09-25 由 TASK-011 完成（只读呈现，未改搜索语义），验收要点"labelled graph synthons, not reagents 边界文案随标注同屏出现"已满足；事实见 [reports/REPORT-011-topology-web.md](reports/REPORT-011-topology-web.md)。
+ 
+-### P2 · 黄酮苷领域搜索扩展（TASK-016 工程已建立，P7 development 终验执行中）
++### P2 · 黄酮苷领域搜索扩展（工程已建立；P7已终止，development effect未验收）
+ 
+ 2026-09-29 所有者明确第一版优先补充基础模型缺失的黄酮苷候选生成能力：通过公开 API/官方批量下载自动获取数据，核查实例与模型缺口，构建来源可追溯、适用范围受限的模板，再作为独立策略受控接入 MCTS。化学合成与酶催化均可纳入，不依赖人工检索。当前 topology 仍是只读诊断，不能直接当作反应模板或可行性判据。
+ 
+@@ -28,6 +28,8 @@
+ 2026-10-06 当前补充：[TASK-016-P2](tasks/TASK-016-P2-c-sugar-transfer-validation.md)经human_direct批准执行，本轮[REPORT](reports/REPORT-016-P2-c-sugar-transfer-validation.md)整体Partial。默认关闭v3共54模板，新增1C/2糖间范围；旧4SS/5C/7O参照三seed真实创建，但新增准入0、两类新面板不足，新A/B/D未执行。6目标/2出处、至少3且50%补回及三seed要求不降低。独立账61保守（51验证+10工程、含6模拟fixture）/55实际，240上限保持。下一步补身份/闭包与新精确面板；TASK-017仅设计/准入，本轮无正式/供应/发布/Git同步。任务后缀P2与本节工作台P2阶段分开，阶段决定agent_delegated不伪装human_reviewed。
+ 
+ 2026-10-13 终止裁定：[TASK-016-P7](tasks/TASK-016-P7-domain-aligned-transfer-closure.md) **Partial，执行终止，科学验收未完成**；C-E02/SS-E02/C-E03已按原§3.3/§18.1正式development_epoch_incomplete，C-E01/SS-E01维持关闭。[终止审计](reports/REPORT-016-P7-closeout-20261013.md)。fresh C0/SS0、科学A/B/E0 cell、metrics=null；P2 development effect未验收，原科学门不变。已有O/P1/P6工程成果与曝光保留，不恢复R80、不以G7修复作为退出前置；本轮不建新epoch。后续研究须另行批准并先证明干净评价来源的可达性与隔离方案；TASK-017正式盲测未执行。
++
++2026-10-13 重新设计合同：[TASK-016-P9](tasks/TASK-016-P9-development-evaluation-redesign.md) **Proposed，执行未批准**。首轮仅盘点已有已准入/已曝光结构化资产，形成分范围可测性、逐来源留组/继承资产排除计划与评价预登记；不构建模板或运行MCTS。开发评价、独立迁移确认、正式benchmark分层；原双轴增益与P2完成要求不由P9减免，旧P7 epochs保持关闭。
+ 
+ 2026-10-05 衔接任务：[TASK-015-06：审核结果如何进入搜索](tasks/TASK-015-06-review-into-search.md) 已Completed。P3/P4/P5已有裁决用于实际资源准入、严格实例关联、逐步/末端/资源/导出及运行指纹；默认审核视图task015-06-v1，保留未知候选，错配隔离并保留原件，模型排序/评分原样。17库存键保持，4错配原已禁用、2本地模板仍不启用，供应认证0。后续TASK-016的G4–G5绑定交付审核版本；本轮未启动。
+ 

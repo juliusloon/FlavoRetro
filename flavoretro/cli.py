@@ -10,6 +10,8 @@ def main():
     parser.add_argument("--seed", type=int, default=0)
     parser.add_argument("--engine", default="optimized")
     parser.add_argument("--candidate-stock", action="store_true")
+    parser.add_argument("--glycoside-expansion", action="store_true")
+    parser.add_argument("--glycoside-library-version", choices=["v1", "v2", "v3", "v4", "v5", "v6", "v7"], default="v1")
     parser.add_argument("--seconds", type=float)
     parser.add_argument("--iterations", type=int)
     parser.add_argument("--top-k", type=int, default=5)

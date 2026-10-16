@@ -1,0 +1,7 @@
+{
+  "version": 5,
+  "default_enabled": false,
+  "manifest": "outputs/task016-p4/v1/template_source_manifest.json",
+  "manifest_sha256": "b73cb3db4fa6ef2fbab64a9dfb4c04af038d4d661826c25f4755376727915346",
+  "status": "P4 corrected runtime: qualified P2/v3 payload + the single revalidated scope (rhamnoside_glucoside_O2) only. NOT a descendant of v4. The quarantined P3 scopes C_hydroxyflavanone_C3 and rhamnoside_glucoside_O6 are excluded by construction. Activity, conditions and yield remain unverified."
+}

@@ -22,3 +22,6 @@ ADR 不记录某次 operation 修改了哪些文件，也不替代 TASK、REPORT
 | [ADR-003-repo-orientation.md](ADR-003-repo-orientation.md) | 一次性脚本归档、文档分层、GitHub 清单驱动。 |
 | [ADR-004-teaching-layer-and-web-architecture.md](ADR-004-teaching-layer-and-web-architecture.md) | 教学/文献与四页界面。 |
 | [ADR-005-foundation-workspace-and-index.md](ADR-005-foundation-workspace-and-index.md) | 独立工作区、不可变版本、派生 SQLite 与包资源。 |
+| [ADR-006-method-delivery-and-independent-evaluation.md](ADR-006-method-delivery-and-independent-evaluation.md) | TASK-016按方法及有限开发结项，TASK-017承担正式独立评价；有效负结果与方法增益分开，P7历史终止保持。 |
+| [ADR-007-research-evaluation-admission.md](ADR-007-research-evaluation-admission.md) | TASK-017分开评价准备、科研运行与供应/production/发布；任务局部证据真实放行，旧门及G0停止保持历史。 |
+| [ADR-008-futurehealth-project-split.md](ADR-008-futurehealth-project-split.md) | 教学代码拆分FutureHealth、P0受控/P1待审；后续TASK/REPORT/STATE仍在FlavoRetro登记。 |

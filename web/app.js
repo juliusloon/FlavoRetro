@@ -287,6 +287,71 @@ function hazardLabel(hazard) {
     return { label: '危险标记：' + hazard, cls: 'hazard' };
 }
 
+const REVIEW_ZH = {
+    development_gold: '结构/分类开发审核认可', excluded: '该记录排除',
+    primary_instance_verified: '原文实例已核对', export_procedure_supported: '数据库实验段支持',
+    bibliography_or_abstract_only: '仅书目或摘要', conflict: '来源冲突', unavailable: '来源不可得',
+    quarantine_name_structure_mismatch: '名称与结构错配 · 隔离',
+    retain_encoded_candidate: '保留编码候选', retain_candidate_not_primary_certified: '模板候选 · 未获原文认证',
+    note_token_and_components_consistent: '笔记定位与组分一致', note_canonical_match_confirmed: '笔记再定位一致',
+    exclude_exact_reaction_parse_failure_retain_note: '解析失败 · 保留笔记', retain_unmatched_not_verified: '笔记反应未验证',
+    catalog_claim_not_current_supply_certified: '历史目录线索 · 无当前精确供应认证',
+    internal_candidate_no_verified_exact_vendor: '内部候选 · 无精确供应证据',
+    reject_listing_for_mismatched_stock_graph: '错配结构的供应声明已否决', reject_parent_sugar_substitution: '母体糖替代声明已否决',
+    guide_supported: '笔记线索支持的结构候选', outside_guide_structure: '笔记线索之外的结构候选', low_or_unknown: '低优先级或未知',
+    primary_numeric_supported: '原文数值支持', primary_inequality_export_discrepancy: '原文不等式与数据库值有差异',
+    final_assigned_export_only: '仅导出实验段支持', final_assigned: '产率已归属（证据等级见来源）',
+    final_not_checked: '产率未核查', final_not_primary_verified: '原文产率未核实', final_database_reported_not_primary_verified: '数据库报告，原文未核实',
+    final_absent: '明确未报告', final_absent_composition_not_yield: '组成比例，不是产率',
+    final_absent_multiple_primary_recoveries: '多次回收，未报告单一产率', final_absent_with_conversion_note: '未报告产率，另有转化说明',
+    final_ambiguous: '产率归属不明', final_ambiguous_multi_product: '多产物产率归属不明', excluded_record: '记录已排除',
+    same_structure_alias_use_narirutin_keep_both_ids: '同结构别名 · 保留原ID',
+    quarantine_both_udp_arabinose_name_assignments: 'UDP糖身份声明隔离',
+    blocked_source_blacklist: '来源黑名单', incomplete_record: '不完整记录', pathway_suspect: '路径压缩嫌疑',
+};
+function reviewBlock(review) {
+    const block = div('meta-card review-block');
+    block.append(text('h4', '审核结果'));
+    if (!review) { block.append(text('p', '历史运行未记录审核视图')); return block; }
+    block.append(kv('审核版本', review.review_version || review.version || '未记录'));
+    if (review.status === 'legacy_validation') { block.append(text('p', '旧视图开发验证 · 未应用审核准入')); return block; }
+    if (review.source_instance_supported) block.append(text('p', '该结构变换有指定原文实例支持；本次预测条件与可行性未确认。'));
+    if (review.status === 'unmatched') block.append(text('p', '未与审核实例严格匹配；保留预测候选。'));
+    const entries = review.evidence || (review.stock_records || []).map(x => ({...x.review, display_name: x.name})) || [];
+    const records = entries.length ? entries : (review.axes ? [review] : []);
+    for (const r of records) {
+        const details = document.createElement('details');
+        details.append(text('summary', (r.canonical_display_name || r.display_name || ('记录 ' + (r.record_id || '').slice(0, 12))) + (r.card_number ? ` · 审核卡 ${r.card_number}` : '')));
+        for (const [axis, value] of Object.entries(r.axes || {})) details.append(kv(({structure_classification:'结构/分类', primary_source:'来源', yield_status:'参考实例产率状态', note_locator:'笔记定位', identity:'身份', current_vendor:'供应', record_disposition:'记录处置'})[axis] || axis, REVIEW_ZH[value] || value));
+        if (r.source_instance_yield) {
+            const y = r.source_instance_yield;
+            const primary = y.primary_value ?? y.primary_reported_value;
+            const reported = y.reported_value ?? y.raw_reported?.value ?? y.reported_raw ?? y.raw_value;
+            if (primary != null) details.append(kv('参考原文产率（非预测值）', `${primary}${y.primary_reported_uncertainty != null ? ' ± ' + y.primary_reported_uncertainty : ''}%`));
+            if (reported != null) details.append(kv('原数据库报告值', String(reported)));
+            if (y.measurement_method) details.append(kv('参考测量方法', y.measurement_method));
+            if (y.reason) details.append(text('p', y.reason));
+        }
+        if (r.identity_reason) details.append(text('p', r.identity_reason));
+        if (r.original_runtime_candidate_allowed != null) details.append(kv('候选准入', `原许可 ${r.original_runtime_candidate_allowed} · 当前 ${r.effective_runtime_candidate_allowed}`));
+        if (r.source_instance_evidence) {
+            const evidence = r.source_instance_evidence;
+            if (evidence.reason) details.append(text('p', evidence.reason));
+            for (const source of evidence.sources || []) {
+                details.append(kv('参考出处', source.title || source.doi || '来源已登记'));
+                if (source.evidence_locator) details.append(kv('实例位置', source.evidence_locator));
+                if (/^https?:\/\//.test(source.url || '')) {
+                    const a = text('a', '查看来源'); a.href = source.url; a.target = '_blank'; a.rel = 'noopener'; details.append(a);
+                }
+            }
+        }
+        block.append(details);
+    }
+    if (review.stock_records) block.append(text('p', '库存候选命中不等于可采购；无当前精确供应认证。'));
+    if (review.status === 'no_specific_review') block.append(text('p', '无专项审核结论；保留原事实与约束。'));
+    return block;
+}
+
 function leafCard(leaf) {
     const card = div('leaf-card');
     const img = document.createElement('img');
@@ -305,6 +370,7 @@ function leafCard(leaf) {
     let checkText = STRUCTURE_STATUS_ZH[check.status] || check.status || '未检查';
     if (check.unspecified_stereo) checkText += ` · 未指定立体中心 ${check.unspecified_stereo} 个`;
     card.append(kv('结构检查', checkText));
+    card.append(reviewBlock(leaf.review));
     attachLeafTopology(card, leaf.smiles);
     return card;
 }
@@ -372,6 +438,7 @@ function stepCard(item, stepNo, teaching) {
     if (meta.policy_name) card.append(kv('策略', `${meta.policy_name} · 概率 ${fixed(meta.policy_probability)}` + (meta.policy_probability_rank != null ? ` · 候选排名第 ${meta.policy_probability_rank}` : '')));
     if (meta.library_occurence != null) card.append(kv('语料出现次数', meta.library_occurence));
     if (meta.mapped_reaction_smiles) card.append(text('code', meta.mapped_reaction_smiles, 'mapped'));
+    card.append(reviewBlock(item.node.review || meta.review));
     if (teaching) card.append(teachingBlock(meta, teaching));
     return card;
 }
@@ -392,7 +459,7 @@ function renderRunMeta(result) {
     evidence.append(text('pre', JSON.stringify({execution_source: savedRun ? 'explicit_saved_run' : result.execution_source,
         resource_version: result.resource_version || 'historical_unspecified', resources_sha256: result.resources_sha256,
         resource_manifest_sha256: result.resource_manifest_sha256, source_manifest_sha256: result.source_manifest_sha256,
-        config_sha256: result.config_sha256, code: result.code, assets: result.assets, manifest: currentManifest}, null, 2)));
+        config_sha256: result.config_sha256, review_binding: result.review_binding || result.review_expected || "历史运行未记录审核视图", code: result.code, assets: result.assets, manifest: currentManifest}, null, 2)));
     card.append(evidence);
     if (result.limitations && result.limitations.length) {
         card.append(text('div', '已知局限：'));
@@ -654,6 +721,7 @@ async function loadRecords() {
             const button = text('button', '查看', 'secondary');
             button.onclick = () => { $('record-json').textContent = JSON.stringify(row, null, 2); $('record-detail').open = true; };
             td.append(button);
+            td.append(reviewBlock(row.review));
             tr.append(text('td', label), text('td', row.kind), text('td', row.source_status || row.review_status), td);
             $('rows').append(tr);
         }

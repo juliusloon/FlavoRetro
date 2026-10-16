@@ -7,7 +7,44 @@ from aizynthfinder.search.mcts.search import MctsSearchTree
 
 
 class Node(MctsNode):
+    def trace_action(self, action, stage, **extra):
+        if getattr(self.tree, "action_trace", None) is None or action.mol.smiles != self.tree.trace_target:
+            return
+        from .reviewed_resources import reaction_signature
+        import copy
+        try:
+            for outcome_index, outcome in enumerate(action.reactants):
+                if (stage.startswith("filtered_") or stage == "generic_protection_checked") and outcome_index != extra.get("tested_outcome_index"):
+                    continue
+                if stage == "mcts_action_created" and outcome_index != extra.get("created_outcome_index"):
+                    continue
+                self.tree.action_trace.append(dict(stage=stage, target=action.mol.smiles, outcome_index=outcome_index, precursor_smiles=[m.smiles for m in outcome], signature=reaction_signature([m.smiles for m in outcome], [action.mol.smiles]), policy=action.metadata.get("policy_name"), template_id=action.metadata.get("template_id", str(action.metadata.get("template_code"))), metadata=copy.deepcopy(action.metadata), **extra))
+        except Exception as exc:
+            self.tree.action_trace.append(dict(stage=stage, target=action.mol.smiles, status="generation_error", error=str(exc), **extra))
+
+    def expand(self):
+        if not self._algo_config.get("trace_actions"):
+            return super().expand()
+        import time
+        start = time.monotonic()
+        try:
+            return super().expand()
+        finally:
+            self.tree.profiling["expansion_seconds"] += time.monotonic() - start
+
+    def _filter_child_reaction(self, reaction):
+        import time
+        start = time.monotonic()
+        rejected = super()._filter_child_reaction(reaction)
+        if self._algo_config.get("trace_actions"):
+            self.tree.profiling["filter_seconds"] += time.monotonic() - start
+            self.trace_action(reaction.copy(index=reaction.index), "filtered_rejected" if rejected else "filtered_accepted", tested_outcome_index=reaction.index)
+        return rejected
+
     def _fill_children_lists(self, actions, priors):
+        if self._algo_config.get("trace_actions"):
+            for action, prior in zip(actions, priors):
+                self.trace_action(action, "generated", prior=float(prior))
         weights = self._algo_config.get("policy_weights", {})
         unique = {}
         for action, prior in zip(actions, priors):
@@ -23,7 +60,30 @@ class Node(MctsNode):
         ranked = sorted(unique.items(), key=lambda x: (-x[1][0], x[0]))
         cap = self._algo_config["max_branching"]
         selected = ranked[:cap]
-        self._alternatives = [x[1] for x in ranked[cap:]]
+        protection = self._algo_config.get("protect_generic_actions", 0)
+        if protection:
+            from .reviewed_resources import reaction_signature
+            generic = [item for item in ranked if item[1][1].metadata.get("policy_name") != "glycoside"][:cap]
+            protected = []; signatures = set()
+            for item in generic:
+                action = item[1][1]
+                for outcome_index, outcome in enumerate(action.reactants):
+                    variant = action.copy(index=outcome_index)
+                    rejected = super()._filter_child_reaction(variant)
+                    self.trace_action(variant, "generic_protection_checked", tested_outcome_index=outcome_index, rejected=rejected)
+                    signature = reaction_signature([m.smiles for m in outcome], [action.mol.smiles])
+                    if not rejected and signature not in signatures:
+                        signatures.add(signature)
+                        if item not in protected:protected.append(item)
+                    if len(signatures) >= protection:break
+                if len(signatures) >= protection:break
+            protected_keys = {item[0] for item in protected}
+            selected = (protected + [item for item in ranked if item[0] not in protected_keys])[:cap]
+        selected_keys = {item[0] for item in selected}
+        self._alternatives = [item[1] for item in ranked if item[0] not in selected_keys]
+        if self._algo_config.get("trace_actions"):
+            for _, (value, action) in selected:
+                self.trace_action(action, "after_truncation", weighted_prior=float(value))
         norm = sum(x[1][0] for x in selected) or 1.0
         self._norm = norm
         self.tree.profiling["actions_seen"] += len(actions)
@@ -79,6 +139,8 @@ class Node(MctsNode):
             for node in allocated:
                 key = tuple(sorted(m.inchi_key for m in node.state.mols))
                 self.tree.depths[key] = int(node.state.max_transforms)
+            if allocated and self._algo_config.get("trace_actions"):
+                self.trace_action(self._children_actions[index], "mcts_action_created", created_outcome_index=outcome_index, created_node_count=len(allocated), created_child_slot=int(index), created_node_index=int(self.tree.created_nodes), raw_outcome_index=self._children_actions[index].metadata.get("raw_outcome_indices", list(range(len(original.reactants))))[outcome_index])
             self.tree.created_nodes += len(allocated)
             nodes.extend(allocated)
         if not nodes:
@@ -91,6 +153,10 @@ class SearchTree(MctsSearchTree):
         super().__init__(config=config, root_smiles=root_smiles)
         self.depths = {}
         self.created_nodes = 1
+        if self.config.search.algorithm_config.get("trace_actions"):
+            self.action_trace = []
+            self.trace_target = root_smiles
+            self.profiling.update(expansion_seconds=0.0, filter_seconds=0.0)
         self.profiling.update(
             actions_seen=0,
             duplicate_actions=0,

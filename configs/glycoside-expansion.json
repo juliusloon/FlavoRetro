@@ -1,0 +1,7 @@
+{
+  "version": 1,
+  "default_enabled": false,
+  "manifest": "outputs/task016/v1/template_source_manifest.json",
+  "manifest_sha256": "a47523992eb006c3ffe22c204e492e7a8470786d8bbec6613c7d57e49f087471",
+  "status": "development_source_bound_not_production"
+}

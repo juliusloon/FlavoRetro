@@ -1,0 +1,67 @@
+{
+  "verified_at": "2026-10-13T10:08:50.004909+08:00",
+  "task": "TASK-017-DRAFT",
+  "result": "passed",
+  "scope": "contract drafting and approved stage-responsibility registration only",
+  "protected_files_checked": 743,
+  "protected_sha256_drift": [],
+  "existing_governance_documents_updated": [
+    "STATE.md",
+    "ARCHITECTURE.md",
+    "docs/tasks/README.md",
+    "docs/README.md",
+    "docs/PAPER_ROADMAP.md",
+    "docs/WORKBENCH_ROADMAP.md",
+    "docs/adr/README.md"
+  ],
+  "new_governance_documents": [
+    "docs/tasks/TASK-017-independent-c-ss-transfer-benchmark.md",
+    "docs/adr/ADR-006-method-delivery-and-independent-evaluation.md"
+  ],
+  "checked_local_links": 36,
+  "broken_local_links": [],
+  "contract_acceptance_items": 10,
+  "contract_status": "Proposed",
+  "TASK017_execution_approved": false,
+  "stage_decision_accepted": true,
+  "TASK016_method_and_bounded_development_status": "Completed",
+  "P7_status": "Partial/stopped",
+  "new_scientific_reads": 0,
+  "scientific_cells": 0,
+  "formal_run_ready_changed": false,
+  "release_and_code_protected": true,
+  "planned_formal_artifacts_present": [],
+  "semantic_checks": {
+    "completion_separate_from_positive_effect": true,
+    "baseline_difference_explicit": true,
+    "fixed_denominator_and_null_failures": true,
+    "history_no_reopen": true,
+    "gold_independence": true,
+    "formal_gates_preserved": true,
+    "negative_regression_is_scientific_outcome": true,
+    "no_test_prompts": true,
+    "bounded_budget": true
+  },
+  "operation_commands_including_current": 14,
+  "corrected_failures": [
+    {
+      "kind": "initial local command syntax error",
+      "content_mutation": false,
+      "corrected": true
+    },
+    {
+      "kind": "verification incorrectly assumed nested operation audit directory is gitignored",
+      "log": "operations/command-6057.log",
+      "content_mutation": false,
+      "corrected": true,
+      "resolution": "Record actual ignore status; governance audit contains no primary scientific records or labels, and no git add/commit/push is performed."
+    }
+  ],
+  "head_unchanged": true,
+  "branch_unchanged": true,
+  "git_commit_or_push_executed": false,
+  "audit_artifacts_gitignored": false,
+  "audit_contents": "governance documents, before copies, hashes, scope decision, diff and verification only",
+  "new_governance_documents_versionable": true,
+  "tests": "Documentation-only checks: links, authority boundaries, current state consistency and protected file SHA; no runtime or scientific tests."
+}

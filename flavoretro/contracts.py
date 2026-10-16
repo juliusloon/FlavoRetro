@@ -1,6 +1,6 @@
 import json
 from typing import Literal
-from pydantic import BaseModel, ConfigDict, Field, field_validator
+from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
 from rdkit import Chem
 from .workspace import config
 
@@ -12,6 +12,8 @@ class SearchRequest(BaseModel):
     engine: Literal["optimized", "native"] = "optimized"
     seed: int = Field(default=0, ge=0, le=2**32 - 1)
     candidate_stock: bool = False
+    glycoside_expansion: bool = False
+    glycoside_library_version: Literal["v1", "v2", "v3", "v4", "v5", "v6", "v7"] = "v1"
     top_k: int = Field(default=5, ge=1, le=25)
     seconds: float | None = Field(default=None, ge=0.1, le=360, allow_inf_nan=False)
     iterations: int | None = Field(default=None, ge=1, le=1800)
@@ -33,6 +35,18 @@ class SearchRequest(BaseModel):
                 "Invalid or unsupported molecule; max 250 atoms, no wildcard"
             )
         return Chem.MolToSmiles(mol, isomericSmiles=True)
+
+    @model_validator(mode="after")
+    def valid_domain_version(self):
+        if self.glycoside_library_version in {"v2", "v3", "v4", "v5", "v6", "v7"} and (not self.glycoside_expansion or self.engine != "optimized"):
+            raise ValueError(f"{self.glycoside_library_version} requires explicit glycoside expansion and optimized engine")
+        return self
+
+    def payload(self):
+        excluded = {"glycoside_library_version"} if self.glycoside_library_version == "v1" else set()
+        if not self.glycoside_expansion:
+            excluded.add("glycoside_expansion")
+        return self.model_dump(exclude=excluded)
 
     def phases(self):
         settings = config("search.json")

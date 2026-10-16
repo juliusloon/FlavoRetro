@@ -127,6 +127,7 @@ class RuntimeContracts(unittest.TestCase):
     def test_timeout_recorded_no_fallback(self):
         with (
             tempfile.TemporaryDirectory() as folder,
+            patch("flavoretro.service.load_review", return_value=type("ReviewFixture", (), {"binding": {"schema_version": 1, "version": "synthetic-worker-failure-fixture", "mode": "adjudicated", "manifest_sha256": "0" * 64, "index_sha256": "1" * 64, "summary": {}}})()),
             patch(
                 "flavoretro.service.subprocess.run",
                 side_effect=subprocess.TimeoutExpired("worker", 1),
@@ -141,6 +142,7 @@ class RuntimeContracts(unittest.TestCase):
     def test_engine_failure_recorded(self):
         with (
             tempfile.TemporaryDirectory() as folder,
+            patch("flavoretro.service.load_review", return_value=type("ReviewFixture", (), {"binding": {"schema_version": 1, "version": "synthetic-worker-failure-fixture", "mode": "adjudicated", "manifest_sha256": "0" * 64, "index_sha256": "1" * 64, "summary": {}}})()),
             patch(
                 "flavoretro.service.subprocess.run",
                 return_value=type("Process", (), {"returncode": 1})(),

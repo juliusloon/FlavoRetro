@@ -28,7 +28,26 @@
 | [TASK-015-ord-coverage-review-cards.md](TASK-015-ord-coverage-review-cards.md) | human_direct 工程授权；ORD 当前镜像覆盖与 60 卡审核准备 Completed；实际 gold 未执行。 |
 | [TASK-015-P1-agent-review-ord-analysis.md](TASK-015-P1-agent-review-ord-analysis.md) | 60 卡代理审核与 ORD 深析 Completed；不构成独立人审。 |
 | [TASK-015-P2-scifinder-inbound.md](TASK-015-P2-scifinder-inbound.md) | 九个用户 SciFinder RDF 接收、去重、卡片连接和定向化学缺口核对 Completed。 |
-| [TASK-015-P3-human-review-handoff.md](TASK-015-P3-human-review-handoff.md) | 60 卡人审交接包已交付，AwaitingUserReview；后续缺口处理与开发 gold 冻结待真实审核文件。 |
+| [TASK-015-P3-human-review-handoff.md](TASK-015-P3-human-review-handoff.md) | Completed；已有所有者审核回传，53 条结构/分类开发 gold + 7 排除，代理委托溯源保留。 |
+| [TASK-015-P4-triage-rule-revision.md](TASK-015-P4-triage-rule-revision.md) | 人审校准回灌的筛选规则修订 task015-p4-v2；Completed（补登记索引行，合同与报告原已交付）。 |
+| [TASK-016-open-glycoside-expansion.md](TASK-016-open-glycoside-expansion.md) | Completed（2026-10-06 v0.2）；开放接口与4个精确来源O成键模板，默认关闭；4/4参照与12/12真实MCTS配对补回，来源/预算/重放验收通过；C/糖间成键及新底物泛化未覆盖。 |
+| [TASK-016-P1-open-glycoside-library-expansion.md](TASK-016-P1-open-glycoside-library-expansion.md) | Completed（agent_delegated、r4预算240）；54新反应/47新模板、5范围、7/12留出开发补回，51审计通过；正式评测/独立化学边界保持。 |
+| [TASK-016-P2-c-sugar-transfer-validation.md](TASK-016-P2-c-sugar-transfer-validation.md) | Partial（2026-10-06；human_direct执行授权）；工程Completed，新增1C/2糖间范围、旧4SS三seed修复；两类新6目标/2出处面板未形成，新A/B/D未执行，科学阈值保持。 |
+| [TASK-016-P3-new-reaction-admission-and-transfer.md](TASK-016-P3-new-reaction-admission-and-transfer.md) | Partial（2026-10-07；agent_delegated 执行授权）；工程与新反应准入 Completed（34 新反应 C12/SS22、3 个显式 v4 范围模板默认关闭、E 臂 51 单元零退化），C/SS 迁移因留出面板不足未执行（null）。 |
+| [TASK-016-P4-p3-admission-correction-and-transfer-completion.md](TASK-016-P4-p3-admission-correction-and-transfer-completion.md) | Partial（2026-10-07；human_direct 批准、agent_delegated 阶段决定）；纠偏工程与纠偏后准入 Completed（34/34 重审，C 12→8、SS 22→16、总 24），v5 显式默认关闭且非 v4 继承，C3 与 SS 1→6 两范围结构性撤出；面板 C3/SS5 均低于 ≥6 硬门，A/B/E 未执行（null），搜索尝试 0。 |
+| [TASK-016-P5-c-ss-transfer-capability-closure.md](TASK-016-P5-c-ss-transfer-capability-closure.md) | **Partial**（2026-10-07；human_direct 批准、agent_delegated 阶段决定）；P4 reconciliation Completed；C 计数面板 7 目标/5 组、SS 4 目标/3 组；新准入 2 条结构完整 C 反应并隔离 3 个虚构来源。**P5-ERR-06 已撤回旧“C scope 不泛化”结论**：旧探针实际使用 derive_template_smarts 的精确实例模板并漏掉 scoped_smarts，连第二个 build support 都不命中；故 P5 实际未建成 C scope，C 迁移是否可测未回答。7 个 C 目标中 5 个仍缺运行时产品结构，v6 未建成；**A/B/E 0 cell、搜索尝试 0/480**，迁移指标 null。 |
+| [TASK-016-P6-c-scope-runtime-transfer-closure.md](TASK-016-P6-c-scope-runtime-transfer-closure.md) | **Partial**（2026-10-07，agent_delegated批准/阶段决定）；正确C scope构建2/2、边界0违反；C完整6目标/4组但applicability0/6→停止条件6 scope_holdout_domain_mismatch；SS纠正后1目标/1组→停止条件1，两轴A/B/E0/指标null。default-off v6 56模板89实例，旧17×3无新增损失、177本地测试/147无资产通过+30跳过，3410保护0漂移，账本62/480。 |
+| [TASK-016-P7-domain-aligned-transfer-closure.md](TASK-016-P7-domain-aligned-transfer-closure.md) | **Partial/stopped（2026-10-13）**；旧epochs正式incomplete，fresh C0/SS0、科学0 cell、metrics=null；原科学门保留，当前不再阻挡TASK-016方法阶段结项，正式独立迁移归TASK-017。 |
+| [TASK-016-P7-closeout-20261013.md](TASK-016-P7-closeout-20261013.md) | Completed（终止行政收口）；P7总体Partial，epoch账82→85；不恢复R80、不修G7、不建新epoch。[报告](../reports/REPORT-016-P7-closeout-20261013.md) |
+| [TASK-016-P8-evidence-rescue-feasibility.md](TASK-016-P8-evidence-rescue-feasibility.md) | Completed（诊断性完成）；当前交接纠偏及H1/H5裁定见下行，原交接不作为科学放行。 |
+| [TASK-016-P8-H1-H5-governance-rulings.md](TASK-016-P8-H1-H5-governance-rulings.md) | Completed（书面治理与4条真实曝光补记）；当前epochs已由P7-CLOSEOUT正式终止，G7接入仍未完成。[报告](../reports/REPORT-016-P8-H1-H5-governance-rulings.md) |
+| [TASK-016-P9-development-evaluation-redesign.md](TASK-016-P9-development-evaluation-redesign.md) | **Completed（规划交付）**；C13/SS19历史编码目标、12候选折/56资产计划；支持充足折0/0，科学0 cell，原科学记录保留。[报告](../reports/REPORT-016-P9-development-evaluation-redesign.md) |
+| [TASK-015-P5-p0p1-evidence-closure.md](TASK-015-P5-p0p1-evidence-closure.md) | Completed（2026-10-05）；所有者采纳代理最终裁决，60 卡/508 笔记/名称/身份/供应全部定案，不再等待人工回填；未翻转 preflight。 |
+| [TASK-015-06-review-into-search.md](TASK-015-06-review-into-search.md) | Completed（2026-10-05，agent_delegated）；审核成果已默认进入库存准入、逐步/末端/资源展示和运行指纹；17库存键保持、原配置/排序/评分不变，未启动TASK-016。 |
+| [TASK-017-independent-c-ss-transfer-benchmark.md](TASK-017-independent-c-ss-transfer-benchmark.md) | **Partial**；final_agent_historical_adjudication_completed；历史32卡代理裁定完成，无需ljx逐卡复核；准备true/科研false、正式0 cell/效果null。[最终裁定](../reports/REPORT-017-agent-adjudication-20261015.md) |
+| [TASK-019-future-health-ai-teaching-feasibility.md](TASK-019-future-health-ai-teaching-feasibility.md) | Completed；教学可行性研究，conditionally_feasible/not_yet_ready。 |
+| [TASK-020-futurehealth-rebuild.md](TASK-020-futurehealth-rebuild.md) | Completed（M0+P0）；FutureHealth独立仓库，P1仅登记，后续阶段未授权。 |
+| [TASK-021-repository-consolidation.md](TASK-021-repository-consolidation.md) | 仓库盘点、非证据归档和治理重构；续作验证例外与结果见REPORT-021。 |
 
 ## 编号与命名
 
@@ -39,7 +58,7 @@ REPORT-NNN-short-title.md
 
 - 任务 ID 在仓库内唯一且递增。
 - TASK 与 REPORT 必须使用相同编号和短标题。
-- 同一任务范围内的补充合同使用 `-PN` 后缀（如 `TASK-007-P1-source-relocation.md`），对应报告使用相同编号与短标题。
+- 同一任务范围内的补充合同使用 `-PN` 后缀（如 `TASK-007-P1-source-relocation.md`），对应报告使用相同编号与短标题。2026-10-05 所有者明确要求本轮使用数字后缀 `15-XX`，故审核结果接入任务命名为 `TASK-015-06`；既有 P1–P5 原编号保持，06 承接 P5，不另建同义 P6。
 - 一个 TASK 只定义一项可明确判定“完成”或“未完成”的操作。
 - TASK 批准后不得静默改写范围；范围变化必须留下修订说明并重新批准。
 
@@ -71,7 +90,7 @@ TASK-001—008 的合同文本在 TASK-009 由速记体扩写为详细格式；�
 | MCTS / PUCT | 蒙特卡洛树搜索 / 其节点选择公式；每次普通搜索都新建 MCTS，不读结果缓存，不回退 BFS。 |
 | run / run ID | 一次搜索的独立进程与标识，逐次保存在 `outputs/runs/` 下。 |
 | manifest | 清单，绑定输入、版本、行数、哈希等审计信息。 |
-| preflight | 正式评测前的合同检查，见 `flavoretro.evaluation`。 |
+| preflight | 旧 evaluation 保持兼容；TASK-017 v0.2 已实现 preparation_ready/research_run_ready 检查；当前准备true/科研false，实际证据见执行及最终裁定报告。 |
 | replay | 重放：用同一构建器重跑并比较输出逐字节一致。 |
 | cell | 目标 × 引擎 × seed 的对照单元（开发对照共 12 cell）。 |
 | agent_delegated | agent 按用户授权代行批准，不等于人工审核。 |

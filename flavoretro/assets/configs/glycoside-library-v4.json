@@ -1,0 +1,7 @@
+{
+  "version": 4,
+  "default_enabled": false,
+  "manifest": "outputs/task016-p3/v1/template_source_manifest.json",
+  "manifest_sha256": "2d1ab6f8f607ba993f5399fe0c07a135e31d118eb77672146e1ebedd0f5686a3",
+  "status": "P3 build-only increment chained onto qualified P2/v2 v3 payload; activity unverified"
+}

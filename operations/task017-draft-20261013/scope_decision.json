@@ -1,0 +1,20 @@
+{
+  "authority": "agent_delegated",
+  "human_reviewed": false,
+  "owner_instruction": "TASK-016 按已交付的模板、搜索接入及有限开发效果结项；将 C/SS 的正式独立迁移检验明确写入 TASK-017。我同意，写 Task 17.",
+  "approved_now": [
+    "TASK-016 stage closure limited to delivered method and bounded development evidence",
+    "TASK-017 contract drafting and navigation/state/ADR update"
+  ],
+  "TASK017_execution_approved": false,
+  "formal_run_ready_changed": false,
+  "P7": "Partial/stopped",
+  "scientific_effects_changed": false,
+  "closed_epochs_reopened": false,
+  "new_scientific_reads": 0,
+  "TASK016_method_and_bounded_development_stage_status": "Completed",
+  "C_SS_independent_effect_pass": null,
+  "P7_effect_gate_is_current_method_closure_prerequisite": false,
+  "current_scope_decision_ADR": "docs/adr/ADR-006-method-delivery-and-independent-evaluation.md",
+  "TASK017_contract_status": "Proposed"
+}

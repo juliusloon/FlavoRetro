@@ -1087,3 +1087,14 @@ footer {
         transition: none !important
     }
 }
+
+/* 审核来源与原始数值在窄屏详情中换行。 */
+.review-block {
+    min-width: 0;
+    max-width: 100%;
+    overflow-wrap: anywhere;
+}
+.review-block .kv,
+.review-block summary {
+    overflow-wrap: anywhere;
+}

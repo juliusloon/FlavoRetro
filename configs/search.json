@@ -49,5 +49,10 @@
     "ringbreaker": 0.65
   },
   "puct_c_init": 1.4,
-  "puct_c_base": 19652.0
+  "puct_c_base": 19652.0,
+  "reviewed_resources": {
+    "manifest": "outputs/review/task015-06/v1/manifest.json",
+    "manifest_sha256": "1e8ea3c461ac3ff88ee4d6bad3385aa832881d65bb682ff7467d64014c15f8ec",
+    "status": "adjudicated_development_candidate_only"
+  }
 }

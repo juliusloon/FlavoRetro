@@ -29,6 +29,31 @@
 | [REPORT-015-P1-agent-review-ord-analysis.md](REPORT-015-P1-agent-review-ord-analysis.md) | 60 卡委托代理审核、ORD 深析及 SciFinder 检索词。 |
 | [REPORT-015-P2-scifinder-inbound.md](REPORT-015-P2-scifinder-inbound.md) | 九个用户 RDF 的完整性、结构/来源交叉核对与精确检索缺口。 |
 | [REPORT-015-P3-human-review-handoff.md](REPORT-015-P3-human-review-handoff.md) | 阶段 1 的 60 卡人工复核包、验证与待人审门槛。 |
+| [REPORT-015-06-review-into-search.md](REPORT-015-06-review-into-search.md) | 已完成冻结审核视图与普通搜索接管；95项本地回归、89项无资产通过/6跳过、20组浏览器检查、包外安装通过，库存仍17、真实原文步骤匹配0，科学门不晋级。 |
+| [REPORT-016-open-glycoside-expansion.md](REPORT-016-open-glycoside-expansion.md) | G1—G5工程Completed；4个来源限定O成键模板、0/4→4/4参照覆盖、12/12真实MCTS补回；105本地测试、无资产99/6、重放/包外安装与来源预算审计通过，泛化/化学/发布门不晋级。 |
+| [REPORT-016-P1-open-glycoside-library-expansion.md](REPORT-016-P1-open-glycoside-library-expansion.md) | 批量来源扩库、身份撤回、54新反应/47新模板与7/12新目标开发覆盖；预算修订/全部失败、来源隔离/默认关闭及正式评测边界。 |
+| [REPORT-016-P2-c-sugar-transfer-validation.md](REPORT-016-P2-c-sugar-transfer-validation.md) | Partial；1C/2糖间新范围、旧4SS三seed真实修复，124本地/117无资产+7跳过/40工程检查通过；新两类面板不足，未执行新迁移矩阵，新增准入0，来源及失败保留。 |
+| [REPORT-016-P3-new-reaction-admission-and-transfer.md](REPORT-016-P3-new-reaction-admission-and-transfer.md) | Partial；新反应准入34（C12/SS22）与3个显式v4范围模板（默认关闭）Completed，E臂旧17目标三seed回归51单元0错误零退化；闭包隔离后留出面C1/SS2目标不足，迁移矩阵未执行（null），工程134测试与字节重放通过。 |
+| [REPORT-016-P4-p3-admission-correction-and-transfer-completion.md](REPORT-016-P4-p3-admission-correction-and-transfer-completion.md) | Partial；P3 34 条逐条四级重审（C12/SS22→C8/SS16/总24），SS 1→6 按 canonical_acceptor_signature 纠正为 1 个受体并撤出该范围，v5 只继承 v3 + 1 个合格范围；面板 C3/SS5 未过硬门，A/B/E 未执行、迁移指标 null，151 测试与独立终验 0 失败。 |
+| [REPORT-016-P5-c-ss-transfer-capability-closure.md](REPORT-016-P5-c-ss-transfer-capability-closure.md) | Partial；旧C探针漏scope转换的结论已撤回；C计数7/SS4、v6未建成、迁移未运行；原历史判断由P6独立复核。 |
+| [REPORT-016-P6-c-scope-runtime-transfer-closure.md](REPORT-016-P6-c-scope-runtime-transfer-closure.md) | Partial；C正确scope2/2与可执行6目标/4组完成，scope/holdout不匹配；SS纠正为1/1，迁移0cell/null。v6建立，旧51回归无新增损失，177本地与147无资产通过/30跳过、26终验、3410保护0漂移，独立账本62/480。 |
+| [REPORT-016-P7-domain-aligned-transfer-closure.md](REPORT-016-P7-domain-aligned-transfer-closure.md) | **Partial（执行终止）**；三个当前epoch已incomplete，科学门未完成；旧20问答和进度全文保留历史。 |
+| [REPORT-016-P7-closeout-20261013.md](REPORT-016-P7-closeout-20261013.md) | 正式终止审计：三个epoch incomplete、P7总体Partial；曝光/unknown保留，无新科学读取或后继epoch。 |
+| [REPORT-016-P9-development-evaluation-redesign.md](REPORT-016-P9-development-evaluation-redesign.md) | Completed（规划交付）：34输入、C13/SS19编码目标、12折/56资产计划；同范围支持充足折0/0，停止留组执行，科学0 cell。 |
+| [REPORT-017-v0.2-execution.md](REPORT-017-v0.2-execution.md) | v0.2实际执行Partial；准备门true/科研门false，37+16测试通过，48书目候选/ljx空白审核包，科学0 cell、指标null。 |
+| [REPORT-017-independent-c-ss-transfer-benchmark.md](REPORT-017-independent-c-ss-transfer-benchmark.md) | Partial / stopped_at_G0；已执行真实前置与资产/保护核验，独立标签/来源/供应/production依赖未闭合；正式0 cell、指标null。 |
+| [REPORT-015-P4-triage-rule-revision.md](REPORT-015-P4-triage-rule-revision.md) | REPORT-015-P4：筛选规则修订（人审校准回灌）；事实按报告所属阶段解释。 |
+| [REPORT-015-P5-p0p1-evidence-closure.md](REPORT-015-P5-p0p1-evidence-closure.md) | REPORT-015-P5：P0/P1 证据最终裁决；事实按报告所属阶段解释。 |
+| [REPORT-016-P7-C-E03-preflight-20261012.md](REPORT-016-P7-C-E03-preflight-20261012.md) | REPORT-016-P7：C-E03 独立前置预检（2026-10-12）；事实按报告所属阶段解释。 |
+| [REPORT-016-P7-SS-R80-recovery-preflight-20261012.md](REPORT-016-P7-SS-R80-recovery-preflight-20261012.md) | REPORT-016-P7：SS/R80 同批恢复前置（2026-10-12）；事实按报告所属阶段解释。 |
+| [REPORT-016-P7-continuation-R81-R87-20261012.md](REPORT-016-P7-continuation-R81-R87-20261012.md) | REPORT-016-P7 续作附录：R81–R87（2026-10-12，本会话）；事实按报告所属阶段解释。 |
+| [REPORT-016-P8-evidence-rescue-feasibility.md](REPORT-016-P8-evidence-rescue-feasibility.md) | REPORT-016-P8：P7 科学可达性诊断与下一 Epoch 决策；事实按报告所属阶段解释。 |
+| [REPORT-017-agent-adjudication-20261015.md](REPORT-017-agent-adjudication-20261015.md) | REPORT-017：32条历史反应最终代理审核（2026-10-15）；事实按报告所属阶段解释。 |
+| [REPORT-017-evidence-completion-20261015.md](REPORT-017-evidence-completion-20261015.md) | REPORT-017：历史反应证据与正文/SI补件（2026-10-15）；事实按报告所属阶段解释。 |
+| [REPORT-017-materials-preparation.md](REPORT-017-materials-preparation.md) | REPORT-017：旧资料对账、母文献归并与反应材料整理；事实按报告所属阶段解释。 |
+| [REPORT-019-future-health-ai-teaching-feasibility.md](REPORT-019-future-health-ai-teaching-feasibility.md) | REPORT-019：未来健康 AI 虚拟实验转化可行性调研；事实按报告所属阶段解释。 |
+| [REPORT-020-futurehealth-rebuild-m0-p0.md](REPORT-020-futurehealth-rebuild-m0-p0.md) | REPORT-020：FutureHealth 新项目重建（M0 基线冻结 + P0 受控迁移）；事实按报告所属阶段解释。 |
+| [REPORT-021-repository-consolidation.md](REPORT-021-repository-consolidation.md) | 仓库治理收口、归档守恒与语法/历史账验证例外。 |
 
 - 每个 REPORT 必须对应一个编号和短标题相同的 TASK。
 - REPORT 记录实际发生的内容，而不是重复任务目标。
@@ -51,3 +76,11 @@ REPORT-005、REPORT-007、REPORT-007-P1 为 TASK-009 补立：对应操作发生
 各执行报告的“改动文件”表按该操作的实际差异解释目录职责、具体文件用途，以及迁移或删除关系；涉及本地数据生成的报告，还在“实际改动”中说明快照、资源构建产物和验证输出的文件组成。
 
 这些说明用于理解既有改动；报告中的计数、哈希、测试结果和未完成事项仍属于当时的操作记录。当前状态以根目录 `STATE.md` 为准，常用术语见[任务目录阅读约定](../tasks/README.md#阅读约定与常用术语)。
+
+- [REPORT-016-P8-H1-H5-governance-rulings.md](REPORT-016-P8-H1-H5-governance-rulings.md)：P8最终交接直接复核、H1书面BLOCKED裁定、4条真实曝光补记及未关闭的G7接入。
+
+2026-10-13：[REPORT-017-v0.2-admission-revision](REPORT-017-v0.2-admission-revision.md)记录TASK-017准入合同修订；不是科学评测结果。这是修订当时的历史状态；v0.2后来已执行，最终历史代理裁定完成，正式科研门仍false。
+
+## 历史草稿与日志
+
+唯一 pre-v38 草稿保存在 [archive/](archive/README.md)，原字节留存于TASK-021本地档案，可读副本仅重定位相对链接。当前P7结论以正式终止报告为准。历史 command 日志已迁至 operations/archive/command-logs/；编号复用与历史并发记录按 [操作定位规则](../../operations/README.md) 核对。

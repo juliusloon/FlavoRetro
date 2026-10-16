@@ -15,12 +15,9 @@ def records():
 
 
 class CandidateStock(StockQueryMixin):
-    def __init__(self, enabled=False, **kwargs):
-        self.keys = {
-            r["structure"]["inchikey"]
-            for r in (records() if enabled else [])
-            if r["kind"] == "stock" and r["runtime_candidate_allowed"]
-        }
+    def __init__(self, enabled=False, review_binding=None, **kwargs):
+        from .reviewed_resources import load_review
+        self.keys = set(load_review(review_binding).keys) if enabled else set()
 
     def __contains__(self, mol):
         return mol.inchi_key in self.keys
@@ -90,3 +87,17 @@ class KnownHazards(FilterStrategy):
                 or (left and not set(left).issubset(right))
             ):
                 raise RejectionException("atom_map_integrity")
+
+
+class ReviewedEvidence(FilterStrategy):
+    """Associate exact source instances without changing model priors or filters."""
+    def __init__(self, key, config, review_binding=None, **kwargs):
+        super().__init__(key, config, **kwargs)
+        from .reviewed_resources import load_review
+        self.review = load_review(review_binding)
+
+    def apply(self, reaction):
+        reaction.metadata["review"] = self.review.reaction(
+            [mol.smiles for mol in reaction.reactants[reaction.index]],
+            [reaction.mol.smiles],
+        )

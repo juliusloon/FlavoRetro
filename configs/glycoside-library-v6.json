@@ -1,0 +1,5 @@
+{
+  "default_enabled": false,
+  "manifest": "outputs/task016-p6/v1/template_source_manifest.json",
+  "manifest_sha256": "210ed717dffaa7f6bcdac45ecfd21fe9bb9c6ab81eeb2aa0ef799a92a6bff874"
+}

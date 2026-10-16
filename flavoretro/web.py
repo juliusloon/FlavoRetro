@@ -8,6 +8,7 @@ from urllib.parse import urlsplit, parse_qs
 from rdkit import Chem
 from rdkit.Chem.Draw import rdMolDraw2D
 from .resources import dumps, sha
+from .reviewed_resources import load_review, reviewed_query
 from .workspace import root, active_data, config, PACKAGE, AssetError
 from .database import query, metadata as index_metadata
 from .policies import records
@@ -150,6 +151,7 @@ class Handler(BaseHTTPRequestHandler):
                     200,
                     {
                         "resources": summary,
+                        "review_binding": load_review().binding,
                         "resource_version": pointer["version"],
                         "database": index_metadata()[1],
                         "resource_manifest_sha256": pointer["manifest_sha256"],
@@ -179,10 +181,10 @@ class Handler(BaseHTTPRequestHandler):
                     ],
                 )
             if url.path == "/api/records":
-                return self.json(200, query(kind=q.get("kind", [""])[0], q=q.get("q", [""])[0],
+                return self.json(200, reviewed_query(query(kind=q.get("kind", [""])[0], q=q.get("q", [""])[0],
                     offset=int(q.get("offset", ["0"])[0]), limit=int(q.get("limit", ["25"])[0]),
                     issue=q.get("issue", [""])[0], source_status=q.get("source_status", [""])[0],
-                    outcome=q.get("outcome", [""])[0]))
+                    outcome=q.get("outcome", [""])[0])))
             if url.path == "/api/teaching":
                 return self.json(
                     200,
