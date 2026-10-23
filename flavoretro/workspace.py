@@ -22,7 +22,7 @@ def configure(path):
     return root()
 
 def config_path(name):
-    if name not in {"search.json", "teaching_guidance.json", "literature_teaching_layer.json", "glycoside-expansion.json", "glycoside-library-v2.json", "glycoside-library-v3.json", "glycoside-library-v4.json", "glycoside-library-v5.json", "glycoside-library-v6.json", "glycoside-library-v7.json"}:
+    if name not in {"search.json", "teaching_guidance.json", "literature_teaching_layer.json", "glycoside-expansion.json", "glycoside-library-v2.json", "glycoside-library-v3.json", "glycoside-library-v4.json", "glycoside-library-v5.json", "glycoside-library-v6.json", "glycoside-library-v7.json", "glycoside-library-v8.json", "runtime-candidates.json", "flavanone-opening.json"}:
         raise ValueError("unknown application configuration")
     override = root() / "configs" / name
     return override if override.is_file() else PACKAGE / "assets/configs" / name

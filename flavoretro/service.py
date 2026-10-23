@@ -9,8 +9,11 @@ from .workspace import root as workspace_root, PACKAGE, AssetError, config
 from .reviewed_resources import load_review
 
 
-def search(request: SearchRequest, run_root=None):
+def search(request: SearchRequest, run_root=None, evaluation_binding=None):
     ROOT = workspace_root()
+    if evaluation_binding is not None:
+        from .research_evaluation import validate
+        validate(evaluation_binding, request)
     run_id = (
         datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%S") + "-" + uuid.uuid4().hex
     )
@@ -20,6 +23,8 @@ def search(request: SearchRequest, run_root=None):
     req = request.payload()
     (folder / "request.json").write_text(dumps(req))
     envelope = {"run_id": run_id, "request": req, "output": str(folder / "result.json")}
+    if evaluation_binding is not None:
+        envelope["research_evaluation"] = evaluation_binding
     start = time.monotonic()
     error = None
     from .task016_runs import append_run
@@ -39,7 +44,11 @@ def search(request: SearchRequest, run_root=None):
         envelope["review_binding"] = load_review().binding
         (folder / "review-binding.json").write_text(dumps(envelope["review_binding"]))
         if request.glycoside_expansion:
-            if request.glycoside_library_version == "v7":
+            if request.glycoside_library_version == "v8":
+                from .glycoside_library_v8 import load_registry
+            elif request.glycoside_library_version == "v5":
+                from .glycoside_library_v5 import load_registry
+            elif request.glycoside_library_version == "v7":
                 from .glycoside_library_v7 import load_registry
             elif request.glycoside_library_version == "v6":
                 from .glycoside_library_v6 import load_registry
@@ -53,6 +62,17 @@ def search(request: SearchRequest, run_root=None):
                 from .glycoside_expansion import load_registry
             envelope["domain_binding"] = load_registry().binding
             (folder / "domain-binding.json").write_text(dumps(envelope["domain_binding"]))
+        from .runtime_extensions import literature_registry, stock_binding
+        if request.flavanone_opening:
+            from .flavanone_opening import load_binding
+            envelope["flavanone_binding"] = load_binding()
+            (folder / "flavanone-binding.json").write_text(dumps(envelope["flavanone_binding"]))
+        if request.literature_expansion:
+            envelope["literature_binding"] = literature_registry().binding
+            (folder / "literature-binding.json").write_text(dumps(envelope["literature_binding"]))
+        if request.stock_profile != "reviewed":
+            envelope["stock_binding"] = stock_binding(request.stock_profile)
+            (folder / "stock-binding.json").write_text(dumps(envelope["stock_binding"]))
         with (folder / "worker.log").open("w") as log:
             worker_started = True
             proc = subprocess.run(
@@ -97,6 +117,9 @@ def search(request: SearchRequest, run_root=None):
         "status": result["status"],
         **({"domain_binding": result.get("domain_binding", envelope.get("domain_binding"))} if request.glycoside_expansion else {}),
         "review_binding": result.get("review_binding", result.get("review_expected")),
+        **({"literature_binding": envelope["literature_binding"]} if "literature_binding" in envelope else {}),
+        **({"stock_binding": envelope["stock_binding"]} if "stock_binding" in envelope else {}),
+        **({"flavanone_binding": envelope["flavanone_binding"]} if "flavanone_binding" in envelope else {}),
         "wall_seconds": time.monotonic() - start,
         "files": {p.name: sha(p) for p in folder.iterdir() if p.is_file()},
     }

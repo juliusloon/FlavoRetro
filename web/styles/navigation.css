@@ -1,0 +1,6 @@
+/* TASK-041/042: addressable subpages, without a breadcrumb bar. */
+a.nav-link { display:inline-flex; align-items:center; justify-content:center; cursor:pointer; border:0; border-radius:var(--radius-control); padding:var(--space-2) 18px; font:inherit; text-decoration:none; }
+.literature-views a.nav-link { display:block; text-align:center; }
+a.nav-link:focus-visible { outline:2px solid var(--amber-400); outline-offset:2px; }
+#navigation-message { flex:none; margin:0; padding:8px 24px; background:var(--surface); color:var(--danger-ink); font-size:var(--text-sm); }
+@media(max-width:767px) { #navigation-message { padding:6px 14px; } }

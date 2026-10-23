@@ -1,0 +1,186 @@
+/* TASK-012 capability panels */
+#foundation-status,
+#sync-status,
+#history-message,
+#evaluation-message {
+    overflow-wrap: anywhere;
+}
+
+.teaching-entry {
+    border-top: 1px solid var(--border);
+    padding: 1rem 0;
+}
+
+#run-list button,
+#evaluation-cells button {
+    overflow-wrap: anywhere;
+    white-space: normal;
+    max-width: 100%;
+}
+
+/* ---------- ≥768px：单列增强 ---------- */
+@media (min-width: 768px) {
+    .page {
+        padding: var(--space-6) var(--page-pad) var(--space-16)
+    }
+
+    .fields {
+        flex-direction: row;
+        align-items: end
+    }
+
+    .fields>* {
+        flex: 1;
+        min-width: 0
+    }
+
+    .stats {
+        grid-template-columns: repeat(4, 1fr)
+    }
+
+    .profile-grid {
+        grid-template-columns: repeat(2, 1fr)
+    }
+
+    #literature-list {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--space-4)
+    }
+
+    #literature-list .paper-card {
+        margin-bottom: 0
+    }
+
+    .card {
+        padding: var(--space-6)
+    }
+}
+
+/* ---------- ≥992px：顶栏单行 + 探索页双栏工作台 ---------- */
+@media (min-width: 992px) {
+    header {
+        gap: 28px;
+        padding: var(--space-4) var(--page-pad)
+    }
+
+    nav[role="tablist"] {
+        order: 0;
+        width: auto;
+        margin-left: auto;
+        overflow-x: visible
+    }
+
+    #search.page {
+        display: flex;
+        flex-direction: column
+    }
+
+    #search .intro {
+        flex: none;
+        padding: var(--space-6) var(--page-pad) 0;
+        margin-bottom: var(--space-6)
+    }
+
+    .workspace {
+        flex: 1;
+        display: grid;
+        grid-template-columns: clamp(320px, 28vw, 400px) minmax(0, 1fr);
+        align-items: start
+    }
+
+    /* sticky 侧栏：替代旧 body overflow:hidden 方案；--header-h 由 app.js 实测写入 */
+    .workspace>aside {
+        position: sticky;
+        top: var(--header-h, 88px);
+        max-height: calc(100vh - var(--header-h, 88px));
+        overflow-y: auto;
+        border-top: 0;
+        border-bottom: 0
+    }
+
+    .workspace>.results {
+        padding: var(--space-6) var(--page-pad) var(--space-16) var(--space-6)
+    }
+}
+
+/* ---------- ≥1280px：宽屏增强 ---------- */
+@media (min-width: 1280px) {
+    .profile-grid {
+        grid-template-columns: repeat(4, 1fr)
+    }
+}
+
+/* 减弱动效偏好：全局关闭动画与过渡（WCAG 2.2 / 前庭安全） */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
+        transition: none !important
+    }
+}
+
+/* 审核来源与原始数值在窄屏详情中换行。 */
+.review-block {
+    min-width: 0;
+    max-width: 100%;
+    overflow-wrap: anywhere;
+}
+.review-block .kv,
+.review-block summary {
+    overflow-wrap: anywhere;
+}
+
+/* TASK-022：真实运行对照与学习记录。 */
+.button-row { display:flex; flex-wrap:wrap; gap:var(--space-2); margin:var(--space-3) 0; }
+.button-row button { flex:1 1 150px; }
+.comparison-panel { margin:var(--space-4) 0; min-width:0; }
+.comparison-panel td, .comparison-panel th { min-width:100px; vertical-align:top; overflow-wrap:anywhere; }
+.comparison-panel td code { word-break:break-all; }
+.comparison-warning { padding:var(--space-3); border-left:3px solid var(--amber-400); background:var(--warning-bg); }
+.learning-path { margin-bottom:var(--space-6); }
+.learning-step { border-top:1px solid var(--border); padding:var(--space-4) 0; }
+.learning-step summary { font-weight:600; color:var(--green-800); }
+.learning-step textarea { min-height:90px; margin:var(--space-2) 0; }
+.learning-step fieldset { border:1px solid var(--border); border-radius:8px; padding:var(--space-3); margin:var(--space-3) 0; }
+.learning-step legend { padding:0 var(--space-2); }
+.learning-step .learning-feedback { color:var(--green-800); }
+.domain-evidence { background:var(--green-50); padding:var(--space-3); border-radius:8px; margin:var(--space-3) 0; overflow-wrap:anywhere; }
+#learning-context, #comparison-message { overflow-wrap:anywhere; }
+
+#route-catalog-title, #comparison-title, #learning-title, #reaction-evidence-title, #pipeline-title { scroll-margin-top: calc(var(--header-h, 88px) + 16px); }
+
+/* Keep experiment metrics readable; the labelled wrapper scrolls on phones. */
+.pipeline-experiment .table-wrap table { min-width: 44rem; }
+
+/* TASK-023: topic navigation, source/lesson lookup and bounded condition layout. */
+.topic-explorer, .library-search { margin-bottom:var(--space-6); }
+.topic-options { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:var(--space-3); }
+.topic-option { transition:transform .2s ease-out; text-align:left; background:var(--green-50); border:1px solid var(--border-strong); color:var(--green-800); min-height:88px; padding:var(--space-3); }
+.topic-option span { display:block; font-size:var(--text-sm); margin-top:var(--space-1); }
+.topic-option[aria-pressed="true"] { background:var(--green-700); color:var(--surface); border-color:var(--green-700); }
+.topic-option:hover:not(:disabled) { background:var(--green-100); color:var(--green-900); }
+.topic-option[aria-pressed="true"]:hover:not(:disabled) { background:var(--green-700); color:var(--surface); }
+#learning-topic-content { margin-top:var(--space-4); }
+#learning-topic-content h3 { font-size:var(--text-base); margin-bottom:var(--space-2); }
+#learning-topic-content .teaching-block { font-size:var(--text-sm); }
+.library-search .fields { align-items:stretch; }
+.library-search button { align-self:end; min-height:44px; }
+.empty-library { background:var(--green-50); padding:var(--space-4); border-radius:var(--radius-control); color:var(--ink-2); }
+.paper-key-step { font-size:var(--text-sm); overflow-wrap:anywhere; }
+.paper-card, .lesson-card, .teaching-entry { min-width:0; overflow-wrap:anywhere; scroll-margin-top:calc(var(--header-h,88px) + 16px); }
+.paper-card:focus, .lesson-card:focus { outline:2px solid var(--amber-400); outline-offset:2px; }
+#lessons-title, #papers-title, #topic-title { scroll-margin-top:calc(var(--header-h,88px) + 16px); }
+.condition-fields { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,2fr); gap:var(--space-2) var(--space-3); font-size:var(--text-sm); margin:var(--space-3) 0; }
+.condition-fields dt { font-weight:600; color:var(--ink-2); overflow-wrap:anywhere; }
+.condition-fields dd { min-width:0; margin:0; overflow-wrap:anywhere; }
+.condition-fields .condition-fields { margin-top:0; display:block; }
+.condition-fields .condition-fields dd { margin-bottom:var(--space-2); }
+@media (max-width:767px) {
+    .paper-card .kv-table, .lesson-card .kv-table { table-layout:fixed; }
+    .paper-card .kv-table th, .lesson-card .kv-table th { width:35%; min-width:0; }
+    .condition-fields { display:block; }
+    .condition-fields dd { margin-bottom:var(--space-3); }
+}
+@media (min-width:992px) { .topic-options { grid-template-columns:repeat(4,minmax(0,1fr)); } }

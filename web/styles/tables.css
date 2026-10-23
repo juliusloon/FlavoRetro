@@ -1,0 +1,107 @@
+/* ---------- 表格 / 分页 / 状态页 ---------- */
+.table-wrap {
+    overflow: auto
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--text-sm)
+}
+
+th,
+td {
+    text-align: left;
+    padding: var(--space-3);
+    border-bottom: 1px solid var(--border);
+    overflow-wrap: anywhere
+}
+
+.table-wrap th:first-child,
+.table-wrap td:first-child {
+    position: sticky;
+    left: 0;
+    background: var(--surface)
+}
+
+td:first-child {
+    max-width: min(300px, 60vw)
+}
+
+.table-wrap button {
+    min-height: 44px
+}
+
+pre {
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    font: var(--text-xs)/1.8 var(--font-mono);
+    max-height: 50vh;
+    overflow: auto
+}
+
+.pager {
+    display: flex;
+    gap: var(--space-2);
+    margin-top: var(--space-6)
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-3);
+    margin-bottom: var(--space-6)
+}
+
+.stat {
+    padding: var(--space-4);
+    background: var(--green-100);
+    border-radius: var(--radius-card)
+}
+
+.stat b {
+    font-size: var(--text-3xl);
+    font-weight: 600;
+    display: block;
+    margin-bottom: var(--space-2)
+}
+
+.profile-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-3);
+    margin-bottom: var(--space-6)
+}
+
+.profile-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-card);
+    padding: 18px;
+    font-size: var(--text-xs)
+}
+
+.profile-card h3 {
+    margin: 0 0 var(--space-2);
+    font-size: var(--text-sm)
+}
+
+.profile-card li {
+    margin: var(--space-1) 0
+}
+
+.profile-card .globals {
+    color: var(--ink-2)
+}
+
+footer {
+    padding: var(--space-3) var(--space-4);
+    border-top: 1px solid var(--border);
+    color: var(--ink-3);
+    font-size: var(--text-xs);
+    background: var(--bg)
+}
+
+[hidden] {
+    display: none !important
+}

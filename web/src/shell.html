@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>FlavoRetro · 黄酮逆合成研究台</title>
+    <link rel="stylesheet" href="/style.css">
+    <script src="/app.js" defer></script>
+</head>
+
+<body>
+    <a class="skip-link" href="#main">跳到主要内容</a>
+    <header><a class="brand" href="#/search">◈ FlavoRetro <span>黄酮逆合成研究台</span></a>
+        <nav aria-label="工作区" role="tablist"><a data-tab="search" class="nav-link active" role="tab" id="tab-search"
+                aria-selected="true" aria-controls="search" tabindex="0" href="#/search">路线探索</a><a data-tab="history" role="tab" id="tab-history" aria-selected="false"
+                aria-controls="history" tabindex="-1" class="nav-link" href="#/history">搜索历史</a><a
+                data-tab="resources" role="tab" id="tab-resources" aria-selected="false" aria-controls="resources"
+                tabindex="-1" class="nav-link" href="#/resources">资源与证据</a><a data-tab="literature" role="tab" id="tab-literature"
+                aria-selected="false" aria-controls="literature" tabindex="-1" class="nav-link" href="#/literature">文献教学</a><a
+                data-tab="governance" role="tab" id="tab-governance" aria-selected="false" aria-controls="governance"
+                tabindex="-1" class="nav-link" href="#/governance">研究范围</a></nav><span class="badge">v0.1</span>
+    </header>
+    <p id="navigation-message" role="status" hidden></p>
+    <main id="main" tabindex="-1">
+        <!-- @include src/pages/search/view.html -->
+        <!-- @include src/pages/history/view.html -->
+        <!-- @include src/pages/resources/view.html -->
+        <!-- @include src/pages/literature/view.html -->
+        <!-- @include src/pages/governance/view.html -->
+        <!-- @include src/pages/components/view.html -->
+    </main>
+
+</body>
+
+</html>

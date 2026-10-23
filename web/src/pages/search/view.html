@@ -1,0 +1,69 @@
+<section id="search" class="page" role="tabpanel" aria-labelledby="tab-search">
+            <div class="workspace">
+                <aside class="card">
+                    <form id="search-form">
+                        <div class="search-form-scroll">
+                            <h2>目标分子</h2>
+                            <label for="preset">选择示例</label><select id="preset">
+                                <option value="">自定义 SMILES</option>
+                            </select><label for="smiles">SMILES</label><textarea id="smiles" required spellcheck="false"
+                                rows="4">COc1ccc(O)cc1</textarea><button type="button" id="preview"
+                                class="secondary">预览结构</button><img id="molecule" alt="目标分子结构">
+                            <div id="topology" aria-live="polite"></div>
+                            <div id="source-suggestion" class="source-suggestion" hidden><p id="source-suggestion-text" class="note"></p><button type="button" id="enable-source-search" class="secondary">加入来源记录</button></div>
+                            <label for="mode">搜索预算</label><select id="mode">
+                                <option value="quick">快速探索</option>
+                                <option value="balanced" selected>平衡 · 两阶段</option>
+                                <option value="strict">深入探索</option>
+                            </select>
+                            <label class="check"><input id="candidate" type="checkbox">使用候选库存</label>
+                            <details id="search-advanced">
+                                <summary>高级设置</summary>
+                                <label for="seed">随机种子</label><input id="seed" type="number" value="0" min="0" max="4294967295">
+                                <label for="stock-profile">候选库存范围</label><select id="stock-profile" disabled>
+                                    <option value="reviewed">项目审核候选库存</option><option value="zinc" disabled>ZINC 历史候选库存</option>
+                                </select><p id="stock-help" class="note" aria-live="polite">选择搜索使用的候选库存。</p>
+                                <label for="engine">引擎</label><select id="engine"><option value="optimized">optimized · PUCT 优化树</option><option value="native">native · AiZynthFinder 原生树</option><option value="native_stop">native＋保守提前停止</option></select>
+                                <p class="note" id="search-method-help">选择通用优化搜索或原生搜索；两者均逐次探索新路线。</p>
+                                <label class="check"><input id="flavanone-opening" type="checkbox" disabled>加入黄烷酮开环候选</label>
+                                <p id="flavanone-help" class="note" aria-live="polite">默认关闭。选择 native 后可显式加入领域图规则；保留取代基，不预测保护基操作、C2选择性、条件或可行性。</p>
+                                <label for="glycoside-version">糖苷反应库</label><select id="glycoside-version">
+                                    <option value="">关闭 · 通用模型</option><option value="v1">v1 · 精确 O 成键实例</option>
+                                    <option value="v2">v2 · 来源支持与受限范围</option><option value="v3">v3 · O / C / 糖间范围</option>
+                                    <option value="v5">v5 · 纠偏后范围</option><option value="v6">v6 · C8 范围修正</option>
+                                    <option value="v7">v7 · 历史开发版本（迁移未验证）</option>
+                                    <option value="v8" disabled>v8 · 来源与糖链结构纠偏版</option>
+                                </select>
+                                <p id="domain-help" class="note" aria-live="polite">默认关闭。启用后加入来源限定动作；独立化学验证与实验条件仍未完成。</p>
+                                <label class="check"><input id="literature-expansion" type="checkbox" disabled>检索文献反应</label>
+                                <p id="literature-help" class="note" aria-live="polite">默认关闭。仅在产物图精确匹配时提供原文反应前体；来源重现不等于新反应预测或独立迁移。</p>
+                                <label for="top_k">展示路线数</label><input id="top_k" type="number" value="5" min="1" max="25">
+                                <script id="search-budget-defaults" type="application/json">{"quick":[{"depth":4,"branching":8,"nodes":1500,"iterations":50,"seconds":45}],"balanced":[{"depth":6,"branching":12,"nodes":5000,"iterations":100,"seconds":120},{"depth":8,"branching":16,"nodes":12000,"iterations":800,"seconds":240}],"strict":[{"depth":9,"branching":20,"nodes":20000,"iterations":1800,"seconds":360}]}</script>
+                                <p id="budget-settings-help" class="note">两阶段默认值按“第一阶段 → 第二阶段”标注，输入框显示第二阶段值；修改某项后，两阶段都使用所填值。</p>
+                                <label for="seconds">每阶段时限 / 秒 <span id="seconds-default" class="note">默认 120 → 240</span></label><input id="seconds" type="number" value="240" min="0.1" max="360" step="0.1" aria-describedby="budget-settings-help" required>
+                                <label for="iterations">每阶段迭代上限 <span id="iterations-default" class="note">默认 100 → 800</span></label><input id="iterations" type="number" value="800" min="1" max="1800" aria-describedby="budget-settings-help" required>
+                                <label for="depth">最大深度 <span id="depth-default" class="note">默认 6 → 8</span></label><input id="depth" type="number" value="8" min="1" max="10" aria-describedby="budget-settings-help" required>
+                                <label for="branching">每模型每分子候选上限 <span id="branching-default" class="note">默认 12 → 16</span></label><input id="branching" type="number" value="16" min="1" max="24" aria-describedby="budget-settings-help" required>
+                                <p class="note">通用搜索保留各模型的候选；糖苷/文献扩展同时沿用旧全局分支限制。原生搜索不实施 optimized 的节点上限。</p>
+                                <label for="nodes">optimized 节点上限 <span id="nodes-default" class="note">默认 5000 → 12000</span></label><input id="nodes" type="number" value="12000" min="1" max="25000" aria-describedby="budget-settings-help" required>
+                                <button id="reset-budget" type="button" class="secondary">恢复预算默认值</button>
+                            </details>
+                        </div>
+                        <div class="search-form-actions"><button id="submit" type="submit">开始实时搜索 ↗</button></div>
+                    </form>
+
+                </aside>
+                <div class="results is-empty" id="search-results" aria-label="路线结果">
+                    <div id="search-intro" class="search-welcome"><h1>从一个分子，追溯每一步依据。</h1><p>选择目标分子，预览结构，探索合成路线。</p></div>
+                    <div id="message" role="status" aria-live="polite">准备就绪。选择分子后开始探索。</div>
+                    <section id="lab-development" class="card lab-development" hidden aria-label="文献开发入口"></section><div id="run-meta"></div>
+                    <div id="route-workbench" class="route-workbench" hidden>
+                        <section class="card route-catalog-card" id="route-catalog-card" aria-labelledby="route-catalog-title">
+                            <div class="route-catalog-head"><h2 id="route-catalog-title">路线目录</h2><p id="route-catalog-summary" class="note"></p></div>
+                            <div id="route-catalog" class="route-catalog" role="tablist" aria-label="路线目录"></div>
+                        </section>
+                        <div id="routes" class="routes"></div>
+                    </div><button id="download" class="secondary" hidden>导出本次 JSON</button>
+                </div>
+            </div>
+        </section>

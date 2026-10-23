@@ -1,0 +1,40 @@
+<section id="literature-tools" class="teaching-section literature-tools" hidden role="tabpanel" aria-labelledby="teaching-section-tools">
+                <nav class="literature-views" role="tablist" aria-label="学习栏目">
+                    <a id="go-lessons" data-literature-view="lessons" role="tab" aria-controls="teaching-view-lessons" aria-selected="true" tabindex="0" class="nav-link" href="#/literature/tools/lessons"><strong>文献核查案例</strong><span>按案例核对结构、条件与证据</span></a>
+                    <a id="go-papers" data-literature-view="papers" role="tab" aria-controls="teaching-view-papers" aria-selected="false" tabindex="-1" class="nav-link" href="#/literature/tools/papers"><strong>查原文与来源</strong><span>找到论文、DOI 和关联案例</span></a>
+                    <a id="go-learning" data-literature-view="practice" role="tab" aria-controls="teaching-view-practice" aria-selected="false" tabindex="-1" class="nav-link" href="#/literature/tools/practice"><strong>做六步练习</strong><span>选入自己的目标，记录判断与运行</span></a>
+                    <a id="go-reaction-evidence" data-literature-view="evidence" role="tab" aria-controls="teaching-view-evidence" aria-selected="false" tabindex="-1" class="nav-link" href="#/literature/tools/evidence"><strong>查新增反应证据</strong><span>检查来源记录、收率与待解问题</span></a>
+                </nav>
+                <p id="literature-tool-context" class="sr-only" role="status" hidden></p>
+                <form id="library-search" class="library-search filter-toolbar tool-filter" aria-label="检索文献与案例">
+                    <div class="filter-query"><label for="literature-query">关键词</label><input id="literature-query" type="search" placeholder="标题、DOI、编号或反应类型"></div>
+                    <div><label for="literature-topic">文献与案例类型</label><select id="literature-topic"><option value="">全部类型</option><option value="o">O-糖苷连接</option><option value="c">C-糖苷连接</option><option value="chain">糖间连接与糖链</option><option value="scaffold">母核构建与修饰</option></select></div>
+                    <button id="literature-reset" type="button" class="secondary">清空筛选</button><p id="literature-results" class="sr-only" role="status"></p>
+                </form>
+                <form id="reaction-evidence-filters" class="filter-toolbar tool-filter" hidden aria-label="检索新增反应">
+                    <div class="filter-query"><label for="reaction-evidence-query">关键词</label><input id="reaction-evidence-query" type="search" placeholder="标题、DOI、化合物或反应编号"></div>
+                    <div><label for="reaction-evidence-status">检查状态</label><select id="reaction-evidence-status"><option value="">全部记录</option><option value="source_bound_structure_candidate">来源已绑定</option><option value="retained_with_issues">待解决问题</option></select></div>
+                    <button id="reaction-evidence-reset" type="button" class="secondary">清空筛选</button><p id="reaction-evidence-summary" class="sr-only" role="status"></p>
+                </form>
+                <div id="learning-toolbar" class="tool-filter practice-toolbar" hidden>
+                    <div class="practice-summary"><p id="learning-context" class="note"></p><p id="learning-progress" role="status"></p></div>
+                    <div class="button-row"><button id="learning-use-target" class="secondary">使用当前目标</button><button id="learning-use-run" class="secondary" disabled>记录当前运行</button><button id="learning-export" class="secondary">导出学习记录</button></div>
+                </div>
+                <div id="literature-banner" hidden></div><div id="literature-summary" hidden></div>
+                <section id="teaching-view-lessons" class="teaching-view tool-view" role="tabpanel" aria-labelledby="go-lessons">
+                    <h2 id="lessons-title" class="sr-only" tabindex="-1">文献核查案例</h2><div id="lesson-pager-top" class="pagination"></div>
+                    <div class="tool-split"><div id="lesson-list" class="tool-list" role="region" aria-label="案例列表" tabindex="0"></div><div id="lesson-reader" class="tool-reader" role="region" aria-label="案例详情" tabindex="0"></div></div>
+                </section>
+                <section id="teaching-view-papers" class="teaching-view tool-view" hidden role="tabpanel" aria-labelledby="go-papers">
+                    <h2 id="papers-title" class="sr-only" tabindex="-1">文献与来源</h2><div id="paper-pager-top" class="pagination"></div>
+                    <div class="tool-split"><div id="literature-list" class="tool-list" role="region" aria-label="文献列表" tabindex="0"></div><div id="paper-reader" class="tool-reader" role="region" aria-label="文献详情" tabindex="0"></div></div>
+                </section>
+                <section id="teaching-view-practice" class="teaching-view learning-path tool-view" hidden role="tabpanel" aria-labelledby="go-learning">
+                    <h2 id="learning-title" class="sr-only" tabindex="-1">六步逆合成练习</h2><div id="learning-pager-top" class="pagination"></div>
+                    <div class="tool-split"><nav id="learning-step-nav" class="tool-list" aria-label="六步练习步骤"></nav><div id="learning-steps" class="tool-reader" role="region" aria-label="练习记录" tabindex="0"></div></div>
+                </section>
+                <section id="teaching-view-evidence" class="teaching-view reaction-evidence-panel tool-view" hidden role="tabpanel" aria-labelledby="go-reaction-evidence">
+                    <h2 id="reaction-evidence-title" class="sr-only" tabindex="-1">新增反应证据</h2><div id="evidence-pager-top" class="pagination"></div>
+                    <div class="tool-split"><div id="reaction-evidence-list" class="tool-list" role="region" aria-label="反应记录列表" tabindex="0"></div><div id="evidence-reader" class="tool-reader" role="region" aria-label="反应详情" tabindex="0"></div></div>
+                </section>
+            </section>

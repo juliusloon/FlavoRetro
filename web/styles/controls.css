@@ -1,0 +1,108 @@
+/* ---------- 表单控件（触控目标 ≥44px，字号 ≥16px 防 iOS 缩放） ---------- */
+label {
+    display: block;
+    font-size: var(--text-sm);
+    font-weight: 600;
+    margin: var(--space-4) 0 6px
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    min-height: 44px;
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-control);
+    padding: var(--space-2);
+    background: var(--field);
+    color: var(--ink);
+    font: inherit;
+    font-size: var(--text-base);
+    min-width: 0
+}
+
+textarea {
+    resize: vertical;
+    overflow-wrap: anywhere
+}
+
+/* 双环焦点指示：浅底由 2px 墨色内环保证 ≥3:1，深底由 4px 琥珀外环保证（WCAG 2.4.11） */
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+a:focus-visible,
+summary:focus-visible {
+    outline: 2px solid var(--ink);
+    outline-offset: 2px;
+    box-shadow: 0 0 0 4px var(--amber-400)
+}
+
+.fields {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3)
+}
+
+.check {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    min-height: 44px;
+    font-weight: 400
+}
+
+.check input {
+    width: auto;
+    min-height: 0;
+    margin-top: 0
+}
+
+.secondary {
+    background: var(--green-50);
+    color: var(--green-800);
+    border: 1px solid var(--green-100)
+}
+
+.secondary:hover:not(:disabled) {
+    background: var(--surface);
+    border-color: var(--green-300)
+}
+
+#preview {
+    margin-top: var(--space-2);
+    min-height: 44px;
+    padding: var(--space-2) var(--space-3);
+    font-size: var(--text-sm)
+}
+
+#molecule {
+    max-width: 100%;
+    height: auto;
+    max-height: 200px;
+    width: 100%;
+    object-fit: contain
+}
+
+#submit {
+    width: 100%;
+    min-height: 48px;
+    margin-top: var(--space-6)
+}
+
+.note {
+    font-size: var(--text-xs)
+}
+
+summary {
+    cursor: pointer;
+    font-size: var(--text-sm);
+    color: var(--accent-text);
+    min-height: 44px;
+    display: flex;
+    align-items: center
+}
+
+details {
+    margin-top: var(--space-4)
+}

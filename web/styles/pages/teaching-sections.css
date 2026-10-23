@@ -1,0 +1,56 @@
+/* TASK-033: peer teaching sections, explicit equations and independently scoped tools. */
+#literature .teaching-section { background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-card); padding:20px; margin:0 0 24px; min-width:0; }
+#literature .teaching-section > h2 { margin:0 0 6px; font-size:var(--text-xl); }
+.section-description { margin:0 0 18px; color:var(--ink-2); font-size:var(--text-sm); }
+#learning-topic-content .example-title { font-size:var(--text-lg); margin:18px 0 4px; }
+.example-intro { margin:0 0 12px; color:var(--ink-2); font-size:var(--text-sm); }
+.reaction-equation { border:1px solid var(--green-200); border-radius:var(--radius-control); background:var(--green-50); padding:12px 16px; margin:12px 0 16px; }
+.equation-label { margin:0 0 8px; color:var(--green-800); font-size:var(--text-xs); font-weight:600; }
+.equation-line { display:grid; grid-template-columns:minmax(0,1fr) 120px minmax(0,1fr); align-items:center; gap:16px; }
+.equation-compound { font-size:var(--text-lg); font-weight:600; line-height:1.6; text-align:center; overflow-wrap:anywhere; }
+.equation-arrow { color:var(--green-700); display:flex; flex-direction:column; align-items:center; gap:4px; }
+.equation-arrow svg { display:block; width:80px; height:18px; }
+.equation-catalyst { font-size:var(--text-xs); text-align:center; }
+#literature .reaction-example img { max-height:none; min-width:900px; height:280px; object-fit:contain; }
+.reaction-explanation { list-style:none; counter-reset:reaction; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:20px; padding:0; margin:20px 0; }
+.reaction-explanation li { counter-increment:reaction; position:relative; padding:0 0 0 34px; min-width:0; }
+.reaction-explanation li::before { content:counter(reaction); position:absolute; left:0; top:0; width:24px; height:24px; border-radius:50%; background:var(--green-100); color:var(--green-800); text-align:center; font-weight:600; font-size:var(--text-sm); }
+#literature .reaction-explanation h4 { margin:0 0 6px; font-size:var(--text-base); }
+.reaction-explanation p { margin:0; color:var(--ink-2); font-size:var(--text-sm); }
+.example-source { padding:12px 0; border-top:1px solid var(--border); overflow-wrap:anywhere; font-size:var(--text-sm); }
+.example-source h4, .example-boundary h4, .principle-sources h4 { margin:0 0 4px; font-size:var(--text-sm); }
+.example-source p, .example-boundary p { margin:4px 0; }
+.example-source a, .principle-sources a { color:var(--green-700); }
+.example-boundary { padding:12px 16px; background:var(--field); border-left:3px solid var(--border-strong); font-size:var(--text-sm); }
+#teaching-list { padding:0; }
+#teaching-list .teaching-entry { padding:16px 0; border-top:1px solid var(--border); }
+.teaching-entry h3 { margin:0 0 8px; font-size:var(--text-lg); }
+.teaching-entry h4 { margin:16px 0 6px; font-size:var(--text-base); }
+.teaching-entry > p { margin:6px 0 14px; }
+.principle-example-label { font-size:var(--text-sm); color:var(--ink-2); }
+.principle-sources { padding:12px 0 0; margin-top:12px; border-top:1px solid var(--border); font-size:var(--text-sm); }
+.principle-sources a { display:block; margin:6px 0; overflow-wrap:anywhere; }
+.equation-unavailable { padding:16px; background:var(--warning-bg); color:var(--warning-ink); border-left:3px solid var(--amber-400); }
+#literature .literature-views { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); position:static; padding:0; background:var(--surface); overflow:visible; margin-bottom:16px; }
+#literature .literature-views :is(button, a.nav-link) { white-space:normal; text-align:left; padding:14px; min-width:0; }
+.literature-views strong, .literature-views span { display:block; }
+.literature-views strong { font-size:var(--text-base); margin-bottom:6px; }
+.literature-views span { font-size:var(--text-sm); line-height:1.6; }
+.tool-context { background:var(--green-50); border-left:3px solid var(--green-500); padding:12px 16px; margin:0 0 16px; font-size:var(--text-sm); }
+#literature .case-summary { display:block; overflow:visible; }
+#literature .teaching-view { border-color:var(--border); }
+@media (max-width:991px) {
+    .reaction-explanation { grid-template-columns:minmax(0,1fr); gap:16px; }
+    #literature .literature-views { grid-template-columns:repeat(2,minmax(0,1fr)); }
+}
+@media (max-width:767px) {
+    #literature .teaching-section { padding:14px; margin-bottom:18px; }
+    .equation-line { grid-template-columns:minmax(0,1fr); gap:4px; }
+    .equation-compound { font-size:var(--text-base); }
+    .equation-arrow { flex-direction:row; justify-content:center; min-height:48px; gap:14px; }
+    .equation-arrow svg { transform:rotate(90deg); width:42px; height:18px; }
+    .equation-arrow .equation-catalyst { max-width:140px; }
+    #literature .literature-views { gap:8px; }
+    #literature .literature-views :is(button, a.nav-link) { padding:10px; }
+    .literature-views strong { font-size:var(--text-sm); }
+}

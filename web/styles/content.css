@@ -1,0 +1,82 @@
+/* ---------- 页面骨架（base：单列文档流） ---------- */
+.page {
+    max-width: 1200px;
+    margin: auto;
+    padding: var(--space-4) var(--space-4) var(--space-16)
+}
+
+.intro {
+    margin: var(--space-2) 0 var(--space-6)
+}
+
+.eyebrow {
+    color: var(--accent-text);
+    font-size: var(--text-xs);
+    letter-spacing: 2px;
+    font-weight: 600
+}
+
+/* 字号层级：H1 2xl / H2 lg / H3 与正文 base / 次要 sm / 元信息 xs。 */
+h1 {
+    font-size: var(--text-2xl);
+    font-weight: 600;
+    letter-spacing: 0;
+    margin: var(--space-2) 0
+}
+
+h2 {
+    font-size: var(--text-lg);
+    font-weight: 600;
+    margin-top: 0
+}
+
+h3 {
+    font-size: var(--text-base);
+    font-weight: 600
+}
+
+.section-title {
+    margin: var(--space-8) 0 var(--space-4);
+    font-size: var(--text-lg);
+    color: var(--green-800)
+}
+
+.intro>p:last-child,
+.note {
+    color: var(--ink-2)
+}
+
+/* 探索页 base：全宽单列，表单卡在上、结果在下 */
+#search.page {
+    max-width: none;
+    margin: 0;
+    padding: 0
+}
+
+#search .intro {
+    padding: var(--space-4) var(--space-4) 0;
+    margin-bottom: var(--space-4)
+}
+
+.workspace {
+    display: block
+}
+
+.workspace>aside {
+    border-radius: 0;
+    border-left: 0;
+    border-right: 0
+}
+
+.workspace>.results {
+    min-width: 0;
+    padding: var(--space-4) var(--space-4) var(--space-16)
+}
+
+.card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-card);
+    padding: var(--space-4);
+    min-width: 0
+}

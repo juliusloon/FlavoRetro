@@ -11,148 +11,206 @@
 
 <body>
     <a class="skip-link" href="#main">跳到主要内容</a>
-    <header><a class="brand" href="/">◈ FlavoRetro <span>黄酮逆合成研究台</span></a>
-        <nav aria-label="工作区" role="tablist"><button data-tab="search" class="active" role="tab" id="tab-search"
-                aria-selected="true" aria-controls="search" tabindex="0">路线探索</button><button
+    <header><a class="brand" href="#/search">◈ FlavoRetro <span>黄酮逆合成研究台</span></a>
+        <nav aria-label="工作区" role="tablist"><a data-tab="search" class="nav-link active" role="tab" id="tab-search"
+                aria-selected="true" aria-controls="search" tabindex="0" href="#/search">路线探索</a><a data-tab="history" role="tab" id="tab-history" aria-selected="false"
+                aria-controls="history" tabindex="-1" class="nav-link" href="#/history">搜索历史</a><a
                 data-tab="resources" role="tab" id="tab-resources" aria-selected="false" aria-controls="resources"
-                tabindex="-1">资源与证据</button><button data-tab="literature" role="tab" id="tab-literature"
-                aria-selected="false" aria-controls="literature" tabindex="-1">文献教学</button><button
+                tabindex="-1" class="nav-link" href="#/resources">资源与证据</a><a data-tab="literature" role="tab" id="tab-literature"
+                aria-selected="false" aria-controls="literature" tabindex="-1" class="nav-link" href="#/literature">文献教学</a><a
                 data-tab="governance" role="tab" id="tab-governance" aria-selected="false" aria-controls="governance"
-                tabindex="-1">项目状态</button></nav><span class="badge">研究候选版 · v0.1 · 非实验验证</span>
+                tabindex="-1" class="nav-link" href="#/governance">研究范围</a></nav><span class="badge">v0.1</span>
     </header>
+    <p id="navigation-message" role="status" hidden></p>
     <main id="main" tabindex="-1">
         <section id="search" class="page" role="tabpanel" aria-labelledby="tab-search">
-            <div class="intro">
-                <p class="eyebrow">LIVE RETROSYNTHESIS</p>
-                <h1>从一个分子，追溯每一步依据。</h1>
-                <p>每次搜索都运行新的 MCTS。路线闭合、来源证据和实验可行性分别呈现；候选仅供探索，不代表可执行。</p>
-            </div>
             <div class="workspace">
                 <aside class="card">
-                    <h2>目标分子</h2>
-                    <form id="search-form"><label for="preset">选择示例</label><select id="preset">
-                            <option value="">自定义 SMILES</option>
-                        </select><label for="smiles">SMILES</label><textarea id="smiles" required spellcheck="false"
-                            rows="4">COc1ccc(O)cc1</textarea><button type="button" id="preview"
-                            class="secondary">预览结构</button><img id="molecule" alt="目标分子结构">
-                        <div id="topology" aria-live="polite"></div>
-                        <div class="fields">
-                            <div><label for="mode">搜索预算</label><select id="mode">
-                                    <option value="quick">快速探索</option>
-                                    <option value="balanced" selected>平衡 · 两阶段</option>
-                                    <option value="strict">深入探索</option>
-                                </select></div>
-                            <div><label for="seed">随机种子</label><input id="seed" type="number" value="0" min="0"
-                                    max="4294967295"></div>
-                        </div><label class="check"><input id="candidate" type="checkbox">允许候选库存终止（未审，仅供探索）</label>
-                        <label class="check"><input id="teaching" type="checkbox" checked>教学解释模式（逐步显示反应家族说明，非操作规程）</label>
-                        <details>
-                            <summary>实验参数</summary>
-                            <label for="engine">引擎</label><select id="engine"><option value="optimized">optimized · PUCT 优化树</option><option value="native">native · AiZynthFinder 原生树</option></select>
-                            <p class="note">native 不执行 optimized 的节点上限，不能把两者称为等价预算对照。</p>
-                            <label for="top_k">展示路线数</label><input id="top_k" type="number" value="5" min="1" max="25">
-<label for="seconds">每阶段秒数（留空使用配置）</label><input id="seconds"
-                                type="number" min="0.1" max="360" step="0.1"><label
-                                for="iterations">每阶段迭代上限（留空使用配置）</label><input id="iterations" type="number" min="1"
-                                max="1800">
-                            <label for="depth">最大深度（留空使用配置）</label><input id="depth" type="number" min="1" max="10">
-                            <label for="branching">每节点分支上限（留空使用配置）</label><input id="branching" type="number" min="1" max="24">
-                            <label for="nodes">optimized 节点上限（留空使用配置）</label><input id="nodes" type="number" min="1" max="25000">
-                        </details><button id="submit" type="submit">开始实时搜索 ↗</button>
-                    </form>
-                    <p class="note">默认没有已审核库存，因此可能返回未闭合路线。未知条件与风险不代表安全或可行。</p>
-                </aside>
-                <div class="results">
-                    <div id="message" role="status" aria-live="polite">准备就绪。选择分子后开始探索。</div>
-                    <div id="run-meta"></div>
-                    <div id="routes" class="routes">
-                        <div class="empty"><span>⌘</span>
-                            <h2>让证据跟随路线</h2>
-                            <p>搜索完成后，这里将展示实际生成的路线、评分构成、末端原料证据、逐步反应与教学说明。</p>
+                    <form id="search-form">
+                        <div class="search-form-scroll">
+                            <h2>目标分子</h2>
+                            <label for="preset">选择示例</label><select id="preset">
+                                <option value="">自定义 SMILES</option>
+                            </select><label for="smiles">SMILES</label><textarea id="smiles" required spellcheck="false"
+                                rows="4">COc1ccc(O)cc1</textarea><button type="button" id="preview"
+                                class="secondary">预览结构</button><img id="molecule" alt="目标分子结构">
+                            <div id="topology" aria-live="polite"></div>
+                            <div id="source-suggestion" class="source-suggestion" hidden><p id="source-suggestion-text" class="note"></p><button type="button" id="enable-source-search" class="secondary">加入来源记录</button></div>
+                            <label for="mode">搜索预算</label><select id="mode">
+                                <option value="quick">快速探索</option>
+                                <option value="balanced" selected>平衡 · 两阶段</option>
+                                <option value="strict">深入探索</option>
+                            </select>
+                            <label class="check"><input id="candidate" type="checkbox">使用候选库存</label>
+                            <details id="search-advanced">
+                                <summary>高级设置</summary>
+                                <label for="seed">随机种子</label><input id="seed" type="number" value="0" min="0" max="4294967295">
+                                <label for="stock-profile">候选库存范围</label><select id="stock-profile" disabled>
+                                    <option value="reviewed">项目审核候选库存</option><option value="zinc" disabled>ZINC 历史候选库存</option>
+                                </select><p id="stock-help" class="note" aria-live="polite">选择搜索使用的候选库存。</p>
+                                <label for="engine">引擎</label><select id="engine"><option value="optimized">optimized · PUCT 优化树</option><option value="native">native · AiZynthFinder 原生树</option><option value="native_stop">native＋保守提前停止</option></select>
+                                <p class="note" id="search-method-help">选择通用优化搜索或原生搜索；两者均逐次探索新路线。</p>
+                                <label class="check"><input id="flavanone-opening" type="checkbox" disabled>加入黄烷酮开环候选</label>
+                                <p id="flavanone-help" class="note" aria-live="polite">默认关闭。选择 native 后可显式加入领域图规则；保留取代基，不预测保护基操作、C2选择性、条件或可行性。</p>
+                                <label for="glycoside-version">糖苷反应库</label><select id="glycoside-version">
+                                    <option value="">关闭 · 通用模型</option><option value="v1">v1 · 精确 O 成键实例</option>
+                                    <option value="v2">v2 · 来源支持与受限范围</option><option value="v3">v3 · O / C / 糖间范围</option>
+                                    <option value="v5">v5 · 纠偏后范围</option><option value="v6">v6 · C8 范围修正</option>
+                                    <option value="v7">v7 · 历史开发版本（迁移未验证）</option>
+                                    <option value="v8" disabled>v8 · 来源与糖链结构纠偏版</option>
+                                </select>
+                                <p id="domain-help" class="note" aria-live="polite">默认关闭。启用后加入来源限定动作；独立化学验证与实验条件仍未完成。</p>
+                                <label class="check"><input id="literature-expansion" type="checkbox" disabled>检索文献反应</label>
+                                <p id="literature-help" class="note" aria-live="polite">默认关闭。仅在产物图精确匹配时提供原文反应前体；来源重现不等于新反应预测或独立迁移。</p>
+                                <label for="top_k">展示路线数</label><input id="top_k" type="number" value="5" min="1" max="25">
+                                <script id="search-budget-defaults" type="application/json">{"quick":[{"depth":4,"branching":8,"nodes":1500,"iterations":50,"seconds":45}],"balanced":[{"depth":6,"branching":12,"nodes":5000,"iterations":100,"seconds":120},{"depth":8,"branching":16,"nodes":12000,"iterations":800,"seconds":240}],"strict":[{"depth":9,"branching":20,"nodes":20000,"iterations":1800,"seconds":360}]}</script>
+                                <p id="budget-settings-help" class="note">两阶段默认值按“第一阶段 → 第二阶段”标注，输入框显示第二阶段值；修改某项后，两阶段都使用所填值。</p>
+                                <label for="seconds">每阶段时限 / 秒 <span id="seconds-default" class="note">默认 120 → 240</span></label><input id="seconds" type="number" value="240" min="0.1" max="360" step="0.1" aria-describedby="budget-settings-help" required>
+                                <label for="iterations">每阶段迭代上限 <span id="iterations-default" class="note">默认 100 → 800</span></label><input id="iterations" type="number" value="800" min="1" max="1800" aria-describedby="budget-settings-help" required>
+                                <label for="depth">最大深度 <span id="depth-default" class="note">默认 6 → 8</span></label><input id="depth" type="number" value="8" min="1" max="10" aria-describedby="budget-settings-help" required>
+                                <label for="branching">每模型每分子候选上限 <span id="branching-default" class="note">默认 12 → 16</span></label><input id="branching" type="number" value="16" min="1" max="24" aria-describedby="budget-settings-help" required>
+                                <p class="note">通用搜索保留各模型的候选；糖苷/文献扩展同时沿用旧全局分支限制。原生搜索不实施 optimized 的节点上限。</p>
+                                <label for="nodes">optimized 节点上限 <span id="nodes-default" class="note">默认 5000 → 12000</span></label><input id="nodes" type="number" value="12000" min="1" max="25000" aria-describedby="budget-settings-help" required>
+                                <button id="reset-budget" type="button" class="secondary">恢复预算默认值</button>
+                            </details>
                         </div>
+                        <div class="search-form-actions"><button id="submit" type="submit">开始实时搜索 ↗</button></div>
+                    </form>
+
+                </aside>
+                <div class="results is-empty" id="search-results" aria-label="路线结果">
+                    <div id="search-intro" class="search-welcome"><h1>从一个分子，追溯每一步依据。</h1><p>选择目标分子，预览结构，探索合成路线。</p></div>
+                    <div id="message" role="status" aria-live="polite">准备就绪。选择分子后开始探索。</div>
+                    <section id="lab-development" class="card lab-development" hidden aria-label="文献开发入口"></section><div id="run-meta"></div>
+                    <div id="route-workbench" class="route-workbench" hidden>
+                        <section class="card route-catalog-card" id="route-catalog-card" aria-labelledby="route-catalog-title">
+                            <div class="route-catalog-head"><h2 id="route-catalog-title">路线目录</h2><p id="route-catalog-summary" class="note"></p></div>
+                            <div id="route-catalog" class="route-catalog" role="tablist" aria-label="路线目录"></div>
+                        </section>
+                        <div id="routes" class="routes"></div>
                     </div><button id="download" class="secondary" hidden>导出本次 JSON</button>
                 </div>
             </div>
         </section>
-        <section id="resources" class="page" hidden role="tabpanel" aria-labelledby="tab-resources">
-            <div class="intro">
-                <p class="eyebrow">SOURCE → RECORD → REVIEW</p>
-                <h1>资源保留，证据分层。</h1>
-                <p>原始字段、来源定位和计算检查分别保存。没有条目因导入成功而自动晋级。</p>
+        <section id="history" class="page" hidden role="tabpanel" aria-labelledby="tab-history">
+            <div class="page-heading"><h1>搜索历史</h1><p>选择两次已保存运行做逐项对照，或重新打开某次路线结果。</p></div>
+            <div class="history-workspace">
+            <section class="history-saved" aria-labelledby="history-list-title">
+                <h2 id="history-list-title">已保存运行历史</h2>
+                <div class="history-toolbar filter-toolbar"><input id="saved-run-id" aria-label="历史 run ID" placeholder="输入完整 run ID"><button id="open-run" class="secondary">打开 run ID</button><button id="refresh-runs" class="secondary">刷新运行列表</button></div>
+                <p id="history-message" role="status"></p>
+                <div class="records-panel history-records" aria-label="已保存运行记录">
+                    <div id="runs-pager-top" class="pagination"></div>
+                    <div class="record-table-wrap" tabindex="0" role="region" aria-label="历史运行表格，可横向滚动"><table class="history-table"><thead><tr><th scope="col">目标</th><th scope="col">运行 / 时间</th><th scope="col">状态 / 路线</th><th scope="col">操作</th></tr></thead><tbody id="run-list"></tbody></table></div>
+                </div>
+            </section>
+            <section class="comparison-panel" id="history-comparison" aria-label="运行对照">
+                <div class="comparison-selects">
+                    <div><label for="compare-run-a">运行 A</label><select id="compare-run-a"><option value="">选择运行 A</option></select></div>
+                    <div><label for="compare-run-b">运行 B</label><select id="compare-run-b"><option value="">选择运行 B</option></select></div>
+                    <div class="comparison-actions"><button id="run-comparison">开始对照</button><button id="export-comparison" class="secondary" disabled>导出对照 JSON</button></div>
+                </div>
+                <p id="comparison-message" role="status">尚未选择运行。</p>
+                <div id="comparison-table"></div>
+            </section>
             </div>
-            <div class="card">
-                <div class="fields"><select id="kind" aria-label="资源类型">
-                        <option value="">全部资源</option>
-                        <option value="molecule">分子</option>
-                        <option value="note_reaction">笔记反应</option>
-                        <option value="scifinder_reaction">SciFinder 反应</option>
-                        <option value="stock">候选库存</option>
-                        <option value="template">候选模板</option>
-                        <option value="paper">文献</option>
-                        <option value="supplier">供应列表</option>
-                        <option value="molecule_failures">未解析名称</option><option value="molecule_duplicate_names">重复名称</option>
-                    </select><input id="query" placeholder="名称、来源、结构或原始字段" aria-label="搜索资源"><button
-                        id="find">查找</button></div>
-                <div class="fields">
-                    <select id="qc-filter" aria-label="QC 筛选"><option value="">全部 QC</option><option value="name_conflict">名称冲突</option><option value="component_parse_failure">结构解析失败</option><option value="molecule_failures">未解析名称</option><option value="molecule_duplicate_names">重复名称</option></select>
-                    <select id="outcome-filter" aria-label="收率筛选"><option value="">全部收率状态</option><option value="zero">数值零（非缺失）</option><option value="missing">明确缺失</option><option value="numeric">已解析数值</option><option value="unparsed">有原值、未解析</option></select>
-                    <select id="source-filter" aria-label="来源定位筛选"><option value="">全部来源状态</option><option value="note_located_token_found">文件定位且 token 命中（非内容核验）</option><option value="note_located_token_unmatched">文件定位、token 未命中</option><option value="note_missing">文件未定位</option></select>
-                </div>
-                <p id="count"></p>
-                <div class="table-wrap" tabindex="0" role="region" aria-label="资源记录表格，可横向滚动">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th scope="col">记录</th>
-                                <th scope="col">类型</th>
-                                <th scope="col">来源与处置</th>
-                                <th scope="col">详情</th>
-                            </tr>
-                        </thead>
-                        <tbody id="rows"></tbody>
-                    </table>
-                </div>
-                <div class="pager"><button id="previous" class="secondary">上一页</button><button id="next"
-                        class="secondary">下一页</button></div>
-                <details id="record-detail">
-                    <summary>原始字段与本次检查</summary>
-                    <pre id="record-json"></pre>
-                </details>
+        </section>
+        <section id="resources" class="page" hidden role="tabpanel" aria-labelledby="tab-resources">
+            <div class="page-heading"><h1>资源与证据</h1><p>检索记录，查看来源与检查结果。</p></div>
+            <form id="resource-filters" class="filter-toolbar" aria-label="资源检索与筛选">
+                <div class="filter-query"><label for="query">关键词</label><input id="query" type="search" placeholder="名称、结构或来源"></div>
+                <div><label for="kind">资源类型</label><select id="kind"><option value="">全部资源</option><option value="molecule">分子</option><option value="note_reaction">笔记反应</option><option value="scifinder_reaction">SciFinder反应</option><option value="stock">候选库存</option><option value="template">反应模板</option><option value="paper">文献</option><option value="supplier">供应列表</option><option value="molecule_failures">未解析名称</option><option value="molecule_duplicate_names">重复名称</option></select></div>
+                <div><label for="qc-filter">检查状态</label><select id="qc-filter"><option value="">全部状态</option><option value="name_conflict">名称冲突</option><option value="component_parse_failure">结构解析失败</option><option value="molecule_failures">未解析名称</option><option value="molecule_duplicate_names">重复名称</option></select></div>
+                <div><label for="outcome-filter">收率</label><select id="outcome-filter"><option value="">全部收率</option><option value="zero">零收率</option><option value="missing">未报告</option><option value="numeric">已解析数值</option><option value="unparsed">有原值未解析</option></select></div>
+                <div><label for="source-filter">来源定位</label><select id="source-filter"><option value="">全部来源</option><option value="note_located_token_found">已定位并命中</option><option value="note_located_token_unmatched">已定位待核对</option><option value="note_missing">未定位</option></select></div>
+                <div class="filter-actions"><button id="find" type="submit">查询</button><button id="reset-records" type="button" class="secondary">重置</button></div>
+            </form>
+            <p id="count" role="status" class="results-status"></p>
+            <div class="mobile-pane-switch" role="group" aria-label="资源面板"><button type="button" id="show-records" aria-pressed="true">资源记录</button><button type="button" id="show-record-detail" class="secondary" aria-pressed="false">条目详情</button></div>
+            <div class="resource-workspace" id="resource-workspace" data-mobile-pane="records">
+                <section class="records-panel" aria-label="资源记录"><div id="records-pager-top" class="pagination"></div>
+                    <div class="record-table-wrap"><table class="resource-table"><thead><tr><th scope="col">名称</th><th scope="col">类型</th><th scope="col">来源</th><th scope="col">操作</th></tr></thead><tbody id="rows"></tbody></table></div>
+                </section>
+                <section id="record-detail" class="record-inspector" aria-labelledby="record-detail-title"><h2 id="record-detail-title">条目结构与来源</h2><p id="record-selection" class="note">选择左侧条目查看详情。</p><div id="record-json"></div></section>
             </div>
         </section>
         <section id="literature" class="page" hidden role="tabpanel" aria-labelledby="tab-literature">
-            <div class="intro">
-                <p class="eyebrow">LITERATURE TEACHING LAYER</p>
-                <h1>文献教学层：原文登记，边界先行。</h1>
-                <p>本页内容来自项目文献登记与机器抽取记录，按原样呈现；未经人工复核的记录不构成一手证据。</p>
+            <div class="page-heading literature-heading"><div class="literature-heading-copy"><h1>文献教学</h1><p>先看清结构怎么变，再理解反应原理，最后回到文献核查与练习。</p></div>
+            <nav class="teaching-sections" role="tablist" aria-label="文献教学内容">
+                <a id="teaching-section-examples" data-teaching-section="examples" role="tab" aria-controls="teaching-examples" aria-selected="true" tabindex="0" class="nav-link" href="#/literature/examples/o">常见反应类型</a>
+                <a id="teaching-section-principles" data-teaching-section="principles" role="tab" aria-controls="teaching-catalog" aria-selected="false" tabindex="-1" class="nav-link" href="#/literature/principles/o_glycosylation">全部反应原理</a>
+                <a id="teaching-section-tools" data-teaching-section="tools" role="tab" aria-controls="literature-tools" aria-selected="false" tabindex="-1" class="nav-link" href="#/literature/tools/lessons">文献核查与练习</a>
+            </nav>
             </div>
-            <div id="literature-banner"></div>
-            <div id="literature-summary" class="chips"></div>
-            <details class="card" id="teaching-catalog"><summary>浏览 27 个教学条目（独立参考，未识别模板不自动匹配家族）</summary><div id="teaching-list"></div></details>
-            <h2 class="section-title">文献卡片</h2>
-            <div id="literature-list"></div>
-            <h2 class="section-title">反应课程</h2>
-            <div id="lesson-list"></div>
+            <section id="teaching-examples" class="topic-explorer teaching-section" role="tabpanel" aria-labelledby="teaching-section-examples">
+                <div class="example-heading"><h2 id="topic-title">常见反应类型</h2><div id="learning-topic-options" class="topic-options" role="group" aria-label="反应类型"></div></div>
+                <div id="learning-topic-content" aria-live="polite" aria-busy="true"></div>
+            </section>
+            <section id="teaching-catalog" class="teaching-section principle-catalog" hidden role="tabpanel" aria-labelledby="teaching-section-principles">
+                <div class="principle-heading"><h2 id="principles-title"><label for="principle-select">选择要了解的反应原理</label></h2><select id="principle-select"></select></div>
+                <div id="teaching-list"></div>
+            </section>
+            <section id="literature-tools" class="teaching-section literature-tools" hidden role="tabpanel" aria-labelledby="teaching-section-tools">
+                <nav class="literature-views" role="tablist" aria-label="学习栏目">
+                    <a id="go-lessons" data-literature-view="lessons" role="tab" aria-controls="teaching-view-lessons" aria-selected="true" tabindex="0" class="nav-link" href="#/literature/tools/lessons"><strong>文献核查案例</strong><span>按案例核对结构、条件与证据</span></a>
+                    <a id="go-papers" data-literature-view="papers" role="tab" aria-controls="teaching-view-papers" aria-selected="false" tabindex="-1" class="nav-link" href="#/literature/tools/papers"><strong>查原文与来源</strong><span>找到论文、DOI 和关联案例</span></a>
+                    <a id="go-learning" data-literature-view="practice" role="tab" aria-controls="teaching-view-practice" aria-selected="false" tabindex="-1" class="nav-link" href="#/literature/tools/practice"><strong>做六步练习</strong><span>选入自己的目标，记录判断与运行</span></a>
+                    <a id="go-reaction-evidence" data-literature-view="evidence" role="tab" aria-controls="teaching-view-evidence" aria-selected="false" tabindex="-1" class="nav-link" href="#/literature/tools/evidence"><strong>查新增反应证据</strong><span>检查来源记录、收率与待解问题</span></a>
+                </nav>
+                <p id="literature-tool-context" class="sr-only" role="status" hidden></p>
+                <form id="library-search" class="library-search filter-toolbar tool-filter" aria-label="检索文献与案例">
+                    <div class="filter-query"><label for="literature-query">关键词</label><input id="literature-query" type="search" placeholder="标题、DOI、编号或反应类型"></div>
+                    <div><label for="literature-topic">文献与案例类型</label><select id="literature-topic"><option value="">全部类型</option><option value="o">O-糖苷连接</option><option value="c">C-糖苷连接</option><option value="chain">糖间连接与糖链</option><option value="scaffold">母核构建与修饰</option></select></div>
+                    <button id="literature-reset" type="button" class="secondary">清空筛选</button><p id="literature-results" class="sr-only" role="status"></p>
+                </form>
+                <form id="reaction-evidence-filters" class="filter-toolbar tool-filter" hidden aria-label="检索新增反应">
+                    <div class="filter-query"><label for="reaction-evidence-query">关键词</label><input id="reaction-evidence-query" type="search" placeholder="标题、DOI、化合物或反应编号"></div>
+                    <div><label for="reaction-evidence-status">检查状态</label><select id="reaction-evidence-status"><option value="">全部记录</option><option value="source_bound_structure_candidate">来源已绑定</option><option value="retained_with_issues">待解决问题</option></select></div>
+                    <button id="reaction-evidence-reset" type="button" class="secondary">清空筛选</button><p id="reaction-evidence-summary" class="sr-only" role="status"></p>
+                </form>
+                <div id="learning-toolbar" class="tool-filter practice-toolbar" hidden>
+                    <div class="practice-summary"><p id="learning-context" class="note"></p><p id="learning-progress" role="status"></p></div>
+                    <div class="button-row"><button id="learning-use-target" class="secondary">使用当前目标</button><button id="learning-use-run" class="secondary" disabled>记录当前运行</button><button id="learning-export" class="secondary">导出学习记录</button></div>
+                </div>
+                <div id="literature-banner" hidden></div><div id="literature-summary" hidden></div>
+                <section id="teaching-view-lessons" class="teaching-view tool-view" role="tabpanel" aria-labelledby="go-lessons">
+                    <h2 id="lessons-title" class="sr-only" tabindex="-1">文献核查案例</h2><div id="lesson-pager-top" class="pagination"></div>
+                    <div class="tool-split"><div id="lesson-list" class="tool-list" role="region" aria-label="案例列表" tabindex="0"></div><div id="lesson-reader" class="tool-reader" role="region" aria-label="案例详情" tabindex="0"></div></div>
+                </section>
+                <section id="teaching-view-papers" class="teaching-view tool-view" hidden role="tabpanel" aria-labelledby="go-papers">
+                    <h2 id="papers-title" class="sr-only" tabindex="-1">文献与来源</h2><div id="paper-pager-top" class="pagination"></div>
+                    <div class="tool-split"><div id="literature-list" class="tool-list" role="region" aria-label="文献列表" tabindex="0"></div><div id="paper-reader" class="tool-reader" role="region" aria-label="文献详情" tabindex="0"></div></div>
+                </section>
+                <section id="teaching-view-practice" class="teaching-view learning-path tool-view" hidden role="tabpanel" aria-labelledby="go-learning">
+                    <h2 id="learning-title" class="sr-only" tabindex="-1">六步逆合成练习</h2><div id="learning-pager-top" class="pagination"></div>
+                    <div class="tool-split"><nav id="learning-step-nav" class="tool-list" aria-label="六步练习步骤"></nav><div id="learning-steps" class="tool-reader" role="region" aria-label="练习记录" tabindex="0"></div></div>
+                </section>
+                <section id="teaching-view-evidence" class="teaching-view reaction-evidence-panel tool-view" hidden role="tabpanel" aria-labelledby="go-reaction-evidence">
+                    <h2 id="reaction-evidence-title" class="sr-only" tabindex="-1">新增反应证据</h2><div id="evidence-pager-top" class="pagination"></div>
+                    <div class="tool-split"><div id="reaction-evidence-list" class="tool-list" role="region" aria-label="反应记录列表" tabindex="0"></div><div id="evidence-reader" class="tool-reader" role="region" aria-label="反应详情" tabindex="0"></div></div>
+                </section>
+            </section>
         </section>
         <section id="governance" class="page" hidden role="tabpanel" aria-labelledby="tab-governance">
-            <div class="intro">
-                <p class="eyebrow">AUDITABLE BY DESIGN</p>
-                <h1>知道已完成什么，也知道缺什么。</h1>
-            </div>
+            <div class="page-heading"><h1>研究范围与数据覆盖</h1><p>了解当前可用内容与需要进一步核查的环节。</p></div>
             <div id="stats" class="stats"></div>
-            <div class="card"><h2>工程基线与资源版本</h2><div id="foundation-status"></div><details><summary>安装、数据库及重建信息</summary><pre id="installation-status"></pre></details><div id="sync-status"></div></div>
-            <div class="card"><h2>历史运行（显式读取，不运行新 MCTS）</h2><button id="refresh-runs" class="secondary">刷新运行列表</button><div class="fields"><input id="saved-run-id" aria-label="历史 run ID" placeholder="输入完整 run ID"><button id="open-run">打开历史运行</button></div><p id="history-message" role="status"></p><div class="table-wrap" tabindex="0" role="region" aria-label="历史运行表格，可横向滚动"><table><thead><tr><th scope="col">运行 / 目标</th><th scope="col">状态 / 版本</th><th scope="col">操作</th></tr></thead><tbody id="run-list"></tbody></table></div><div class="pager"><button id="runs-previous" class="secondary">上一页</button><button id="runs-next" class="secondary">下一页</button></div></div>
-            <div class="card"><h2>开发对照与正式前置检查</h2><p>固定 3 个目标 × 2 seeds × 2 引擎，共 12 cell。每 cell 新建实时 MCTS；不是盲测，native 节点上限不等价，不能推称化学优越。</p><button id="start-evaluation">运行 12-cell 开发对照</button><p id="evaluation-message" role="status"></p><label for="evaluation-history">已保存开发对照</label><select id="evaluation-history"><option value="">选择已保存对照</option></select><div class="table-wrap" tabindex="0" role="region" aria-label="开发对照表格，可横向滚动"><table><thead><tr><th scope="col">目标 / seed</th><th scope="col">引擎 / 状态</th><th scope="col">路线 / run ID</th></tr></thead><tbody id="evaluation-cells"></tbody></table></div><details><summary>开发对照合同与结果</summary><pre id="evaluation-json"></pre></details><h3>正式 preflight（只读）</h3><pre id="preflight-status"></pre></div>
-            <h2 class="section-title">搜索预算配置（configs/search.json）</h2>
-            <div id="profiles"></div>
-            <div class="card">
-                <h2>当前交接状态</h2>
-                <pre id="state"></pre>
-            </div>
-            <p class="note">历史项目只读保留。操作轨迹见新项目的 TASK、REPORT、ADR 与 operations/events.jsonl。</p>
+            <div class="card"><h2>当前适用范围</h2><p id="research-status" role="status">正在读取…</p><p>反应条件、收率与出处以具体来源为准。未报告的数值保留为未知，零收率按零展示，来源冲突单独注明。</p></div>
         </section>
+        <section id="components" class="page ui-component-reference" hidden role="region" aria-labelledby="components-title">
+    <div class="page-heading"><h1 id="components-title">界面组件</h1><p>颜色、控件与分栏使用同一套界面规范。</p><a class="nav-link" href="#/search">返回工作台</a></div>
+    <div class="ui-reference-grid">
+        <section class="ui-panel"><h2>颜色与状态</h2><div id="component-swatches" class="ui-swatches"></div><div id="component-feedback"></div></section>
+        <section class="ui-panel"><h2>按钮与输入</h2><div id="component-buttons" class="button-row"></div><div id="component-fields" class="ui-reference-fields"></div><p id="component-interaction" role="status">点击按钮或更改选项查看状态。</p></section>
+        <section class="ui-panel"><h2>统一分页</h2><div id="component-pager" class="pagination"></div><div id="component-items" class="ui-demo-items"></div></section>
+        <section class="ui-panel"><h2>空态与基础信息</h2><div id="component-states"></div><pre><code>FlavoUI.button('查询', { onClick: loadItems });
+FlavoUI.pagination('pager', state, onPageChange);
+FlavoUI.notice('读取失败', { kind: 'error' });</code></pre></section>
+        <section class="ui-panel ui-reference-wide"><h2>分栏模板</h2><p class="note">列表与阅读 1:2；记录与对照 2:1；讲解与图式 1:2。窄屏按内容顺序排列。</p><div id="component-splits"></div></section>
+        <section class="ui-panel ui-reference-wide"><h2>页面入口</h2><div id="component-route-list" class="ui-route-list"></div><p class="note">每个页面使用独立地址；支持返回、前进、刷新和新标签直接进入。</p></section>
+    </div>
+</section>
     </main>
-    <footer>FlavoRetro / 实时搜索 · 原始数据不可变 · 零收率不等于缺失 · 候选不代表可执行</footer>
+
 </body>
 
 </html>

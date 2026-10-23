@@ -1,0 +1,92 @@
+/* FlavoRetro 工作台样式 · TASK-013：设计 token 化 + 移动优先重构。
+   色值/字体刻度/断点依据 docs/WEB_UI_DESIGN.md；仅改呈现，不改文案与语义。
+   硬编码色值只允许出现在 :root 变量定义中（scripts/contrast_check.py 守卫）。 */
+
+:root {
+    /* 品牌绿 50–900（600 主色，900 顶栏） */
+    --green-50: #EDF4EF;
+    --green-100: #D7E8DE;
+    --green-200: #B3D3C2;
+    --green-300: #86B8A0;
+    --green-400: #5A9C80;
+    --green-500: #35846A;
+    --green-600: #246857;
+    --green-700: #1D5446;
+    --green-800: #173F35;
+    --green-900: #142C28;
+    /* 琥珀金（400 焦点/强调，700 浅底文字） */
+    --amber-50: #FDF8EC;
+    --amber-100: #F7EDD7;
+    --amber-200: #EEE0BD;
+    --amber-300: #E6CD8F;
+    --amber-400: #DBA849;
+    --amber-500: #C98F2E;
+    --amber-600: #A97122;
+    --amber-700: #85601C;
+    --amber-800: #644815;
+    --amber-900: #4A3510;
+    /* 中性灰绿（ink 三级文字已过 WCAG AA 实测） */
+    --bg: #F3F5F1;
+    --surface: #FFFFFF;
+    --field: #FAFCF8;
+    --border: #DAE3D9;
+    --border-strong: #C9D7CC;
+    --ink: #172C28;
+    --ink-2: #4E5F56;
+    --ink-3: #5C6F60;
+    --accent-text: #3F6B56;
+    /* 语义色（文字/底色成对，实测过 AA） */
+    --danger-ink: #8F2D2D;
+    --danger-bg: #FBE3E3;
+    --danger-border: #ECC5C5;
+    --warning-ink: #85601C;
+    --warning-bg: #FBF6EA;
+    --info-ink: #2D4A8F;
+    --info-bg: #E8EEFB;
+    /* 顶栏（墨绿底专用） */
+    --header-bg: #142C28;
+    --header-ink: #EEF7ED;
+    --header-ink-2: #B8CCC3;
+    --header-chip: #345047;
+    --header-accent: #E3B45C;
+    /* partial 中性标签（灰蓝，非语义色） */
+    --partial-bg: #ECEFF1;
+    --partial-ink: #4D5F66;
+    /* 字体：两族，1.25 比例 8 档，基字号 16px */
+    --font-sans: system-ui, -apple-system, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", sans-serif;
+    --font-mono: ui-monospace, "SF Mono", "Cascadia Mono", Consolas, monospace;
+    --text-xs: 0.75rem;
+    --text-sm: 0.875rem;
+    --text-base: 1rem;
+    --text-lg: 1.125rem;
+    --text-xl: 1.25rem;
+    --text-2xl: 1.5625rem;
+    --text-3xl: 1.9375rem;
+    --text-4xl: 2.4375rem;
+    /* 间距 8px 基线 + 圆角 */
+    --space-1: 4px;
+    --space-2: 8px;
+    --space-3: 12px;
+    --space-4: 16px;
+    --space-6: 24px;
+    --space-8: 32px;
+    --space-16: 64px;
+    --radius-control: 8px;
+    --radius-card: 12px;
+    --page-pad: clamp(16px, 4vw, 48px);
+}
+
+* {
+    box-sizing: border-box
+}
+
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font: var(--text-base)/1.65 var(--font-sans)
+}
+
+small {
+    font-size: var(--text-xs)
+}

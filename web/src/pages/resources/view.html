@@ -1,0 +1,19 @@
+<section id="resources" class="page" hidden role="tabpanel" aria-labelledby="tab-resources">
+            <div class="page-heading"><h1>资源与证据</h1><p>检索记录，查看来源与检查结果。</p></div>
+            <form id="resource-filters" class="filter-toolbar" aria-label="资源检索与筛选">
+                <div class="filter-query"><label for="query">关键词</label><input id="query" type="search" placeholder="名称、结构或来源"></div>
+                <div><label for="kind">资源类型</label><select id="kind"><option value="">全部资源</option><option value="molecule">分子</option><option value="note_reaction">笔记反应</option><option value="scifinder_reaction">SciFinder反应</option><option value="stock">候选库存</option><option value="template">反应模板</option><option value="paper">文献</option><option value="supplier">供应列表</option><option value="molecule_failures">未解析名称</option><option value="molecule_duplicate_names">重复名称</option></select></div>
+                <div><label for="qc-filter">检查状态</label><select id="qc-filter"><option value="">全部状态</option><option value="name_conflict">名称冲突</option><option value="component_parse_failure">结构解析失败</option><option value="molecule_failures">未解析名称</option><option value="molecule_duplicate_names">重复名称</option></select></div>
+                <div><label for="outcome-filter">收率</label><select id="outcome-filter"><option value="">全部收率</option><option value="zero">零收率</option><option value="missing">未报告</option><option value="numeric">已解析数值</option><option value="unparsed">有原值未解析</option></select></div>
+                <div><label for="source-filter">来源定位</label><select id="source-filter"><option value="">全部来源</option><option value="note_located_token_found">已定位并命中</option><option value="note_located_token_unmatched">已定位待核对</option><option value="note_missing">未定位</option></select></div>
+                <div class="filter-actions"><button id="find" type="submit">查询</button><button id="reset-records" type="button" class="secondary">重置</button></div>
+            </form>
+            <p id="count" role="status" class="results-status"></p>
+            <div class="mobile-pane-switch" role="group" aria-label="资源面板"><button type="button" id="show-records" aria-pressed="true">资源记录</button><button type="button" id="show-record-detail" class="secondary" aria-pressed="false">条目详情</button></div>
+            <div class="resource-workspace" id="resource-workspace" data-mobile-pane="records">
+                <section class="records-panel" aria-label="资源记录"><div id="records-pager-top" class="pagination"></div>
+                    <div class="record-table-wrap"><table class="resource-table"><thead><tr><th scope="col">名称</th><th scope="col">类型</th><th scope="col">来源</th><th scope="col">操作</th></tr></thead><tbody id="rows"></tbody></table></div>
+                </section>
+                <section id="record-detail" class="record-inspector" aria-labelledby="record-detail-title"><h2 id="record-detail-title">条目结构与来源</h2><p id="record-selection" class="note">选择左侧条目查看详情。</p><div id="record-json"></div></section>
+            </div>
+        </section>

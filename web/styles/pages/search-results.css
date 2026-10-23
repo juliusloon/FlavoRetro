@@ -1,0 +1,441 @@
+/* ---------- 结果区 ---------- */
+#message {
+    background: var(--green-50);
+    border-left: 3px solid var(--green-300);
+    padding: var(--space-4) 20px;
+    border-radius: var(--radius-control)
+}
+
+/* 状态与反馈行统一为次要正文层级 */
+#message,
+.results-status,
+#literature-results,
+#reaction-evidence-summary,
+#pipeline-message,
+#history-message,
+#evaluation-message,
+#comparison-message,
+#learning-progress,
+#foundation-status,
+#sync-status {
+    font-size: var(--text-sm)
+}
+
+#message[role="alert"] {
+    background: var(--danger-bg);
+    border-left-color: var(--danger-ink);
+    color: var(--danger-ink)
+}
+
+#routes[aria-busy="true"] {
+    cursor: progress
+}
+
+.skeleton-card {
+    pointer-events: none
+}
+
+.sk-line,
+.sk-block {
+    background: var(--green-100);
+    border-radius: 6px
+}
+
+.sk-line {
+    height: 14px;
+    margin: var(--space-3) 0
+}
+
+.sk-line.w40 {
+    width: 40%
+}
+
+.sk-line.w70 {
+    width: 70%
+}
+
+.sk-block {
+    height: 120px;
+    margin: var(--space-3) 0
+}
+
+@keyframes sk-pulse {
+    0%, 100% {
+        opacity: .45
+    }
+
+    50% {
+        opacity: 1
+    }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .skeleton-card .sk-line,
+    .skeleton-card .sk-block {
+        animation: sk-pulse 1.2s ease-in-out infinite
+    }
+}
+
+.empty {
+    padding: var(--space-16) var(--space-8);
+    text-align: center;
+    color: var(--ink-3)
+}
+
+.empty>span {
+    font-size: 60px;
+    color: var(--green-300) /* 纯装饰图形，豁免对比度（WCAG 1.4.11 装饰例外） */
+}
+
+.empty h2 {
+    margin-top: var(--space-6);
+    color: var(--ink-2)
+}
+
+/* 运行信息 */
+#run-meta {
+    margin: var(--space-4) 0;
+    font-size: var(--text-xs);
+    overflow-wrap: anywhere;
+    color: var(--ink-2)
+}
+
+#run-meta .meta-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-card);
+    padding: var(--space-4) 20px;
+    margin-bottom: var(--space-2)
+}
+
+#run-meta .limitations {
+    margin: var(--space-2) 0 0;
+    padding-left: 18px
+}
+
+#run-meta .limitations li {
+    margin: 3px 0
+}
+
+/* 路线卡片 */
+.route {
+    margin-top: 18px
+}
+
+.route-head {
+    display: flex;
+    gap: var(--space-3);
+    align-items: center;
+    flex-wrap: wrap
+}
+
+.tag {
+    display: inline-block;
+    font-size: var(--text-xs);
+    padding: var(--space-1) 10px;
+    border-radius: 20px;
+    background: var(--amber-100);
+    color: var(--amber-700)
+}
+
+.tag.partial {
+    background: var(--partial-bg);
+    color: var(--partial-ink)
+}
+
+.tag.hazard {
+    background: var(--danger-bg);
+    color: var(--danger-ink)
+}
+
+.tag.neutral {
+    background: var(--green-50);
+    color: var(--ink-2)
+}
+
+.route small {
+    color: var(--ink-2)
+}
+
+.cost {
+    color: var(--ink-2);
+    font-size: var(--text-sm);
+    margin: var(--space-3) 0
+}
+
+.cost .formula {
+    display: block;
+    margin-top: var(--space-1);
+    font-family: var(--font-mono);
+    font-size: var(--text-xs)
+}
+
+/* ---------- 运行摘要（只显示关键统计，预算与核对默认收起） ---------- */
+#run-meta .meta-card.run-summary {
+    padding: 16px 20px
+}
+
+.run-summary-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px 12px
+}
+
+.run-summary-head strong {
+    font: 600 var(--text-sm)/1.4 var(--font-mono);
+    overflow-wrap: anywhere
+}
+
+.run-summary-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(108px, 1fr));
+    gap: 8px;
+    margin: 12px 0
+}
+
+.run-summary-stats > div {
+    min-width: 0;
+    background: var(--field);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 8px 10px
+}
+
+.run-summary-stats b {
+    display: block;
+    font-size: var(--text-lg);
+    line-height: 1.25;
+    color: var(--green-800)
+}
+
+.run-summary-stats span {
+    font-size: var(--text-xs);
+    color: var(--ink-2)
+}
+
+.run-summary-settings {
+    margin: 8px 0 0
+}
+
+.run-summary details {
+    margin-top: 8px
+}
+
+.budget-row {
+    margin: 4px 0;
+    font-size: var(--text-xs);
+    color: var(--ink-2);
+    overflow-wrap: anywhere
+}
+
+.tag.ok {
+    background: var(--green-100);
+    color: var(--green-800)
+}
+
+/* ---------- 路线目录与反应式可视化 ---------- */
+.route-workbench {
+    margin-top: 16px
+}
+
+.route-catalog-card {
+    padding: 14px 16px
+}
+
+.route-catalog-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 8px;
+    flex-wrap: wrap
+}
+
+.route-catalog-head h2 {
+    margin: 0;
+    font-size: var(--text-lg)
+}
+
+.route-catalog {
+    display: flex;
+    gap: 8px;
+    margin-top: 8px;
+    padding: 6px 0 4px;
+    overflow-x: auto;
+    overscroll-behavior-x: contain
+}
+
+.route-entry {
+    flex: 0 0 auto;
+    min-width: 168px;
+    min-height: 64px;
+    padding: 8px 12px;
+    text-align: left;
+    background: var(--field);
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-control);
+    color: var(--ink);
+    box-shadow: none
+}
+
+.route-entry:hover:not(:disabled) {
+    background: var(--green-50);
+    color: var(--ink)
+}
+
+.route-entry[aria-selected="true"],
+.route-entry[aria-selected="true"]:hover:not(:disabled) {
+    background: var(--green-700);
+    border-color: var(--green-700);
+    color: var(--surface)
+}
+
+.route-entry-title {
+    display: block;
+    font-weight: 700;
+    font-size: var(--text-sm)
+}
+
+.route-entry-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-top: 6px
+}
+
+.route-entry .tag {
+    background: var(--green-100);
+    color: var(--green-800)
+}
+
+.route-entry[aria-selected="true"] .tag {
+    background: var(--green-600);
+    color: var(--surface)
+}
+
+.route-detail-panel {
+    margin-top: 12px
+}
+
+.route-head h2 {
+    margin: 0;
+    font-size: var(--text-xl)
+}
+
+.scheme-scroll {
+    padding: 8px 2px 4px;
+    overflow-x: auto;
+    overscroll-behavior-x: contain
+}
+
+.scheme {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: min-content
+}
+
+.scheme-node { display:flex; flex-direction:row; align-items:flex-start; width:max-content; gap:18px; }
+.scheme-branch { display:flex; flex-direction:row; align-items:flex-start; gap:18px; }
+.scheme-mol {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 250px;
+    min-width:250px;
+    max-width:250px;
+    flex:0 0 250px;
+    margin: 0;
+    padding: 8px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px
+}
+
+.scheme-mol.is-target {
+    background: var(--green-50);
+    border-color: var(--green-400)
+}
+
+.scheme-mol.is-leaf {
+    border-style: dashed
+}
+
+.scheme-mol img {
+    width: 100%;
+    height: 150px;
+    object-fit: contain
+}
+
+.scheme-caption {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    margin-top: 2px
+}
+
+.mol-badges {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 4px
+}
+
+.scheme-mol .mol-evidence {
+    width: 100%;
+    margin-top: 4px
+}
+
+.scheme-mol .mol-evidence > summary {
+    min-height: 32px;
+    font-size: var(--text-xs)
+}
+
+.scheme-mol .kv {
+    font-size: var(--text-xs)
+}
+
+.scheme-arrow {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    padding: 4px 0;
+    color: var(--ink-2)
+}
+
+.scheme-arrow-mark {
+    font-size: var(--text-xl);
+    line-height: 1;
+    color: var(--green-500)
+}
+
+.scheme-arrow-label {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    font-size: var(--text-xs)
+}
+
+.scheme-reactants { display:flex; flex-direction:column; align-items:flex-start; justify-content:center; gap:12px; width:max-content; }
+.scheme-reactants > .scheme-node { flex:none; max-width:none; }
+.scheme-plus {
+    align-self:flex-start;
+    margin:0 0 0 120px;
+    font-size: var(--text-xl);
+    color: var(--ink-3)
+}
+
+.scheme-evidence {
+    width: 100%;
+    max-width: 520px;
+    margin-top: 2px
+}
+
+.scheme-evidence > summary {
+    min-height: 32px;
+    font-size: var(--text-xs)
+}

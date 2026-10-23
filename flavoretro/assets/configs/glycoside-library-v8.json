@@ -1,0 +1,10 @@
+{
+  "default_enabled": false,
+  "domain_cap_per_molecule": 4,
+  "generic_protection": 3,
+  "manifest": "outputs/task022/glycoside-v8/template_source_manifest.json",
+  "manifest_sha256": "dede803c2602889ff9a52d6a5241aab67938e274a0ca87eec8c793bcb80bfb5b",
+  "prior": 0.2,
+  "version": "task022-glycoside-v8-corrected",
+  "weight": 1.0
+}

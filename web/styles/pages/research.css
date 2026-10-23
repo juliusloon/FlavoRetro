@@ -1,0 +1,14 @@
+/* TASK-026: horizontal route levels stay local to the scroll region. */
+.scheme-arrow { flex:0 0 174px; width:174px; margin-top:48px; }
+.scheme-arrow-label { flex-direction:column; }
+.scheme-arrow-mark { font-size:var(--text-3xl); color:var(--green-700); }
+.scheme-evidence[open] { width:300px; max-height:420px; overflow:auto; background:var(--surface); padding:8px; border:1px solid var(--border); border-radius:8px; }
+.scheme-scroll { max-width:100%; min-width:0; padding:16px 4px; }
+.route-detail-panel, .routes { min-width:0; max-width:100%; }
+.research-facts { font-size:var(--text-sm); overflow-wrap:anywhere; }
+.research-facts img { width:100%; max-width:330px; height:160px; object-fit:contain; background:var(--surface); }
+.research-facts .kv { margin:8px 0; }
+#record-json { font-family:var(--font-sans); font-size:var(--text-sm); }
+.run-summary-stats { grid-template-columns:repeat(3,minmax(0,1fr)); }
+
+.lab-development{margin:1rem 0}.lab-development h2{font-size:1.1rem}.lab-development-row{padding:1rem 0;border-top:1px solid var(--border);display:flex;gap:.65rem;align-items:center;flex-wrap:wrap}.lab-development-row h3,.lab-development-row p{flex-basis:100%;margin:0}.lab-development-row h3{font-size:1rem}.lab-development-row a{text-decoration:underline;margin-right:.5rem}.lab-development-row button{max-width:100%}.source-realization{margin-top:1rem}

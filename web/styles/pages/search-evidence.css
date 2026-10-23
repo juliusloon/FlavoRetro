@@ -1,0 +1,142 @@
+/* 末端原料证据卡 */
+.leaf-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(230px, 100%), 1fr));
+    gap: var(--space-3);
+    margin: var(--space-2) 0
+}
+
+.leaf-card {
+    border: 1px solid var(--border);
+    border-radius: var(--radius-card);
+    padding: var(--space-3);
+    background: var(--field);
+    font-size: var(--text-xs)
+}
+
+.leaf-card img {
+    max-width: 100%;
+    height: 130px;
+    width: 100%;
+    object-fit: contain;
+    background: var(--surface);
+    border-radius: 6px
+}
+
+.leaf-card code {
+    display: block;
+    font-size: var(--text-xs);
+    overflow-wrap: anywhere;
+    margin: 6px 0
+}
+
+.leaf-card .kv {
+    margin: 2px 0;
+    color: var(--ink-2)
+}
+
+/* 逐步反应卡 */
+.step-card {
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--green-300);
+    border-radius: var(--radius-control);
+    padding: var(--space-3) var(--space-4);
+    margin: var(--space-3) 0;
+    background: var(--surface)
+}
+
+.step-card h3 {
+    margin: 0 0 var(--space-2);
+    font-size: var(--text-sm)
+}
+
+.step-card .kv {
+    font-size: var(--text-xs);
+    color: var(--ink-2);
+    margin: 3px 0
+}
+
+.step-card code,
+.mapped {
+    display: block;
+    font: var(--text-xs)/1.7 var(--font-mono);
+    background: var(--field);
+    border-radius: 6px;
+    padding: var(--space-2) 10px;
+    overflow-wrap: anywhere;
+    margin-top: var(--space-2)
+}
+
+/* 教学块 */
+.teaching-note {
+    font-size: var(--text-xs);
+    color: var(--amber-800);
+    background: var(--warning-bg);
+    border-left: 3px solid var(--amber-400);
+    padding: var(--space-2) var(--space-3);
+    border-radius: var(--radius-control);
+    margin: var(--space-3) 0
+}
+
+.teaching-block {
+    border: 1px dashed var(--amber-300);
+    border-radius: var(--radius-control);
+    background: var(--amber-50);
+    padding: var(--space-3) var(--space-3);
+    margin-top: var(--space-2);
+    font-size: var(--text-xs)
+}
+
+.teaching-block h4 {
+    margin: 0 0 6px;
+    font-size: var(--text-sm);
+    color: var(--amber-800)
+}
+
+.teaching-block dt {
+    font-weight: 600;
+    color: var(--ink-2);
+    margin-top: var(--space-2)
+}
+
+.teaching-block dd {
+    margin: 2px 0 0;
+    padding-left: 2px
+}
+
+.teaching-block ul {
+    margin: 2px 0;
+    padding-left: 18px
+}
+
+.teaching-block .sources a {
+    color: var(--green-700);
+    margin-right: 10px;
+    font-size: var(--text-xs)
+}
+
+/* 路线结构树 */
+.tree {
+    padding-left: var(--space-4);
+    border-left: 2px solid var(--border);
+    margin: var(--space-2) 0
+}
+
+.tree img {
+    max-width: 220px;
+    width: 100%;
+    height: 130px;
+    object-fit: contain
+}
+
+.tree code {
+    display: block;
+    font-size: var(--text-xs);
+    overflow-wrap: anywhere
+}
+
+.reaction {
+    font-size: var(--text-xs);
+    color: var(--ink-2);
+    padding: 5px
+}

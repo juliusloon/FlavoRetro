@@ -1,0 +1,20 @@
+/* TASK-035: saved runs on the left, descriptive comparison on the right. */
+.history-workspace { display:grid; grid-template-columns:minmax(0,1.85fr) minmax(0,1fr); gap:20px; flex:1; min-height:0; }
+#history .history-saved { min-width:0; min-height:0; padding:16px; background:var(--surface); border:1px solid var(--border); border-radius:8px; overflow:hidden; }
+#history .history-records { min-height:0; }
+#history .comparison-panel { min-width:0; min-height:0; margin:0; overflow:auto; }
+#history .comparison-selects { grid-template-columns:repeat(2,minmax(0,1fr)); }
+#history .comparison-selects > div { min-width:0; }
+#history .comparison-selects select { min-width:0; max-width:100%; }
+#history .comparison-actions { grid-column:1 / -1; }
+#history .comparison-panel .table-wrap { max-width:100%; }
+@media (max-width:1099px) {
+    .history-workspace { grid-template-columns:minmax(0,1fr); flex:none; }
+    #history .history-records { flex:none; height:60dvh; min-height:320px; }
+    #history .comparison-panel { overflow:visible; }
+}
+@media (max-width:767px) {
+    .history-workspace { gap:16px; }
+    #history .history-saved, #history .comparison-panel { padding:12px; }
+    #history .comparison-selects { grid-template-columns:minmax(0,1fr); }
+}

@@ -1,4 +1,6 @@
-# FlavoRetro Web 工作台界面设计规范（规划稿）
+# FlavoRetro Web 工作台界面设计规范（历史规划）
+
+> 本文保留TASK013当时规划。现行开发事实源为[前端项目入口](../web/README.md)及[组件规范 v1](frontend/components.md)，TASK047已建立可重复构建与公共组件；下文“无构建步骤/待人工批准”等语句属于历史，不约束当前已批准任务。
 
 - 状态：SPECIFY 阶段交付物，待所有者人工批准后进入 EXECUTE（2026-09-25 起 TASK 须人工确认）
 - 范围：`web/index.html`、`web/style.css`、`web/app.js`（打包副本 `flavoretro/assets/web/` 同步更新）

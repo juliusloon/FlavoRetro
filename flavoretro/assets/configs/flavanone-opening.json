@@ -1,0 +1,17 @@
+{
+  "rule_id": "FF-OPEN-E-v1",
+  "prior": 0.25,
+  "class_support_dois": [
+    "10.1002/anie.202107182",
+    "10.3390/molecules27061781"
+  ],
+  "exact_target_registry": false,
+  "independent_chemical_validation": false,
+  "kind": "general_source_class_graph_hypothesis",
+  "algorithm": "unmodified_native_MCTS_UCT",
+  "method_commitment_sha256": "91ec14d7e95c5bd8b1f7a5efde2366893eef7a51caa75b03cbaa55fd24f92025",
+  "policy_sha256": "b2154cc0195760ec0c603cfac15d1050509ae476614ecae96c6599aab8400038",
+  "evaluation_status": "bounded_prospective_source_computational_guard_passed_not_independent_chemistry",
+  "prospective_batch": "goal-flavanone-prospective-source-v1",
+  "prospective_comparison_sha256": "825a89ab342abca4b8d95164a82fa28d6806518ec515f57fae6c3398f6e39ed8"
+}

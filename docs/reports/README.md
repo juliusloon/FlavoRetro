@@ -1,5 +1,41 @@
 # 执行报告
 
+[REPORT-046](REPORT-046-literature-workspace.md)：案例/论文/新增证据统一列表与直接阅读、原地来源及六步直达，289项浏览器、3项package和15项静态通过。
+
+[REPORT-040](REPORT-040-teaching-heading-navigation.md)：教学标题/说明左侧、三导航按钮右侧靠右；五视口54项浏览器与3项相关静态核验通过。
+
+[REPORT-039](REPORT-039-single-principle-layout.md)：单条原理选择标题、无分页、左讲解/右图式；172项浏览器检查通过。
+
+[REPORT-038](REPORT-038-example-left-context.md)：四类示例的出处/核对/按钮独立排在左侧讲解卡片下方，80项浏览器与8项静态核验通过。
+
+[REPORT-037](REPORT-037-teaching-example-panels.md)：四类示例左讲解/右图式约1:2，标题右侧按钮，150项浏览器与8项静态检查通过。
+
+[REPORT-036](REPORT-036-literature-section-tabs.md)：文献教学顶部三分区切换、默认首项，116项浏览器与6项静态核验通过。
+
+[REPORT-035](REPORT-035-history-side-panels.md)：历史左右双面板约65:35，删除指定两行；69项浏览器、3项package测试通过。
+
+[REPORT-033](REPORT-033-literature-teaching-hierarchy.md)：教学三个同级区域、四例可视化解释、27原理与工具范围；218项浏览器检查通过。
+
+最新[REPORT-034](REPORT-034-advanced-defaults.md)：高级设置默认值、预算切换/恢复与原两阶段语义保持；91项浏览器检查通过，真实搜索0。
+
+[REPORT-032](REPORT-032-history-and-pagination.md)：搜索历史与资源视觉统一、两页只留顶部分页；43项浏览器与2项接口检查通过。
+
+最新[REPORT-031](REPORT-031-panel-controls.md)：路线探索左侧参数独立滚动/底部搜索按钮、原理固定加载与高级设置整理；148项浏览器检查通过，实际搜索0。
+
+最新[REPORT029](REPORT-029-isoquercitrin-lab-handoff.md)：异槲皮苷真实搜索、三篇角色与Lab来源交接，自检及后续提案。
+
+最新[REPORT027](REPORT-027-rutin-actionable-route-quality.md)：来源准入、18冻结对照、前缀与立体分轴实跑；工程/开发完成，供体与完整化学条件仍未闭合。
+
+最新[REPORT-026](REPORT-026-ranking-researcher-workbench.md)：连续MCTS评分、研究界面、横向路线及芦丁实跑自检；工程Completed，化学路线仍未闭合。
+
+最新：[REPORT-025工作台布局与分页](REPORT-025-workbench-layout.md)，路线独立滚动、资源双栏与同步分页、教学四栏目及反应图完成。
+
+上一轮：[REPORT-024局域网Web重新挂起](REPORT-024-lan-web-restart.md)，监听0.0.0.0:8767，当前地址见STATE。
+
+上一轮：[REPORT-023三角色试用与平台优化](REPORT-023-role-review-platform-optimization.md)，四类学习导航/检索/来源定位/自检/响应式与键盘复验完成；角色模拟不等于真人审定。
+
+上轮：[REPORT-022最终验收](REPORT-022-pipeline-closure.md)，2026-10-22完整计算/来源/工作台/教学闭环；原前瞻、当前曝光回归和阴性分别保留。
+
 `docs/reports/` 保存每次操作完成后的事实型执行报告。REPORT 记录实际改动、验证结果、偏差和遗留风险；它不重新定义任务授权范围。
 
 ## 目录与文件职责
@@ -84,3 +120,15 @@ REPORT-005、REPORT-007、REPORT-007-P1 为 TASK-009 补立：对应操作发生
 ## 历史草稿与日志
 
 唯一 pre-v38 草稿保存在 [archive/](archive/README.md)，原字节留存于TASK-021本地档案，可读副本仅重定位相对链接。当前P7结论以正式终止报告为准。历史 command 日志已迁至 operations/archive/command-logs/；编号复用与历史并发记录按 [操作定位规则](../../operations/README.md) 核对。
+
+[REPORT-041：可独立进入的子页面与浏览器导航](REPORT-041-addressable-subpages.md)。
+
+[REPORT-042：移除新增面包屑导航栏](REPORT-042-remove-breadcrumb.md)。
+
+[REPORT-043：修复文献教学固定栏顶部缝隙](REPORT-043-seal-teaching-header-gap.md)。
+
+[REPORT-045：精简文献核查工具区与统一分页](REPORT-045-literature-tools-cleanup.md)。
+
+[REPORT-044背景修复：恢复教学标题高度并补齐顶部背景](REPORT-044-restore-teaching-spacing-and-backdrop.md)。
+
+[REPORT-047：前端项目化、子页面与统一组件规范](REPORT-047-frontend-project-and-component-system.md)。

@@ -1,0 +1,50 @@
+/* 糖苷连接拓扑标注（TASK-011）：候选呈现，措辞不升格 */
+.topology-block {
+    margin-top: var(--space-3);
+    padding-top: 10px;
+    border-top: 1px dashed var(--green-100)
+}
+
+.topology-block h4 {
+    margin: 0 0 var(--space-2);
+    font-size: var(--text-sm);
+    color: var(--green-800)
+}
+
+.tag.topology {
+    background: var(--info-bg);
+    color: var(--info-ink)
+}
+
+.topology-boundary {
+    font-size: var(--text-xs);
+    color: var(--ink-2);
+    margin: var(--space-2) 0 0
+}
+
+.topology-literature {
+    margin-top: var(--space-2);
+    align-items: center
+}
+
+.topology-lit-label {
+    font-size: var(--text-xs);
+    color: var(--ink-2)
+}
+
+.chip.link {
+    cursor: pointer;
+    font: inherit;
+    font-size: var(--text-xs);
+    background: var(--green-50)
+}
+
+.chip.link:hover {
+    border-color: var(--green-300)
+}
+
+.topology-leaf-none {
+    font-size: var(--text-xs);
+    color: var(--ink-3);
+    margin: var(--space-2) 0 0
+}

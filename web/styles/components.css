@@ -1,0 +1,89 @@
+/* Public UI contracts. Page rules describe chemistry/content; these classes describe reusable UI. */
+:root {
+    --ui-page-block:20px;
+    --ui-page-inline:24px;
+    --ui-gap:20px;
+    --ui-panel-padding:20px;
+    --ui-control-height:44px;
+    --ui-radius:8px;
+    --ui-list-share:1fr;
+    --ui-reader-share:2fr;
+}
+.ui-page { padding:var(--ui-page-block) var(--ui-page-inline); }
+#main .ui-page-heading { display:flex; flex-wrap:wrap; align-items:center; gap:12px 20px; margin-bottom:16px; }
+#main .ui-page-heading h1 { font-size:var(--text-2xl); line-height:1.4; margin:0; letter-spacing:0; }
+#main .ui-page-heading p { font-size:var(--text-sm); line-height:1.65; margin:0; color:var(--ink-2); }
+.ui-panel { min-width:0; border:1px solid var(--border); border-radius:var(--ui-radius); background:var(--surface); padding:var(--ui-panel-padding); }
+.ui-panel > h2 { margin:0 0 12px; font-size:var(--text-lg); }
+#main .ui-page .ui-input { min-width:0; min-height:var(--ui-control-height); border-radius:var(--ui-radius); font-family:var(--font-sans); font-size:var(--text-base); }
+#main .ui-page .ui-button { min-height:var(--ui-control-height); border-radius:var(--ui-radius); font-family:var(--font-sans); }
+.ui-button { padding:8px 14px; font-size:var(--text-sm); line-height:1.5; }
+.ui-button:hover, .ui-button:active { transform:none; }
+.ui-button--quiet { background:transparent; color:var(--green-700); }
+.ui-button:disabled { opacity:.55; cursor:default; }
+#main .ui-page :is(.ui-button,.ui-input):focus-visible { outline:2px solid var(--ink); outline-offset:2px; box-shadow:0 0 0 4px var(--amber-400); }
+#main .ui-page .ui-list-item:focus-visible { outline:2px solid var(--ink); outline-offset:-3px; box-shadow:none; }
+.ui-field-group { display:flex; flex-direction:column; gap:6px; min-width:0; }
+.ui-field-group label { font-size:var(--text-sm); color:var(--ink-2); }
+.ui-field-group .ui-input { width:100%; margin:0; }
+.ui-badge { display:inline-flex; align-items:center; border-radius:999px; font-size:var(--text-xs); }
+.ui-key-value { overflow-wrap:anywhere; }
+.ui-notice { padding:12px 16px; border-radius:var(--ui-radius); font-size:var(--text-sm); background:var(--info-bg); color:var(--info-ink); }
+.ui-notice--warning { background:var(--warning-bg); color:var(--warning-ink); }
+.ui-notice--error { background:var(--danger-bg); color:var(--danger-ink); }
+.ui-empty { margin:0; padding:20px; color:var(--ink-2); font-size:var(--text-sm); }
+#main .ui-pagination { display:flex; flex-wrap:wrap; align-items:center; gap:8px; padding:10px 12px; min-width:0; }
+#main .ui-pagination :is(input,select,button) { margin:0; }
+#main .ui-pagination .page-count { margin-left:auto; font-size:var(--text-xs); color:var(--ink-2); }
+.ui-table-scroll { overflow:auto; min-height:0; overscroll-behavior:contain; }
+#main .ui-table { width:100%; border-collapse:collapse; font-size:var(--text-sm); }
+#main .ui-table :is(th,td) { padding:12px; border-bottom:1px solid var(--border); text-align:left; vertical-align:top; }
+#main .ui-table th { font-weight:600; color:var(--ink-2); background:var(--green-50); }
+#main .ui-split { display:grid; grid-template-columns:minmax(0,1fr); min-width:0; min-height:0; gap:var(--ui-gap); }
+#main .ui-split > * { min-width:0; min-height:0; }
+#main .tool-split.ui-split { gap:0; }
+.ui-list-item { display:block; padding:12px 16px; color:var(--ink); text-decoration:none; border-bottom:1px solid var(--border); background:var(--surface); }
+.ui-list-item strong { display:block; font-size:var(--text-sm); }
+.ui-list-item:hover,.ui-list-item[aria-current="true"] { background:var(--green-50); }
+.ui-filter { gap:12px; border-radius:var(--ui-radius); }
+/* Keep the accepted teaching height and its upper opaque background. */
+#literature.ui-page { padding-top:var(--ui-page-block); }
+#literature .literature-heading::before { height:var(--space-6); }
+@media(min-width:992px) {
+    #main .ui-split--reader { grid-template-columns:minmax(0,var(--ui-list-share)) minmax(0,var(--ui-reader-share)); }
+    #main .ui-split--explore { grid-template-columns:clamp(320px,26vw,380px) minmax(0,1fr); gap:0; }
+}
+@media(min-width:1100px) {
+    #main .ui-split--compare { grid-template-columns:minmax(0,2fr) minmax(0,1fr); }
+    #main .ui-split--diagram { grid-template-columns:minmax(280px,1fr) minmax(0,2fr); }
+}
+@media(min-width:1800px) { :root { --ui-page-inline:40px; } }
+@media(max-width:991px) {
+    #literature.ui-page[data-section="tools"] { display:block; overflow:auto; }
+    #literature-tools .tool-view { min-height:500px; }
+    .tool-list { flex:none; height:180px; border-right:0; border-bottom:1px solid var(--border); }
+    .tool-reader { overflow:visible; }
+}
+@media(max-width:767px) {
+    :root { --ui-page-block:16px; --ui-page-inline:16px; --ui-gap:16px; --ui-panel-padding:16px; }
+    #main .ui-pagination { padding:8px; gap:6px; }
+    #main .ui-pagination [data-page-action="first"],#main .ui-pagination [data-page-action="last"] { display:none; }
+    #main .ui-pagination .page-count { flex-basis:100%; text-align:right; }
+    .ui-reference-grid,.ui-reference-fields { grid-template-columns:minmax(0,1fr); }
+}
+/* The developer reference is separate from all scientific data and primary navigation. */
+.ui-reference-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:var(--ui-gap); }
+.ui-reference-wide { grid-column:1/-1; }
+.ui-reference-fields { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; margin-top:16px; }
+.ui-swatches { display:flex; flex-wrap:wrap; gap:12px; }
+.ui-swatch { display:flex; flex-direction:column; gap:4px; font-size:var(--text-xs); }
+.ui-swatch-color { width:72px; height:36px; border:1px solid var(--border); border-radius:var(--ui-radius); }
+.ui-demo-items { display:flex; flex-wrap:wrap; gap:6px; max-height:180px; overflow:auto; padding-top:12px; }
+.ui-route-list { display:grid; gap:8px; overflow-wrap:anywhere; }
+.ui-component-reference pre { padding:16px; border-radius:var(--ui-radius); background:var(--field); overflow:auto; font-size:var(--text-xs); }
+@media(max-width:767px) { .ui-reference-grid,.ui-reference-fields { grid-template-columns:minmax(0,1fr); } }
+
+.ui-component-reference a:not(.ui-list-item) { color:var(--green-700); text-underline-offset:3px; }
+
+#main .ui-page .ui-button--quiet { background:transparent; color:var(--green-700); }
+#main .ui-page .ui-button--quiet:hover { background:var(--green-50); color:var(--green-900); }

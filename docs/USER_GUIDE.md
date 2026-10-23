@@ -1,34 +1,107 @@
 # 使用说明
 
 ## 路线探索
-选择示例或输入 SMILES，预览结构后开始搜索。quick 单阶段 45 秒/50 迭代；balanced 主阶段 120 秒/100 迭代与第二阶段 240 秒/800 迭代；strict 360 秒/1800 迭代。这是搜索时间预算，模型装载另计，单次迭代可能跨过边界，隔离进程另有整体超时。
-每次提交都启动新进程、新 MCTS、新 run ID。CLI 与 Web 使用同一个 service.search。内部候选池每阶段最多 25，显示默认 5；实际路线少则显示少，不凑数。
-默认无已审库存，可得到 partial；显式候选库存探索会排除 virtual 与已发现名称冲突，闭合仍只是 surrogate。预测步骤没有逐步原文证据时明确未知，不自动匹配 DOI 声称先例。
-成本越低排序越前，由步数、未解决原料、已知危害、未指定叶子立体构成；系数暂定，不是专家偏好结论。未知风险不表示安全。结构图不是实验操作指导。
-若返回 429，表示同一服务中已有搜索或开发对照正在执行。错误结果保留在 outputs/runs/<id>/；worker.log 与 manifest 可诊断。导出 JSON 使用 execution_source + manifest + result 封装，包含配置、资产/代码哈希、阶段、候选和限制；历史读取明确标注 explicit_saved_run。
+
+桌面界面由header下方的两个独立滚动面板组成。左侧选择目标与设置参数；右侧默认居中显示介绍，有结果后显示运行与路线。左侧参数较长时在左面板内滚动即可到达搜索按钮；右侧路线再长也不带动参数面板。手机使用单列布局。
+
+选择示例或输入 SMILES，预览结构后开始搜索。每次提交都新建真实 MCTS 和 run ID；历史读取不运行搜索。结果中的图候选、候选库存闭合、原文实例和实验可行性分别呈现，release_ready=false。
+
+普通 optimized 使用修复后的策略引导树：保留每个通用模型对每个待展开分子产生的候选，不再额外截为全局12项；保留 PUCT，并加原生 UCT 探索下界。界面候选上限指每模型每分子 cutoff；节点上限对优化树实施，native 不实施额外节点上限。当前全部库存查询按显示结构的完整 InChIKey 核对 E/Z、手性和目标排除，库存内容没有因此增加。
+
+候选库存、糖苷、新文献检索和黄烷酮图规则默认关闭。黄烷酮开环候选在 native 下显式开启：生成限定范围的图假设，保留取代基，不预测保护/脱保护、C2选择性、条件或实验可行性。它不查询新增13目标卡作为答案库。要查看来源限定糖苷或精确文献动作，在 optimized 下显式选择 v8 或开启文献检索；这些路径保留各自原策略与来源绑定。
+
+启用候选库存后可选择 ZINC 历史候选库存。结构键入库仅表示该历史数据集中的成员关系，不证明当前可采购、供应纯度、实验安全或完整合成可执行。研究界面展示候选路线、步骤、原料、条件与来源；未知条件/危险保持未知。内部类、哈希、耗时、配置与工程回归保留在本地运行记录，不在网页渲染。
 
 ## 资源与证据
-可按类型、名字、SMILES 或来源筛选。详情 raw 保留来源字段；source_path + SHA-256 + locator 定位只读原始副本。source_status、结构解析、human_review_status 和 production_eligible 分开。
-SciFinder RDF 本次重新解析；笔记条目与分子库是已搜集资源的快照，未补未知产率。molecule_failures 与 duplicate_names 单独保留。供应商 listing 只代表历史导出内容，不确认当前供货。
+
+顶部搜索/筛选与结果分开。桌面左侧是紧凑资源记录，右侧为“条目结构与来源”；点击“查看当前条目”可读结构图、来源记录、条件摘录、收率及冲突说明，不展示原始JSON、路径或审核配置。手机通过“资源记录／条目详情”切换面板。
+
+记录上方、下方都有首页、上一页、页码、下一页、末页、每页条数与总数，两个位置同步。可选每页10/25/50/100条；调整筛选或每页数回到第一页。右侧当前条目在翻页时保留，直到选择另一条目。
+
+## 文献与教学
+
+常见反应类型为O-糖苷、C-糖苷、糖间连接/糖链、母核构建/修饰。每类都配有来源明确的逆合成示例结构图，从产物映射到已有前体；手机可左右滑动查看完整UDP供体，也可打开大图。页面直接显示文献正向方程式、结构变化/逆拆三步解释、结构身份、DOI/定位及图示省略项，详见[配图登记](TEACHING_EXAMPLES.md)。全部反应原理通过顶部区域导航进入，标题“选择要了解的反应原理”旁提供27项菜单，每次只展示一条、没有上下分页；左侧讲解/右侧图式及来源参考直接可见，缺少具体证据时明确标为待补齐。完整结构SMILES仍保存在teaching-examples.json。
+
+上方切换示例不会自动修改工具区筛选；点击“在文献与案例库中筛选此类型”才应用联动。四个工具各有独立地址：文献核查案例、查原文与来源、做六步练习、查新增反应证据。案例和文献共享关键词/类型筛选；新增证据有自己的关键词/检查状态筛选，输入即可检索，也可按Enter提交。三类资料默认每页25条，可选10/25/50/100，仅保留顶部分页。桌面左侧为紧凑列表、右侧为直接展开的详情，两侧独立滚动；手机列表在上、详情在下，入口简化为标题。选择条目不会自动滚动整页，地址保留选中项并支持返回、前进和刷新。案例中的“查看来源文献”和论文中的“查看关联案例”都在当前阅读区内打开，可原地返回，筛选、页码与列表位置保留；“打开原文”仍进入外部来源页面。来自示例或其他页面的来源深链仍定位到相应文献或案例。
+
+六步练习左侧六个步骤均可直接选择，右侧记录观察、自检和完成标记；原来每页1/2/3/6步与旧页码地址仍可用。练习面向主动选入的目标和已加载运行，“使用当前目标”和“记录当前运行”不会启动搜索。切换步骤与刷新保留浏览器本地笔记和选择，导出始终包含全部六步及关联run。错误自检在刷新后保留纠错反馈。常见类型配图不是新增文献核查课程：原课程目录仍32论文/18案例，C/糖间专属核查课程的缺口保持。
+
+当前新增反应区有54条记录、17个来源，其中45条来源绑定结构候选、9条问题记录保留；runtime_admitted=0。这不妨碍独立的通用图规则生效，但不会自动将来源卡全部变成精确检索动作。
+
+文献教学当前合并32篇论文卡、18个反应案例；新增部分17篇/17案例。教师审定和production_ready仍为false。六步练习支持原文定位、预期与比较设置、关联真实运行、记录观察、自检反馈及JSON导出；导出标为student_self_record，不自动产生教师或化学审定。
+
+核对FV1等MOM案例时保留实际保护投料和后续脱保护，不能用假设未保护底物替换。FV6原报51%与质量/规模算得约38.37%的冲突同时展示；不判断哪项错，也不改原文值。20条缺失收率保持未报告，零与缺失分别保留。
+
+## 路线排序与历史对照
+
+当前research-priority-v4提取所有实际创建的非根MCTS路径，保留未闭合中间前缀，结构去重后降序排序并优先展示不同结构转换组。优化MCTS的真实回传使用同一连续优先级，原UCT/PUCT探索仍保留；原生树保持自身搜索回传。
+
+排序综合唯一末端结构的库存覆盖、未解决前体负担、模型先验、路线长度/分支及来源支持；扣除已知危险、未指定碳立体与O-乙酰保护调整。杂原子立体标记另列待核查，不补构型，来源支持不代表条件完整或实验已验证。候选闭合60–100分，未闭合低于60分；分数不是成功概率。同一种库存原料重复出现不会抬高库存覆盖。界面显示4位小数，计算按完整精度；真实并列按结构身份稳定排列。更多说明见路线内“评分口径与路线状态”。
+
+路线结构从左到右排列，多个前体向下分支；每步依据在箭头附近展开。桌面、手机均可在路线区域内左右滚动，键盘也能聚焦该区域。
+
+“搜索历史”可打开保存运行或选择两次运行对照，读取不会发起新搜索。旧记录仅对当时保存的路线生成当前排序投影，原始文件/成本/导出仍保留原字节，不重新声称历史未保存候选已被检查。不同方法、库存、数据或预算的比较属于描述性观察，不能据此断言化学优越。
+
+“研究范围”只展示当前适用范围、资源数量与未报告收率/冲突；工程台账、批次、效率门、安装/CI/重建数据留在本地报告和API中。
+
+TASK026的重复库存叶偏差已修正。TASK027又补充来源优先级、结构分组、真实中间前缀、碳/杂原子标记分轴及逐原料后续子目标；当前效果见[REPORT-027](reports/REPORT-027-rutin-actionable-route-quality.md)。选择芦丁示例可显式点击“加入来源记录”，不自动启用库存；末步目前仅有作者摘要，完整实验条件未知。来源库13条、当前候选库存仍17键；最新芦丁结果虽首步优先，仍是一步未闭合前缀。
 
 ## API
+
 - GET /api/health、/api/status、/api/targets。
-- GET /api/records?kind=stock&q=...&offset=0&limit=25（上限 100）。
-- GET /api/molecule?smiles=... 输出本地 RDKit SVG。
-- POST /api/search：JSON {"smiles":"CCOc1ccccc1","mode":"quick","seed":0,"seconds":2.0,"iterations":5,"candidate_stock":false}。
-- GET /api/runs/<run_id>：显式读取本项目已保存运行，校验 manifest 中全部文件 hash；返回 execution_source=explicit_saved_run。普通搜索从不调用此端点。
+- GET /api/records?kind=stock&q=...&offset=0&limit=25（上限100）。
+- GET /api/pipeline-progress；GET `/api/pipeline-cell/<batch>/<cell_id>`只读取完整性核验的完成单元。
+- GET /api/literature-teaching；GET /api/reaction-evidence?status=...&q=...&offset=0&limit=25。
+- GET /api/molecule?smiles=...提供本地RDKit图。
+- POST /api/search：普通optimized；或engine="native",flavanone_opening=true；或optimized下显式glycoside_expansion/v8、literature_expansion。stock_profile="zinc"需candidate_stock=true。黄烷酮规则不与糖苷/精确文献扩展混开。
+- GET /api/runs、`/api/runs/<run_id>`读取保存运行，不启动模型。
 
-## 重放资源与诊断
-`python -B -m flavoretro.resources data/derived/new-version` 拒绝覆盖旧版本，读取 metadata/sources.json 及新目录 raw；当前 runtime 使用 metadata/active.json 绑定的 v3，且 SQLite 索引校验同一版本；版本切换需明确批准，不自动采用任意新版本。
-`python -B -m flavoretro.topology outputs/new-topology.json` 运行独立结构检查，不修改 MCTS。
-`python -B -m flavoretro.evaluation --development` 新跑 12 开发 cell。无参数输出 formal preflight；正式盲测执行器尚未交付。
+CLI如下，普通优化/native+DFF参数语义保持；将TASK-NNN替换为当前实际批准的TASK编号，每次执行都会生成新run。自动代理开展后续评测应换用新的已批准TASK，先冻结并登记预算，不能用手工命令绕过累计账。
 
-## TASK-012 新入口
+```bash
+python scripts/operate.py TASK-NNN .venv-foundation/bin/python -B -m flavoretro.cli \
+  --workspace /home/ljx/FlavoRetro \
+  --smiles 'COc1cc(O)c2c(=O)c(O)c(-c3ccc(O)cc3)oc2c1' \
+  --mode quick --engine optimized --candidate-stock --stock-profile zinc \
+  --seed 0 --seconds 10 --iterations 60 --depth 6 --branching 12 --nodes 25000 --top-k 5
 
-实验参数补齐 optimized/native、top_k、depth、branching、nodes；native 节点上限不等价。资源页可查询全部 9 类记录、冲突/解析失败、零值/缺失/未解析收率，以及来源文件/token 定位状态。教学页可独立浏览 27 个条目；0.0 Unrecognized 不自动归为具体家族。
+python scripts/operate.py TASK-NNN .venv-foundation/bin/python -B -m flavoretro.cli \
+  --workspace /home/ljx/FlavoRetro \
+  --smiles 'COc1cccc(C2CC(=O)c3ccccc3O2)c1OC' \
+  --mode quick --engine native --flavanone-opening --candidate-stock --stock-profile zinc \
+  --seed 2 --seconds 10 --iterations 60 --depth 6 --branching 12 --nodes 25000 --top-k 5
+```
 
-项目状态页可按 run ID 显式读取历史、查看全部 manifest/指纹，读取不会运行新 MCTS。开发对照固定 12 cell，显示进度、错误和 cell/run 明细，可打开已存结果；不属于正式盲测。当前正式 preflight 为 false。
+## 证据边界
 
-新增 API：GET /api/runs（分页），GET /api/preflight，GET/POST /api/evaluations（POST 只接受 {"kind":"development"}），GET /api/evaluations/<id>。资源查询另支持 issue、outcome、source_status。
+原始/受限材料、outputs和temp不入Git。当前为research_candidate；独立化学、供应认证、人工教师、TASK017正式科研和生产发布保持各自未通过状态，不由本轮计算闭环升级。
 
-默认使用独立 .venv-foundation；源码和安装包均可 --workspace 指定工作区。安装与资产恢复见 [环境说明](../environment/README.md)，能力对应关系见 [能力清单](FOUNDATION_CAPABILITIES.md)。
+## 子页面、返回与重新进入
+
+刷新一次已打开的工作台即可加载新导航。五个主栏目各有独立地址；文献教学进一步按常见类型、原理以及案例/来源/练习/新增证据分为子页。浏览器返回/前进恢复实际访问过的子页面。主导航和教学导航可复制链接或Ctrl/Cmd点击新开标签；方向键、Home/End、Enter与空格保持可用。
+
+示例地址（将前面的主机及端口保持为当前服务）：
+
+| 内容 | 地址后缀 |
+| --- | --- |
+| 路线探索 | `/#/search` |
+| 搜索历史 | `/#/history` |
+| 资源列表与第二页 | `/#/resources?kind=molecule&page=2` |
+| 某条资源详情 | `/#/resources/<记录ID>` |
+| C-糖苷常见示例 | `/#/literature/examples/c` |
+| C-糖基化原理 | `/#/literature/principles/c_glycosylation` |
+| 文献核查案例 / 原文来源 | `/#/literature/tools/lessons` / `/#/literature/tools/papers` |
+| 第四步练习 | `/#/literature/tools/practice?page=4` |
+| 新增反应证据 | `/#/literature/tools/evidence` |
+| 研究范围 | `/#/governance` |
+| 已保存结果的第二条路线 | `/#/search?run=<run ID>&route=2` |
+
+复制当前完整地址即可重新进入对应子页，并恢复URL内的筛选、分页、来源定位、运行/路线或A/B对照。旧`/?run=<run ID>`链接仍可使用。读取、刷新及返回保存结果只使用GET，不启动新搜索。
+
+搜索表单草稿与高级预算的显式修改在当前标签会话内保留，刷新及栏目往返可恢复；完整搜索输入不加入分享URL，关闭会话或禁用会话存储后不保证草稿继续保留。练习记录沿用原有浏览器保存方式。浏览器返回到本站首次入口之后仍会按正常历史离站，不循环拦截返回。
+
+## 统一界面与开发组件参考
+
+五个业务主入口和既有子页面地址保持，返回/前进、刷新与新标签恢复原有状态，不增加面包屑。标题、输入/按钮、分页、面板与分栏采用公共界面合同；教学顶部留白仍保留，并由背景遮住滚动正文。
+
+开发人员可访问当前服务`/#/components`操作公共控件示例，此页不占业务主导航。页面源码、组件调用、新页面生成及构建/回归方法见[前端开发入口](../web/README.md)，不直接修改生成资产。

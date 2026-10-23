@@ -1,0 +1,336 @@
+{
+  "schema_version": 1,
+  "renderer": {
+    "name": "RDKit MolDraw2DSVG",
+    "version": "2023.09.6",
+    "coordinate_method": "Compute2DCoords canonOrient=True",
+    "generated_from": "existing_source_bound_exact_structures",
+    "ai_generated_molecular_structure": false
+  },
+  "examples": [
+    {
+      "topic": "o",
+      "title_zh": "芹菜素 7-O-葡萄糖苷的逆合成",
+      "caption_zh": "把芳基 O-糖苷连接拆分为苷元与活化糖供体。",
+      "svg": "/teaching-example-o.svg",
+      "alt_zh": "芹菜素 7-O-葡萄糖苷的逆合成；左侧产物沿双线逆合成箭头拆分为右侧Apigenin和UDP-Glc，深绿色突出目标连接。",
+      "direction": "retrosynthesis_product_to_precursors",
+      "direction_zh": "逆合成：产物 → 前体",
+      "product": {
+        "name": "Apigenin 7-O-glucoside",
+        "smiles": "O=c1cc(-c2ccc(O)cc2)oc2cc(O[C@@H]3O[C@H](CO)[C@@H](O)[C@H](O)[C@H]3O)cc(O)c12",
+        "canonical_smiles": "O=c1cc(-c2ccc(O)cc2)oc2cc(O[C@@H]3O[C@H](CO)[C@@H](O)[C@H](O)[C@H]3O)cc(O)c12",
+        "role": "reported_product",
+        "representation_kind": "reported_compound_structure",
+        "actual_reactant_or_product": true,
+        "graph_synthon": false,
+        "atom_count": 31
+      },
+      "precursors": [
+        {
+          "name": "Apigenin",
+          "smiles": "O=c1cc(-c2ccc(O)cc2)oc2cc(O)cc(O)c12",
+          "canonical_smiles": "O=c1cc(-c2ccc(O)cc2)oc2cc(O)cc(O)c12",
+          "role": "reported_acceptor",
+          "representation_kind": "reported_compound_structure",
+          "actual_reactant_or_product": true,
+          "graph_synthon": false,
+          "atom_count": 20
+        },
+        {
+          "name": "UDP-Glc",
+          "smiles": "O=c1ccn([C@@H]2O[C@H](COP(=O)(O)OP(=O)(O)O[C@H]3O[C@H](CO)[C@@H](O)[C@H](O)[C@H]3O)[C@@H](O)[C@H]2O)c(=O)[nH]1",
+          "canonical_smiles": "O=c1ccn([C@@H]2O[C@H](COP(=O)(O)OP(=O)(O)O[C@H]3O[C@H](CO)[C@@H](O)[C@H](O)[C@H]3O)[C@@H](O)[C@H]2O)c(=O)[nH]1",
+          "role": "reported_activated_glycosyl_donor",
+          "representation_kind": "reported_compound_structure",
+          "actual_reactant_or_product": true,
+          "graph_synthon": false,
+          "atom_count": 36
+        }
+      ],
+      "source": {
+        "doi": "10.3390/ijms242317118",
+        "title": "Biochemical Characterization of Parsley Glycosyltransferases Involved in the Biosynthesis of a Flavonoid Glycoside, Apiin",
+        "url": "https://doi.org/10.3390/ijms242317118",
+        "locator": [
+          "body//p[8]",
+          "Figure 4A,B",
+          "Section 2.1"
+        ],
+        "pmcid": "PMC10706860",
+        "instance_id": "PMC10706860:PcGlcT:ac72cd0720908e54f278",
+        "license": "CC BY",
+        "record_path": "outputs/task022/glycoside-v8/runtime_instances.jsonl",
+        "record_file_sha256": "595b66a294de00872c51acc746c8db03bd2bcf1be5acb592694593a7cd7acbd9",
+        "source_asset_sha256": {
+          "data/raw/task016-p1/2026-10-06/pmc/PMC10706860-v1-0/fullTextXML.attempt-1": "7f1c1a6c91c58ad26c8f9081c8a41d679b5a0140d90c956a678f2ef25b7aad69"
+        }
+      },
+      "details": {
+        "representation": "完整UDP糖供体沿用既有结构记录的中性标准化表示；不推断溶液中的主要电荷态。",
+        "source_scope": "既有来源限定酶促转化的逆合成示意；保留实际供体结构，不以游离糖替代。 PcGlcT以apigenin和UDP-Glc生成apigenin 7-O-glucoside。",
+        "enzyme": "PcGlcT",
+        "source_forward_direction": "acceptor + UDP-sugar -> glycoside + UDP",
+        "byproducts_omitted": [
+          "UDP"
+        ],
+        "conditions_note": "图内省略酶、反应条件与副产物；具体实验体系回查对应来源。",
+        "evidence_status": {
+          "review_type": "agent_delegated",
+          "human_reviewed": false,
+          "independent_chemical_validation": false,
+          "teacher_reviewed": false,
+          "new_template": false
+        },
+        "source_product_name": "apigenin 7-O-beta-D-glucoside",
+        "highlight": "深绿色为产物中拟逆断开的键；不表示电子转移或已验证基元反应。"
+      },
+      "product_highlight_bonds": [
+        15
+      ],
+      "svg_sha256": "63ac9c6bead3bdcead333e489715deb239558c6dad443916c880cd217717421e"
+    },
+    {
+      "topic": "c",
+      "title_zh": "根皮素 C-葡萄糖苷的逆合成",
+      "caption_zh": "关注糖异头碳与芳环碳之间的 C—C 键。",
+      "svg": "/teaching-example-c.svg",
+      "alt_zh": "根皮素 C-葡萄糖苷的逆合成；左侧产物沿双线逆合成箭头拆分为右侧Phloretin和UDP-Glc，深绿色突出目标连接。",
+      "direction": "retrosynthesis_product_to_precursors",
+      "direction_zh": "逆合成：产物 → 前体",
+      "product": {
+        "name": "Phloretin C-glucoside",
+        "smiles": "O=C(CCc1ccc(O)cc1)c1c(O)cc(O)c([C@@H]2O[C@H](CO)[C@@H](O)[C@H](O)[C@H]2O)c1O",
+        "canonical_smiles": "O=C(CCc1ccc(O)cc1)c1c(O)cc(O)c([C@@H]2O[C@H](CO)[C@@H](O)[C@H](O)[C@H]2O)c1O",
+        "role": "reported_product",
+        "representation_kind": "reported_compound_structure",
+        "actual_reactant_or_product": true,
+        "graph_synthon": false,
+        "atom_count": 31
+      },
+      "precursors": [
+        {
+          "name": "Phloretin",
+          "smiles": "O=C(CCc1ccc(O)cc1)c1c(O)cc(O)cc1O",
+          "canonical_smiles": "O=C(CCc1ccc(O)cc1)c1c(O)cc(O)cc1O",
+          "role": "reported_acceptor",
+          "representation_kind": "reported_compound_structure",
+          "actual_reactant_or_product": true,
+          "graph_synthon": false,
+          "atom_count": 20
+        },
+        {
+          "name": "UDP-Glc",
+          "smiles": "O=c1ccn([C@@H]2O[C@H](COP(=O)(O)OP(=O)(O)O[C@H]3O[C@H](CO)[C@@H](O)[C@H](O)[C@H]3O)[C@@H](O)[C@H]2O)c(=O)[nH]1",
+          "canonical_smiles": "O=c1ccn([C@@H]2O[C@H](COP(=O)(O)OP(=O)(O)O[C@H]3O[C@H](CO)[C@@H](O)[C@H](O)[C@H]3O)[C@@H](O)[C@H]2O)c(=O)[nH]1",
+          "role": "reported_activated_glycosyl_donor",
+          "representation_kind": "reported_compound_structure",
+          "actual_reactant_or_product": true,
+          "graph_synthon": false,
+          "atom_count": 36
+        }
+      ],
+      "source": {
+        "doi": "10.1038/s41467-020-18990-9",
+        "title": "Exploring and applying the substrate promiscuity of a C-glycosyltransferase in the chemo-enzymatic synthesis of bioactive C-glycosides",
+        "url": "https://doi.org/10.1038/s41467-020-18990-9",
+        "locator": [
+          "body//p[4]",
+          "body//p[11]",
+          "Supplementary Figure 4",
+          "Compound 17a"
+        ],
+        "pmcid": "PMC7558026",
+        "instance_id": "PMC7558026:AbCGT:c3c8fc44e6b71af4cf57",
+        "license": "CC BY",
+        "record_path": "outputs/task022/glycoside-v8/runtime_instances.jsonl",
+        "record_file_sha256": "595b66a294de00872c51acc746c8db03bd2bcf1be5acb592694593a7cd7acbd9",
+        "source_asset_sha256": {
+          "data/raw/task016-p1/2026-10-06/pmc/PMC7558026-v1-0/fullTextXML.attempt-1": "e93584ddd9753393fd7b506bd1708f294312cc9a4d0aa4faf7f3854970754285"
+        }
+      },
+      "details": {
+        "representation": "完整UDP糖供体沿用既有结构记录的中性标准化表示；不推断溶液中的主要电荷态。",
+        "source_scope": "既有来源限定酶促转化的逆合成示意；保留实际供体结构，不以游离糖替代。 AbCGT的单/双C-糖苷比例依赖受体与供体比例；本图仅显示已报道单C-糖苷17a。",
+        "enzyme": "AbCGT",
+        "source_forward_direction": "acceptor + UDP-sugar -> glycoside + UDP",
+        "byproducts_omitted": [
+          "UDP"
+        ],
+        "conditions_note": "图内省略酶、反应条件与副产物；具体实验体系回查对应来源。",
+        "evidence_status": {
+          "review_type": "agent_delegated",
+          "human_reviewed": false,
+          "independent_chemical_validation": false,
+          "teacher_reviewed": false,
+          "new_template": false
+        },
+        "source_product_name": "phloretin 3prime-C-beta-D-glucoside",
+        "highlight": "深绿色为产物中拟逆断开的键；不表示电子转移或已验证基元反应。",
+        "numbering_note": "原文该段以3-C及其他段3′-C两种表述描述相关产物；图采用既有记录精确结构，主标题不固定编号。"
+      },
+      "product_highlight_bonds": [
+        17
+      ],
+      "svg_sha256": "babde1f57d38713afd9e871cf24620ac56062d80064f80f09abebba85eec3e57"
+    },
+    {
+      "topic": "chain",
+      "title_zh": "芹菜苷的糖间连接拆分",
+      "caption_zh": "保留苷元与第一层糖，拆分新接入的 apiose 糖基。",
+      "svg": "/teaching-example-chain.svg",
+      "alt_zh": "芹菜苷的糖间连接拆分；左侧产物沿双线逆合成箭头拆分为右侧Apigenin 7-O-glucoside和UDP-Api，深绿色突出目标连接。",
+      "direction": "retrosynthesis_product_to_precursors",
+      "direction_zh": "逆合成：产物 → 前体",
+      "product": {
+        "name": "Apiin",
+        "smiles": "O=c1cc(-c2ccc(O)cc2)oc2cc(O[C@@H]3O[C@H](CO)[C@@H](O)[C@H](O)[C@H]3O[C@@H]3OC[C@](O)(CO)[C@H]3O)cc(O)c12",
+        "canonical_smiles": "O=c1cc(-c2ccc(O)cc2)oc2cc(O[C@@H]3O[C@H](CO)[C@@H](O)[C@H](O)[C@H]3O[C@@H]3OC[C@](O)(CO)[C@H]3O)cc(O)c12",
+        "role": "reported_product",
+        "representation_kind": "reported_compound_structure",
+        "actual_reactant_or_product": true,
+        "graph_synthon": false,
+        "atom_count": 40
+      },
+      "precursors": [
+        {
+          "name": "Apigenin 7-O-glucoside",
+          "smiles": "O=c1cc(-c2ccc(O)cc2)oc2cc(O[C@@H]3O[C@H](CO)[C@@H](O)[C@H](O)[C@H]3O)cc(O)c12",
+          "canonical_smiles": "O=c1cc(-c2ccc(O)cc2)oc2cc(O[C@@H]3O[C@H](CO)[C@@H](O)[C@H](O)[C@H]3O)cc(O)c12",
+          "role": "reported_acceptor",
+          "representation_kind": "reported_compound_structure",
+          "actual_reactant_or_product": true,
+          "graph_synthon": false,
+          "atom_count": 31
+        },
+        {
+          "name": "UDP-Api",
+          "smiles": "O=c1ccn([C@@H]2O[C@H](COP(=O)(O)OP(=O)(O)O[C@H]3OC[C@](O)(CO)[C@H]3O)[C@@H](O)[C@H]2O)c(=O)[nH]1",
+          "canonical_smiles": "O=c1ccn([C@@H]2O[C@H](COP(=O)(O)OP(=O)(O)O[C@H]3OC[C@](O)(CO)[C@H]3O)[C@@H](O)[C@H]2O)c(=O)[nH]1",
+          "role": "reported_activated_glycosyl_donor",
+          "representation_kind": "reported_compound_structure",
+          "actual_reactant_or_product": true,
+          "graph_synthon": false,
+          "atom_count": 34
+        }
+      ],
+      "source": {
+        "doi": "10.3390/ijms242317118",
+        "title": "Biochemical Characterization of Parsley Glycosyltransferases Involved in the Biosynthesis of a Flavonoid Glycoside, Apiin",
+        "url": "https://doi.org/10.3390/ijms242317118",
+        "locator": [
+          "body//p[9]",
+          "Figure 4A,C",
+          "Section 2.2"
+        ],
+        "pmcid": "PMC10706860",
+        "instance_id": "PMC10706860:PcApiT:e66de0b1febb5f8f6e77",
+        "license": "CC BY",
+        "record_path": "outputs/task022/glycoside-v8/runtime_instances.jsonl",
+        "record_file_sha256": "595b66a294de00872c51acc746c8db03bd2bcf1be5acb592694593a7cd7acbd9",
+        "source_asset_sha256": {
+          "data/raw/task016-p1/2026-10-06/pmc/PMC10706860-v1-0/fullTextXML.attempt-1": "7f1c1a6c91c58ad26c8f9081c8a41d679b5a0140d90c956a678f2ef25b7aad69"
+        }
+      },
+      "details": {
+        "representation": "完整UDP糖供体沿用既有结构记录的中性标准化表示；不推断溶液中的主要电荷态。",
+        "source_scope": "既有来源限定酶促转化的逆合成示意；保留实际供体结构，不以游离糖替代。 PcApiT将apigenin 7-O-glucoside与UDP-Api转化为apiin，呈现糖间成键，不倒置水解反应。",
+        "enzyme": "PcApiT",
+        "source_forward_direction": "acceptor + UDP-sugar -> glycoside + UDP",
+        "byproducts_omitted": [
+          "UDP"
+        ],
+        "conditions_note": "图内省略酶、反应条件与副产物；具体实验体系回查对应来源。",
+        "evidence_status": {
+          "review_type": "agent_delegated",
+          "human_reviewed": false,
+          "independent_chemical_validation": false,
+          "teacher_reviewed": false,
+          "new_template": false
+        },
+        "source_product_name": "apiin",
+        "highlight": "深绿色为产物中拟逆断开的键；不表示电子转移或已验证基元反应。"
+      },
+      "product_highlight_bonds": [
+        26
+      ],
+      "svg_sha256": "690dbacdd9aa4a1065e7792748a59dbdd587761ea16097ca404ad516d9eb6944"
+    },
+    {
+      "topic": "scaffold",
+      "title_zh": "黄烷酮 C 环的逆合成开环",
+      "caption_zh": "将黄烷酮 C 环映射回原文报道的 E-2′-羟基查尔酮前体。",
+      "svg": "/teaching-example-scaffold.svg",
+      "alt_zh": "黄烷酮产物沿双线逆合成箭头映射为右侧E-2′-羟基查尔酮；深绿色突出C环中的C—O键。",
+      "direction": "retrosynthesis_product_to_precursors",
+      "direction_zh": "逆合成：产物 → 前体",
+      "product": {
+        "name": "Flavanone 2b",
+        "smiles": "COc1cccc(C2CC(=O)c3ccccc3O2)c1OC",
+        "canonical_smiles": "COc1cccc(C2CC(=O)c3ccccc3O2)c1OC",
+        "role": "reported_product",
+        "representation_kind": "reported_compound_structure",
+        "actual_reactant_or_product": true,
+        "graph_synthon": false,
+        "atom_count": 21
+      },
+      "precursors": [
+        {
+          "name": "(E)-2-hydroxychalcone",
+          "smiles": "COc1cccc(/C=C/C(=O)c2ccccc2O)c1OC",
+          "canonical_smiles": "COc1cccc(/C=C/C(=O)c2ccccc2O)c1OC",
+          "role": "reported_direct_cyclization_substrate",
+          "representation_kind": "reported_compound_structure",
+          "actual_reactant_or_product": true,
+          "graph_synthon": false,
+          "atom_count": 21
+        }
+      ],
+      "source": {
+        "doi": "10.26554/sti.2025.10.4.1169-1178",
+        "title": "Intramolecular Oxa-Michael Cyclization of 2’-Hydroxychalcones for the Synthesis of Flavanones: A Comparative Study",
+        "url": "https://doi.org/10.26554/sti.2025.10.4.1169-1178",
+        "locator": "Tables1,3;Fig3;§2.3.4 pp1173–1174",
+        "reaction_id": "DS-35-2b",
+        "license": "CC-BY4.0",
+        "record_path": "outputs/task022/flavanone_scope_20261021/prospective_sources/reaction_cards_v1.json",
+        "record_file_sha256": "c3b703604a055d3ce8b1c6bb8106c34bd0d4e0b8efd0bafc893179f78cc45837",
+        "source_asset_sha256": {
+          "outputs/task022/flavanone_scope_20261021/prospective_sources/publisher/source-35-declaredPDF.pdf": "73fcd7930164a09fce20b6412bbdcde651a1d041469a36ecb74e240d29837c42",
+          "outputs/task022/flavanone_scope_20261021/prospective_sources/publisher/source-35-declaredPDF.txt": "7d49acb4f8db7ed1d1d5a940896bf2cc6e7d0aff507d12d264629781ac1cfc40",
+          "outputs/task022/flavanone_scope_20261021/prospective_sources/publisher/source35-pages/page-04.png": "57b18f0c9bc5b4ff03cec28faa4300e0ef8fcc338e8b88697f6e438564295ed0",
+          "outputs/task022/flavanone_scope_20261021/prospective_sources/publisher/source35-pages/page-05.png": "d68545dc8036fa28cad11e4d563cfce9179f4666705e690baf9fccd9fa756ac1",
+          "outputs/task022/flavanone_scope_20261021/prospective_sources/publisher/source35-pages/page-06.png": "cca76d349e8f4e7042dd160d8335e674325987c92fdd1751b31b136f02c46abc",
+          "outputs/task022/flavanone_scope_20261021/prospective_sources/identity/DS-35-2b-target-opsin.json": "815d2e9635d7cefcd9d75d3642520107a16bfb88a9389a3b3b7dbbc8d4687851",
+          "outputs/task022/flavanone_scope_20261021/prospective_sources/identity/DS-35-2b-reference-opsin.json": "56428c4048740057f008c7bf2292588eba6dcdcd12d7a7467a670e832995e624"
+        }
+      },
+      "details": {
+        "representation": "保留原文直接投料的完整E-2′-羟基查尔酮结构；产物C2立体化学按原来源未指定表示。",
+        "source_scope": "原文已报道的查尔酮→黄烷酮异构化；此处按逆合成方向画回前体，不是宣称实际执行逆反应。",
+        "source_forward_direction": "E-2prime-hydroxychalcone -> flavanone",
+        "conditions_note": "原文表格/图用MeOH，通法用EtOH；两者冲突保留，示意图不指定溶剂。",
+        "source_conditions_retained": {
+          "table": "NaOAc10eq,MeOH,60C,48h",
+          "procedure": "NaOAc10eq,EtOH10mL,reflux,48h"
+        },
+        "source_conflicts": [
+          "MeOH in Table3/Fig3 vs EtOH in general procedure; retain both"
+        ],
+        "byproducts_omitted": [],
+        "evidence_status": {
+          "review_type": "agent_delegated",
+          "human_reviewed": false,
+          "independent_chemical_validation": false,
+          "teacher_reviewed": false,
+          "new_template": false
+        },
+        "highlight": "深绿色为产物环中的C—O键；实际逆合成还涉及C2/C3键级变化和质子转移，不是简单删键机理。"
+      },
+      "product_highlight_bonds": [
+        21
+      ],
+      "svg_sha256": "952da90f0bbd0bfedee3bffd08393f4d96238bd3751cf7cfa0f83c3fd1aeaf5b"
+    }
+  ]
+}

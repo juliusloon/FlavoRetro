@@ -1,0 +1,19 @@
+{
+  "boundary": "Opt-in source reconstruction and candidate inventory; no chemical or current-supply certification.",
+  "default_enabled": false,
+  "literature": {
+    "manifest": "outputs/task029/literature/v3/manifest.json",
+    "manifest_sha256": "295fac158ca22696d95f13447ef4db71cf67cb7e0ca293ddd4b35248c6c6ad12"
+  },
+  "schema_version": 1,
+  "stock": {
+    "zinc": {
+      "current_supplier_verified": false,
+      "entries": 17422831,
+      "kind": "historical_public_candidate_stock",
+      "path": "outputs/task022/stock/zinc_stock_17_04_20.hdf5",
+      "sha256": "99d39a6f807c3e815487500bafc2b4a9dc66a31af189e3b1776874fb0d4a188d",
+      "source": "https://doi.org/10.6084/m9.figshare.12334577.v1"
+    }
+  }
+}

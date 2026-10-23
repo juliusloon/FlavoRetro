@@ -50,7 +50,7 @@ try:
         # TASK-013 S3：skip link 为首个焦点，tablist 语义完整
         page.keyboard.press("Tab")
         assert page.evaluate("document.activeElement.classList.contains('skip-link')")
-        assert page.locator("nav[role=tablist]").count() == 1
+        assert page.locator("header nav[role=tablist]").count() == 1
         assert page.locator("[data-tab=search]").get_attribute("role") == "tab"
         assert page.locator("[data-tab=search]").get_attribute("aria-selected") == "true"
         assert page.locator("[data-tab=resources]").get_attribute("aria-selected") == "false"
@@ -61,9 +61,9 @@ try:
         # TASK-013 S3：方向键循环切换页签（roving tabindex + focus 跟随）
         page.locator("[data-tab=search]").focus()
         page.keyboard.press("ArrowRight")
-        assert page.locator("[data-tab=resources]").get_attribute("aria-selected") == "true"
-        assert page.evaluate("document.activeElement.dataset.tab") == "resources"
-        assert not page.locator("#resources").is_hidden()
+        assert page.locator("[data-tab=history]").get_attribute("aria-selected") == "true"
+        assert page.evaluate("document.activeElement.dataset.tab") == "history"
+        assert not page.locator("#history").is_hidden()
         page.keyboard.press("ArrowLeft")
         assert page.locator("[data-tab=search]").get_attribute("aria-selected") == "true"
         # 拓扑标注验收（TASK-011）：糖苷 SMILES 触发家族标注、边界文案与键高亮
@@ -71,12 +71,9 @@ try:
         page.locator("#preview").click()
         page.wait_for_selector("#topology .topology-block")
         topology_text = page.locator("#topology").inner_text()
-        assert "aryl_O_candidate" in topology_text
-        assert "labelled graph synthons, not reagents" in topology_text
-        assert (
-            "topology candidates; no independent labels or reaction feasibility"
-            in topology_text
-        )
+        assert "芳基 O-糖苷键" in topology_text
+        assert "糖苷连接" in topology_text
+        assert "连接标注详情" in topology_text
         page.wait_for_function(
             "document.getElementById('molecule').src.includes('topology=1')"
         )
@@ -85,7 +82,7 @@ try:
         assert topology_lit_links > 0
         page.locator("#smiles").fill("CCOc1ccccc1")
         page.locator("#mode").select_option("balanced")
-        page.locator("#search-form details").click()
+        page.locator("#search-form > details").click()
         page.locator("#seconds").fill("1")
         page.locator("#iterations").fill("3")
         page.locator("#engine").select_option("optimized")
@@ -101,14 +98,18 @@ try:
             timeout=120000,
         )
         assert page.evaluate("!document.getElementById('routes').hasAttribute('aria-busy')")
-        assert "阶段 2" in page.locator("#run-meta").inner_text()
-        assert page.locator(".route").count() > 0
+        assert "阶段" in page.locator("#run-meta").inner_text()
+        assert page.locator(".route-entry").count() == 2
+        assert page.locator(".route-detail-panel").count() == 1
+        assert page.locator(".scheme-mol img").count() >= 2
+        assert page.locator("#routes code").count() == 0
         live = page.evaluate("lastResult")
         assert live["request"]["engine"] == "optimized" and live["request"]["top_k"] == 2
         assert all(live["request"][key] == value for key,value in (("depth",4),("branching",2),("nodes",7),("seconds",1),("iterations",3)))
         assert all(p["node_count"] <= 7 for p in live["phases"])
         assert live["resource_version"] == "v3"
-        assert "模板未识别" in page.locator(".route").first.inner_text()
+        page.locator(".scheme-evidence > summary").first.click()
+        assert "模板号" in page.locator(".scheme-evidence").first.inner_text()
         with page.expect_download() as downloaded:
             page.locator("#download").click()
         downloaded.value.save_as(str(out / "export.json"))
@@ -167,11 +168,20 @@ try:
         preflight=json.loads(page.locator("#preflight-status").inner_text())
         assert not preflight["formal_run_ready"]
         before = page.request.get("http://127.0.0.1:8876/api/runs").json()["total"]
+        page.locator("[data-tab=history]").click()
+        page.wait_for_selector("#run-list tr")
         page.locator("#saved-run-id").fill(live["run_id"])
         page.locator("#open-run").click()
         page.wait_for_function("document.getElementById('message').textContent.includes('explicit_saved_run')")
-        assert "历史运行" in page.locator("#run-meta").inner_text()
+        assert "已存运行" in page.locator("#run-meta").inner_text()
         assert page.request.get("http://127.0.0.1:8876/api/runs").json()["total"] == before
+        page.locator("[data-tab=history]").click()
+        comparison_ids = page.evaluate("Array.from(document.querySelectorAll('#compare-run-a option')).slice(1,3).map(o=>o.value)")
+        page.locator("#compare-run-a").select_option(comparison_ids[0])
+        page.locator("#compare-run-b").select_option(comparison_ids[1])
+        page.locator("#run-comparison").click()
+        page.wait_for_function("document.getElementById('comparison-message').textContent.includes('已读取两次已保存运行')")
+        assert page.locator("#comparison-table tbody tr").count() >= 10
         page.locator("[data-tab=governance]").click()
         page.locator("#start-evaluation").click()
         page.wait_for_function("document.getElementById('evaluation-message').textContent.includes('running')",timeout=15000)
@@ -186,7 +196,7 @@ try:
         overflow_report = {}
         for width, height in [(320, 700), (375, 740), (768, 900), (992, 900), (1280, 1000), (390, 844)]:
             page.set_viewport_size({"width": width, "height": height})
-            for tab in ("search", "resources", "literature", "governance"):
+            for tab in ("search", "history", "resources", "literature", "governance"):
                 page.locator(f"[data-tab={tab}]").click()
                 page.wait_for_timeout(120)
                 overflow_report[f"{width}:{tab}"] = page.evaluate(

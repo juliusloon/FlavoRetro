@@ -1,0 +1,110 @@
+{
+  "schema_version": 1,
+  "pages": [
+    {
+      "id": "search",
+      "title": "路线探索",
+      "template": "src/pages/search/view.html",
+      "primary": true
+    },
+    {
+      "id": "history",
+      "title": "搜索历史",
+      "template": "src/pages/history/view.html",
+      "primary": true
+    },
+    {
+      "id": "resources",
+      "title": "资源与证据",
+      "template": "src/pages/resources/view.html",
+      "primary": true
+    },
+    {
+      "id": "literature",
+      "title": "文献教学",
+      "template": "src/pages/literature/view.html",
+      "primary": true
+    },
+    {
+      "id": "governance",
+      "title": "研究范围",
+      "template": "src/pages/governance/view.html",
+      "primary": true
+    },
+    {
+      "id": "components",
+      "title": "组件参考",
+      "template": "src/pages/components/view.html",
+      "primary": false
+    }
+  ],
+  "subpages": [
+    {
+      "path": "#/search",
+      "state": [
+        "run",
+        "route"
+      ],
+      "purpose": "目标及保存结果"
+    },
+    {
+      "path": "#/history",
+      "state": [
+        "page",
+        "size",
+        "a",
+        "b"
+      ],
+      "purpose": "运行列表及对照"
+    },
+    {
+      "path": "#/resources/<record>",
+      "state": [
+        "q",
+        "kind",
+        "issue",
+        "outcome",
+        "source",
+        "page",
+        "size"
+      ],
+      "purpose": "记录及详情",
+      "example": "#/resources"
+    },
+    {
+      "path": "#/literature/examples/<o|c|chain|scaffold>",
+      "state": [],
+      "purpose": "常见反应类型",
+      "example": "#/literature/examples/o"
+    },
+    {
+      "path": "#/literature/principles/<classification>",
+      "state": [],
+      "purpose": "反应原理",
+      "example": "#/literature/principles/o_glycosylation"
+    },
+    {
+      "path": "#/literature/tools/<lessons|papers|practice|evidence>",
+      "state": [
+        "q",
+        "topic",
+        "status",
+        "page",
+        "size",
+        "item"
+      ],
+      "purpose": "列表/详情与练习",
+      "example": "#/literature/tools/lessons"
+    },
+    {
+      "path": "#/governance",
+      "state": [],
+      "purpose": "研究范围"
+    },
+    {
+      "path": "#/components",
+      "state": [],
+      "purpose": "开发组件参考"
+    }
+  ]
+}

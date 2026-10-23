@@ -4,6 +4,7 @@ import math
 import numpy as np
 from aizynthfinder.search.mcts.node import MctsNode
 from aizynthfinder.search.mcts.search import MctsSearchTree
+from .ranking import ResearchRewardMixin
 
 
 class Node(MctsNode):
@@ -148,7 +149,7 @@ class Node(MctsNode):
         return nodes
 
 
-class SearchTree(MctsSearchTree):
+class SearchTree(ResearchRewardMixin, MctsSearchTree):
     def __init__(self, config, root_smiles=None):
         super().__init__(config=config, root_smiles=root_smiles)
         self.depths = {}

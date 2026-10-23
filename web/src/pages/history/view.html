@@ -1,0 +1,23 @@
+<section id="history" class="page" hidden role="tabpanel" aria-labelledby="tab-history">
+            <div class="page-heading"><h1>搜索历史</h1><p>选择两次已保存运行做逐项对照，或重新打开某次路线结果。</p></div>
+            <div class="history-workspace">
+            <section class="history-saved" aria-labelledby="history-list-title">
+                <h2 id="history-list-title">已保存运行历史</h2>
+                <div class="history-toolbar filter-toolbar"><input id="saved-run-id" aria-label="历史 run ID" placeholder="输入完整 run ID"><button id="open-run" class="secondary">打开 run ID</button><button id="refresh-runs" class="secondary">刷新运行列表</button></div>
+                <p id="history-message" role="status"></p>
+                <div class="records-panel history-records" aria-label="已保存运行记录">
+                    <div id="runs-pager-top" class="pagination"></div>
+                    <div class="record-table-wrap" tabindex="0" role="region" aria-label="历史运行表格，可横向滚动"><table class="history-table"><thead><tr><th scope="col">目标</th><th scope="col">运行 / 时间</th><th scope="col">状态 / 路线</th><th scope="col">操作</th></tr></thead><tbody id="run-list"></tbody></table></div>
+                </div>
+            </section>
+            <section class="comparison-panel" id="history-comparison" aria-label="运行对照">
+                <div class="comparison-selects">
+                    <div><label for="compare-run-a">运行 A</label><select id="compare-run-a"><option value="">选择运行 A</option></select></div>
+                    <div><label for="compare-run-b">运行 B</label><select id="compare-run-b"><option value="">选择运行 B</option></select></div>
+                    <div class="comparison-actions"><button id="run-comparison">开始对照</button><button id="export-comparison" class="secondary" disabled>导出对照 JSON</button></div>
+                </div>
+                <p id="comparison-message" role="status">尚未选择运行。</p>
+                <div id="comparison-table"></div>
+            </section>
+            </div>
+        </section>

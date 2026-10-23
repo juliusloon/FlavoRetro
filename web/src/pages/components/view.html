@@ -1,0 +1,13 @@
+<section id="components" class="page ui-component-reference" hidden role="region" aria-labelledby="components-title">
+    <div class="page-heading"><h1 id="components-title">界面组件</h1><p>颜色、控件与分栏使用同一套界面规范。</p><a class="nav-link" href="#/search">返回工作台</a></div>
+    <div class="ui-reference-grid">
+        <section class="ui-panel"><h2>颜色与状态</h2><div id="component-swatches" class="ui-swatches"></div><div id="component-feedback"></div></section>
+        <section class="ui-panel"><h2>按钮与输入</h2><div id="component-buttons" class="button-row"></div><div id="component-fields" class="ui-reference-fields"></div><p id="component-interaction" role="status">点击按钮或更改选项查看状态。</p></section>
+        <section class="ui-panel"><h2>统一分页</h2><div id="component-pager" class="pagination"></div><div id="component-items" class="ui-demo-items"></div></section>
+        <section class="ui-panel"><h2>空态与基础信息</h2><div id="component-states"></div><pre><code>FlavoUI.button('查询', { onClick: loadItems });
+FlavoUI.pagination('pager', state, onPageChange);
+FlavoUI.notice('读取失败', { kind: 'error' });</code></pre></section>
+        <section class="ui-panel ui-reference-wide"><h2>分栏模板</h2><p class="note">列表与阅读 1:2；记录与对照 2:1；讲解与图式 1:2。窄屏按内容顺序排列。</p><div id="component-splits"></div></section>
+        <section class="ui-panel ui-reference-wide"><h2>页面入口</h2><div id="component-route-list" class="ui-route-list"></div><p class="note">每个页面使用独立地址；支持返回、前进、刷新和新标签直接进入。</p></section>
+    </div>
+</section>

@@ -13,7 +13,10 @@ class SearchRequest(BaseModel):
     seed: int = Field(default=0, ge=0, le=2**32 - 1)
     candidate_stock: bool = False
     glycoside_expansion: bool = False
-    glycoside_library_version: Literal["v1", "v2", "v3", "v4", "v5", "v6", "v7"] = "v1"
+    glycoside_library_version: Literal["v1", "v2", "v3", "v4", "v5", "v6", "v7", "v8"] = "v1"
+    flavanone_opening: bool = False
+    literature_expansion: bool = False
+    stock_profile: Literal["reviewed", "zinc"] = "reviewed"
     top_k: int = Field(default=5, ge=1, le=25)
     seconds: float | None = Field(default=None, ge=0.1, le=360, allow_inf_nan=False)
     iterations: int | None = Field(default=None, ge=1, le=1800)
@@ -38,14 +41,26 @@ class SearchRequest(BaseModel):
 
     @model_validator(mode="after")
     def valid_domain_version(self):
-        if self.glycoside_library_version in {"v2", "v3", "v4", "v5", "v6", "v7"} and (not self.glycoside_expansion or self.engine != "optimized"):
+        if self.glycoside_library_version in {"v2", "v3", "v4", "v5", "v6", "v7", "v8"} and (not self.glycoside_expansion or self.engine != "optimized"):
             raise ValueError(f"{self.glycoside_library_version} requires explicit glycoside expansion and optimized engine")
+        if self.literature_expansion and self.engine != "optimized":
+            raise ValueError("literature expansion requires optimized engine")
+        if self.stock_profile != "reviewed" and not self.candidate_stock:
+            raise ValueError("public candidate stock requires candidate_stock=true")
+        if self.flavanone_opening and (self.engine != "native" or self.glycoside_expansion or self.literature_expansion):
+            raise ValueError("flavanone opening requires native engine with glycoside/literature expansions disabled")
         return self
 
     def payload(self):
         excluded = {"glycoside_library_version"} if self.glycoside_library_version == "v1" else set()
         if not self.glycoside_expansion:
             excluded.add("glycoside_expansion")
+        if not self.flavanone_opening:
+            excluded.add("flavanone_opening")
+        if not self.literature_expansion:
+            excluded.add("literature_expansion")
+        if self.stock_profile == "reviewed":
+            excluded.add("stock_profile")
         return self.model_dump(exclude=excluded)
 
     def phases(self):

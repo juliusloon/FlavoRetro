@@ -3,6 +3,7 @@
 import argparse, json, re, threading, uuid, sys, os
 from datetime import datetime, timezone
 from pathlib import Path
+from typing import get_args
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from urllib.parse import urlsplit, parse_qs
 from rdkit import Chem
@@ -14,13 +15,27 @@ from .database import query, metadata as index_metadata
 from .policies import records
 from .contracts import SearchRequest
 from .service import search
+from .ranking import METHOD as RANKING_METHOD
 from .topology import audit as topology_audit
 
 GATE = threading.BoundedSemaphore(1)
 RUN_PATTERN = r"\d{8}T\d{6}-[0-9a-f]{32}"
 EVALUATION_PATTERN = r"development-[0-9a-f]{32}"
 
-def saved_run(name):
+def runtime_capabilities():
+    """Expose the loaded request contract, including staged upgrades honestly."""
+    fields = SearchRequest.model_fields
+    versions = list(get_args(fields["glycoside_library_version"].annotation))
+    stocks = list(get_args(fields["stock_profile"].annotation)) if "stock_profile" in fields else ["reviewed"]
+    return {"flavanone_opening": "flavanone_opening" in fields,
+            "literature_expansion": "literature_expansion" in fields,
+            "stock_profile": "stock_profile" in fields,
+            "stock_profiles": stocks, "glycoside_library_versions": versions,
+            "v8": "v8" in versions,
+            "search_methods": list(get_args(fields["search_method"].annotation)) if "search_method" in fields else ["legacy"]}
+
+
+def saved_run(name, presentation=True):
     if not re.fullmatch(RUN_PATTERN, name):
         raise ValueError("invalid_run_id")
     folder = root() / "outputs/runs" / name
@@ -34,8 +49,14 @@ def saved_run(name):
             valid = False
         if not valid:
             raise AssetError("run_integrity_failed")
-    return {"execution_source":"explicit_saved_run", "integrity":"verified", "manifest":manifest,
-        "result":json.loads((folder / "result.json").read_text())}
+    result = json.loads((folder / "result.json").read_text())
+    envelope = {"execution_source": "explicit_saved_run", "integrity": "verified",
+                "manifest": manifest, "result": result}
+    if presentation and result.get("ranking_method") != RANKING_METHOD:
+        from .ranking import rank_tree
+        envelope["research_ranking"] = [{"route_id": route["route_id"], **rank_tree(route["tree"])}
+            for route in result.get("routes", []) if route.get("tree")]
+    return envelope
 
 def run_list(offset=0, limit=25):
     if offset < 0 or not 1 <= limit <= 100:
@@ -45,11 +66,13 @@ def run_list(offset=0, limit=25):
     rows = []
     for p in selected[offset:offset+limit]:
         try:
-            saved = saved_run(p.parent.name)
+            saved = saved_run(p.parent.name, presentation=False)
             result = saved["result"]
             rows.append({"run_id":p.parent.name,"status":result["status"],"integrity":"verified",
+                "created_at":result.get("created_at"),"candidate_count":result.get("candidate_count"),
                 "resource_version":result.get("resource_version","historical_unspecified"),
-                "smiles":result.get("request",{}).get("smiles"),"routes":len(result["routes"])})
+                "smiles":result.get("request",{}).get("smiles"),"routes":len(result["routes"]),
+                "steps":max((route.get("steps",0) for route in result["routes"]),default=0)})
         except (OSError, ValueError, KeyError) as exc:
             rows.append({"run_id":p.parent.name,"status":"integrity_failed","message":str(exc)})
     return {"total":len(selected),"runs":rows,"execution_source":"explicit_saved_run_list"}
@@ -134,6 +157,11 @@ class Handler(BaseHTTPRequestHandler):
         url = urlsplit(self.path)
         q = parse_qs(url.query)
         try:
+            if url.path == "/api/lab-handoff":
+                from .lab_handoff import packet
+                if set(q) != {"run", "route", "source"} or any(len(v) != 1 for v in q.values()):
+                    raise ValueError("invalid_handoff_parameters")
+                return self.json(200, packet(saved_run(q["run"][0], presentation=False), q["route"][0], q["source"][0]))
             if url.path == "/api/health":
                 return self.json(
                     200,
@@ -151,6 +179,7 @@ class Handler(BaseHTTPRequestHandler):
                     200,
                     {
                         "resources": summary,
+                        "runtime_capabilities": runtime_capabilities(),
                         "review_binding": load_review().binding,
                         "resource_version": pointer["version"],
                         "database": index_metadata()[1],
@@ -185,16 +214,28 @@ class Handler(BaseHTTPRequestHandler):
                     offset=int(q.get("offset", ["0"])[0]), limit=int(q.get("limit", ["25"])[0]),
                     issue=q.get("issue", [""])[0], source_status=q.get("source_status", [""])[0],
                     outcome=q.get("outcome", [""])[0])))
+            if url.path == "/api/pipeline-progress":
+                from .pipeline_presentation import progress
+                return self.json(200, progress())
+            if url.path.startswith("/api/pipeline-cell/"):
+                from .pipeline_presentation import saved_cell
+                parts = url.path.split("/")
+                if len(parts) != 5:
+                    raise ValueError("invalid experiment path")
+                return self.json(200, saved_cell(parts[3], parts[4]))
+            if url.path == "/api/reaction-evidence":
+                from .reaction_intake import query as reaction_query
+                return self.json(200, reaction_query(q=q.get("q", [""])[0],
+                    status=q.get("status", [""])[0], offset=int(q.get("offset", ["0"])[0]),
+                    limit=int(q.get("limit", ["25"])[0])))
             if url.path == "/api/teaching":
                 return self.json(
                     200,
                     config("teaching_guidance.json"),
                 )
             if url.path == "/api/literature-teaching":
-                return self.json(
-                    200,
-                    config("literature_teaching_layer.json"),
-                )
+                from .pipeline_presentation import teaching
+                return self.json(200, teaching(config("literature_teaching_layer.json")))
             if url.path == "/api/topology":
                 smiles = SearchRequest(smiles=q.get("smiles", [""])[0]).smiles
                 result = topology_audit(smiles)
@@ -242,13 +283,17 @@ class Handler(BaseHTTPRequestHandler):
                 return self.json(200,{"evaluations":jobs})
             if url.path.startswith("/api/evaluations/"):
                 return self.json(200,evaluation_job(url.path.rsplit("/",1)[-1]))
-            static = {"/": "index.html", "/app.js": "app.js", "/style.css": "style.css"}
+            static = {"/": "index.html", "/app.js": "app.js", "/style.css": "style.css",
+                      "/teaching-examples.json": "teaching-examples.json",
+                      **{f"/teaching-example-{topic}.svg": f"teaching-example-{topic}.svg" for topic in ("o", "c", "chain", "scaffold")}}
             if url.path in static:
                 name = static[url.path]
                 kind = {
                     "html": "text/html",
                     "js": "text/javascript",
                     "css": "text/css",
+                    "json": "application/json",
+                    "svg": "image/svg+xml",
                 }[name.rsplit(".", 1)[1]]
                 return self.send(
                     200, (PACKAGE / "assets/web" / name).read_bytes(), kind + "; charset=utf-8"

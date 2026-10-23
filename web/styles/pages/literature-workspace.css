@@ -1,0 +1,97 @@
+/* TASK-046: one stable list/reader workspace for literature tools. */
+#literature[data-section="tools"] { display:flex; flex-direction:column; overflow:hidden; padding-bottom:20px; }
+#literature[data-section="tools"] > .literature-heading { flex:none; }
+#literature #literature-tools { display:flex; flex-direction:column; flex:1; min-height:0; padding:16px 20px; margin-bottom:0; }
+#literature .literature-views { order:0; flex:none; width:100%; margin-left:0; gap:8px; margin-bottom:8px; }
+#literature .literature-views a.nav-link { padding:8px 14px; text-align:left; }
+.literature-views strong { margin-bottom:2px; }
+.literature-views span { line-height:1.5; font-size:var(--text-xs); }
+#literature-tools .tool-filter { display:grid; grid-template-columns:minmax(220px,1fr) minmax(240px,.55fr) auto; align-items:center; gap:12px; flex:none; min-height:70px; margin:0; padding:10px 0; border:0; border-radius:0; box-shadow:none; }
+#literature-tools .tool-filter > div:not(.practice-summary):not(.button-row) { display:flex; align-items:center; gap:12px; min-width:0; }
+#literature-tools .tool-filter label { margin:0; flex:none; white-space:nowrap; font-size:var(--text-sm); }
+#literature-tools .tool-filter :is(input,select) { min-width:0; margin:0; flex:1; }
+#literature-tools .tool-filter .sr-only { padding:0; margin:0; }
+#literature-tools .practice-toolbar { grid-template-columns:minmax(0,1fr) auto; }
+#literature-tools .practice-toolbar .button-row { flex-wrap:wrap; justify-content:flex-end; gap:6px; margin:0; }
+.practice-summary { min-width:0; }
+#learning-toolbar #learning-context, #learning-toolbar #learning-progress { margin:0; font-size:var(--text-xs); overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+#literature-tools .tool-view { flex:1; min-height:0; display:flex; flex-direction:column; margin:0; }
+#literature-tools .tool-view > h2.sr-only { padding:0; margin:0; }
+#literature-tools .pagination { flex:none; padding:8px 12px; }
+.tool-split { display:grid; grid-template-columns:minmax(280px, .34fr) minmax(0,.66fr); flex:1; min-height:0; }
+.tool-list { min-width:0; overflow:auto; overscroll-behavior:contain; border-right:1px solid var(--border); background:var(--surface); }
+.tool-reader { min-width:0; overflow:auto; overscroll-behavior:contain; background:var(--surface); }
+#literature .tool-list .tool-row { display:block; width:100%; border:0; border-bottom:1px solid var(--border); border-left:4px solid transparent; border-radius:0; box-shadow:none; background:var(--surface); color:var(--ink); padding:13px 16px; text-align:left; text-decoration:none; white-space:normal; line-height:1.5; transform:none; }
+#literature .tool-row strong { display:block; font-size:var(--text-sm); font-weight:600; }
+.tool-row-meta { display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; overflow-wrap:anywhere; margin-top:5px; color:var(--ink-2); font-size:var(--text-xs); }
+#literature .tool-list .tool-row:hover { background:var(--green-50); transform:none; }
+#literature .tool-list .tool-row[aria-current="true"] { background:var(--green-50); border-left-color:var(--green-700); color:var(--green-900); }
+#literature .tool-list .tool-row:focus-visible { outline:2px solid var(--amber-400); outline-offset:-3px; }
+#literature .tool-reader > :is(.paper-card,.lesson-card), #literature .inline-source > :is(.paper-card,.lesson-card) { padding:20px 24px; border:0; }
+#literature .tool-reader h3 { font-size:var(--text-xl); margin:0 0 12px; }
+#literature .tool-reader .case-summary, #literature .tool-reader .paper-key-step { display:block; margin:0 0 12px; overflow:visible; }
+#literature .tool-reader > :is(.paper-card,.lesson-card) > details > summary, #literature .inline-source > :is(.paper-card,.lesson-card) > details > summary { display:none; }
+#literature .tool-reader .source-action { margin-left:12px; }
+#literature .tool-reader .kv-table { width:100%; margin:16px 0; table-layout:fixed; }
+#literature .tool-reader .kv-table th { width:110px; min-width:0; }
+#literature .tool-reader .kv-table td { overflow-wrap:anywhere; }
+#literature .tool-reader h4 { margin:16px 0 8px; font-size:var(--text-base); }
+.condition-sections { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px 24px; }
+.condition-sections > section { min-width:0; border-top:1px solid var(--border); }
+.condition-sections > .research-facts { grid-column:1/-1; }
+.condition-sections .kv { display:block; padding:5px 0; border-bottom:1px solid var(--border); font-size:var(--text-sm); }
+.condition-sections .kv b { display:block; color:var(--ink-2); font-weight:400; }
+.inline-source > button { margin:16px 24px 0; }
+#literature-tools .empty-library { padding:20px; margin:0; color:var(--ink-2); }
+#literature-tools #learning-steps { padding:16px 24px; }
+#learning-steps .learning-step { border-bottom:1px solid var(--border); padding-bottom:20px; }
+#learning-steps .learning-step > summary { pointer-events:none; list-style:none; }
+#learning-steps .learning-step > summary::-webkit-details-marker { display:none; }
+#literature-tools #learning-pager-top .page-size { margin-left:auto; }
+@media (min-width:1600px) {
+    #literature .tool-row strong { font-size:var(--text-base); }
+}
+@media (max-width:1099px) and (min-width:768px) {
+    #literature .literature-views { grid-template-columns:repeat(4,minmax(0,1fr)); }
+    #literature .literature-views a.nav-link { padding:8px 10px; }
+    .literature-views strong { font-size:var(--text-sm); }
+    #literature-tools .tool-filter { min-height:86px; grid-template-columns:minmax(0,1fr) minmax(190px,.8fr) auto; gap:8px; }
+    #literature-tools .tool-filter > div:not(.practice-summary):not(.button-row) { display:block; }
+    #literature-tools .tool-filter label { display:block; }
+    #literature-tools .tool-filter :is(input,select) { width:100%; }
+    .tool-split { grid-template-columns:minmax(230px,.36fr) minmax(0,.64fr); }
+    #literature .tool-reader > :is(.paper-card,.lesson-card), #literature .inline-source > :is(.paper-card,.lesson-card) { padding:16px; }
+    .condition-sections { grid-template-columns:1fr; }
+}
+@media (max-width:767px) {
+    #literature[data-section="tools"] { display:block; overflow:auto; padding-bottom:16px; }
+    #literature #literature-tools { display:flex; padding:12px; min-height:0; }
+    #literature .literature-views { grid-template-columns:repeat(2,minmax(0,1fr)); gap:6px; }
+    #literature .literature-views a.nav-link { padding:10px 8px; }
+    #literature .literature-views span { display:none; }
+    #literature-tools .tool-filter { min-height:0; grid-template-columns:minmax(0,1fr) auto; gap:8px; padding:8px 0; }
+    #literature-tools .tool-filter .filter-query { grid-column:1/-1; }
+    #literature-tools .tool-filter > div:not(.practice-summary):not(.button-row) { display:flex; gap:8px; }
+    #literature-tools .tool-filter label { font-size:var(--text-xs); }
+    #literature-tools .tool-filter :is(input,select) { width:100%; min-height:40px; }
+    #literature-tools .practice-toolbar { display:flex; flex-direction:column; align-items:stretch; }
+    #literature-tools .practice-toolbar .button-row { justify-content:flex-start; }
+    #literature-tools .practice-toolbar .button-row button { flex:1; padding:6px; font-size:var(--text-xs); }
+    #literature-tools .tool-view { min-height:500px; }
+    #literature-tools .pagination { padding:8px; gap:5px; }
+    #literature-tools .pagination [data-page-action="first"], #literature-tools .pagination [data-page-action="last"] { display:none; }
+    #literature-tools .pagination button { padding:4px 6px; font-size:var(--text-xs); }
+    #literature-tools .pagination .page-size { margin-left:auto; }
+    #literature-tools .pagination .page-count { width:auto; flex-basis:auto; margin-left:auto; text-align:right; font-size:var(--text-xs); }
+    #literature-tools .pagination .page-size select { width:62px; }
+    .tool-split { display:flex; flex-direction:column; }
+    .tool-list { flex:none; height:150px; border-right:0; border-bottom:1px solid var(--border); }
+    .tool-reader { overflow:visible; }
+    #literature .tool-list .tool-row { padding:10px 12px; }
+    #literature .tool-reader > :is(.paper-card,.lesson-card), #literature .inline-source > :is(.paper-card,.lesson-card) { padding:16px 12px; }
+    #literature .tool-reader h3 { font-size:var(--text-lg); }
+    #literature .tool-reader .kv-table th { width:76px; }
+    #literature-tools #learning-steps { padding:12px; }
+    .condition-sections { grid-template-columns:1fr; }
+    .inline-source > button { margin:12px 12px 0; }
+}

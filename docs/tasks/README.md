@@ -1,5 +1,41 @@
 # 任务合同
 
+[TASK-046](TASK-046-literature-workspace.md)已完成文献工具稳定工作区、原地来源和六步直达；见[REPORT046](../reports/REPORT-046-literature-workspace.md)。
+
+[TASK-040](TASK-040-teaching-heading-navigation.md)已完成教学三个导航按钮移入标题行右侧并右对齐；见[REPORT-040](../reports/REPORT-040-teaching-heading-navigation.md)。
+
+[TASK-039](TASK-039-single-principle-layout.md)已完成原理选择标题合并、固定单条与分页移除、左右双面板；见[REPORT-039](../reports/REPORT-039-single-principle-layout.md)。
+
+[TASK-038](TASK-038-example-left-context.md)已完成出处/核对/筛选按钮移至左侧讲解卡片下方，指定提示删除；见[REPORT-038](../reports/REPORT-038-example-left-context.md)。
+
+[TASK-037](TASK-037-teaching-example-panels.md)已完成常见反应类型右对齐按钮与双面板排版，指定重复内容删除；见[REPORT-037](../reports/REPORT-037-teaching-example-panels.md)。
+
+[TASK-036](TASK-036-literature-section-tabs.md)已完成教学顶部三分区互斥导航，默认常见反应类型；见[REPORT-036](../reports/REPORT-036-literature-section-tabs.md)。
+
+[TASK-035](TASK-035-history-side-panels.md)已完成历史左侧/对照右侧65:35布局与指定文案删除；见[REPORT-035](../reports/REPORT-035-history-side-panels.md)。
+
+[TASK-033](TASK-033-literature-teaching-hierarchy.md)已完成教学页层级、具体反应图式和工具范围说明；见[REPORT-033](../reports/REPORT-033-literature-teaching-hierarchy.md)。
+
+[TASK-034](TASK-034-advanced-defaults.md)已完成高级设置默认值展示与预算编辑；验证见[REPORT-034](../reports/REPORT-034-advanced-defaults.md)。
+
+[TASK-032](TASK-032-history-and-pagination.md)已完成搜索历史视觉和两页顶部分页统一；见[REPORT-032](../reports/REPORT-032-history-and-pagination.md)。
+
+[TASK-031](TASK-031-panel-controls.md)已完成左侧控件整理；验证见[REPORT-031](../reports/REPORT-031-panel-controls.md)。
+
+[TASK029](TASK-029-isoquercitrin-lab-handoff.md)已按[完成记录](TASK-029-completion-20261023.md)结项；后续[TASK030提案](proposals/TASK-030-isoquercitrin-donor-regeneration-and-discovery.md)未执行。芦丁TASK028仍Proposed。
+
+最新[TASK027](TASK-027-rutin-actionable-route-quality.md)按[执行批准](TASK-027-approval-20261023.md)和[完成记录](TASK-027-completion-20261023.md)结项；[P3冻结](TASK-027-P3-frozen-development-plan.md)、[P4前缀](TASK-027-P4-prefix-preservation.md)、[P5立体分轴](TASK-027-P5-stereo-reporting.md)各保留。后续[TASK028](TASK-028-rutin-subgoal-and-donor-closure.md)Proposed，未执行。
+
+最新[TASK-026](TASK-026-ranking-researcher-workbench.md)及[P1纠偏](TASK-026-P1-duplicate-leaf-ranking-correction.md)已按[完成记录](TASK-026-completion-20261023.md)交付；[TASK-027](TASK-027-rutin-actionable-route-quality.md)为Proposed，未执行。
+
+最新[TASK-025](TASK-025-workbench-layout.md)已按[完成记录](TASK-025-completion-20261022.md)交付三页布局、分页与反应图。
+
+上一轮[TASK-024](TASK-024-lan-web-restart.md)已完成局域网Web重新挂起，验收见[REPORT-024](../reports/REPORT-024-lan-web-restart.md)。
+
+TASK-023已按[完成记录](TASK-023-completion-20261022.md)完成三角色试用与平台优化；[事前合同](TASK-023-role-review-platform-optimization.md)保持批准字节。
+
+上轮TASK-022已按[完成记录](TASK-022-completion-20261022.md)结项；[原批准合同](TASK-022-pipeline-closure.md)保持冻结字节和当时状态，当前证据见REPORT-022。
+
 `docs/tasks/` 保存每次实质性操作在执行前形成的任务合同。TASK 规定授权范围、验收标准和停止条件；它不是执行结果的记录。
 
 ## 目录与文件职责
@@ -98,3 +134,15 @@ TASK-001—008 的合同文本在 TASK-009 由速记体扩写为详细格式；�
 | research_candidate | `metadata/release.json` 中的系统状态：保留候选、不认证为生产。 |
 
 文件名、命令、字段、状态码、哈希和来源原词保留原文，以便与实现和证据对应。正文采用中文叙述，必要的原文术语附中文说明。
+
+[TASK-041：可独立进入的子页面与浏览器导航](TASK-041-addressable-subpages.md)，agent_delegated，解决站内返回与重新进入。
+
+[TASK-042：移除新增面包屑导航栏](TASK-042-remove-breadcrumb.md)，agent_delegated，保留TASK041其余导航能力。
+
+[TASK-043：修复文献教学固定栏顶部缝隙](TASK-043-seal-teaching-header-gap.md)，agent_delegated。
+
+[TASK-045：精简文献核查工具区与统一分页](TASK-045-literature-tools-cleanup.md)，Completed；agent_delegated，原文献精简TASK044因并行同号改在此续作。
+
+[TASK-044背景修复：恢复教学标题高度并补齐顶部背景](TASK-044-restore-teaching-spacing-and-backdrop.md)，agent_delegated；取代TASK043的去间距实现。
+
+[TASK-047：前端项目化、子页面与统一组件规范](TASK-047-frontend-project-and-component-system.md)，agent_delegated；页面源码、组件API及构建/开发流程。
