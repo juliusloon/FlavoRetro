@@ -4,6 +4,8 @@
 
 ## 当前搜索与研究界面
 
+- [TASK-048](docs/reports/REPORT-048-git-sync.md)已将当前工作台配套源/配置/测试/原创文档及规范化前端提交并推送origin/main，源码提交`63209c1`已与远端核对一致；112项相关工程及前端check/语法/AST/索引审查通过。原始/受限数据、模型、outputs/temp及命令输出日志未上传；无新MCTS/重启/安装/force。提交作者明确为Cano代理，agent_delegated、human_reviewed=false；最终元数据与操作追加另见Git日志。
+
 - [TASK-047](docs/reports/REPORT-047-frontend-project-and-component-system.md)已将前端规范为源码项目：主壳/9个页面片段、页面控制器、core/shared、路由/构建清单及公共FlavoUI组件分别维护，原地址/返回/刷新/状态与无面包屑保持。公共标题/控件/面板/分页/分栏实际迁移，独立`/#/components`可操作；[开发入口](web/README.md)提供build/check/watch/routes/create-page和规范，源产物检查接入CI配置。164项浏览器、29项工程、35项静态及34组对比度通过；非预期错误/非GET/新MCTS0，故障注入503单列。后端/科学正文及32/18/54/27内容保持，无重启/安装/提交；agent_delegated，human_reviewed=false。
 
 - [TASK-046](docs/reports/REPORT-046-literature-workspace.md)已将文献案例/论文/新增证据统一为紧凑列表与常驻详情，桌面约34:66独立滚动、手机上下；关联来源原地阅读，筛选/页码/选中/返回刷新保持。六步可直达，原笔记、自检及全量导出保留。五视口266项＋专项23项浏览器、3项package、15项静态及Node/diff通过；非预期错误/非GET/新MCTS0，故障注入两条500单列。原32/18/54内容与外层标题背景保持，agent_delegated，human_reviewed=false；旧页面刷新生效。
@@ -52,7 +54,7 @@
 - 当前72相关测试通过；最终31项Playwright Chromium桌面1440×1000/手机390×844交互检查通过，警告/异常0、浏览器POST0；原始结果导出一致、六步导出全量。最终28项离线/资产/接口核验通过；8活动Python/测试AST、Node语法、前端/配置镜像及diff检查通过。其他浏览器、真实触摸或独立湿实验未验证。
 - 当前Retro PID3750432监听0.0.0.0:8767；[本次异槲皮苷结果](http://10.70.160.64:8767/?run=20261023T104955-9ca6aa531fd741338c95fcec2447eda9)。Lab PID3750202监听0.0.0.0:8766；用户本次授权的跨项目来源接收已完成。两端LAN health 200；其它设备未实测。服务登记outputs/task029/services.json；没有活动MCTS。
 - TASK027的原结果/冻结开发证据保留且不回写；本次基线、来源v3、真实运行副本、交接包与Lab校验收据、最终浏览器46项及变更审计统一在outputs/task029。原始MCTS归档仍按manifest校验。
-- Git未stage/commit/push，旧未提交改动保留；原始/受限数据、outputs/temp不入Git。旧retro_synthesis/CondRxnBench不执行、不依赖其可写。全部操作以operate记录。
+- 当前源代码/规范化前端已按TASK048同步origin/main（源码`63209c1`）；原始/受限数据、outputs/temp及命令日志留本地。最终核验会继续追加操作账，不为清空状态删除记录。旧retro_synthesis/CondRxnBench不执行、不依赖其可写。全部操作以operate记录。
 
 ## 不变的资源与科学边界
 

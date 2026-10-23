@@ -132,3 +132,5 @@ REPORT-005、REPORT-007、REPORT-007-P1 为 TASK-009 补立：对应操作发生
 [REPORT-044背景修复：恢复教学标题高度并补齐顶部背景](REPORT-044-restore-teaching-spacing-and-backdrop.md)。
 
 [REPORT-047：前端项目化、子页面与统一组件规范](REPORT-047-frontend-project-and-component-system.md)。
+
+[REPORT-048：规范化交付后的Git同步](REPORT-048-git-sync.md)。

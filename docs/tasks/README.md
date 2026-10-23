@@ -146,3 +146,5 @@ TASK-001—008 的合同文本在 TASK-009 由速记体扩写为详细格式；�
 [TASK-044背景修复：恢复教学标题高度并补齐顶部背景](TASK-044-restore-teaching-spacing-and-backdrop.md)，agent_delegated；取代TASK043的去间距实现。
 
 [TASK-047：前端项目化、子页面与统一组件规范](TASK-047-frontend-project-and-component-system.md)，agent_delegated；页面源码、组件API及构建/开发流程。
+
+[TASK-048：规范化交付后的Git同步](TASK-048-git-sync.md)，用户明确授权提交/推送，agent_delegated。
