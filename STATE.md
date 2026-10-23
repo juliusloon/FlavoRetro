@@ -5,6 +5,7 @@
 ## 当前搜索与研究界面
 
 - [TASK-048](docs/reports/REPORT-048-git-sync.md)已将当前工作台配套源/配置/测试/原创文档及规范化前端提交并推送origin/main，源码提交`63209c1`已与远端核对一致；112项相关工程及前端check/语法/AST/索引审查通过。原始/受限数据、模型、outputs/temp及命令输出日志未上传；无新MCTS/重启/安装/force。提交作者明确为Cano代理，agent_delegated、human_reviewed=false；最终元数据与操作追加另见Git日志。
+  首轮云端失败定位为38项历史测试缺本地证据包，已用精确ID依赖清单与可移植入口修正CI；原断言/已有缺包条件保持，未知错误或已有包损坏仍失败。隔离纯源码443项中346执行通过、97明确skip，新增8项入口合同及wheel/sdist/资产排除通过；跳过不计为科学或真实搜索验收。
 
 - [TASK-047](docs/reports/REPORT-047-frontend-project-and-component-system.md)已将前端规范为源码项目：主壳/9个页面片段、页面控制器、core/shared、路由/构建清单及公共FlavoUI组件分别维护，原地址/返回/刷新/状态与无面包屑保持。公共标题/控件/面板/分页/分栏实际迁移，独立`/#/components`可操作；[开发入口](web/README.md)提供build/check/watch/routes/create-page和规范，源产物检查接入CI配置。164项浏览器、29项工程、35项静态及34组对比度通过；非预期错误/非GET/新MCTS0，故障注入503单列。后端/科学正文及32/18/54/27内容保持，无重启/安装/提交；agent_delegated，human_reviewed=false。
 

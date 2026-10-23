@@ -29,7 +29,7 @@
 
 ## 仓库与交付边界
 
-已连接 [GitHub 私有仓库](https://github.com/juliusloon/FlavoRetro)。工程 CI 验证无受限资产的合同、构建与仓库外安装；本地真实 MCTS/浏览器证据单独记录，不能由 CI 跳过项代替。[TASK-012](docs/tasks/TASK-012-foundation-readiness.md) 和 [REPORT-012](docs/reports/REPORT-012-foundation-readiness.md) 给出工程地基范围和验收记录。
+已连接 [GitHub 私有仓库](https://github.com/juliusloon/FlavoRetro)。工程 CI 通过`scripts/test_portable.py`验证无受限资产的合同、构建与仓库外安装；缺失本地证据按[逐项依赖清单](tests/local-assets.json)显式跳过，包存在时仍执行原断言，详见[环境说明](environment/README.md#无本地资产的源码与ci检查)；本地真实 MCTS/浏览器证据单独记录，不能由 CI 跳过项代替。[TASK-012](docs/tasks/TASK-012-foundation-readiness.md) 和 [REPORT-012](docs/reports/REPORT-012-foundation-readiness.md) 给出工程地基范围和验收记录。
 
 代码 [Apache-2.0](LICENSE)，原创文档 [CC BY 4.0](LICENSES/CC-BY-4.0.md)，数据保留来源许可。`data/`、`outputs/`、运行 SQLite、模型和真实运行不进 Git/发布包/CI artifact。私有代码同步不表示公开发布、作者身份发表检查或科学晋级完成；论文准入见 [论文路线](docs/PAPER_ROADMAP.md)。
 

@@ -18,3 +18,11 @@
 未安装、重启服务、运行新MCTS、公开仓库或改变访问权限。前端行为沿用TASK047已完成的164项浏览器验收；本轮没有为Git重复运行浏览器或新搜索。远程CI结果单独记录，不以本地测试冒充已通过远程CI。
 
 全部命令通过operate。审核清单、索引树SHA、测试日志及远端核验保存在outputs/task048与operations本地命令日志，不入Git。每次commit/push/核验仍会追加events，因此最后提交之后少量新操作记录留在本地是正常治理行为，不为清空工作区删除记录。
+
+## 首轮远程CI与可移植依赖修正
+
+源码提交63209c1的[CI 40008647444](https://github.com/juliusloon/FlavoRetro/actions/runs/40008647444)与随后元数据e52be2e的CI均失败；首轮435项发现报告40条error、59项skip，40条error对应38个测试方法（其中一项含三个subtest），全部读取未入Git的outputs历史包。前端源/产物check和依赖检查通过。没有为满足CI上传私有证据，也没有改写历史测试或生产科学模块。
+
+新增tests/local-assets.json精确登记这38个测试ID及本地证据包目录；scripts/test_portable.py仍发现全部测试，只替换缺整个已登记包的测试为有原ID/缺失路径/原因的显式skip。未登记错误、失效登记均阻断；目录存在时执行原测试，包损坏、不完整或断言失败不转skip。已有本地测试条件保持，V4/V5的无资产配置/缺包防护测试继续执行。CI改用这一入口，README与环境说明解释边界。
+
+8项新政策合同全部通过，覆盖缺包时不执行class fixture/原ID保留、已有不完整包仍报错、未登记FileNotFoundError仍报错、原断言失败保留、嵌套suite、登记失效、重复ID/路径越界/符号链接越界。随后在git archive构造的/tmp纯源码副本覆盖待提交文件，确认无data/outputs/temp/模型或工作区虚拟环境；用已有环境的绝对解释器和副本workspace执行443项，346执行通过、97明确skip（原59＋新登记38），无新MCTS。前端check、pip check、无隔离wheel/sdist构建、artifact边界全部通过；未安装依赖。日志及副本定位仅在本地outputs/task048/portable-validation.json。远程修正后的结果以该提交实际工作流记录为准。

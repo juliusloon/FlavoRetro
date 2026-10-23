@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "groups": [
+    {
+      "reason": "TASK027 source panel and admission bundle",
+      "requires": [
+        "outputs/task027"
+      ],
+      "tests": [
+        "test_route_quality.SourceAdmission.test_source_panel_and_inventory_are_distinct"
+      ]
+    },
+    {
+      "reason": "TASK029 local exact literature registry bundle",
+      "requires": [
+        "outputs/task029/literature/v3"
+      ],
+      "tests": [
+        "test_route_quality.SourceAdmission.test_local_exact_registry_has_three_new_actions_and_originals",
+        "test_route_quality.SourceAdmission.test_named_transfer_conserves_elements_with_UDP_byproduct"
+      ]
+    },
+    {
+      "reason": "TASK016 P2/P3 frozen registry bundles",
+      "requires": [
+        "outputs/task016-p2/v2",
+        "outputs/task016-p3/v1"
+      ],
+      "tests": [
+        "test_task016_p3.V4Contract.test_v4_registry_chain_and_counts",
+        "test_task016_p3.V4Contract.test_v3_registry_binding_unchanged",
+        "test_task016_p3.V4Contract.test_v4_support_replay_and_guard",
+        "test_task016_p3.V4Contract.test_v4_boundaries_zero_violation",
+        "test_task016_p3.V4Contract.test_v4_scope_generality_beyond_seed",
+        "test_task016_p3.V4Contract.test_v4_templates_absent_from_v3_registry",
+        "test_task016_p3.V4Contract.test_old_v2_templates_byte_identical_in_chain"
+      ]
+    },
+    {
+      "reason": "TASK016 P2/P3/P4 frozen registry bundles",
+      "requires": [
+        "outputs/task016-p2/v2",
+        "outputs/task016-p3/v1",
+        "outputs/task016-p4/v1"
+      ],
+      "tests": [
+        "test_task016_p4_library.V5Contracts.test_v5_inherits_v3_plus_only_revalidated_scope",
+        "test_task016_p4_library.V5Contracts.test_v5_is_not_a_descendant_of_v4",
+        "test_task016_p4_library.V5Contracts.test_quarantined_scopes_absent_from_v5",
+        "test_task016_p4_library.V5Contracts.test_v3_and_v4_still_loadable",
+        "test_task016_p4_library.V5Contracts.test_runtime_holds_no_holdout_instance"
+      ]
+    },
+    {
+      "reason": "TASK016 P3/P4 correction evidence bundles",
+      "requires": [
+        "outputs/task016-p3/v1",
+        "outputs/task016-p4/v1"
+      ],
+      "tests": [
+        "test_task016_p4_library.P4CorrectionLedger.test_reaudit_covers_all_34",
+        "test_task016_p4_library.P4CorrectionLedger.test_reaudit_levels_are_from_the_frozen_vocabulary",
+        "test_task016_p4_library.P4CorrectionLedger.test_no_agent_review_is_claimed_as_human",
+        "test_task016_p4_library.P4CorrectionLedger.test_scope_counting_uses_canonical_acceptor",
+        "test_task016_p4_library.P4CorrectionLedger.test_o6_scope_is_one_distinct_acceptor_not_two",
+        "test_task016_p4_library.P4CorrectionLedger.test_deferred_never_enters_the_holdout_denominator",
+        "test_task016_p4_library.P4CorrectionLedger.test_c3_intermediate_no_longer_borrows_dehydrated_product_nmr",
+        "test_task016_p4_library.P4CorrectionLedger.test_p3_evidence_files_are_not_rewritten"
+      ]
+    },
+    {
+      "reason": "TASK016 P7 original-source and frozen gate evidence bundle",
+      "requires": [
+        "outputs/task016-p7/v1"
+      ],
+      "tests": [
+        "test_task016_p7_r21_original_primary_scope.R21PublishedProof.test_6_actual_raw_originals_not_http200_proxies",
+        "test_task016_p7_r21_original_primary_scope.R21PublishedProof.test_DOCTYPE_originals_recovered_from_false_magic",
+        "test_task016_p7_r21_original_primary_scope.R21PublishedProof.test_real_frozen_G5_to_G6_not_skipped",
+        "test_task016_p7_r21_original_primary_scope.R21PublishedProof.test_direct_sugar_o2_in_original_both_independent_reviews",
+        "test_task016_p7_r26_r29_primary_studies.P7PrimaryOriginalGroupScience.test_C_G4_G5_G6_real_chain_and_3_sources",
+        "test_task016_p7_r26_r29_primary_studies.P7PrimaryOriginalGroupScience.test_C_triple_negative_not_false_C6",
+        "test_task016_p7_r26_r29_primary_studies.P7PrimaryOriginalGroupScience.test_two_SS_originals_identified_and_historical",
+        "test_task016_p7_r26_r29_primary_studies.P7PrimaryOriginalGroupScience.test_SS_G5_to_G6_and_double_A4_A5_original_SHA",
+        "test_task016_p7_r26_r29_primary_studies.P7PrimaryOriginalGroupScience.test_SS_3_distinct_species_gene_studies_not_preprint_duplicate",
+        "test_task016_p7_r26_r29_primary_studies.P7PrimaryOriginalGroupScience.test_no_fresh_graph_mcts_or_G7_scientific_promotion",
+        "test_task016_p7_ss_e02_r2_gate.P7SSE02SourceR2GateTests.test_frozen_scope_chain_still_unchanged",
+        "test_task016_p7_ss_e02_r2_gate.P7SSE02SourceR2GateTests.test_all_R2_stage_branches_replay",
+        "test_task016_p7_ss_e02_r2_gate.P7SSE02SourceR2GateTests.test_original_identity_verified_without_chemical_admission",
+        "test_task016_p7_ss_e02_r2_gate.P7SSE02SourceR2GateTests.test_source_assay_out_of_ss_scope",
+        "test_task016_p7_ss_e02_r2_gate.P7SSE02SourceR2GateTests.test_postfreeze_chemical_source_permanently_exposed_all_aliases"
+      ]
+    }
+  ]
+}

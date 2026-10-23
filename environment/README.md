@@ -57,3 +57,14 @@ SQLite 只索引已验收活动 JSON，不独立编辑。已有/损坏索引保�
 ```
 
 浏览器需同版本 Playwright Chromium。TASK-012 的浏览器验收复用了用户缓存中的匹配 Chromium 二进制，Python/Playwright 依赖位于新独立环境；新机使用 `python -m playwright install chromium` 获取浏览器。成功/失败输出均留在新的 `outputs/validation/` 子目录。CI 无受限资产，资产相关跳过项不能计为搜索验证。
+
+## 无本地资产的源码与CI检查
+
+云端使用`python -B scripts/test_portable.py`发现全部测试。[tests/local-assets.json](../tests/local-assets.json)逐项登记尚无自带缺包跳过条件的38项历史测试及其本地证据包；路径只允许工作区内data/或outputs/。缺少整个已登记包时，保留原测试ID并明确报告skip及缺失路径；未登记的失败、导入错误、旧登记失效均阻断CI。包目录存在时执行原测试，缺文件、散列漂移与错误断言不会变成skip。原有测试及其自身skip条件保持。
+
+```bash
+# 在无data/outputs/模型的源码副本中，通过当前批准TASK执行
+python3 scripts/operate.py TASK-NNN .venv-foundation/bin/python -B scripts/test_portable.py
+```
+
+解释器路径使用该源码副本可用的工程环境；隔离副本可引用已有环境的绝对解释器路径，无需重新安装。此入口不禁用已有LiveContracts条件：若工作区已有模型，仍可能启动其真实搜索，不能把完整本地发现当成纯工程检查。缺失证据、真实搜索和浏览器验收分别报告，skip不当作通过；私有或受限包不为消除skip上传Git。新增缺包测试应先确认其测试边界并明确登记精确ID，不能捕获FileNotFoundError批量放行。

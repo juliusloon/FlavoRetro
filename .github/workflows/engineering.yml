@@ -27,7 +27,7 @@ jobs:
       - name: Dependency and asset-free contracts
         run: |
           python -B scripts/operate.py TASK-012-CI python -m pip check
-          python -B scripts/operate.py TASK-012-CI python -B -m unittest discover -s tests -v
+          python -B scripts/operate.py TASK-012-CI python -B scripts/test_portable.py
       - name: Build wheel and source archive
         run: python -B scripts/operate.py TASK-012-CI python -m build --outdir dist
       - name: Artifact boundaries
