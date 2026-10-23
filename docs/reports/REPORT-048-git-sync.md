@@ -26,3 +26,5 @@
 新增tests/local-assets.json精确登记这38个测试ID及本地证据包目录；scripts/test_portable.py仍发现全部测试，只替换缺整个已登记包的测试为有原ID/缺失路径/原因的显式skip。未登记错误、失效登记均阻断；目录存在时执行原测试，包损坏、不完整或断言失败不转skip。已有本地测试条件保持，V4/V5的无资产配置/缺包防护测试继续执行。CI改用这一入口，README与环境说明解释边界。
 
 8项新政策合同全部通过，覆盖缺包时不执行class fixture/原ID保留、已有不完整包仍报错、未登记FileNotFoundError仍报错、原断言失败保留、嵌套suite、登记失效、重复ID/路径越界/符号链接越界。随后在git archive构造的/tmp纯源码副本覆盖待提交文件，确认无data/outputs/temp/模型或工作区虚拟环境；用已有环境的绝对解释器和副本workspace执行443项，346执行通过、97明确skip（原59＋新登记38），无新MCTS。前端check、pip check、无隔离wheel/sdist构建、artifact边界全部通过；未安装依赖。日志及副本定位仅在本地outputs/task048/portable-validation.json。远程修正后的结果以该提交实际工作流记录为准。
+
+远程修正完成：`92b4d24acf9cfd18df2fa79d0262f6cc38ebe1cb`已推送且ls-remote与本地一致。[GitHub CI 40010699861](https://github.com/juliusloon/FlavoRetro/actions/runs/40010699861)全部步骤success：前端/依赖、443项工程（346执行通过、97缺本地资产skip）、wheel/sdist、资产边界、仓库外安装/CLI/Web帮助验证均通过。该结果由实际云端日志核实；原始证据/模型未上传，skip未计为科学验收。本段和STATE/PROGRESS作为普通收尾提交同步，不改写先前历史。
